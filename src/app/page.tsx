@@ -3,6 +3,7 @@ import SimpleSlider from "../components/home/Slider";
 import MarketSector from "../components/home/market-sector";
 import Table from "../components/common/Table";
 import Invest from "../components/home/invest";
+import StockCard from "../components/home/stocks-card";
 import { get } from "../api/api";
 import { endpoints } from "../api/endpoints";
 
@@ -91,6 +92,13 @@ const Home = async () => {
         </div>
       </div>
 
+      <section className="pt-20">
+        <div className="container text-center">
+          <div className="">
+                <StockCard />
+          </div>
+        </div>
+      </section>
       <section className="section bg-theme-light dark:bg-darkmode-theme-light">
         <div className="container">
           <div className="row mt-8 lg:mt-0 gy-5 lg:gy-0">
