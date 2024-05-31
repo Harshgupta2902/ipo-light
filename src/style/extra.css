@@ -1,0 +1,21 @@
+.a-blue {
+  color: #0088ea;
+}
+.indices {
+  width: 90px;
+  max-height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.stockSid {
+  width: 26rem;
+  margin-left: 2rem;
+}
+
+.stockSidPrice {
+  width: 8rem;
+}
