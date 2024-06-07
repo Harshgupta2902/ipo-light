@@ -2,21 +2,25 @@ import React from "react";
 
 const sectionsData = [
   {
-    title: "Invest in Direct Mutual Funds",
+    title: "Mutual Funds",
     imageSrc: "https://www.paytmmoney.com/static/images/global-landing-page/invest-options/direct.svg",
     items: [
       "Get upto 1% higher returns with direct plans",
       "No hidden charges or investment fees",
       "Switch from regular to Direct funds"
-    ]
+    ],
+    buttonText: "Start Investing Now",
+    buttonUrl: ""
   },
   {
-    title: "Invest in Stocks",
+    title: "Stocks",
     imageSrc: "https://www.paytmmoney.com/static/images/global-landing-page/invest-options/invest.png",
     items: [
       "Online Stock Market Onboarding",
       "Manage Watchlist & Market Movers"
-    ]
+    ],
+    buttonText: "Check latest Price",
+    buttonUrl: ""
   },
   {
     title: "Investment Calculators",
@@ -25,7 +29,9 @@ const sectionsData = [
       "SIP Calculator: Plan your Systematic Investment",
       "Lumpsum Calculator: Estimate your one-time investment returns",
       "Retirement Calculator: Secure your future"
-    ]
+    ],
+    buttonText: "Calculate Now",
+    buttonUrl: "/calculators"
   }
 ];
 
@@ -54,7 +60,11 @@ export default function Invest() {
                       {item}
                     </li>
                   ))}
+
+
                 </ul>
+                <a className="btn btn-outline-primary mt-4" href={section.buttonUrl} >{section.buttonText}</a>
+
               </div>
               <div className={`lg:col-6 ${index % 2 === 0 ? '' : 'lg:order-2 order-1'}`}>
                 <img

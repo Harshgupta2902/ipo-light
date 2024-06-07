@@ -48,6 +48,10 @@ const menuData: MenuItem[] = [
       { label: "Others", url: "/calculators" },
     ],
   },
+  {
+    label: "Blogs",
+    url: "/blogs",
+  },
 ];
 
 export default function RootLayout({
@@ -57,6 +61,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
       <body className={poppins.className}>
         <Header menuData={menuData ?? []} />
         {children}

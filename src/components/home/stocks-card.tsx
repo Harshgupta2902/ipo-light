@@ -20,7 +20,7 @@ export default function StocksCard() {
     setError(null);
 
     try {
-      const response = await get(endpoints.charts);
+      const response = await get(endpoints.indices);
 
       setData(response.data);
       console.log(response.data);
