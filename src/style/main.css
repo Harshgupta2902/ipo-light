@@ -433,7 +433,6 @@ select {
 [type=reset],
 [type=submit],
 button {
-    -webkit-appearance: button;
     background-color: transparent;
     background-image: none
 }
@@ -456,7 +455,6 @@ progress {
 }
 
 [type=search] {
-    -webkit-appearance: textfield;
     outline-offset: -2px
 }
 
@@ -542,7 +540,6 @@ object,
 svg,
 video {
     display: block;
-    vertical-align: middle
 }
 
 img,
@@ -2082,31 +2079,16 @@ code:after {
     color: rgb(10 168 167/var(--tw-text-opacity))
 }
 
-@media (min-width:768px) {
-    .content :is(:where(h1): not(:where([class~=not-prose] *))) {
-        font-size: 3.0517578125rem
-    }
-}
 
 .content :is(:where(h2):not(:where([class~=not-prose] *))) {
     font-size: 1.953125rem
 }
 
-@media (min-width:768px) {
-    .content :is(:where(h2): not(:where([class~=not-prose] *))) {
-        font-size: 2.44140625rem
-    }
-}
 
 .content :is(:where(h3):not(:where([class~=not-prose] *))) {
     font-size: 1.5625rem
 }
 
-@media (min-width:768px) {
-    .content :is(:where(h3): not(:where([class~=not-prose] *))) {
-        font-size: 1.953125rem
-    }
-}
 
 .content :is(:where(h4):not(:where([class~=not-prose] *))) {
     font-weight: 700;
