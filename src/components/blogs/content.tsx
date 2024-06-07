@@ -2,6 +2,7 @@
 import React from "react";
 import { markdownify } from "../common/textConverter";
 import { format } from 'date-fns';
+import ImageFallback from "../common/ImageFallback";
 
 
 interface Blog {
@@ -32,30 +33,20 @@ export default function BlogDetails({ blog }: { blog: Blog }) {
     return (
         <article className="lg:col-9">
             <div className="mb-10">
-                <img
-                    alt="Adversus is a web-based dialer and practical CRM solution"
-                    loading="lazy"
-                    style={{ width: '100%', height: '300px' }}
-                    width="200"
-                    height="300"
-                    decoding="async"
-                    data-nimg="1"
-                    className="w-full rounded"
+                <ImageFallback
                     src={blog.image}
+                    className="w-full rounded"
+                    alt={blog.alt_keyword}
+                    priority
                 />
             </div>
             <div className="flex space-x-3 items-center my-3">
                 <a href="/authors/awab-husameldin">
-                    <img
-                        alt="Awab Husameldin"
-                        title="Awab Husameldin"
-                        loading="lazy"
-                        width="30"
-                        height="30"
-                        decoding="async"
-                        data-nimg="1"
+                    <ImageFallback
+                        src={blog.image}
                         className="inline-block rounded-full"
-                        src="https://bigspring-nextjs.vercel.app/_next/image?url=%2Fimages%2Fauthors%2Fauthor-1.webp&amp;w=64&amp;q=75"
+                        alt={blog.author}
+                        priority
                     />
                 </a>
                 <p>
