@@ -1,8 +1,11 @@
+"use client"
+
 import React from 'react'
 import Content from '@/components/blogs/content'
-import { headers } from 'next/headers';
+// import { headers } from 'next/headers';
 import { endpoints } from "@/api/endpoints";
 import { get } from "@/api/api";
+import { usePathname } from 'next/navigation';
 interface Root {
     id: string
     title: string
@@ -26,18 +29,18 @@ interface Root {
     views: string
 }
 
-
-
-
 const BlogDetails = async () => {
-    const headersList = headers();
-    const domain = headersList.get("host") || "";
-    const fullUrl = headersList.get("referer") || "";
 
-    const slugForBlog = fullUrl.replace(domain, "").replace("http://", "").replace("/blogs", "");
+    const pathname = usePathname();
+
+    // const headersList = headers();
+    // // const domain = headersList.get("x-url") || "";
+    // const fullUrl = headersList.get("referer") || "";
+    // // const slugForBlog = fullUrl.replace(domain, "").replace("http://", "").replace("/blogs", "");
+    // const slugForBlog = fullUrl.substring(fullUrl.indexOf("/blogs")).replace("/blogs","")
     let result: Root | null = null;
     try {
-        const data = await get(endpoints.blogDetails + slugForBlog);
+        const data = await get(endpoints.blogDetails + pathname.replace("/blogs",""));
         result = data.data;
         console.log("api done", result);
     } catch (error) {
@@ -47,6 +50,9 @@ const BlogDetails = async () => {
         <section className="section pt-7">
             <div className="container">
                 <div className="row justify-center">
+{pathname.replace("/blogs","")}
+                    {/* {fullUrl.substring(fullUrl.indexOf("/blogs")).replace("/blogs","")} */}
+                    {/* <br />{fullUrl} <br />{slugForBlog} */}
                     {result ? (
                         <Content blog={result} />
                     ) : (
