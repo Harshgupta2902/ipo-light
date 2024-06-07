@@ -43,8 +43,9 @@ const menuData: MenuItem[] = [
     url: "",
     dropdown: true,
     dropdownItems: [
-      { label: "Sip Calculator", url: "/about" },
-      { label: "Lumpsum Calculator", url: "/team" },
+      { label: "Sip Calculator", url: "/calculators/sip_calculator" },
+      { label: "Lumpsum Calculator", url: "/calculators/lumpsum_calculator" },
+      { label: "Others", url: "/calculators" },
     ],
   },
 ];
