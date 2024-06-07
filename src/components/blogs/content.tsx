@@ -2,7 +2,31 @@
 import React from "react";
 import { markdownify } from "../common/textConverter";
 
-const BlogDetails = async ({ id }: { id: string }) => {
+
+interface Blog {
+    id: string
+    title: string
+    slug: string
+    type: any
+    description: string
+    blog: string
+    author: string
+    image: string
+    alt_keyword: string
+    tags: string
+    category: string
+    featured: string
+    created_at: string
+    published: string
+    meta_description: string
+    meta_title: string
+    robots: string
+    meta_keywords: string
+    published_at: string
+    views: string
+}
+
+export default function BlogDetails({ blog }: { blog: Blog }) {
 
     return (
         <article className="lg:col-9">
@@ -10,12 +34,13 @@ const BlogDetails = async ({ id }: { id: string }) => {
                 <img
                     alt="Adversus is a web-based dialer and practical CRM solution"
                     loading="lazy"
-                    width="1200"
-                    height="500"
+                    style={{ width: '100%', height: '300px' }}
+                    width="200"
+                    height="300"
                     decoding="async"
                     data-nimg="1"
                     className="w-full rounded"
-                    src="https://bigspring-nextjs.vercel.app/_next/image?url=%2Fimages%2Fblog%2Fpost-1.webp&amp;w=3840&amp;q=75"
+                    src={blog.image}
                 />
             </div>
             <div className="flex space-x-3 items-center my-3">
@@ -61,10 +86,8 @@ const BlogDetails = async ({ id }: { id: string }) => {
                 Adversus is a web-based dialer and practical CRM solution
             </h2>
             <div className="content mb-10"
-                dangerouslySetInnerHTML={markdownify("lumpMarkdownContent", true)}
+                dangerouslySetInnerHTML={markdownify(blog.blog, true)}
             />
         </article>
     );
 }
-
-export default BlogDetails;

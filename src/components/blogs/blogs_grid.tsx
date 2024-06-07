@@ -68,14 +68,14 @@ const BlogPost: React.FC<BlogPostProps> = ({ posts }) => {
                             </div>
                         </div>
                         <h4 className="mb-3 font-bold text-dark dark:text-darkmode-dark hover:text-primary dark:hover:text-darkmode-primary transition">
-                            <a href={`/blog/${post.slug}`}>
+                            <a href={`/blogs/${post.category}/${post.slug}`}>
                                 {post.title}
                             </a>
                         </h4>
                         <p className="mb-6">
                             {post.description}
                         </p>
-                        <a className="capitalize font-medium" href={`/blog/${post.slug}`}>
+                        <a className="capitalize font-medium" href={`/blogs/${post.category}/${post.slug}`}>
                             Read More
                         </a>
                     </div>

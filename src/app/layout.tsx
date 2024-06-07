@@ -61,7 +61,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
+      </head>
       <body className={poppins.className}>
         <Header menuData={menuData ?? []} />
         {children}

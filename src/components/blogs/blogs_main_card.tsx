@@ -64,13 +64,13 @@ const BlogPostComponent: React.FC<BlogPostProps> = ({ post }) => {
                         {post.created_at}
                     </div>
                 </div>
-                <a href={`/blog/${post.slug}`}>
+                <a href={`/blogs/${post.category}/${post.slug}`}>
                     <h2 className="text-dark dark:text-darkmode-dark mb-3 hover:text-primary dark:hover:text-darkmode-primary">
                         {post.title}
                     </h2>
                 </a>
                 <p className="mb-4">{post.description}</p>
-                <a className="btn btn-primary capitalize" href={`/blog/${post.slug}`}>
+                <a className="btn btn-primary capitalize" href={`/blogs/${post.category}/${post.slug}`}>
                     Read More
                 </a>
             </div>
