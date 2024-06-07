@@ -44,7 +44,6 @@ const BlogDetails = async () => {
         <section className="section pt-7">
             <div className="container">
                 <div className="row justify-center">
-                    {pathname.replace("/blogs", "")}
                     {result ? (
                         <Content blog={result} />
                     ) : (
