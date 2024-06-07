@@ -1,32 +1,9 @@
 import SimpleSlider from "../components/home/Slider";
 import MarketSector from "../components/home/market-sector";
-import Table from "../components/common/Table";
 import Invest from "../components/home/invest";
 
 import { get } from "../api/api";
 import { endpoints } from "../api/endpoints";
-
-const data = [
-  {
-    productName: "The Sliding Mr. Bones (Next Stop, Pottersville)",
-    color: "Malcolm Lockyer",
-    category: "1961",
-    price: "$10.99",
-  },
-  {
-    productName: "Witchy Woman",
-    color: "The Eagles",
-    category: "1972",
-    price: "$8.99",
-  },
-  {
-    productName: "Shining Star",
-    color: "Earth, Wind, and Fire",
-    category: "1975",
-    price: "$9.99",
-  },
-];
-const headers = ["Product name", "Color", "Category", "Price"];
 
 const Home = async () => {
   let result = null;
@@ -46,12 +23,10 @@ const Home = async () => {
           <div className="row text-center">
             <div className="mx-auto lg:col-8">
               <h1 className="font-primary font-bold">
-                Let us solve your critical website development challenges
+              All-in-One Fintech Platform
               </h1>
               <p className="mt-4 mb-8">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-                nihil enim maxime corporis cumque <br /> totam aliquid nam sint
-                inventore optio modi neque laborum officiis necessitatibus
+              Discover the ultimate fintech platform for all your financial needs. Access mutual funds, stocks, IPOs, and powerful financial calculators in one place. Simplify your investments and make informed decisions with our comprehensive tools and insights
               </p>
               <img
                 alt="banner-image"
@@ -68,45 +43,6 @@ const Home = async () => {
           </div>
         </div>
       </section>
-
-      <section className="pt-20">
-        <div className="container text-center">
-          <div className="rounded bg-body py-6 px-6 shadow">
-            <div className="flex flex-col">
-              <div className="-m-1.5 overflow-x-auto">
-                <div className="p-1.5  align-middle">
-                  <div className="relative overflow-x-auto">
-                    <table className="lg:w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                      {headers && headers.length > 0 && (
-                        <thead className="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                          <tr>
-                            {headers.map((header, index) => (
-                              <th key={index} className="py-2">
-                                {header}
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
-                      )}
-                      <tbody>
-                        {data.map((item, index) => (
-                          <tr key={index}>
-                            <td>{item.productName}</td>
-                            <td>{item.color}</td>
-                            <td>{item.category}</td>
-                            <td>{item.price}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <div className="section">
         <div className="container">
           <div className="row items-center justify-between">
