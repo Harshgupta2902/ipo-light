@@ -3,8 +3,9 @@
 import axios from "axios";
 import Link from "next/link";
 
-import UpcomingIpo from "../../components/ipo/home/HomeDataTables";
-import HomeFaq from "../../components/ipo/home/HomeFaq";
+import UpcomingIpo from "@/components/ipo/home/HomeDataTables";
+
+import HomeFaq from "@/components/ipo/home/HomeFaq";
 import ImageFallback from "@/components/common/ImageFallback";
 
 const Home = async () => {
@@ -33,25 +34,25 @@ const Home = async () => {
           <div
             className={`row items-centerflex-col lg:flex-row`}
           >
-             <div className="lg:col-8 md:col-8 mb-8 ">
-                <h1 className="mb-4 text-h3 lg:text-h1">
-                  Invest in the Future
-                  <br /> Fill IPO and Unlock Potential Growth
-                </h1>
-                <p className="mb-8">
-                  Discover the latest IPOs. Get thorough information and insights
-                  to help you make wise investment decisions
-                </p>
+            <div className="lg:col-8 md:col-8 mb-8 ">
+              <h1 className="mb-4 text-h3 lg:text-h1">
+                Invest in the Future
+                <br /> Fill IPO and Unlock Potential Growth
+              </h1>
+              <p className="mb-8">
+                Discover the latest IPOs. Get thorough information and insights
+                to help you make wise investment decisions
+              </p>
 
-                <Link
-                  className="btn btn-primary"
-                  href={"https://rti.kfintech.com/ipostatus/"}
-                  target={"_blank"}
-                  rel="noopener"
-                >
-                  {"Check Ipo Allotment Status"}
-                </Link>
-              </div>
+              <Link
+                className="btn btn-primary"
+                href={"https://rti.kfintech.com/ipostatus/"}
+                target={"_blank"}
+                rel="noopener"
+              >
+                {"Check Ipo Allotment Status"}
+              </Link>
+            </div>
             <div className={`lg:col-4 lg:order-2 order-1`}>
               <ImageFallback
                 src={"/banner.svg"}
