@@ -1,7 +1,10 @@
 "use client";
-import axios from "axios";
+
 import { useState, useRef } from "react";
 import GainersCard from "./gainers";
+import { get } from "../../api/api";
+import { endpoints } from "../../api/endpoints";
+
 export default function StocksCard() {
   const [activeMenuItem, setActiveMenuItem] = useState<string>("gainers");
   const [data, setData] = useState<any>(null);
@@ -17,10 +20,10 @@ export default function StocksCard() {
     setError(null);
 
     try {
-      const response = await axios.get(
-        `https://cors-anywhere.herokuapp.com/https://analyze.api.tickertape.in/homepage/stocks?universe=SmallCap&type=${menuItem}&dataCount=5&offset=0`
-      );
+      const response = await get(endpoints.charts);
+
       setData(response.data);
+      console.log(response.data);
     } catch (error: any) {
       console.log("API Error: " + error.message);
       setError(error.message);
@@ -111,14 +114,6 @@ export default function StocksCard() {
             )}
           </div>
         )}
-
-        {/* <div ref={contentRef}>
-          {loading && <p>Loading...</p>}
-          {error && <p>Error: {error}</p>}
-          {!loading && !error && data && (
-            <GainersCard gainers={data.data.gainers} />
-          )}
-        </div> */}
       </div>
     </section>
   );

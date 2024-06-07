@@ -3,13 +3,7 @@ import axios from "axios";
 // Function to make a GET request
 export const get = async (url, headers = {}) => {
   try {
-    const response = await axios.get(url, {
-      headers: {
-        "Cache-Control": "no-cache",
-        Pragma: "no-cache",
-        Expires: "0",
-      },
-    });
+    const response = await axios.get(url);
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);

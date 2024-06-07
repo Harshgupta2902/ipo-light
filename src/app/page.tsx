@@ -1,9 +1,8 @@
-import axios from "axios";
 import SimpleSlider from "../components/home/Slider";
 import MarketSector from "../components/home/market-sector";
 import Table from "../components/common/Table";
 import Invest from "../components/home/invest";
-import StockCard from "../components/home/stocks-card";
+
 import { get } from "../api/api";
 import { endpoints } from "../api/endpoints";
 
@@ -76,7 +75,31 @@ const Home = async () => {
             <div className="flex flex-col">
               <div className="-m-1.5 overflow-x-auto">
                 <div className="p-1.5  align-middle">
-                  <Table headers={headers} data={data} />
+                  <div className="relative overflow-x-auto">
+                    <table className="lg:w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                      {headers && headers.length > 0 && (
+                        <thead className="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                          <tr>
+                            {headers.map((header, index) => (
+                              <th key={index} className="py-2">
+                                {header}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                      )}
+                      <tbody>
+                        {data.map((item, index) => (
+                          <tr key={index}>
+                            <td>{item.productName}</td>
+                            <td>{item.color}</td>
+                            <td>{item.category}</td>
+                            <td>{item.price}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
@@ -92,13 +115,13 @@ const Home = async () => {
         </div>
       </div>
 
-      <section className="pt-20">
+      {/* <section className="pt-20">
         <div className="container text-center">
           <div className="">
                 <StockCard />
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="section bg-theme-light dark:bg-darkmode-theme-light">
         <div className="container">
           <div className="row mt-8 lg:mt-0 gy-5 lg:gy-0">

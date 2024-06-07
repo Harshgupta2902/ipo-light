@@ -30,8 +30,12 @@ const menuData: MenuItem[] = [
     url: "",
     dropdown: true,
     dropdownItems: [
-      { label: "Upcoming", url: "/about" },
-      { label: "GreyMarket", url: "/team" },
+      { label: "Upcoming Ipo", url: "/ipo/upcomingIpo" },
+      { label: "Grey Market Ipo", url: "/ipo/greyMarketIpo" },
+      { label: "SME Ipo", url: "/ipo/smeMarketIpo" },
+      { label: "Subscription Status", url: "/ipo/subscriptionStatus" },
+      { label: "Ipo Forms", url: "/ipo/ipoForms" },
+      { label: "Ipo BuyBack", url: "/ipo/sharesBuyBack" },
     ],
   },
   {
@@ -42,17 +46,6 @@ const menuData: MenuItem[] = [
       { label: "Sip Calculator", url: "/about" },
       { label: "Lumpsum Calculator", url: "/team" },
     ],
-  },
-  {
-    label: "Mutual Funds",
-    url: "/",
-    // dropdown: true,
-    // dropdownItems: [
-    //   { label: "About", url: "/about" },
-    //   { label: "Team", url: "/team" },
-    //   { label: "How It Works", url: "/how-it-works" },
-    //   { label: "Career", url: "/careers" },
-    // ],
   },
 ];
 

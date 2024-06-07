@@ -107,7 +107,9 @@ const NavItem: React.FC<NavItemProps> = ({ item, isActive, onItemClick }) => {
             isActive ? "active" : ""
           }`}
         >
-          <a href={item.url}><span>{item.label}</span></a>
+          <a href={item.url}>
+            <span>{item.label}</span>
+          </a>
         </div>
       )}
       {item.dropdown && (
