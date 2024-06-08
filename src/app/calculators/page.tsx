@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const calcs = [
   {
-    route: "sip_calculator",
+    route: "/sip_calculator",
     title: "SIP",
     description:
       "Calculate how much you need to save or how much you will accumulate with your SIP",
@@ -11,7 +11,7 @@ const calcs = [
       "//assets-netstorage.groww.in/web-assets/billion_groww_desktop/prod/_next/static/media/sip.81144080.png",
   },
   {
-    route: "lumpsum_calculator",
+    route: "/lumpsum_calculator",
     title: "Lumpsum",
     description:
       "Calculate returns for lumpsum investments to achieve your financial goals",
@@ -19,7 +19,7 @@ const calcs = [
       "//assets-netstorage.groww.in/web-assets/billion_groww_desktop/prod/_next/static/media/lumpsum.1794f9ea.png",
   },
   {
-    route: "",
+    route: "/swp_calculator",
     title: "SWP",
     description:
       "Calculate your final amount with Systematic Withdrawal Plans (SWP)",
@@ -227,35 +227,34 @@ const calcs = [
 
 
 export default function CalCulators() {
-    return (
-      <>
-        <section className="section-sm p-0">
-          <div className="container text-center">
-            <h1 className="my-6 pb-6">Calculators</h1>
-            <div className="row">
-              {calcs.map((calc, index) => (
-                <div key={index} className="mb-14 md:col-6 lg:col-3">
-                  <Link href={`/calculators/${calc.route}`}>
-                    <div
-                      className="rounded shadow p-8 text-center dark:bg-darkmode-theme-light transition-all duration-700 hover:scale-105"
-                      style={{
-                        backgroundRepeat: "no-repeat",
-                        backgroundImage: `url(${calc.image_src})`,
-                        backgroundPosition: "right bottom",
-                        height: "240px"
+  return (
+    <>
+      <section className="section-sm p-0">
+        <div className="container text-center">
+          <h1 className="my-6 pb-6">Calculators</h1>
+          <div className="row">
+            {calcs.map((calc, index) => (
+              <div key={index} className="mb-14 md:col-6 lg:col-3">
+                <Link href={`/calculators${calc.route}`}>
+                  <div
+                    className="rounded shadow p-8 text-center dark:bg-darkmode-theme-light transition-all duration-700 hover:scale-105"
+                    style={{
+                      backgroundRepeat: "no-repeat",
+                      backgroundImage: `url(${calc.image_src})`,
+                      backgroundPosition: "right bottom",
+                      height: "240px"
 
-                      }}
-                    >
-                      <h4 className="mb-3 text-left">{calc.title}</h4>
-                      <p className="mb-4 text-left">{calc.description}</p>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
+                    }}
+                  >
+                    <h4 className="mb-3 text-left">{calc.title}</h4>
+                    <p className="mb-4 text-left">{calc.description}</p>
+                  </div>
+                </Link>
+              </div>
+            ))}
           </div>
-        </section>
-      </>
-    );
-  }
-  
+        </div>
+      </section>
+    </>
+  );
+}
