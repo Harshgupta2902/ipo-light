@@ -27,16 +27,11 @@ const Home = async () => {
     const data = await get(endpoints.getBlogs);
     if (data.latestblogs) {
       latestBlogs = data.latestblogs;
-      console.log(latestBlogs);
-
     }
 
     if (data.otherblogs) {
       otherBlogs = data.otherblogs;
-      console.log(latestBlogs);
-
     }
-
 
     console.log("api done");
   } catch (error) {

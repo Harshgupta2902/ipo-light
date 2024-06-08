@@ -1,5 +1,8 @@
 "use client";
+
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
+
 
 interface MenuItem {
   label: string;
@@ -15,7 +18,27 @@ interface NavItemProps {
 }
 
 const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
-  const [activeItem, setActiveItem] = useState<number | null>();
+  const pathname = usePathname(); // Get the current pathname
+  const [activeItem, setActiveItem] = useState<number | null>(null);
+
+  // Function to set active item based on URL
+  const setActiveFromPath = () => {
+    const index = menuData.findIndex(item => {
+      if (item.url === pathname) {
+        return true;
+      }
+      if (item.dropdownItems) {
+        return item.dropdownItems.some(dropdownItem => dropdownItem.url === pathname);
+      }
+      return false;
+    });
+    setActiveItem(index);
+  };
+
+
+  useState(() => {
+    setActiveFromPath();
+  });
 
   const handleItemClick = (index: number) => {
     setActiveItem(index === activeItem ? null : index);
@@ -85,15 +108,11 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
 const NavItem: React.FC<NavItemProps> = ({ item, isActive, onItemClick }) => {
   return (
     <li
-      className={`nav-item nav-dropdown relative group ${
-        isActive ? "active" : ""
-      } `}
+      className={`nav-item nav-dropdown relative group ${isActive ? "active" : ""}`}
     >
       {item.dropdown ? (
         <div
-          className={`nav-link inline-flex items-center ${
-            isActive ? "active" : ""
-          }`}
+          className={`nav-link inline-flex items-center ${isActive ? "active" : ""}`}
           onClick={onItemClick}
         >
           <span>{item.label}</span>
@@ -102,18 +121,14 @@ const NavItem: React.FC<NavItemProps> = ({ item, isActive, onItemClick }) => {
           </svg>
         </div>
       ) : (
-        <div
-          className={`nav-link inline-flex items-center ${
-            isActive ? "active" : ""
-          }`}
-        >
+        <div className={`nav-link inline-flex items-center ${isActive ? "active" : ""}`}>
           <a href={item.url}>
             <span>{item.label}</span>
           </a>
         </div>
       )}
       {item.dropdown && (
-        <ul className={`nav-dropdown-list  ${isActive ? "active" : ""}`}>
+        <ul className={`nav-dropdown-list ${isActive ? "active" : ""}`}>
           {item.dropdownItems?.map((dropdownItem, index) => (
             <li key={index} className="nav-dropdown-item">
               <a className="nav-dropdown-link" href={dropdownItem.url}>
