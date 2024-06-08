@@ -237,7 +237,7 @@ export default function CalCulators() {
                 <div key={index} className="mb-14 md:col-6 lg:col-3">
                   <Link href={`/calculators/${calc.route}`}>
                     <div
-                      className="rounded bg-theme-light p-8 text-center dark:bg-darkmode-theme-light"
+                      className="rounded shadow p-8 text-center dark:bg-darkmode-theme-light transition-all duration-700 hover:scale-105"
                       style={{
                         backgroundRepeat: "no-repeat",
                         backgroundImage: `url(${calc.image_src})`,

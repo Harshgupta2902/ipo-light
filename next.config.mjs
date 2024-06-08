@@ -1,31 +1,16 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   async headers() {
-//     return [
-//       {
-//         source: "/v1/api/stocks_data/",
-//         headers: [
-//           {
-//             key: "Access-Control-Allow-Origin",
-//             value: "*",
-//           },
-//           {
-//             key: "Access-Control-Allow-Methods",
-//             value: "GET, POST",
-//           },
-//           {
-//             key: "Access-Control-Allow-Headers",
-//             value: "Content-Type, Authorization",
-//           },
-//         ],
-//       },
-//     ];
-//   },
-// };
-
-// export default nextConfig;
-
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    // domains: ['ipo.onlineinfotech.net'], // Add your domain here
+
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "ipo.onlineinfotech.net",
+        pathname: "**",
+      },
+    ],
+  },
+};
 
 export default nextConfig;

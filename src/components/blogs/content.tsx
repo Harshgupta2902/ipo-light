@@ -35,7 +35,9 @@ export default function BlogDetails({ blog }: { blog: Blog }) {
             <div className="mb-10">
                 <ImageFallback
                     src={blog.image}
-                    className="w-full rounded"
+                    width="600"
+                    height="300"
+                    className="w-full h-[20rem] rounded"
                     alt={blog.alt_keyword}
                     priority
                 />
@@ -44,7 +46,9 @@ export default function BlogDetails({ blog }: { blog: Blog }) {
                 <a href="/authors/awab-husameldin">
                     <ImageFallback
                         src={blog.image}
-                        className="inline-block rounded-full"
+                        width="30"
+                        height="30"
+                        className="inline-block w-6 h-6 rounded-full"
                         alt={blog.author}
                         priority
                     />
@@ -62,7 +66,7 @@ export default function BlogDetails({ blog }: { blog: Blog }) {
                     <svg
                         stroke="currentColor"
                         fill="currentColor"
-                        stroke-width="0"
+                        
                         viewBox="0 0 448 512"
                         className="inline-block"
                         height="1em"
