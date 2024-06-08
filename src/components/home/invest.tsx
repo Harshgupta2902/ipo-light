@@ -2,33 +2,35 @@ import React from "react";
 
 const sectionsData = [
   {
-    title: "Mutual Funds",
-    imageSrc: "https://www.paytmmoney.com/static/images/global-landing-page/invest-options/direct.svg",
+    title: "Mutual Funds - Maximize Your Returns",
+    imageSrc: "/mf.png",
     items: [
-      "Get upto 1% higher returns with direct plans",
-      "No hidden charges or investment fees",
-      "Switch from regular to Direct funds"
+      "Get up to 1% Higher Returns with Direct Plans",
+      "No Hidden Charges or Investment Fees",
+      "Switch from Regular to Direct Mutual Funds"
     ],
     buttonText: "Start Investing Now",
     buttonUrl: ""
   },
   {
-    title: "Stocks",
-    imageSrc: "https://www.paytmmoney.com/static/images/global-landing-page/invest-options/invest.png",
+    title: "IPO - Initial Public Offering Insights",
+    imageSrc: "/ipo.png",
     items: [
-      "Online Stock Market Onboarding",
-      "Manage Watchlist & Market Movers"
+      "Comprehensive IPO Information",
+      "Subscribe to Upcoming IPOs",
+      "Track and Analyze IPO Performance",
+      "Stay Updated on Latest IPO News"
     ],
-    buttonText: "Check latest Price",
-    buttonUrl: ""
+    buttonText: "Check Latest IPO",
+    buttonUrl: "/ipo"
   },
   {
-    title: "Investment Calculators",
-    imageSrc: "https://www.paytmmoney.com/static/images/global-landing-page/invest-options/direct.svg",
+    title: "Investment Calculators - Plan Your Finances",
+    imageSrc: "/calculator.png",
     items: [
-      "SIP Calculator: Plan your Systematic Investment",
-      "Lumpsum Calculator: Estimate your one-time investment returns",
-      "Retirement Calculator: Secure your future"
+      "SIP Calculator: Plan Your Systematic Investments",
+      "Lumpsum Calculator: Estimate Your One-Time Investment Returns",
+      "Retirement Calculator: Secure Your Future"
     ],
     buttonText: "Calculate Now",
     buttonUrl: "/calculators"
@@ -71,6 +73,7 @@ export default function Invest() {
                   alt="services-image"
                   loading="lazy"
                   width="450"
+                  style={{mixBlendMode: "multiply"}}
                   decoding="async"
                   data-nimg="1"
                   src={section.imageSrc}
