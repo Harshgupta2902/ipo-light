@@ -6,7 +6,7 @@ interface GainersCardProps {
 
 const GainersCard: React.FC<GainersCardProps> = ({ gainers }) => {
   return (
-    <div className="-m-1.5 overflow-x-auto">
+    <div className="-m-1.5 overflow-x-auto mt-6">
       <div className="p-1.5 align-middle">
         <table className="text-sm text-left rtl:text-right text-gray-500">
           <tbody>
@@ -29,8 +29,8 @@ const GainersCard: React.FC<GainersCardProps> = ({ gainers }) => {
                     <p className="text-grey m-0">{stock.sid}</p>
                   </div>
                 </td>
-                <td>
-                  <span className=" stockSidPrice">
+                <td className="pr-6">
+                  <span className="stockSidPrice">
                     ₹{stock.price.toLocaleString("en-IN")}
                   </span>
                 </td>

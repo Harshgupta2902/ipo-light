@@ -7,10 +7,10 @@ const sectionsData = [
     items: [
       "Get up to 1% Higher Returns with Direct Plans",
       "No Hidden Charges or Investment Fees",
-      "Switch from Regular to Direct Mutual Funds"
+      "Switch from Regular to Direct Mutual Funds",
     ],
     buttonText: "Start Investing Now",
-    buttonUrl: ""
+    buttonUrl: "",
   },
   {
     title: "IPO - Initial Public Offering Insights",
@@ -19,10 +19,10 @@ const sectionsData = [
       "Comprehensive IPO Information",
       "Subscribe to Upcoming IPOs",
       "Track and Analyze IPO Performance",
-      "Stay Updated on Latest IPO News"
+      "Stay Updated on Latest IPO News",
     ],
     buttonText: "Check Latest IPO",
-    buttonUrl: "/ipo"
+    buttonUrl: "/ipo",
   },
   {
     title: "Investment Calculators - Plan Your Finances",
@@ -30,21 +30,34 @@ const sectionsData = [
     items: [
       "SIP Calculator: Plan Your Systematic Investments",
       "Lumpsum Calculator: Estimate Your One-Time Investment Returns",
-      "Retirement Calculator: Secure Your Future"
+      "Retirement Calculator: Secure Your Future",
     ],
     buttonText: "Calculate Now",
-    buttonUrl: "/calculators"
-  }
+    buttonUrl: "/calculators",
+  },
 ];
 
 export default function Invest() {
   return (
     <>
       {sectionsData.map((section, index) => (
-        <section key={index} className={`py-14 ${index % 2 === 1 ? 'bg-theme-light' : ''}`}>
+        <section
+          key={index}
+          className={`py-14 ${index % 2 === 1 ? "" : "bg-theme-light"}`}
+        >
           <div className="container">
-            <div className={`row gy-5 lg:gy-0 items-center ${index % 2 === 0 ? 'flex-col-reverse lg:flex-row' : 'lg:flex-row-reverse'}`}>
-              <div className={`lg:col-6 ${index % 2 === 0 ? '' : 'lg:order-1 order-2'}`}>
+            <div
+              className={`row gy-5 lg:gy-0 items-center ${
+                index % 2 === 0
+                  ? "flex-col-reverse lg:flex-row"
+                  : "lg:flex-row-reverse"
+              }`}
+            >
+              <div
+                className={`lg:col-6 ${
+                  index % 2 === 0 ? "" : "lg:order-1 order-2"
+                }`}
+              >
                 <h2 className="mb-5">{section.title}</h2>
 
                 <ul className="max-w-md space-y-1 text-gray-500 list-inside ">
@@ -62,13 +75,19 @@ export default function Invest() {
                       {item}
                     </li>
                   ))}
-
-
                 </ul>
-                <a className="btn btn-outline-primary mt-4" href={section.buttonUrl} >{section.buttonText}</a>
-
+                <a
+                  className="btn btn-outline-primary mt-4"
+                  href={section.buttonUrl}
+                >
+                  {section.buttonText}
+                </a>
               </div>
-              <div className={`lg:col-6 ${index % 2 === 0 ? '' : 'lg:order-2 order-1'}`}>
+              <div
+                className={`lg:col-6 ${
+                  index % 2 === 0 ? "" : "lg:order-2 order-1"
+                }`}
+              >
                 <img
                   alt="services-image"
                   loading="lazy"
