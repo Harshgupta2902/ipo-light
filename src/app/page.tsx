@@ -4,17 +4,55 @@ import Invest from "../components/home/invest";
 
 import { get } from "../api/api";
 import { endpoints } from "../api/endpoints";
+import StocksCard from "@/components/home/stocks-card";
 
 const Home = async () => {
-  let result = null;
+
+  let indicesResult = null;
+  let gainersResult = null;
+  let losersResult = null;
+  let mostActiveResult = null;
+  let approachingHighResult = null;
+  let approachingLowResult = null;
 
   try {
-    const data = await get(endpoints.indices);
-    result = data.data;
+    const [
+      indicesData,
+      gainersData,
+      losersData,
+      mostActiveData,
+      approachingHighData,
+      approachingLowData,
+    ] = await Promise.all([
+      get(endpoints.indices),
+      get(endpoints.ganiers),
+      get(endpoints.losers),
+      get(endpoints.mostActive),
+      get(endpoints.approachingHigh),
+      get(endpoints.approachingLow),
+    ]);
+
+    indicesResult = indicesData.data;
+    gainersResult = gainersData.data;
+    losersResult = losersData.data;
+    mostActiveResult = mostActiveData.data;
+    approachingHighResult = approachingHighData.data;
+    approachingLowResult = approachingLowData.data;
+
+    console.log("Fetching data:", {
+      indicesResult,
+      gainersResult,
+      losersResult,
+      mostActiveResult,
+      approachingHighResult,
+      approachingLowResult,
+    });
+
   } catch (error) {
-    console.error("Error fetching menu data:", error);
+    console.error("Error fetching data:", error);
   }
-  const topIndices = result.slice(0, 9);
+
+  const topIndices = indicesResult.slice(0, 9);
 
   return (
     <main>
@@ -23,10 +61,10 @@ const Home = async () => {
           <div className="row text-center">
             <div className="mx-auto lg:col-8">
               <h1 className="font-primary font-bold">
-              All-in-One Fintech Platform
+                All-in-One Fintech Platform
               </h1>
               <p className="mt-4 mb-8">
-              Discover the ultimate fintech platform for all your financial needs. Access mutual funds, stocks, IPOs, and powerful financial calculators in one place. Simplify your investments and make informed decisions with our comprehensive tools and insights
+                Discover the ultimate fintech platform for all your financial needs. Access mutual funds, stocks, IPOs, and powerful financial calculators in one place. Simplify your investments and make informed decisions with our comprehensive tools and insights
               </p>
               <img
                 alt="banner-image"
@@ -51,13 +89,8 @@ const Home = async () => {
         </div>
       </div>
 
-      {/* <section className="pt-20">
-        <div className="container text-center">
-          <div className="">
-                <StockCard />
-          </div>
-        </div>
-      </section> */}
+
+
       <section className="section bg-theme-light ">
         <div className="container">
           <div className="row mt-8 lg:mt-0 gy-5 lg:gy-0">
@@ -87,6 +120,19 @@ const Home = async () => {
         </div>
       </section>
 
+      <section className="pt-20">
+        <div className="container text-center">
+          <div className="">
+          <StocksCard 
+              gainers={gainersResult.gainers}
+              losers={losersResult.losers}
+              active={mostActiveResult.active}
+              approachingHigh={approachingHighResult.approachingHigh}
+              approachingLow={approachingLowResult.approachingLow}
+            />
+          </div>
+        </div>
+      </section>
       <Invest />
     </main>
   );

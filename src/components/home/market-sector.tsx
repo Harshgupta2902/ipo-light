@@ -9,7 +9,7 @@ interface ChartDataItem {
   ts: string;
 }
 
-const ChartPage = ({
+const MarketSectorCard = ({
   data,
   lastPrice,
   name,
@@ -111,4 +111,4 @@ const ChartPage = ({
   );
 };
 
-export default ChartPage;
+export default MarketSectorCard;

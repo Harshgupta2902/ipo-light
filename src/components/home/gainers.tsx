@@ -1,15 +1,10 @@
-interface Stock {
-  sid: string;
-  name: string;
-  price: number;
-  change: number;
+import { StockData } from "./stocks-card";
+
+interface GainersCardProps {
+  gainers: StockData[];
 }
 
-interface Props {
-  gainers: Stock[];
-}
-
-const GainersCard: React.FC<Props> = ({ gainers }) => {
+const GainersCard: React.FC<GainersCardProps> = ({ gainers }) => {
   return (
     <div className="relative mt-12">
       <table className="lg:w-full text-sm text-left text-gray-500 ">
@@ -19,7 +14,7 @@ const GainersCard: React.FC<Props> = ({ gainers }) => {
               <td>
                 <img
                   src={`https://assets.tickertape.in/stock-logos/${stock.sid}.png`}
-                  alt="Stock Logo"
+                  alt={stock.name}
                   style={{ width: "48px", height: "48px" }}
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;

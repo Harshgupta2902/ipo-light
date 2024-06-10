@@ -47,53 +47,53 @@ export default function FormsDataTables({ data }: { data: any }) {
                           {keysToDisplay.map((key) => (
                             <td key={key} className="py-3">
                               {key === "name" ? (
-                            <Link
-                              style={{
-                                textDecoration: "none",
-                                fontWeight: "bold",
-                                fontSize: "medium",
-                              }}
-                              href={"ipo/" + item.slug}
-                              target={"_blank"}
-                              rel="noopener"
-                            >
-                              {item[key as keyof FormsDataTables]}
-                            </Link>
-                          ) : key === "nse" ? (
-                            item.nse_link ? (
-                              <Link
-                                style={{
-                                  textDecoration: "underline",
-                                  fontWeight: "bold",
-                                }}
-                                href={item.nse_link}
-                                target={"_blank"}
-                                rel="noopener"
-                              >
-                                {item[key as keyof FormsDataTables]}
-                              </Link>
-                            ) : (
-                              item[key as keyof FormsDataTables]
-                            )
-                          ) : key === "bse" ? (
-                            item.bse_link ? (
-                              <Link
-                                style={{
-                                  textDecoration: "underline",
-                                  fontWeight: "bold",
-                                }}
-                                href={item.bse_link}
-                                target={"_blank"}
-                                rel="noopener"
-                              >
-                                {item[key as keyof FormsDataTables]}
-                              </Link>
-                            ) : (
-                              item[key as keyof FormsDataTables]
-                            )
-                          ) : (
-                            item[key as keyof FormsDataTables]
-                          )}
+                                <Link
+                                  style={{
+                                    textDecoration: "none",
+                                    fontWeight: "bold",
+                                    fontSize: "medium",
+                                  }}
+                                  href={"ipo/" + item.slug}
+                                  target={"_blank"}
+                                  rel="noopener"
+                                >
+                                  {item[key as keyof FormsDataTables]}
+                                </Link>
+                              ) : key === "nse" ? (
+                                item.nse_link ? (
+                                  <Link
+                                    style={{
+                                      textDecoration: "underline",
+                                      fontWeight: "bold",
+                                    }}
+                                    href={item.nse_link}
+                                    target={"_blank"}
+                                    rel="noopener"
+                                  >
+                                    {item[key as keyof FormsDataTables]}
+                                  </Link>
+                                ) : (
+                                  item[key as keyof FormsDataTables]
+                                )
+                              ) : key === "bse" ? (
+                                item.bse_link ? (
+                                  <Link
+                                    style={{
+                                      textDecoration: "underline",
+                                      fontWeight: "bold",
+                                    }}
+                                    href={item.bse_link}
+                                    target={"_blank"}
+                                    rel="noopener"
+                                  >
+                                    {item[key as keyof FormsDataTables]}
+                                  </Link>
+                                ) : (
+                                  item[key as keyof FormsDataTables]
+                                )
+                              ) : (
+                                item[key as keyof FormsDataTables]
+                              )}
                             </td>
                           ))}
                         </tr>
@@ -108,5 +108,5 @@ export default function FormsDataTables({ data }: { data: any }) {
       </div>
     </section>
   );
-  
+
 }

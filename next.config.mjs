@@ -9,6 +9,16 @@ const nextConfig = {
         hostname: "ipo.onlineinfotech.net",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "assets.tickertape.in",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+        pathname: "**",
+      },
     ],
   },
 };

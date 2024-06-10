@@ -2,44 +2,61 @@
 
 import { useState, useRef } from "react";
 import GainersCard from "./gainers";
-import { get } from "../../api/api";
-import { endpoints } from "../../api/endpoints";
 
-export default function StocksCard() {
+// src/types/stocks.ts
+export interface StockData {
+  symbol: string;
+  name: string;
+  price: number;
+  change: number;
+  percentChange: number;
+  sid: string;
+
+}
+
+export interface StocksCardProps {
+  gainers: StockData[];
+  losers: StockData[];
+  active: StockData[];
+  approachingHigh: StockData[];
+  approachingLow: StockData[];
+}
+
+
+const StocksCard: React.FC<StocksCardProps> = ({ gainers, losers, active, approachingHigh, approachingLow }) => {
   const [activeMenuItem, setActiveMenuItem] = useState<string>("gainers");
-  const [data, setData] = useState<any>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const handleMenuItemClick = async (menuItem: string) => {
+  const handleMenuItemClick = (menuItem: string) => {
     console.log("Clicked index:", menuItem);
-
     setActiveMenuItem(menuItem);
-    setLoading(true);
-    setError(null);
 
-    try {
-      const response = await get(endpoints.indices);
-
-      setData(response.data);
-      console.log(response.data);
-    } catch (error: any) {
-      console.log("API Error: " + error.message);
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-
-    if (contentRef.current) {
-      contentRef.current.scrollIntoView({ behavior: "smooth" });
-    }
+    // if (contentRef.current) {
+    //   contentRef.current.scrollIntoView({ behavior: "smooth" });
+    // }
   };
+
+  const getContent = () => {
+    switch (activeMenuItem) {
+      case 'gainers':
+        return <GainersCard gainers={gainers} />;
+      case 'losers':
+        return <GainersCard gainers={losers} />;
+      case 'active':
+        return <GainersCard gainers={active} />;
+      case 'approachingHigh':
+        return <GainersCard gainers={approachingHigh} />;
+      case 'approachingLow':
+        return <GainersCard gainers={approachingLow} />;
+      default:
+        return null;
+    }
+  }
 
   return (
     <section className="section">
       <div className="container">
-        <div className=" flex flex-wrap mt-0">
+        <div className="flex flex-wrap mt-0">
           {[
             { name: "Top Gainers", route: "gainers" },
             { name: "Top Losers", route: "losers" },
@@ -47,17 +64,15 @@ export default function StocksCard() {
             { name: "52-W High", route: "approachingHigh" },
             { name: "52-W Low", route: "approachingLow" },
           ].map((item) => (
-            <div className="inline-flex flex-wrap group">
+            <div className="inline-flex flex-wrap group" key={item.name}>
               <a
                 href="#"
-                onClick={async (e) => {
+                onClick={(e) => {
                   e.preventDefault();
-                  await handleMenuItemClick(item.route);
+                  handleMenuItemClick(item.route);
                 }}
-                className={`flex-1 rounded-md bg-theme-light px-4 mr-4 my-2 py-2 text-sm text-dark ${
-                  activeMenuItem === item.name ? "active" : ""
-                }`}
-                key={item.name}
+                className={`flex-1 rounded-md bg-theme-light px-4 mr-4 my-2 py-2 text-sm text-dark ${activeMenuItem === item.route ? "active" : ""
+                  }`}
               >
                 {item.name.replace(/([A-Z])/g, " $1").trim()}
               </a>
@@ -65,56 +80,12 @@ export default function StocksCard() {
           ))}
         </div>
 
-        {activeMenuItem === "gainers" && (
-          <div ref={contentRef}>
-            {loading && <p>Loading...</p>}
-            {error && <p>Error: {error}</p>}
-            {!loading && !error && data && (
-              <GainersCard gainers={data.data.gainers} />
-            )}
-          </div>
-        )}
-
-        {activeMenuItem === "losers" && (
-          <div ref={contentRef}>
-            {loading && <p>Loading...</p>}
-            {error && <p>Error: {error}</p>}
-            {!loading && !error && data && (
-              <GainersCard gainers={data.data.losers} />
-            )}
-          </div>
-        )}
-
-        {activeMenuItem === "active" && (
-          <div ref={contentRef}>
-            {loading && <p>Loading...</p>}
-            {error && <p>Error: {error}</p>}
-            {!loading && !error && data && (
-              <GainersCard gainers={data.data.active} />
-            )}
-          </div>
-        )}
-
-        {activeMenuItem === "approachingHigh" && (
-          <div ref={contentRef}>
-            {loading && <p>Loading...</p>}
-            {error && <p>Error: {error}</p>}
-            {!loading && !error && data && (
-              <GainersCard gainers={data.data.approachingHigh} />
-            )}
-          </div>
-        )}
-
-        {activeMenuItem === "approachingLow" && (
-          <div ref={contentRef}>
-            {loading && <p>Loading...</p>}
-            {error && <p>Error: {error}</p>}
-            {!loading && !error && data && (
-              <GainersCard gainers={data.data.approachingLow} />
-            )}
-          </div>
-        )}
+        <div ref={contentRef}>
+          {getContent()}
+        </div>
       </div>
     </section>
   );
 }
+
+export default StocksCard;
