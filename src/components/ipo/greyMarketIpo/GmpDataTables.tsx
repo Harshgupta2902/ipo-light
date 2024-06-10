@@ -45,7 +45,6 @@ export default function GmpDataTables({ data }: { data: any }) {
     <section className="pt-20">
       <div className="container text-center">
         <h3 className="mb-4">Old Ipo Gmp </h3>
-
         <div className="rounded bg-body py-6 px-6 shadow">
           <div className="flex flex-col">
             <div className="-m-1.5 overflow-x-auto">
@@ -64,28 +63,28 @@ export default function GmpDataTables({ data }: { data: any }) {
                   )}
                   <tbody>
                     {data.gmp.map((item: GmpDataTables, index: number) => (
-                        <tr key={index}>
-                          {keysToDisplay.map((key) => (
-                            <td key={key} className="py-3">
-                              {key === "ipo_name" ? (
-                                <Link
-                                  style={{
-                                    textDecoration: "none",
-                                    fontSize: "medium",
-                                  }}
-                                  href={"ipo/" + item.slug}
-                                  target={"_blank"}
-                                  rel="noopener"
-                                >
-                                  {item[key as keyof GmpDataTables]}
-                                </Link>
-                              ) : (
-                                item[key as keyof GmpDataTables]
-                              )}
-                            </td>
-                          ))}
-                        </tr>
-                      ))}
+                      <tr key={index}>
+                        {keysToDisplay.map((key) => (
+                          <td key={key} className="py-3">
+                            {key === "ipo_name" ? (
+                              <Link
+                                style={{
+                                  textDecoration: "none",
+                                  fontSize: "medium",
+                                }}
+                                href={"ipo/" + item.slug}
+                                target={"_blank"}
+                                rel="noopener"
+                              >
+                                {item[key as keyof GmpDataTables]}
+                              </Link>
+                            ) : (
+                              item[key as keyof GmpDataTables]
+                            )}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -95,5 +94,5 @@ export default function GmpDataTables({ data }: { data: any }) {
       </div>
     </section>
   );
-  
+
 }

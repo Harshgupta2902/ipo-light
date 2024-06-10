@@ -41,7 +41,7 @@ export default function Invest() {
   return (
     <>
       {sectionsData.map((section, index) => (
-        <section key={index} className={`py-24 ${index % 2 === 1 ? 'bg-theme-light' : ''}`}>
+        <section key={index} className={`py-14 ${index % 2 === 1 ? 'bg-theme-light' : ''}`}>
           <div className="container">
             <div className={`row gy-5 lg:gy-0 items-center ${index % 2 === 0 ? 'flex-col-reverse lg:flex-row' : 'lg:flex-row-reverse'}`}>
               <div className={`lg:col-6 ${index % 2 === 0 ? '' : 'lg:order-1 order-2'}`}>
@@ -73,7 +73,7 @@ export default function Invest() {
                   alt="services-image"
                   loading="lazy"
                   width="450"
-                  style={{mixBlendMode: "multiply"}}
+                  style={{ mixBlendMode: "multiply" }}
                   decoding="async"
                   data-nimg="1"
                   src={section.imageSrc}

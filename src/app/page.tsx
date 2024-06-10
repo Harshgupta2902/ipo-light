@@ -56,7 +56,7 @@ const Home = async () => {
 
   return (
     <main>
-      <section className="pt-20">
+      <section className="lg:pt-20 sm:pt-0">
         <div className="container">
           <div className="row text-center">
             <div className="mx-auto lg:col-8">
@@ -120,19 +120,13 @@ const Home = async () => {
         </div>
       </section>
 
-      <section className="pt-20">
-        <div className="container text-center">
-          <div className="">
-          <StocksCard 
-              gainers={gainersResult.gainers}
-              losers={losersResult.losers}
-              active={mostActiveResult.active}
-              approachingHigh={approachingHighResult.approachingHigh}
-              approachingLow={approachingLowResult.approachingLow}
-            />
-          </div>
-        </div>
-      </section>
+      <StocksCard
+        gainers={gainersResult.gainers}
+        losers={losersResult.losers}
+        active={mostActiveResult.active}
+        approachingHigh={approachingHighResult.approachingHigh}
+        approachingLow={approachingLowResult.approachingLow}
+      />
       <Invest />
     </main>
   );
