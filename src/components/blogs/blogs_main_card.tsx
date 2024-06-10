@@ -65,7 +65,7 @@ const BlogPostComponent: React.FC<BlogPostProps> = ({ post }) => {
                     </div>
                 </div>
                 <a href={`/blogs/${post.category}/${post.slug}`}>
-                    <h2 className="text-dark dark:text-darkmode-dark mb-3 hover:text-primary dark:hover:text-darkmode-primary">
+                    <h2 className="text-dark  mb-3 hover:text-primary">
                         {post.title}
                     </h2>
                 </a>

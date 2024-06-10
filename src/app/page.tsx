@@ -58,11 +58,11 @@ const Home = async () => {
           </div>
         </div>
       </section> */}
-      <section className="section bg-theme-light dark:bg-darkmode-theme-light">
+      <section className="section bg-theme-light ">
         <div className="container">
           <div className="row mt-8 lg:mt-0 gy-5 lg:gy-0">
             <div className="md:col-12">
-              <div className="rounded bg-body dark:bg-darkmode-secondary py-6 px-6 h-full">
+              <div className="rounded bg-body py-6 px-6 h-full">
                 <div
                   className="flex px-24"
                   style={{ justifyContent: "space-between" }}

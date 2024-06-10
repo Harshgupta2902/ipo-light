@@ -21,7 +21,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ posts }) => {
         <div className="row mt-12">
             {posts.map((post, index) => (
                 <div key={index} className="mb-14 md:col-6 lg:col-4">
-                    <div className="bg-body dark:bg-darkmode-body px-1">
+                    <div className="bg-body  px-1">
                         <img
                             alt={post.alt_keyword}
                             loading="lazy"
@@ -32,7 +32,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ posts }) => {
                             src={`${post.image}?w=828&q=75`}
                         />
                         <div className="flex space-x-3 items-center mb-3">
-                            <div className="inline-flex items-center justify-center border border-border dark:border-darkmode-border rounded-full w-8 h-8 text-dark dark:text-darkmode-dark">
+                            <div className="inline-flex items-center justify-center border border-border  rounded-full w-8 h-8 text-dark ">
                                 <svg
                                     stroke="currentColor"
                                     fill="currentColor"
@@ -67,7 +67,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ posts }) => {
                                 <span className='pl-2 mt-2'>{post.created_at}</span>
                             </div>
                         </div>
-                        <h4 className="mb-3 font-bold text-dark dark:text-darkmode-dark hover:text-primary dark:hover:text-darkmode-primary transition">
+                        <h4 className="mb-3 font-bold text-dark hover:text-primary  transition">
                             <a href={`/blogs/${post.category}/${post.slug}`}>
                                 {post.title}
                             </a>

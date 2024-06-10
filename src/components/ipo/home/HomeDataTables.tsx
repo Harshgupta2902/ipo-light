@@ -28,9 +28,9 @@ const UpcomingIpo: React.FC<Props> = ({ data }) => {
             <div className="lg:col-6 md:col-6 mb-8 text-center">
               <h3 className="mb-4">Upcoming Ipo's</h3>
               <div className="relative overflow-x-auto">
-                <table className="lg:w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <table className="lg:w-full text-sm text-left rtl:text-right text-gray-500 ">
                   {headers && headers.length > 0 && (
-                    <thead className="text-md text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead className="text-md text-gray-700 bg-gray-50 ">
                       <tr>
                         {headers.map((header, index) => (
                           <th key={index} className="py-2">
@@ -72,9 +72,9 @@ const UpcomingIpo: React.FC<Props> = ({ data }) => {
             <div className="lg:col-6 md:col-6 mb-8 text-center">
               <h3 className="mb-4">SME Ipo's</h3>
               <div className="relative overflow-x-auto">
-                <table className="lg:w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <table className="lg:w-full text-sm text-left rtl:text-right text-gray-500 ">
                   {headers && headers.length > 0 && (
-                    <thead className="text-md text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead className="text-md text-gray-700 bg-gray-50  ">
                       <tr>
                         {headers.map((header, index) => (
                           <th key={index} className="py-2">

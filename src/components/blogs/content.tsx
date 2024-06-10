@@ -56,7 +56,7 @@ export default function BlogDetails({ blog }: { blog: Blog }) {
                 <p>
                     <span>by </span>
                     <a
-                        className="text-dark dark:text-darkmode-dark hover:text-primary transition"
+                        className="text-dark hover:text-primary transition"
                         href="/authors/awab-husameldin"
                     >
                         {blog.author}

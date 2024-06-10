@@ -50,9 +50,9 @@ export default function GmpDataTables({ data }: { data: any }) {
           <div className="flex flex-col">
             <div className="-m-1.5 overflow-x-auto">
               <div className="p-1.5 align-middle">
-                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500">
                   {headers && headers.length > 0 && (
-                    <thead className="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead className="text-xs text-gray-700 bg-gray-50 ">
                       <tr>
                         {headers.map((header, index) => (
                           <th key={index} className="py-2">

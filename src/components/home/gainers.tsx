@@ -12,7 +12,7 @@ interface Props {
 const GainersCard: React.FC<Props> = ({ gainers }) => {
   return (
     <div className="relative mt-12">
-      <table className="lg:w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <table className="lg:w-full text-sm text-left text-gray-500 ">
         <tbody>
           {gainers.map((stock, index) => (
             <tr key={index}>

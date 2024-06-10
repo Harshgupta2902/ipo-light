@@ -164,7 +164,7 @@ const SWPCalculator = () => {
                 <div className="content">
                     <h1 className="text-center mt-4">SWP Calculator</h1>
                     <br />
-                    <div className="rounded-xl shadow px-4 py-16 dark:bg-darkmode-theme-light xl:p-20">
+                    <div className="rounded-xl shadow px-4 py-16 xl:p-20">
                         <div className="row items-center justify-between px-4">
                             <div className="md:col-4 lg:col-4 md:order-2 text-left">
                                 <p >

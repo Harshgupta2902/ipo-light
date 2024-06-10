@@ -80,7 +80,7 @@ const ChartPage = ({
   return (
     <div className="inline-flex flex-wrap items-center group">
       <div className="px-4 max-w-sm">
-        <div className="flex border-b h-full dark:bg-gray-800 p-4 flex-col">
+        <div className="flex border-b h-full p-4 flex-col">
           <div className="flex items-center mb-3">
             <span className="indices">{name}</span>
             <canvas

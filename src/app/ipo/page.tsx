@@ -29,7 +29,7 @@ const Home = async () => {
 
   return (
     <>
-      <section className={`py-24 dark:bg-darkmode-theme-light`}>
+      <section className={`py-24 `}>
         <div className="container">
           <div
             className={`row items-centerflex-col lg:flex-row`}

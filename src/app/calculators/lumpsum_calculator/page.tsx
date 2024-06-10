@@ -196,7 +196,7 @@ const LumpsumCalculator = () => {
         <div className="content">
           <h1 className="text-center mt-4">Lumpsum Calculator</h1>
           <br />
-          <div className="rounded-xl shadow px-4 py-16 dark:bg-darkmode-theme-light xl:p-20">
+          <div className="rounded-xl shadow px-4 py-16 xl:p-20">
             <div className="row items-center justify-between px-4">
               <div className="mb-10 md:col-6 lg:col-6 md:order-2 md:mb-0 text-center">
                 <span className="text-white">

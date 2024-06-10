@@ -41,17 +41,17 @@ export default function Invest() {
   return (
     <>
       {sectionsData.map((section, index) => (
-        <section key={index} className={`py-24 ${index % 2 === 1 ? 'bg-theme-light dark:bg-darkmode-theme-light' : ''}`}>
+        <section key={index} className={`py-24 ${index % 2 === 1 ? 'bg-theme-light' : ''}`}>
           <div className="container">
             <div className={`row gy-5 lg:gy-0 items-center ${index % 2 === 0 ? 'flex-col-reverse lg:flex-row' : 'lg:flex-row-reverse'}`}>
               <div className={`lg:col-6 ${index % 2 === 0 ? '' : 'lg:order-1 order-2'}`}>
                 <h2 className="mb-5">{section.title}</h2>
 
-                <ul className="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
+                <ul className="max-w-md space-y-1 text-gray-500 list-inside ">
                   {section.items.map((item, i) => (
                     <li key={i} className="flex items-center">
                       <svg
-                        className="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400 flex-shrink-0"
+                        className="w-3.5 h-3.5 me-2 text-green-500 flex-shrink-0"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"

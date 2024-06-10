@@ -64,7 +64,7 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
         <label
           id="show-button"
           htmlFor="nav-toggle"
-          className="order-2 mr-4 md:order-2 ml-auto flex cursor-pointer items-center text-dark dark:text-white lg:order-1 lg:hidden"
+          className="order-2 mr-4 md:order-2 ml-auto flex cursor-pointer items-center text-dark  lg:order-1 lg:hidden"
         >
           <svg className="h-5 fill-current" viewBox="0 0 20 20">
             <title>Menu Open</title>
@@ -74,7 +74,7 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
         <label
           id="hide-button"
           htmlFor="nav-toggle"
-          className="order-1 ml-auto hidden cursor-pointer items-center text-dark dark:text-white lg:order-1 mr-4"
+          className="order-1 ml-auto hidden cursor-pointer items-center text-dark  lg:order-1 mr-4"
         >
           <svg className="h-5 fill-current" viewBox="0 0 20 20">
             <title>Menu Close</title>

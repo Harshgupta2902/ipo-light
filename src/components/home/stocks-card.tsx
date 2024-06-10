@@ -54,7 +54,7 @@ export default function StocksCard() {
                   e.preventDefault();
                   await handleMenuItemClick(item.route);
                 }}
-                className={`flex-1 rounded-md bg-theme-light px-4 mr-4 my-2 py-2 text-sm text-dark dark:bg-darkmode-theme-light dark:text-darkmode-dark ${
+                className={`flex-1 rounded-md bg-theme-light px-4 mr-4 my-2 py-2 text-sm text-dark ${
                   activeMenuItem === item.name ? "active" : ""
                 }`}
                 key={item.name}
