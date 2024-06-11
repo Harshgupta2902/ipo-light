@@ -7,14 +7,15 @@ const Screener = async () => {
 
     try {
         const response = await post("https://api.tickertape.in/mf-screener/query", {
-            match: { option: ["Growth"] },
+            match: {},
             sortBy: "aum",
             sortOrder: -1,
             project: ["subsector", "option", "aum", "ret3y", "expRatio"],
             offset: 20,
-            count: 1429,
+            count: 4994,
             mfIds: [],
-        });
+        }    
+    );
         result = response.data;
         // console.log(result.result);
     } catch (error) {
