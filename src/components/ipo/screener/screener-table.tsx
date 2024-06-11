@@ -1,8 +1,7 @@
 "use client";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
-
 import { FaArrowUp, FaArrowDown } from "react-icons/fa"; // Adjust icon imports based on your preference
-
 interface Fund {
     mfId: string;
     slug: string;
@@ -54,7 +53,7 @@ const ScreenerTable: React.FC<Props> = ({ data }) => {
         setSortOrder(newOrder);
 
         const sortedData = [...data].sort((a, b) => {
-            // Ensure 'a' and 'b' have the correct types
+
             const aValue = a[column as keyof Fund];
             const bValue = b[column as keyof Fund];
 
@@ -176,12 +175,17 @@ const ScreenerTable: React.FC<Props> = ({ data }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {filteredData.map((fund, index) => (
+                                {filteredData.map((fund) => (
                                     <tr key={fund.mfId} className="bg-white border-b ">
-                                        <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <a href={""} className="text-blue-600 hover:underline">
+                                        <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                            <Link
+                                                className="hover:text-blue-600 text-dark hover:underline"
+                                                href={`/mutual-funds${fund.slug.replace("/mutualfunds", "")}`}
+                                                target={"_blank"}
+                                                rel="noopener"
+                                            >
                                                 {fund.name}
-                                            </a>
+                                            </Link>
                                         </td>
                                         <td className="px-6 py-4">
                                             {fund.values
