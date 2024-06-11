@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
+import { FaArrowUp, FaArrowDown } from "react-icons/fa"; // Adjust icon imports based on your preference
+
 interface Fund {
     mfId: string;
     slug: string;
@@ -18,37 +20,6 @@ interface Props {
 }
 
 const ScreenerTable: React.FC<Props> = ({ data }) => {
-    // const [searchQuery, setSearchQuery] = useState("");
-    // const [visibleData, setVisibleData] = useState<Fund[]>([]);
-    // const [itemsPerPage, setItemsPerPage] = useState<number>(20);
-
-    // useEffect(() => {
-    //     setVisibleData(data.slice(0, itemsPerPage));
-    // }, [data, itemsPerPage]);
-
-    // const loadMoreItems = () => {
-    //     const currentLength = visibleData.length;
-    //     const nextBatch = data.slice(currentLength, currentLength + itemsPerPage);
-    //     setVisibleData([...visibleData, ...nextBatch]);
-    // };
-
-    // const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     const query = e.target.value.toLowerCase();
-    //     setSearchQuery(query);
-    //     setItemsPerPage(20); // Reset itemsPerPage when searching
-
-    //     // Filter based on both initially loaded data and additional data
-    //     const filtered = data.filter((item) =>
-    //         item.name.toLowerCase().includes(query)
-    //     );
-    //     setVisibleData(filtered.slice(0, itemsPerPage));
-    // };
-
-    // const filteredData = visibleData.filter((item) =>
-    //     item.name.toLowerCase().includes(searchQuery.toLowerCase())
-    // );
-
-
     const [searchQuery, setSearchQuery] = useState("");
     const [visibleData, setVisibleData] = useState<Fund[]>([]);
     const [itemsPerPage, setItemsPerPage] = useState<number>(20);
@@ -127,10 +98,10 @@ const ScreenerTable: React.FC<Props> = ({ data }) => {
         setVisibleData(sortedData.slice(0, itemsPerPage));
     };
 
+
     const filteredData = visibleData.filter((item) =>
         item.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-
 
     return (
         <section className="section">
@@ -159,21 +130,47 @@ const ScreenerTable: React.FC<Props> = ({ data }) => {
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                                 <tr>
                                     <th scope="col" className="cursor-pointer px-6 py-3" onClick={() => handleNameSort("name")}>
-                                        Fund Name
+                                        <div className="flex items-center">
+                                            Fund Name{" "}
+                                            {sortColumn === "name" && (
+                                                <span>
+                                                    {sortOrder === "asc" ? <FaArrowUp /> : <FaArrowDown />}
+                                                </span>
+                                            )}
+                                        </div>
                                     </th>
                                     <th scope="col" className="cursor-pointer px-6 py-3" onClick={() => handleSort("aum")}>
-                                        AUM
+                                        <div className="flex items-center">
+                                            AUM {sortColumn === "aum" && (
+                                                <span>
+                                                    {sortOrder === "asc" ? <FaArrowUp /> : <FaArrowDown />}
+                                                </span>
+                                            )}
+                                        </div>
+
                                     </th>
                                     <th scope="col" className="cursor-pointer px-6 py-3" onClick={() => handleSort("ret3y")}>
-                                        3-Year Return (%)
+                                        <div className="flex item-center">
+                                            3-Year Return (%) {sortColumn === "ret3y" && (
+                                                <span>
+                                                    {sortOrder === "asc" ? <FaArrowUp /> : <FaArrowDown />}
+                                                </span>
+                                            )}
+                                        </div>
                                     </th>
                                     <th scope="col" className="cursor-pointer px-6 py-3" onClick={() => handleSort("expRatio")}>
-                                        Expense Ratio
+                                        <div className="flex item-center">
+                                            Expense Ratio {sortColumn === "expRatio" && (
+                                                <span>
+                                                    {sortOrder === "asc" ? <FaArrowUp /> : <FaArrowDown />}
+                                                </span>
+                                            )}
+                                        </div>
                                     </th>
-                                    <th scope="col" className="cursor-pointer px-6 py-3" onClick={() => handleSort("subsector")}>
+                                    <th scope="col" className="cursor-pointer px-6 py-3">
                                         Subsector
                                     </th>
-                                    <th scope="col" className="cursor-pointer px-6 py-3" onClick={() => handleSort("option")}>
+                                    <th scope="col" className="cursor-pointer px-6 py-3">
                                         Plan
                                     </th>
                                 </tr>
