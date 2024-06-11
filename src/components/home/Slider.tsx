@@ -3,12 +3,17 @@
 import React from "react";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "../../style/slider.css";
-  
-export default function Slider() {
+
+interface SliderProps {
+  imageUrls: string[];
+}
+
+const Slider: React.FC<SliderProps> = ({ imageUrls }) => {
   return (
     <>
       <Swiper
@@ -19,21 +24,22 @@ export default function Slider() {
           disableOnInteraction: false,
           pauseOnMouseEnter: false,
         }}
-        slidesPerView={6}
+
+        slidesPerView={12}
         spaceBetween={30}
         modules={[Autoplay]}
-        speed={2000}
+        speed={8000}
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        {imageUrls.map((url, index) => (
+          <div className="container" style={{ backgroundColor: "black" }}>
+            <SwiperSlide key={index} className="mx-[2rem]">
+              <img className="h-[80px] w-auto max-w-none object-covers max-sm:h-12 " src={url} alt={`Slide ${index + 1}`} />
+            </SwiperSlide>
+          </div>
+        ))}
       </Swiper>
     </>
   );
 }
+
+export default Slider;

@@ -67,17 +67,7 @@ const Home = async () => {
         </div>
       </section>
       <UpcomingIpo data={result} />
-      <div className="container">
-        <div className="text-center">
-          <Link
-            className="btn btn-primary"
-            href={"/ipo/screener"}
-            rel="noopener"
-          >
-            {"Start Screening"}
-          </Link>
-        </div>
-      </div>
+      
       <HomeFaq />
     </>
   );
