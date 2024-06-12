@@ -78,7 +78,6 @@ const MarketSectorCard = ({
   const changeColor = percentageChange > 0 ? "green" : "red";
 
   return (
-    <div className="inline-flex flex-wrap items-center group">
       <div className="px-4 max-w-sm">
         <div className="flex border-b h-full py-4 flex-col">
           <div className="flex items-center mb-3">
@@ -107,7 +106,6 @@ const MarketSectorCard = ({
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

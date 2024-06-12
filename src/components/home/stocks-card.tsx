@@ -28,12 +28,7 @@ const StocksCard: React.FC<StocksCardProps> = ({ gainers, losers, active, approa
   const contentRef = useRef<HTMLDivElement>(null);
 
   const handleMenuItemClick = (menuItem: string) => {
-    console.log("Clicked index:", menuItem);
     setActiveMenuItem(menuItem);
-
-    // if (contentRef.current) {
-    //   contentRef.current.scrollIntoView({ behavior: "smooth" });
-    // }
   };
 
   const getContent = () => {

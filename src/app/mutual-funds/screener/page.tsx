@@ -17,7 +17,6 @@ const Screener = async () => {
         }    
     );
         result = response.data;
-        // console.log(result.result);
     } catch (error) {
         console.error("Error fetching menu data:", error);
     }

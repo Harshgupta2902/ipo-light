@@ -1,6 +1,8 @@
+"use client"
 import SimpleSlider from "../components/home/Slider";
 import MarketSector from "../components/home/market-sector";
 import Invest from "../components/home/invest";
+import React, { useEffect, useState } from 'react';
 
 import { get } from "../api/api";
 import { endpoints } from "../api/endpoints";
@@ -39,53 +41,54 @@ const imageUrls: string[] = [
 ];
 
 
-const Home = async () => {
+const Home: React.FC = () => {
+  const [indicesResult, setIndicesResult] = useState<any>(null);
+  const [gainersResult, setGainersResult] = useState<any>(null);
+  const [losersResult, setLosersResult] = useState<any>(null);
+  const [mostActiveResult, setMostActiveResult] = useState<any>(null);
+  const [approachingHighResult, setApproachingHighResult] = useState<any>(null);
+  const [approachingLowResult, setApproachingLowResult] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  let indicesResult = null;
-  let gainersResult = null;
-  let losersResult = null;
-  let mostActiveResult = null;
-  let approachingHighResult = null;
-  let approachingLowResult = null;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [
+          indicesData,
+          gainersData,
+          losersData,
+          mostActiveData,
+          approachingHighData,
+          approachingLowData,
+        ] = await Promise.all([
+          get(endpoints.indices),
+          get(endpoints.gainers),
+          get(endpoints.losers),
+          get(endpoints.mostActive),
+          get(endpoints.approachingHigh),
+          get(endpoints.approachingLow),
+        ]);
 
-  try {
-    const [
-      indicesData,
-      gainersData,
-      losersData,
-      mostActiveData,
-      approachingHighData,
-      approachingLowData,
-    ] = await Promise.all([
-      get(endpoints.indices),
-      get(endpoints.ganiers),
-      get(endpoints.losers),
-      get(endpoints.mostActive),
-      get(endpoints.approachingHigh),
-      get(endpoints.approachingLow),
-    ]);
+        setIndicesResult(indicesData.data);
+        setGainersResult(gainersData.data);
+        setLosersResult(losersData.data);
+        setMostActiveResult(mostActiveData.data);
+        setApproachingHighResult(approachingHighData.data);
+        setApproachingLowResult(approachingLowData.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError("Error fetching data. Please try again later.");
+        setLoading(false);
+      }
+    };
 
-    indicesResult = indicesData.data;
-    gainersResult = gainersData.data;
-    losersResult = losersData.data;
-    mostActiveResult = mostActiveData.data;
-    approachingHighResult = approachingHighData.data;
-    approachingLowResult = approachingLowData.data;
+    fetchData();
+  }, []);
 
-    console.log("Fetching data:", {
-      indicesResult,
-      gainersResult,
-      losersResult,
-      mostActiveResult,
-      approachingHighResult,
-      approachingLowResult,
-    });
+  const topIndices = indicesResult?.slice(0, 9) || [];
 
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-
-  const topIndices = indicesResult.slice(0, 9);
 
   return (
     <main>
@@ -117,7 +120,7 @@ const Home = async () => {
       <div className="section">
         <div className="container">
           <div className="row items-center justify-between">
-          <SimpleSlider imageUrls={imageUrls}/>
+            <SimpleSlider imageUrls={imageUrls} />
           </div>
         </div>
       </div>
@@ -139,12 +142,14 @@ const Home = async () => {
                   </a>
                 </div>
                 <div className="flex flex-wrap justify-center mt-0">
-                  {topIndices.map((item: any) => (
-                    <MarketSector
-                      data={item.points}
-                      lastPrice={item.lastClosePrice}
-                      name={item.name}
-                    />
+                  {topIndices.map((item: any, index: any) => (
+                    <div key={index} className="inline-flex flex-wrap items-center group">
+                      <MarketSector
+                        data={item.points}
+                        lastPrice={item.lastClosePrice}
+                        name={item.name}
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
@@ -154,11 +159,11 @@ const Home = async () => {
       </section>
 
       <StocksCard
-        gainers={gainersResult.gainers}
-        losers={losersResult.losers}
-        active={mostActiveResult.active}
-        approachingHigh={approachingHighResult.approachingHigh}
-        approachingLow={approachingLowResult.approachingLow}
+        gainers={gainersResult?.gainers || []}
+        losers={losersResult?.losers || []}
+        active={mostActiveResult?.active || []}
+        approachingHigh={approachingHighResult?.approachingHigh || []}
+        approachingLow={approachingLowResult?.approachingLow || []}
       />
       <Invest />
     </main>

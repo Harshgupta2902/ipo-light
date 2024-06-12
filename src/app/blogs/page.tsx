@@ -38,7 +38,6 @@ const Home: React.FC = () => {
           }
           setLoading(false);
         }
-        console.log("api done");
       } catch (error) {
         if (isMounted) {
           console.error("Error fetching blog posts:", error);

@@ -41,7 +41,6 @@ const BlogDetails: React.FC = () => {
             get(endpoints.blogDetails + pathname.replace("/blogs", ""))
                 .then((data) => {
                     setResult(data.data);
-                    console.log("api done", data.data);
                 })
                 .catch((error) => {
                     console.error("Error fetching blog posts:", error);
