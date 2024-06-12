@@ -47,16 +47,14 @@ export default function Invest() {
         >
           <div className="container">
             <div
-              className={`row gy-5 lg:gy-0 items-center ${
-                index % 2 === 0
+              className={`row gy-5 lg:gy-0 items-center ${index % 2 === 0
                   ? "flex-col-reverse lg:flex-row"
                   : "lg:flex-row-reverse"
-              }`}
+                }`}
             >
               <div
-                className={`lg:col-6 ${
-                  index % 2 === 0 ? "" : "lg:order-1 order-2"
-                }`}
+                className={`lg:col-6 ${index % 2 === 0 ? "" : "lg:order-1 order-2"
+                  }`}
               >
                 <h2 className="mb-5">{section.title}</h2>
 
@@ -84,14 +82,14 @@ export default function Invest() {
                 </a>
               </div>
               <div
-                className={`lg:col-6 ${
-                  index % 2 === 0 ? "" : "lg:order-2 order-1"
-                }`}
+                className={`lg:col-6 ${index % 2 === 0 ? "" : "lg:order-2 order-1"
+                  }`}
               >
                 <img
                   alt="services-image"
                   loading="lazy"
                   width="450"
+                  height="450"
                   style={{ mixBlendMode: "multiply" }}
                   decoding="async"
                   data-nimg="1"

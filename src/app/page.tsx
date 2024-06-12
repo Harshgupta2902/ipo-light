@@ -3,10 +3,10 @@ import SimpleSlider from "../components/home/Slider";
 import MarketSector from "../components/home/market-sector";
 import Invest from "../components/home/invest";
 import React, { useEffect, useState } from 'react';
-
 import { get } from "../api/api";
 import { endpoints } from "../api/endpoints";
 import StocksCard from "@/components/home/stocks-card";
+import MarketSectorShimmer from "@/components/shimmers/market-sector-shimmer";
 
 const imageUrls: string[] = [
   "/AMC/image_0.png",
@@ -48,47 +48,101 @@ const Home: React.FC = () => {
   const [mostActiveResult, setMostActiveResult] = useState<any>(null);
   const [approachingHighResult, setApproachingHighResult] = useState<any>(null);
   const [approachingLowResult, setApproachingLowResult] = useState<any>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [loadingIndices, setLoadingIndices] = useState<boolean>(true);
+  const [loadingGainers, setLoadingGainers] = useState<boolean>(true);
+  const [loadingLosers, setLoadingLosers] = useState<boolean>(true);
+  const [loadingMostActive, setLoadingMostActive] = useState<boolean>(true);
+  const [loadingApproachingHigh, setLoadingApproachingHigh] = useState<boolean>(true);
+  const [loadingApproachingLow, setLoadingApproachingLow] = useState<boolean>(true);
+  const [errorIndices, setErrorIndices] = useState<string | null>(null);
+  const [errorGainers, setErrorGainers] = useState<string | null>(null);
+  const [errorLosers, setErrorLosers] = useState<string | null>(null);
+  const [errorMostActive, setErrorMostActive] = useState<string | null>(null);
+  const [errorApproachingHigh, setErrorApproachingHigh] = useState<string | null>(null);
+  const [errorApproachingLow, setErrorApproachingLow] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchIndices = async () => {
       try {
-        const [
-          indicesData,
-          gainersData,
-          losersData,
-          mostActiveData,
-          approachingHighData,
-          approachingLowData,
-        ] = await Promise.all([
-          get(endpoints.indices),
-          get(endpoints.gainers),
-          get(endpoints.losers),
-          get(endpoints.mostActive),
-          get(endpoints.approachingHigh),
-          get(endpoints.approachingLow),
-        ]);
-
-        setIndicesResult(indicesData.data);
-        setGainersResult(gainersData.data);
-        setLosersResult(losersData.data);
-        setMostActiveResult(mostActiveData.data);
-        setApproachingHighResult(approachingHighData.data);
-        setApproachingLowResult(approachingLowData.data);
-        setLoading(false);
+        const response = await get(endpoints.indices);
+        setIndicesResult(response.data);
       } catch (error) {
-        console.error("Error fetching data:", error);
-        setError("Error fetching data. Please try again later.");
-        setLoading(false);
+        console.error('Error fetching indices:', error);
+        setErrorIndices('Error fetching indices. Please try again later.');
+      } finally {
+        setLoadingIndices(false);
       }
     };
 
-    fetchData();
+    const fetchGainers = async () => {
+      try {
+        const response = await get(endpoints.gainers);
+        setGainersResult(response.data);
+      } catch (error) {
+        console.error('Error fetching gainers:', error);
+        setErrorGainers('Error fetching gainers. Please try again later.');
+      } finally {
+        setLoadingGainers(false);
+      }
+    };
+
+    const fetchLosers = async () => {
+      try {
+        const response = await get(endpoints.losers);
+        setLosersResult(response.data);
+      } catch (error) {
+        console.error('Error fetching losers:', error);
+        setErrorLosers('Error fetching losers. Please try again later.');
+      } finally {
+        setLoadingLosers(false);
+      }
+    };
+
+    const fetchMostActive = async () => {
+      try {
+        const response = await get(endpoints.mostActive);
+        setMostActiveResult(response.data);
+      } catch (error) {
+        console.error('Error fetching most active:', error);
+        setErrorMostActive('Error fetching most active. Please try again later.');
+      } finally {
+        setLoadingMostActive(false);
+      }
+    };
+
+    const fetchApproachingHigh = async () => {
+      try {
+        const response = await get(endpoints.approachingHigh);
+        setApproachingHighResult(response.data);
+      } catch (error) {
+        console.error('Error fetching approaching high:', error);
+        setErrorApproachingHigh('Error fetching approaching high. Please try again later.');
+      } finally {
+        setLoadingApproachingHigh(false);
+      }
+    };
+
+    const fetchApproachingLow = async () => {
+      try {
+        const response = await get(endpoints.approachingLow);
+        setApproachingLowResult(response.data);
+      } catch (error) {
+        console.error('Error fetching approaching low:', error);
+        setErrorApproachingLow('Error fetching approaching low. Please try again later.');
+      } finally {
+        setLoadingApproachingLow(false);
+      }
+    };
+
+    fetchIndices();
+    fetchGainers();
+    fetchLosers();
+    fetchMostActive();
+    fetchApproachingHigh();
+    fetchApproachingLow();
   }, []);
 
   const topIndices = indicesResult?.slice(0, 9) || [];
-
 
   return (
     <main>
@@ -142,15 +196,23 @@ const Home: React.FC = () => {
                   </a>
                 </div>
                 <div className="flex flex-wrap justify-center mt-0">
-                  {topIndices.map((item: any, index: any) => (
-                    <div key={index} className="inline-flex flex-wrap items-center group">
-                      <MarketSector
-                        data={item.points}
-                        lastPrice={item.lastClosePrice}
-                        name={item.name}
-                      />
-                    </div>
-                  ))}
+                  {loadingIndices ? (
+                    Array.from({ length: 9 }).map((_, index) => (
+                      <div key={index} className="inline-flex flex-wrap items-center group">
+                        <MarketSectorShimmer />
+                      </div>
+                    ))
+                  ) : (
+                    topIndices.map((item: any, index: any) => (
+                      <div key={index} className="inline-flex flex-wrap items-center group">
+                        <MarketSector
+                          data={item.points}
+                          lastPrice={item.lastClosePrice}
+                          name={item.name}
+                        />
+                      </div>
+                    ))
+                  )}
                 </div>
               </div>
             </div>
