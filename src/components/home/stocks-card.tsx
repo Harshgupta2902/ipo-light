@@ -1,9 +1,6 @@
 "use client";
-
 import { useState, useRef } from "react";
 import GainersCard from "./gainers";
-
-// src/types/stocks.ts
 export interface StockData {
   symbol: string;
   name: string;

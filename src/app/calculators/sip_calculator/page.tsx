@@ -291,10 +291,10 @@ const SIPCalculator = () => {
                   {chartData.labels ? (
                     <Bar
                       data={chartData}
-                      height={200} // Set the desired height here
-                      width={800} // Set the desired width here
+                      height={200} 
+                      width={800} 
                       options={{
-                        maintainAspectRatio: false, // To ensure the chart fills its container
+                        maintainAspectRatio: false, 
                         plugins: {
                           tooltip: {
                             callbacks: {
@@ -314,7 +314,7 @@ const SIPCalculator = () => {
                               text: "Year",
                             },
                             grid: {
-                              display: false, // Hide grid lines for the x-axis
+                              display: false, 
                             },
                           },
                           y: {
@@ -324,7 +324,7 @@ const SIPCalculator = () => {
                               text: "Amount (₹)",
                             },
                             grid: {
-                              display: false, // Hide grid lines for the x-axis
+                              display: false,
                             },
                           },
                         },

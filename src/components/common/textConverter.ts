@@ -1,7 +1,6 @@
 
 import { marked } from "marked";
 
-// markdownify
 export const markdownify = (content: string, div?: boolean) => {
   const markdownContent: any = div
     ? marked.parse(content)

@@ -41,9 +41,7 @@ const Slider: React.FC<SliderProps> = ({ imageUrls }) => {
                 width="70"
                 height="70"
                 loading="lazy"
-                // priority
               />
-              {/* <img className="h-[80px] w-auto max-w-none object-covers max-sm:h-12 " src={url} alt={`Slide ${index + 1}`} /> */}
             </SwiperSlide>
           </div>
         ))}

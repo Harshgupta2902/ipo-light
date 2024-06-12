@@ -235,7 +235,7 @@ const LumpsumCalculator = () => {
                               text: "Year",
                             },
                             grid: {
-                              display: false, // Hide grid lines for the x-axis
+                              display: false,
                             },
                           },
                           y: {
@@ -245,7 +245,7 @@ const LumpsumCalculator = () => {
                               text: "Amount (₹)",
                             },
                             grid: {
-                              display: false, // Hide grid lines for the x-axis
+                              display: false, 
                             },
                           },
                         },

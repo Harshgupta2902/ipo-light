@@ -3,67 +3,6 @@ import { useState, useEffect } from "react";
 import { markdownify } from "@/components/common/textConverter";
 
 
-
-// const lumpMarkdownContent = `
-// # What Is SWP
-
-// SWP stands for systematic withdrawal plan. Under SWP, if you invest lump sum in a mutual fund, you can set an amount you’ll withdraw regularly and the frequency at which you’ll withdraw.
-
-// For example, let’s say you invested in HDFC Top 200 Fund an amount of ₹1 lakh for a year. Let’s assume that you decided to withdraw an amount of ₹10000 per month. So every month, your investment in the fund will reduce by ₹10000. The amount left every month after withdrawal will continue to remain invested.
-
-// Use the above SWP calculator to know how much you can withdraw from your lumpsum investments
-
-
-// ### How can a SWP calculator assist you?
-
-// As per the Systematic Withdrawal Plan, an individual needs to invest a particular amount and withdraw a certain amount of the corpus invested each month. After withdrawal, the amount will be deducted from the investment while it continues to accumulate interest.
-
-// It is difficult to accurately calculate the monthly withdrawals and total matured sum. Groww can help you with this complex calculations with the its SWP calculator. This Systematic Withdrawal Plan calculator easily computes your matured sum as per your monthly withdrawals precisely. Calculators are simplifying the way people invest in mutual funds.
-
-
-
-// ### Example of Systematic Withdrawal Plan
-
-// As mentioned before, the SWP allows investors to generate both monthly revenue as well as an accumulated sum at the end of the maturity period. Refer to this investment and withdrawal schedule for an in-depth idea.
-
-// Here, an individual has invested Rs. 50,000 for tenure of 1 year along with a systematic withdrawal of Rs. 1,000 per month. Interest rate stands at 10%.
-
-// As such, total return of investments after the end of the tenor stands at Rs. 4,565.
-
-// | Month | Balance at Begin | Withdrawal | Interest Earned |
-// |-------|------------------|------------|-----------------|
-// | 1     | Rs. 50,000       | Rs. 1,000  | Rs. 408         |
-// | 2     | Rs. 49,408       | Rs. 1,000  | Rs. 403         |
-// | 3     | Rs. 48,812       | Rs. 1,000  | Rs. 398         |
-// | 4     | Rs. 48,210       | Rs. 1,000  | Rs. 393         |
-// | 5     | Rs. 47,604       | Rs. 1,000  | Rs. 388         |
-// | 6     | Rs. 46,992       | Rs. 1,000  | Rs. 383         |
-// | 7     | Rs. 46,375       | Rs. 1,000  | Rs. 378         |
-// | 8     | Rs. 45,753       | Rs. 1,000  | Rs. 373         |
-// | 9     | Rs. 45,126       | Rs. 1,000  | Rs. 368         |
-// | 10    | Rs. 44,494       | Rs. 1,000  | Rs. 362         |
-// | 11    | Rs. 43,856       | Rs. 1,000  | Rs. 357         |
-// | 12    | Rs. 43,214       | Rs. 1,000  | Rs. 352         |
-
-
-// ### How to use SWP calculator?
-// The calculator is user-friendly and easy to use first time out. However, you need to ensure that all values are properly put in.
-
-// - You will find three columns namely tenure, expected return and amount invested. Fill in the values as per your investment plan.
-// - Enter values and calculate to find a similar SWP returns chart as mentioned above.
-
-// ### How can a SWP calculator benefit you?
-// Retirees and senior citizens are among the most common investors in this scheme. Such individuals obviously require a fixed monthly financial input. An SWP can provide the same over and above the pension or even as an alternativ. They can easily use Groww’s simple and intuitive systematic withdrawal plan calculator for numerous benefits.
-
-// - A Systematic Withdrawal Plan ensures monthly returns while generating RoI on the total investment. This calculator can help easily compute both accurately.
-// - It’s easy to set the amount which you wish to withdraw every month and calculate amount on maturity accordingly.
-// - It is easily accessible online.
-// - This SWP return calculator does not require any expertise to operate. Users need to just put variables in proper space and output is ready in no time.
-
-// `;
-
-
-
 const SwpMarkdownContent = `## Understanding Systematic Withdrawal Plans (SWP)
 
 A Systematic Withdrawal Plan (SWP) allows investors to manage their mutual fund investments efficiently. By investing a lump sum amount, you can set a fixed withdrawal amount at regular intervals.
@@ -149,7 +88,7 @@ const SWPCalculator = () => {
 
     useEffect(() => {
         calculateResults();
-    }, [formInputs]); // Trigger calculation whenever formInputs change
+    }, [formInputs]); 
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { id, value } = e.target;

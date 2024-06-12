@@ -18,10 +18,9 @@ interface NavItemProps {
 }
 
 const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
-  const pathname = usePathname(); // Get the current pathname
+  const pathname = usePathname();
   const [activeItem, setActiveItem] = useState<number | null>(null);
 
-  // Function to set active item based on URL
   const setActiveFromPath = () => {
     const index = menuData.findIndex(item => {
       if (item.url === pathname) {
