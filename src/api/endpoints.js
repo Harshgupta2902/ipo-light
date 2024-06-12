@@ -12,6 +12,10 @@ export const endpoints = {
     "https://analyze.api.tickertape.in/homepage/stocks?universe=Market&type=approachingHigh&dataCount=5&offset=0",
   approachingLow:
     "https://analyze.api.tickertape.in/homepage/stocks?universe=Market&type=approachingLow&dataCount=5&offset=0",
+
+
+
+    
   // My Server
 
   getBlogs: "https://ipo.onlineinfotech.net/Apis/getBlogs",

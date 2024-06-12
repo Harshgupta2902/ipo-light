@@ -1,8 +1,8 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import Content from '@/components/blogs/content'
-// import { headers } from 'next/headers';
+
 import { endpoints } from "@/api/endpoints";
 import { get } from "@/api/api";
 import { usePathname } from 'next/navigation';
@@ -29,25 +29,42 @@ interface Root {
     views: string
 }
 
-const BlogDetails = async () => {
+const BlogDetails: React.FC = () => {
+    const [result, setResult] = useState<Root | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
     const pathname = usePathname();
-    let result: Root | null = null;
-    try {
-        const data = await get(endpoints.blogDetails + pathname.replace("/blogs", ""));
-        result = data.data;
-        console.log("api done", result);
-    } catch (error) {
-        console.error("Error fetching blog posts:", error);
-    }
+
+    useEffect(() => {
+        const fetchBlogDetails = () => {
+            get(endpoints.blogDetails + pathname.replace("/blogs", ""))
+                .then((data) => {
+                    setResult(data.data);
+                    console.log("api done", data.data);
+                })
+                .catch((error) => {
+                    console.error("Error fetching blog posts:", error);
+                    setError("Error loading blog details.");
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
+        };
+
+        fetchBlogDetails();
+    }, [pathname]);
+
     return (
         <section className="section pt-7">
             <div className="container">
                 <div className="row justify-center">
-                    {result ? (
-                        <Content blog={result} />
+                    {loading ? (
+                        <p></p>
+                    ) : error ? (
+                        <p>{error}</p>
                     ) : (
-                        <p>Error loading blog details.</p>
+                        result && <Content blog={result} />
                     )}
                 </div>
             </div>

@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { FaArrowUp, FaArrowDown } from "react-icons/fa"; // Adjust icon imports based on your preference
+import { FaArrowUp, FaArrowDown } from "react-icons/fa";
+
 interface Fund {
     mfId: string;
     slug: string;

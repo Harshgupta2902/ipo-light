@@ -1,9 +1,9 @@
+"use client"
 import { get } from "@/api/api";
 import { endpoints } from "@/api/endpoints";
 import BlogPostComponent from "@/components/blogs/blogs_main_card";
 import BlogPostGrid from "@/components/blogs/blogs_grid";
-
-
+import React, { useEffect, useState } from 'react';
 
 interface BlogPost {
   id: string;
@@ -17,26 +17,43 @@ interface BlogPost {
   author: string;
 }
 
-const Home = async () => {
+const Home: React.FC = () => {
+  const [latestBlogs, setLatestBlogs] = useState<BlogPost | null>(null);
+  const [otherBlogs, setOtherBlogs] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  let otherBlogs: BlogPost[] = [];
-  let latestBlogs: BlogPost | null = null;
+  useEffect(() => {
+    let isMounted = true;
 
+    const fetchBlogs = async () => {
+      try {
+        const data = await get(endpoints.getBlogs);
+        if (isMounted) {
+          if (data.latestblogs) {
+            setLatestBlogs(data.latestblogs);
+          }
+          if (data.otherblogs) {
+            setOtherBlogs(data.otherblogs);
+          }
+          setLoading(false);
+        }
+        console.log("api done");
+      } catch (error) {
+        if (isMounted) {
+          console.error("Error fetching blog posts:", error);
+          setError("Error loading blog details.");
+          setLoading(false);
+        }
+      }
+    };
 
-  try {
-    const data = await get(endpoints.getBlogs);
-    if (data.latestblogs) {
-      latestBlogs = data.latestblogs;
-    }
+    fetchBlogs();
 
-    if (data.otherblogs) {
-      otherBlogs = data.otherblogs;
-    }
-
-    console.log("api done");
-  } catch (error) {
-    console.error("Error fetching blog posts:", error);
-  }
+    return () => {
+      isMounted = false;
+    };
+  }, []);
   return (
     <>
       <section className="section !pb-0">
@@ -49,8 +66,20 @@ const Home = async () => {
       </section>
       <section className="section">
         <div className="container">
-          <BlogPostComponent post={latestBlogs} />
-          <BlogPostGrid posts={otherBlogs} />
+          {loading ? (
+            <p>Loading...</p>
+          ) : error ? (
+            <p>{error}</p>
+          ) : (
+            <>
+              {latestBlogs && <BlogPostComponent post={latestBlogs} />}
+              {otherBlogs &&
+                <BlogPostGrid posts={otherBlogs} />
+              }
+            </>
+          )}
+
+
         </div>
       </section>
     </>
