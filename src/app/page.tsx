@@ -49,97 +49,34 @@ const Home: React.FC = () => {
   const [approachingHighResult, setApproachingHighResult] = useState<any>(null);
   const [approachingLowResult, setApproachingLowResult] = useState<any>(null);
   const [loadingIndices, setLoadingIndices] = useState<boolean>(true);
-  const [loadingGainers, setLoadingGainers] = useState<boolean>(true);
-  const [loadingLosers, setLoadingLosers] = useState<boolean>(true);
-  const [loadingMostActive, setLoadingMostActive] = useState<boolean>(true);
-  const [loadingApproachingHigh, setLoadingApproachingHigh] = useState<boolean>(true);
-  const [loadingApproachingLow, setLoadingApproachingLow] = useState<boolean>(true);
-  const [errorIndices, setErrorIndices] = useState<string | null>(null);
-  const [errorGainers, setErrorGainers] = useState<string | null>(null);
-  const [errorLosers, setErrorLosers] = useState<string | null>(null);
-  const [errorMostActive, setErrorMostActive] = useState<string | null>(null);
-  const [errorApproachingHigh, setErrorApproachingHigh] = useState<string | null>(null);
-  const [errorApproachingLow, setErrorApproachingLow] = useState<string | null>(null);
+
 
   useEffect(() => {
-    const fetchIndices = async () => {
+    const fetchData = async () => {
       try {
-        const response = await get(endpoints.indices);
-        setIndicesResult(response.data);
+        const responses = await Promise.all([
+          get(endpoints.indices),
+          get(endpoints.gainers),
+          get(endpoints.losers),
+          get(endpoints.mostActive),
+          get(endpoints.approachingHigh),
+          get(endpoints.approachingLow),
+        ]);
+
+        setIndicesResult(responses[0].data);
+        setGainersResult(responses[1].data);
+        setLosersResult(responses[2].data);
+        setMostActiveResult(responses[3].data);
+        setApproachingHighResult(responses[4].data);
+        setApproachingLowResult(responses[5].data);
       } catch (error) {
-        console.error('Error fetching indices:', error);
-        setErrorIndices('Error fetching indices. Please try again later.');
+        console.error('Error fetching data:', error);
       } finally {
         setLoadingIndices(false);
       }
     };
 
-    const fetchGainers = async () => {
-      try {
-        const response = await get(endpoints.gainers);
-        setGainersResult(response.data);
-      } catch (error) {
-        console.error('Error fetching gainers:', error);
-        setErrorGainers('Error fetching gainers. Please try again later.');
-      } finally {
-        setLoadingGainers(false);
-      }
-    };
-
-    const fetchLosers = async () => {
-      try {
-        const response = await get(endpoints.losers);
-        setLosersResult(response.data);
-      } catch (error) {
-        console.error('Error fetching losers:', error);
-        setErrorLosers('Error fetching losers. Please try again later.');
-      } finally {
-        setLoadingLosers(false);
-      }
-    };
-
-    const fetchMostActive = async () => {
-      try {
-        const response = await get(endpoints.mostActive);
-        setMostActiveResult(response.data);
-      } catch (error) {
-        console.error('Error fetching most active:', error);
-        setErrorMostActive('Error fetching most active. Please try again later.');
-      } finally {
-        setLoadingMostActive(false);
-      }
-    };
-
-    const fetchApproachingHigh = async () => {
-      try {
-        const response = await get(endpoints.approachingHigh);
-        setApproachingHighResult(response.data);
-      } catch (error) {
-        console.error('Error fetching approaching high:', error);
-        setErrorApproachingHigh('Error fetching approaching high. Please try again later.');
-      } finally {
-        setLoadingApproachingHigh(false);
-      }
-    };
-
-    const fetchApproachingLow = async () => {
-      try {
-        const response = await get(endpoints.approachingLow);
-        setApproachingLowResult(response.data);
-      } catch (error) {
-        console.error('Error fetching approaching low:', error);
-        setErrorApproachingLow('Error fetching approaching low. Please try again later.');
-      } finally {
-        setLoadingApproachingLow(false);
-      }
-    };
-
-    fetchIndices();
-    fetchGainers();
-    fetchLosers();
-    fetchMostActive();
-    fetchApproachingHigh();
-    fetchApproachingLow();
+    fetchData();
   }, []);
 
   const topIndices = indicesResult?.slice(0, 9) || [];

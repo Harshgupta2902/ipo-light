@@ -78,34 +78,34 @@ const MarketSectorCard = ({
   const changeColor = percentageChange > 0 ? "green" : "red";
 
   return (
-      <div className="px-4 max-w-sm">
-        <div className="flex border-b h-full py-4 flex-col">
-          <div className="flex items-center mb-3">
-            <span className="indices">{name}</span>
-            <canvas
-              className="mr-4"
-              ref={chartRef}
-              id="myChart"
-              style={{ width: "100px", maxHeight: "60px" }}
-            ></canvas>
-            <div className="grid grid-cols-1">
-              <p className="indices m-0">
-                {Number(lastPrice.toFixed(2)).toLocaleString("en-IN")}
-              </p>
+    <div className="px-4 max-w-sm">
+      <div className="flex border-b h-full py-4 flex-col">
+        <div className="flex items-center mb-3">
+          <span className="indices">{name}</span>
+          <canvas
+            className="mr-4"
+            ref={chartRef}
+            id="myChart"
+            style={{ width: "100px", maxHeight: "60px" }}
+          ></canvas>
+          <div className="grid grid-cols-1">
+            <p className="indices m-0">
+              {Number(lastPrice.toFixed(2)).toLocaleString("en-IN")}
+            </p>
 
-              <div
-                className="inline-flex flex-wrap items-center group"
-                style={{ color: changeColor }}
-              >
-                <span>
-                  {percentageChange > 0 ? <FaCaretUp /> : <FaCaretDown />}
-                </span>
-                <span>{percentageChange.toFixed(2).replace("-", "")}%</span>
-              </div>
+            <div
+              className="inline-flex flex-wrap items-center group"
+              style={{ color: changeColor }}
+            >
+              <span>
+                {percentageChange > 0 ? <FaCaretUp /> : <FaCaretDown />}
+              </span>
+              <span>{percentageChange.toFixed(2).replace("-", "")}%</span>
             </div>
           </div>
         </div>
       </div>
+    </div>
   );
 };
 
