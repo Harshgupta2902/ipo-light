@@ -47,6 +47,7 @@ const UpcomingIpo: React.FC<Props> = ({ data }) => {
                           <td key={key} className="py-3">
                             {key === "Company" ? (
                               <Link
+                              prefetch={false}
                                 style={{
                                   textDecoration: "none",
                                   fontSize: "medium",

@@ -22,6 +22,7 @@ export default function NotFound() {
               href={"/"}
               target={"_blank"}
               rel="noopener"
+              prefetch={false}
             >
               {"Back To Home"}
             </Link>{" "}
