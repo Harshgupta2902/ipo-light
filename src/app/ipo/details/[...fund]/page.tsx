@@ -57,25 +57,29 @@ const IpoDetails: React.FC = () => {
 
     return (
         <section className="pt-20">
-            {ipoDetails.tables.map((table, index) => (
-                <div key={index} className="container text-center">
-                    <> <h3 className="mb-4">Old Ipo Gmp </h3>
-                        <div className="rounded bg-body py-6 px-6 shadow">
-                            <div className="flex flex-col">
-                                <div className="-m-1.5 overflow-x-auto">
-                                    <div className="p-1.5 align-middle">
-                                        <table className="text-sm text-left text-gray-500 table">
-                                            <tbody
-                                                dangerouslySetInnerHTML={{ __html: table.data }}
-                                            />
-                                        </table>
+            <div className="row">
+                {ipoDetails.tables.map((table, index) => (
+                    <div key={index} className="col-6">
+                        <div className="container text-center">
+                            <>
+                                <h3 className="mb-4">{table.name}</h3>
+                                <div className="rounded bg-body py-6 px-6 shadow">
+                                    <div className="flex flex-col">
+                                        <div className="-m-1.5 overflow-x-auto">
+                                            <div className="p-1.5 align-middle">
+                                                <table
+                                                    className="w-full text-sm text-left rtl:text-right text-gray-500 table"
+                                                    dangerouslySetInnerHTML={{ __html: table.data }}
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </>
                         </div>
-                    </>
-                </div>
-            ))}
+                    </div>
+                ))}
+            </div>
         </section>
     );
 };

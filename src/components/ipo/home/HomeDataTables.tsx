@@ -95,7 +95,7 @@ const UpcomingIpo: React.FC<Props> = ({ data }) => {
                                   textDecoration: "none",
                                   fontSize: "medium",
                                 }}
-                                href={"ipo/" + item.slug}
+                                href={"ipo/details/" + item.slug}
                                 target={"_blank"}
                                 rel="noopener"
                               >
