@@ -1,5 +1,5 @@
 import { post } from "@/api/api";
-import ScreenerTable from "@/components/mutual-funds/screener/screener-table";
+import ScreenerTable from "@/components/ipo/screener/screener-table";
 import React from "react";
 
 const Screener = async () => {

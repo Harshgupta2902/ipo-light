@@ -223,7 +223,6 @@ const IpoDetails: React.FC = () => {
                     ))}
                 </div>
 
-
             </div>
         </section>
     );
