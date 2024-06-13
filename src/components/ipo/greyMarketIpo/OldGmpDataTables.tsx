@@ -32,7 +32,7 @@ export default function OldGmpDataTables({ data }: { data: any }) {
           <div className="flex flex-col">
             <div className="-m-1.5 -m-1.5 overflow-x-auto ">
               <div className="p-1.5  align-middle">
-                <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+                <table className="w-full text-sm text-left  text-gray-500">
                   {headers && headers.length > 0 && (
                     <thead className="text-xs text-gray-700 bg-gray-50 ">
                       <tr>

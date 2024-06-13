@@ -8,7 +8,7 @@ const GainersCard: React.FC<GainersCardProps> = ({ gainers }) => {
   return (
     <div className="-m-1.5 overflow-x-auto mt-6">
       <div className="p-1.5 align-middle">
-        <table className="text-sm text-left rtl:text-right text-gray-500">
+        <table className="text-sm text-left  text-gray-500">
           <tbody>
             {gainers.map((stock, index) => (
               <tr key={index}>

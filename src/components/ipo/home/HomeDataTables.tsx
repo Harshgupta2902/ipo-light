@@ -28,7 +28,7 @@ const UpcomingIpo: React.FC<Props> = ({ data }) => {
             <div className="lg:col-6 md:col-6 mb-8 text-center">
               <h3 className="mb-4">Upcoming Ipo's</h3>
               <div className="relative overflow-x-auto">
-                <table className="lg:w-full text-sm text-left rtl:text-right text-gray-500 ">
+                <table className="lg:w-full text-sm text-left text-gray-500 ">
                   {headers && headers.length > 0 && (
                     <thead className="text-md text-gray-700 bg-gray-50 ">
                       <tr>
@@ -51,7 +51,7 @@ const UpcomingIpo: React.FC<Props> = ({ data }) => {
                                   textDecoration: "none",
                                   fontSize: "medium",
                                 }}
-                                href={"ipo/" + item.slug}
+                                href={"ipo/details/" + item.slug}
                                 target={"_blank"}
                                 rel="noopener"
                               >
@@ -72,7 +72,7 @@ const UpcomingIpo: React.FC<Props> = ({ data }) => {
             <div className="lg:col-6 md:col-6 mb-8 text-center">
               <h3 className="mb-4">SME Ipo's</h3>
               <div className="relative overflow-x-auto">
-                <table className="lg:w-full text-sm text-left rtl:text-right text-gray-500 ">
+                <table className="lg:w-full text-sm text-left text-gray-500 ">
                   {headers && headers.length > 0 && (
                     <thead className="text-md text-gray-700 bg-gray-50  ">
                       <tr>
