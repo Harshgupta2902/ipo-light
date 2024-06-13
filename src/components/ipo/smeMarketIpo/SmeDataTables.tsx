@@ -52,7 +52,7 @@ export default function SmeDataTables({ data }: { data: any }) {
                                     textDecoration: "none",
                                     fontSize: "medium",
                                   }}
-                                  href={"ipo/details/" + item.slug}
+                                  href={"/ipo/details/" + item.slug}
                                   target={"_blank"}
                                   rel="noopener"
                                 >

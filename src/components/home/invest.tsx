@@ -48,8 +48,8 @@ export default function Invest() {
           <div className="container">
             <div
               className={`row gy-5 lg:gy-0 items-center ${index % 2 === 0
-                  ? "flex-col-reverse lg:flex-row"
-                  : "lg:flex-row-reverse"
+                ? "flex-col-reverse lg:flex-row"
+                : "lg:flex-row-reverse"
                 }`}
             >
               <div

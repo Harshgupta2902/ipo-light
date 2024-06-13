@@ -53,7 +53,7 @@ export default function FormsDataTables({ data }: { data: any }) {
                                     fontWeight: "bold",
                                     fontSize: "medium",
                                   }}
-                                  href={"ipo/details/" + item.slug}
+                                  href={"/ipo/details/" + item.slug}
                                   target={"_blank"}
                                   rel="noopener"
                                 >
