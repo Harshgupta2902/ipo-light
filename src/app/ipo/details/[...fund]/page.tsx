@@ -158,7 +158,7 @@ const IpoDetails: React.FC = () => {
                                             {section.items.map((item: any, i: any) => (
                                                 <li key={i} className="flex">
                                                     <svg
-                                                        className="w-3.5 h-3.5 me-2 text-green-500"
+                                                        className="w-3.5 h-3.5 me-2 mt-[6px] text-green-500"
                                                         aria-hidden="true"
                                                         xmlns="http://www.w3.org/2000/svg"
                                                         fill="currentColor"
