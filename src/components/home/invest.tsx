@@ -62,7 +62,7 @@ export default function Invest() {
                   {section.items.map((item, i) => (
                     <li key={i} className="flex items-center">
                       <svg
-                        className="w-3.5 h-3.5 me-2 text-green-500 flex-shrink-0"
+                        className="w-3.5 h-3.5 me-2 text-green-500"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"

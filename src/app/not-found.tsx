@@ -25,7 +25,7 @@ export default function NotFound() {
               prefetch={false}
             >
               {"Back To Home"}
-            </Link>{" "}
+            </Link>
           </div>
         </div>
       </div>

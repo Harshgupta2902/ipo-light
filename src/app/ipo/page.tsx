@@ -67,7 +67,7 @@ const Home = async () => {
         </div>
       </section>
       <UpcomingIpo data={result} />
-      
+
       <HomeFaq />
     </>
   );
