@@ -3,7 +3,7 @@ import React from "react";
 
 interface UpcomingDataTables {
   id: string;
-  companyName: string;
+  company_name: string;
   date: string;
   size: string;
   price: string;
@@ -14,7 +14,7 @@ interface UpcomingDataTables {
 }
 
 export default function UpcomingDataTables({ data }: { data: any }) {
-  const keysToDisplay = ["companyName", "date", "size", "price", "status"];
+  const keysToDisplay = ["company_name", "date", "size", "price", "status"];
   const headers = ["Company Name", "Date", "Size", "Price", "Status"];
 
   return (
@@ -44,7 +44,7 @@ export default function UpcomingDataTables({ data }: { data: any }) {
                         <tr key={index}>
                           {keysToDisplay.map((key) => (
                             <td key={key} className="py-3">
-                              {key === "companyName" ? (
+                              {key === "company_name" ? (
                                 <Link
                                   style={{
                                     textDecoration: "none",

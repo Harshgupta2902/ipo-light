@@ -18,7 +18,7 @@ interface GmpDataTables {
 
 export default function GmpDataTables({ data }: { data: any }) {
   const keysToDisplay = [
-    "ipo_name",
+    "company_name",
     "date",
     "type",
     "ipo_gmp",
@@ -37,10 +37,6 @@ export default function GmpDataTables({ data }: { data: any }) {
     "Kostak",
     "Subject",
   ];
-
-
-
-
   return (
     <section className="pt-20">
       <div className="container text-center">
@@ -66,7 +62,7 @@ export default function GmpDataTables({ data }: { data: any }) {
                       <tr key={index}>
                         {keysToDisplay.map((key) => (
                           <td key={key} className="py-3">
-                            {key === "ipo_name" ? (
+                            {key === "company_name" ? (
                               <Link
                                 style={{
                                   textDecoration: "none",

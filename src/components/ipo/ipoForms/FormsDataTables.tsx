@@ -16,7 +16,7 @@ interface FormsDataTables {
 }
 
 export default function FormsDataTables({ data }: { data: any }) {
-  const keysToDisplay = ["name", "date", "bse", "nse"];
+  const keysToDisplay = ["company_name", "date", "bse", "nse"];
   const headers = ["Company Name", "IPO Date", "BSE Form", "NSE Form"];
 
   return (
@@ -46,11 +46,10 @@ export default function FormsDataTables({ data }: { data: any }) {
                         <tr key={index}>
                           {keysToDisplay.map((key) => (
                             <td key={key} className="py-3">
-                              {key === "name" ? (
+                              {key === "company_name" ? (
                                 <Link
                                   style={{
                                     textDecoration: "none",
-                                    fontWeight: "bold",
                                     fontSize: "medium",
                                   }}
                                   href={"/ipo/details/" + item.slug}

@@ -16,7 +16,7 @@ interface OldGmpDataTables {
 
 export default function OldGmpDataTables({ data }: { data: any }) {
   const [itemsToShow, setItemsToShow] = useState(10);
-  const keysToDisplay = ["ipo_name", "price", "ipo_gmp", "listed"];
+  const keysToDisplay = ["company_name", "price", "ipo_gmp", "listed"];
   const headers = ["Company Name", "Price", "GMP", "Listed"];
 
   const loadMore = () => {
@@ -51,7 +51,7 @@ export default function OldGmpDataTables({ data }: { data: any }) {
                         <tr key={index}>
                           {keysToDisplay.map((key) => (
                             <td key={key} className="py-3">
-                              {key === "ipo_name" ? (
+                              {key === "company_name" ? (
                                 <Link
                                   style={{
                                     textDecoration: "none",

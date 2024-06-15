@@ -14,7 +14,7 @@ interface BuyBackDataTables {
 }
 
 export default function BuyBackDataTables({ data }: { data: any }) {
-  const keysToDisplay = ["company_name", "record_date", "open", "close", "price"];
+  const keysToDisplay = ["company_name", "date", "open", "close", "price"];
   const headers = ["Company Name", "Record Date", "Open", "Close", "Price"];
 
   return (
@@ -74,5 +74,5 @@ export default function BuyBackDataTables({ data }: { data: any }) {
     </section>
   );
 
-  
+
 }

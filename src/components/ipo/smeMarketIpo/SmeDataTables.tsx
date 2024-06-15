@@ -4,9 +4,9 @@ import React from "react";
 
 interface SmeDataTables {
   id: string;
-  name: string;
-  Dates: string;
-  Price: string;
+  company_name: string;
+  date: string;
+  price: string;
   Platform: string;
   link: string;
   updated_at: string;
@@ -14,7 +14,7 @@ interface SmeDataTables {
 }
 
 export default function SmeDataTables({ data }: { data: any }) {
-  const keysToDisplay = ["name", "Dates", "Price", "Platform"];
+  const keysToDisplay = ["company_name", "date", "price", "Platform"];
   const headers = ["Company Name", "Date", "Price", "Platform"];
 
 
@@ -46,7 +46,7 @@ export default function SmeDataTables({ data }: { data: any }) {
                         <tr key={index}>
                           {keysToDisplay.map((key) => (
                             <td key={key} className="py-3">
-                              {key === "name" ? (
+                              {key === "company_name" ? (
                                 <Link
                                   style={{
                                     textDecoration: "none",

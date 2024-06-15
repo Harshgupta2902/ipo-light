@@ -4,10 +4,10 @@ import Link from "next/link";
 interface IpoData {
   id: string;
   Type: string;
-  Company: string;
+  company_name: string;
   link: string;
-  Open: string;
-  Close: string;
+  open: string;
+  close: string;
   updated_at: string;
   slug: string;
 }
@@ -19,7 +19,7 @@ interface Props {
 }
 
 const UpcomingIpo: React.FC<Props> = ({ data }) => {
-  const headers = ["Company", "Open", "Close"];
+  const headers = ["company_name", "open", "close"];
   return (
     <section>
       <div className="container">
@@ -45,9 +45,9 @@ const UpcomingIpo: React.FC<Props> = ({ data }) => {
                       <tr key={index}>
                         {headers.map((key) => (
                           <td key={key} className="py-3">
-                            {key === "Company" ? (
+                            {key === "company_name" ? (
                               <Link
-                              prefetch={false}
+                                prefetch={false}
                                 style={{
                                   textDecoration: "none",
                                   fontSize: "medium",

@@ -19,7 +19,7 @@ interface IPOData {
     link: string;
     created_at: string;
     updated_at: string;
-    name: string;
+    company_name: string;
     date: string;
     bse: string;
     bse_link: string;
@@ -123,7 +123,7 @@ const IpoDetails: React.FC = () => {
             <div className="container">
                 <div className="flex justify-between border-b border-gray-200 items-center max-sm:items-start">
                     <div className="text-[48px] lg:pl-6 font-clashSemibold text-[#0A0F1E] max-md:text-2xl">
-                        {ipoDetails.name}
+                        {ipoDetails.company_name}
                     </div>
 
                     <button
@@ -140,9 +140,9 @@ const IpoDetails: React.FC = () => {
                             <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                         </svg>
                         <p>
-                            {ipoDetails.date.trim() === "TBA"
+                            {/* {ipoDetails.date.trim() === "TBA"
                                 ? "Coming Soon"
-                                : ipoDetails.date}
+                                : ipoDetails.date} */}
                         </p>
                     </button>
                 </div>
@@ -229,8 +229,8 @@ const IpoDetails: React.FC = () => {
                                                                     </Link>
                                                                     <p className="text-sm text-gray-500 truncate">
                                                                         {`${item.Open === "TBA"
-                                                                                ? "Coming Soon"
-                                                                                : `${item.Open} - ${item.Close}`
+                                                                            ? "Coming Soon"
+                                                                            : `${item.Open} - ${item.Close}`
                                                                             }`}
                                                                     </p>
                                                                 </>
@@ -264,8 +264,8 @@ const IpoDetails: React.FC = () => {
                                                                 </Link>
                                                                 <p className="text-sm text-gray-500 truncate">
                                                                     {`${item.Open === "TBA"
-                                                                            ? "Coming Soon"
-                                                                            : `${item.Open} - ${item.Close}`
+                                                                        ? "Coming Soon"
+                                                                        : `${item.Open} - ${item.Close}`
                                                                         }`}
                                                                 </p>
                                                             </>
@@ -299,8 +299,8 @@ const IpoDetails: React.FC = () => {
                                                                 </Link>
                                                                 <p className="text-sm text-gray-500 truncate">
                                                                     {`${item.date === "TBA"
-                                                                            ? "Coming Soon"
-                                                                            : `${item.date}`
+                                                                        ? "Coming Soon"
+                                                                        : `${item.date}`
                                                                         }`}
                                                                 </p>
                                                             </>
@@ -335,8 +335,8 @@ const IpoDetails: React.FC = () => {
                                                                     </Link>
                                                                     <p className="text-sm text-gray-500 truncate">
                                                                         {`${item.open === "TBA"
-                                                                                ? "Coming Soon"
-                                                                                : `${item.open} - ${item.close}`
+                                                                            ? "Coming Soon"
+                                                                            : `${item.open} - ${item.close}`
                                                                             }`}
                                                                     </p>
                                                                 </>

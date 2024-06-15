@@ -20,7 +20,7 @@ interface SubsCriptionDataTables {
 export default function SubsCriptionDataTables({ data }: { data: any }) {
   const keysToDisplay = [
     "company_name",
-    "close_date",
+    "close",
     "size_rs_cr",
     "qib_x",
     "snii_x",
@@ -34,7 +34,7 @@ export default function SubsCriptionDataTables({ data }: { data: any }) {
   ];
   const headers = [
     "Company Name",
-    "CloseDate",
+    "Close Date",
     "Size (in Cr.)",
     "QIB",
     "SNII",
@@ -76,7 +76,7 @@ export default function SubsCriptionDataTables({ data }: { data: any }) {
                         <tr key={index}>
                           {keysToDisplay.map((key) => (
                             <td key={key} className="py-3">
-                              {key === "ipo_name" ? (
+                              {key === "company_name" ? (
                                 <Link
                                   style={{
                                     textDecoration: "none",
