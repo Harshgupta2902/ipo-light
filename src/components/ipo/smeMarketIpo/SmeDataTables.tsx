@@ -22,7 +22,7 @@ export default function SmeDataTables({ data }: { data: any }) {
   return (
     <section className="pt-20">
       <div className="container text-center">
-        <h3 className="mb-4">Upcoming Ipo's </h3>
+        <h3 className="mb-4">SME Ipo's </h3>
 
         <div className="rounded bg-body py-6 px-6 shadow">
           <div className="flex flex-col">

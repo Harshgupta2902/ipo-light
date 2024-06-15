@@ -40,7 +40,7 @@ export default function GmpDataTables({ data }: { data: any }) {
   return (
     <section className="pt-20">
       <div className="container text-center">
-        <h3 className="mb-4">Old Ipo Gmp </h3>
+        <h3 className="mb-4">Ipo Gmp </h3>
         <div className="rounded bg-body py-6 px-6 shadow">
           <div className="flex flex-col">
             <div className="-m-1.5 overflow-x-auto">

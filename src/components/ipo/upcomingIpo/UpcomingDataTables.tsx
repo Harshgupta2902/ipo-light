@@ -46,6 +46,7 @@ export default function UpcomingDataTables({ data }: { data: any }) {
                             <td key={key} className="py-3">
                               {key === "company_name" ? (
                                 <Link
+                                  prefetch={false}
                                   style={{
                                     textDecoration: "none",
                                     fontSize: "medium",

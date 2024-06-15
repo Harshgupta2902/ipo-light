@@ -19,7 +19,8 @@ interface Props {
 }
 
 const UpcomingIpo: React.FC<Props> = ({ data }) => {
-  const headers = ["company_name", "open", "close"];
+  const keystoshow = ["company_name", "open", "close"];
+  const headers = ["Company Name", "Open", "Close"];
   return (
     <section>
       <div className="container">
@@ -43,7 +44,7 @@ const UpcomingIpo: React.FC<Props> = ({ data }) => {
                   <tbody>
                     {data.upcomingData.map((item, index) => (
                       <tr key={index}>
-                        {headers.map((key) => (
+                        {keystoshow.map((key) => (
                           <td key={key} className="py-3">
                             {key === "company_name" ? (
                               <Link
@@ -88,7 +89,7 @@ const UpcomingIpo: React.FC<Props> = ({ data }) => {
                   <tbody>
                     {data.smeData.map((item, index) => (
                       <tr key={index}>
-                        {headers.map((key) => (
+                        {keystoshow.map((key) => (
                           <td key={key} className="py-3">
                             {key === "Company" ? (
                               <Link

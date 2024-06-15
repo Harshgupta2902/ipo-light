@@ -4,7 +4,9 @@ import { endpoints } from "@/api/endpoints";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
+// import "../style/main.css";
+// import "../style/extra.css";
+import "@/style/main.css";
 interface IPOData {
     id: string;
     slug: string;
@@ -134,7 +136,7 @@ const IpoDetails: React.FC = () => {
                         </svg>
                         <p>
                             {
-                                ipoDetails.date && ipoDetails.date.trim() === "TBA"
+                                ipoDetails.date && ipoDetails.date === "TBA"
                                     ? "Coming Soon"
                                     : ipoDetails.date
                             }
@@ -170,30 +172,24 @@ const IpoDetails: React.FC = () => {
                                 <div className="row">
                                     {[...ipoDetails.tables.slice(1), ipoDetails.tables[0]].map(
                                         (table, index) => (
-                                            <div
-                                                key={index}
-                                                className={`${index === ipoDetails.tables.length - 1 ? "" : "lg:col-6"
-                                                    } `}
-                                            >
-                                                <div className="container text-center">
-                                                    <>
-                                                        <h3 className="mb-4">{table.name}</h3>
-                                                        <div className="rounded bg-body py-6 px-6 shadow">
-                                                            <div className="flex flex-col">
-                                                                <div className="-m-1.5 overflow-x-auto">
-                                                                    <div className="p-1.5 align-middle">
-                                                                        <table
-                                                                            className="w-full text-sm text-left rtl:text-right text-gray-500 table"
-                                                                            dangerouslySetInnerHTML={{
-                                                                                __html: table.data,
-                                                                            }}
-                                                                        />
-                                                                    </div>
+                                            <div key={index} className="container content text-center">
+                                                <>
+                                                    <h3 className="mb-4">{table.name}</h3>
+                                                    <div className="rounded bg-body px-6 shadow">
+                                                        <div className="flex flex-col">
+                                                            <div className="-m-1.5 overflow-x-auto">
+                                                                <div className="align-middle">
+                                                                    <table
+                                                                        className="w-full text-sm text-left rtl:text-right text-gray-500 table"
+                                                                        dangerouslySetInnerHTML={{
+                                                                            __html: table.data,
+                                                                        }}
+                                                                    />
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </>
-                                                </div>
+                                                    </div>
+                                                </>
                                             </div>
                                         )
                                     )}
