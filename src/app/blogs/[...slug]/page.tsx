@@ -6,28 +6,8 @@ import Content from '@/components/blogs/content'
 import { endpoints } from "@/api/endpoints";
 import { get } from "@/api/api";
 import { usePathname } from 'next/navigation';
-interface Root {
-    id: string
-    title: string
-    slug: string
-    type: any
-    description: string
-    blog: string
-    author: string
-    image: string
-    alt_keyword: string
-    tags: string
-    category: string
-    featured: string
-    created_at: string
-    published: string
-    meta_description: string
-    meta_title: string
-    robots: string
-    meta_keywords: string
-    published_at: string
-    views: string
-}
+import { Root } from '@/components/interfaces';
+
 
 const BlogDetails: React.FC = () => {
     const [result, setResult] = useState<Root | null>(null);

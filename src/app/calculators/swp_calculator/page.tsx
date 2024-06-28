@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { markdownify } from "@/components/common/textConverter";
+import { SWPFormInputs } from "@/components/interfaces";
 
 
 const SwpMarkdownContent = `## Understanding Systematic Withdrawal Plans (SWP)
@@ -46,12 +47,7 @@ SWP calculators are particularly beneficial for retirees and senior citizens who
 - Simple operation with no specialized knowledge required.
 - Accessible online for convenience.`;
 
-interface SWPFormInputs {
-    totalInvestment: number;
-    withdrawalPerMonth: number;
-    expectedReturnRate: number;
-    timePeriod: number;
-}
+
 
 
 

@@ -1,22 +1,8 @@
 import React from 'react';
+import { BlogPostMainCardProps } from '../interfaces';
 
-interface BlogPost {
-    id: string;
-    title: string;
-    created_at: string;
-    category: string;
-    image: string;
-    slug: string;
-    alt_keyword: string;
-    description: string;
-    author: string;
-}
 
-interface BlogPostProps {
-    post: BlogPost | null;
-}
-
-const BlogPostComponent: React.FC<BlogPostProps> = ({ post }) => {
+const BlogPostComponent: React.FC<BlogPostMainCardProps> = ({ post }) => {
     if (!post) {
         return <div>Loading...</div>;
     }

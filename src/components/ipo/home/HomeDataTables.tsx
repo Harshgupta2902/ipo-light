@@ -1,22 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import { IpoData, Props } from "@/components/interfaces";
 
-interface IpoData {
-  id: string;
-  Type: string;
-  company_name: string;
-  link: string;
-  open: string;
-  close: string;
-  updated_at: string;
-  slug: string;
-}
-interface Props {
-  data: {
-    upcomingData: IpoData[];
-    smeData: IpoData[];
-  };
-}
 
 const UpcomingIpo: React.FC<Props> = ({ data }) => {
   const keystoshow = ["company_name", "open", "close"];

@@ -9,10 +9,9 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "../../style/slider.css";
 import ImageFallback from "../common/ImageFallback";
+import { SliderProps } from "../interfaces";
 
-interface SliderProps {
-  imageUrls: string[];
-}
+
 
 const Slider: React.FC<SliderProps> = ({ imageUrls }) => {
   return (

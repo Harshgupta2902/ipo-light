@@ -1,32 +1,32 @@
-"use server";
+"use client";
 
-import axios from "axios";
 import Link from "next/link";
-
+import { useEffect, useState } from 'react';
 import UpcomingIpo from "@/components/ipo/home/HomeDataTables";
-
 import HomeFaq from "@/components/ipo/home/HomeFaq";
 import ImageFallback from "@/components/common/ImageFallback";
 import { endpoints } from "@/api/endpoints";
+import { get } from "@/api/api";
+import { Props } from "@/components/interfaces";
+const Home: React.FC = () => {
+  const [result, setResult] = useState<Props["data"]>({ upcomingData: [], smeData: [] });
+  const [loading, setLoading] = useState<boolean>(true);
 
-const Home = async () => {
-  let result = null;
-
-  try {
-    const response = await axios.get(
-      endpoints.homePage,
-      {
-        headers: {
-          "Cache-Control": "no-cache",
-          Pragma: "no-cache",
-          Expires: "0",
-        },
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await get(endpoints.homePage);
+        setResult(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching blog posts:", error);
+        setLoading(false);
       }
-    );
-    result = response.data;
-  } catch (error) {
-    console.error("Error fetching menu data:", error);
-  }
+
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>

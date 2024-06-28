@@ -1,8 +1,6 @@
-import { StockData } from "./stocks-card";
+import { GainersCardProps } from "../interfaces";
 
-interface GainersCardProps {
-  gainers: StockData[];
-}
+
 
 const GainersCard: React.FC<GainersCardProps> = ({ gainers }) => {
   return (

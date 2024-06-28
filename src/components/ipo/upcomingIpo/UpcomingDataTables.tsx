@@ -1,19 +1,10 @@
+import { UpcomingDataTables } from "@/components/interfaces";
 import Link from "next/link";
 import React from "react";
 
-interface UpcomingDataTables {
-  id: string;
-  company_name: string;
-  date: string;
-  size: string;
-  price: string;
-  status: string;
-  link: string;
-  updated_at: string;
-  slug: string;
-}
 
-export default function UpcomingDataTables({ data }: { data: any }) {
+
+export default function UpcomingDataTable({ data }: { data: any }) {
   const keysToDisplay = ["company_name", "date", "size", "price", "status"];
   const headers = ["Company Name", "Date", "Size", "Price", "Status"];
 

@@ -1,20 +1,8 @@
+import { GmpDataTable } from "@/components/interfaces";
 import Link from "next/link";
 import React from "react";
 
-interface GmpDataTables {
-  id: string;
-  ipo_name: string;
-  date: string;
-  type: string;
-  ipo_gmp: string;
-  price: string;
-  gain: string;
-  kostak: string;
-  subject: string;
-  link: string;
-  updated_at: string;
-  slug: string;
-}
+
 
 export default function GmpDataTables({ data }: { data: any }) {
   const keysToDisplay = [
@@ -58,7 +46,7 @@ export default function GmpDataTables({ data }: { data: any }) {
                     </thead>
                   )}
                   <tbody>
-                    {data.gmp.map((item: GmpDataTables, index: number) => (
+                    {data.gmp.map((item: GmpDataTable, index: number) => (
                       <tr key={index}>
                         {keysToDisplay.map((key) => (
                           <td key={key} className="py-3">
@@ -72,10 +60,10 @@ export default function GmpDataTables({ data }: { data: any }) {
                                 target={"_blank"}
                                 rel="noopener"
                               >
-                                {item[key as keyof GmpDataTables]}
+                                {item[key as keyof GmpDataTable]}
                               </Link>
                             ) : (
-                              item[key as keyof GmpDataTables]
+                              item[key as keyof GmpDataTable]
                             )}
                           </td>
                         ))}

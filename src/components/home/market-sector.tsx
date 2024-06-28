@@ -3,11 +3,9 @@
 import { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import { FaCaretUp, FaCaretDown } from "react-icons/fa";
+import { ChartDataItem } from "../interfaces";
 
-interface ChartDataItem {
-  price: number;
-  ts: string;
-}
+
 
 const MarketSectorCard = ({
   data,

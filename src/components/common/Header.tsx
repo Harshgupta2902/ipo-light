@@ -3,20 +3,10 @@
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import CheckPan from "./CheckPan";
+import { MenuItem, NavItemProps } from "../interfaces";
 
 
-interface MenuItem {
-  label: string;
-  url: string;
-  dropdown?: boolean;
-  dropdownItems?: MenuItem[];
-}
 
-interface NavItemProps {
-  item: MenuItem;
-  isActive: boolean;
-  onItemClick: () => void;
-}
 
 const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
   const pathname = usePathname();

@@ -1,20 +1,7 @@
 import React from 'react';
+import { BlogPostProps } from '../interfaces';
 
-interface BlogPost {
-  id: string;
-  title: string;
-  created_at: string;
-  category: string;
-  image: string;
-  slug: string;
-  alt_keyword: string;
-  description: string;
-  author: string;
-}
 
-interface BlogPostProps {
-    posts: BlogPost[];
-}
 
 const BlogPost: React.FC<BlogPostProps> = ({ posts }) => {
     return (

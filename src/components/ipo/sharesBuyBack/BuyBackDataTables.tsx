@@ -1,17 +1,8 @@
+import { BuyBackDataTable } from "@/components/interfaces";
 import Link from "next/link";
 import React from "react";
 
-interface BuyBackDataTables {
-  id: string
-  company_name: string
-  record_date: string
-  open: string
-  link: string
-  slug: string
-  close: string
-  price: string
-  updated_at: string
-}
+
 
 export default function BuyBackDataTables({ data }: { data: any }) {
   const keysToDisplay = ["company_name", "date", "open", "close", "price"];
@@ -40,7 +31,7 @@ export default function BuyBackDataTables({ data }: { data: any }) {
                   )}
                   <tbody>
                     {data.buyback.map(
-                      (item: BuyBackDataTables, index: number) => (
+                      (item: BuyBackDataTable, index: number) => (
                         <tr key={index}>
                           {keysToDisplay.map((key) => (
                             <td key={key} className="py-3">
@@ -54,10 +45,10 @@ export default function BuyBackDataTables({ data }: { data: any }) {
                                   target={"_blank"}
                                   rel="noopener"
                                 >
-                                  {item[key as keyof BuyBackDataTables]}
+                                  {item[key as keyof BuyBackDataTable]}
                                 </Link>
                               ) : (
-                                item[key as keyof BuyBackDataTables]
+                                item[key as keyof BuyBackDataTable]
                               )}
                             </td>
                           ))}

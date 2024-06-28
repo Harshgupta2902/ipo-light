@@ -7,58 +7,12 @@ import Link from "next/link";
 // import "../style/main.css";
 // import "../style/extra.css";
 import "@/style/main.css";
-interface IPOData {
-    id: string;
-    slug: string;
-    tables: {
-        name: string;
-        data: string;
-    }[];
-    lists: {
-        heading: string;
-        items: string[];
-    }[];
-    company_name: string;
-    date: string;
-}
+import { BuyBackData, GmpData, IPODetailsData, IPODetailsMain, SmeData, UpcomingData } from "@/components/interfaces";
 
-interface Root {
-    upcomingData: UpcomingDaum[];
-    smeData: SmeDaum[];
-    gmpData: GmpDaum[];
-    buyBackData: BuyBackDaum[];
-}
-
-interface UpcomingDaum {
-    company_name: string;
-    slug: string;
-    open: string;
-    close: string;
-}
-
-interface SmeDaum {
-    company_name: string;
-    slug: string;
-    open: string;
-    close: string;
-}
-
-export interface GmpDaum {
-    company_name: string;
-    date: string;
-    slug: string;
-}
-
-export interface BuyBackDaum {
-    company_name: string;
-    open: string;
-    close: string;
-    slug: string;
-}
 
 const IpoDetails: React.FC = () => {
-    const [ipoDetails, setIpoDetails] = useState<IPOData | null>(null);
-    const [additionalData, setAdditionalData] = useState<Root | null>(null);
+    const [ipoDetails, setIpoDetails] = useState<IPODetailsData | null>(null);
+    const [additionalData, setAdditionalData] = useState<IPODetailsMain | null>(null);
     const [error, setError] = useState<string | null>(null);
 
     const pathname = usePathname();
@@ -206,7 +160,7 @@ const IpoDetails: React.FC = () => {
                                             <div className="flow-root">
                                                 <ul role="list" className="divide-y divide-gray-200">
                                                     {additionalData.upcomingData.map(
-                                                        (item: UpcomingDaum) => (
+                                                        (item: UpcomingData) => (
                                                             <li className="py-3 sm:py-4" key={item.slug}>
                                                                 <>
                                                                     <Link
@@ -241,7 +195,7 @@ const IpoDetails: React.FC = () => {
                                             </h5>
                                             <div className="flow-root">
                                                 <ul role="list" className="divide-y divide-gray-200">
-                                                    {additionalData.smeData.map((item: SmeDaum) => (
+                                                    {additionalData.smeData.map((item: SmeData) => (
                                                         <li className="py-3 sm:py-4" key={item.slug}>
                                                             <>
                                                                 <Link
@@ -276,7 +230,7 @@ const IpoDetails: React.FC = () => {
                                             </h5>
                                             <div className="flow-root">
                                                 <ul role="list" className="divide-y divide-gray-200">
-                                                    {additionalData.gmpData.map((item: GmpDaum) => (
+                                                    {additionalData.gmpData.map((item: GmpData) => (
                                                         <li className="py-3 sm:py-4" key={item.slug}>
                                                             <>
                                                                 <Link
@@ -312,7 +266,7 @@ const IpoDetails: React.FC = () => {
                                             <div className="flow-root">
                                                 <ul role="list" className="divide-y divide-gray-200">
                                                     {additionalData.buyBackData.map(
-                                                        (item: BuyBackDaum) => (
+                                                        (item: BuyBackData) => (
                                                             <li className="py-3 sm:py-4" key={item.slug}>
                                                                 <>
                                                                     <Link

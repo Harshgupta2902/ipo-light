@@ -1,19 +1,11 @@
 
+import { SmeDataTables } from "@/components/interfaces";
 import Link from "next/link";
 import React from "react";
 
-interface SmeDataTables {
-  id: string;
-  company_name: string;
-  date: string;
-  price: string;
-  Platform: string;
-  link: string;
-  updated_at: string;
-  slug: string;
-}
 
-export default function SmeDataTables({ data }: { data: any }) {
+
+export default function SmeDataTable({ data }: { data: any }) {
   const keysToDisplay = ["company_name", "date", "price", "Platform"];
   const headers = ["Company Name", "Date", "Price", "Platform"];
 

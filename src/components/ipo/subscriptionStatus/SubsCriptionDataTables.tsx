@@ -1,23 +1,11 @@
 
+import { SubsCriptionDataTables } from "@/components/interfaces";
 import Link from "next/link";
 import React from "react";
 
-interface SubsCriptionDataTables {
-  id: string;
-  ipo_name: string;
-  date: string;
-  type: string;
-  ipo_gmp: string;
-  price: string;
-  gain: string;
-  kostak: string;
-  subject: string;
-  link: string;
-  updated_at: string;
-  slug: string;
-}
 
-export default function SubsCriptionDataTables({ data }: { data: any }) {
+
+export default function SubsCriptionDataTable({ data }: { data: any }) {
   const keysToDisplay = [
     "company_name",
     "close",

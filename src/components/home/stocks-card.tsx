@@ -1,23 +1,8 @@
 "use client";
 import { useState, useRef } from "react";
 import GainersCard from "./gainers";
-export interface StockData {
-  symbol: string;
-  name: string;
-  price: number;
-  change: number;
-  percentChange: number;
-  sid: string;
+import { StocksCardProps } from "../interfaces";
 
-}
-
-export interface StocksCardProps {
-  gainers: StockData[];
-  losers: StockData[];
-  active: StockData[];
-  approachingHigh: StockData[];
-  approachingLow: StockData[];
-}
 
 
 const StocksCard: React.FC<StocksCardProps> = ({ gainers, losers, active, approachingHigh, approachingLow }) => {

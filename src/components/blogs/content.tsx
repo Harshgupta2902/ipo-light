@@ -3,32 +3,12 @@ import React from "react";
 import { markdownify } from "../common/textConverter";
 import { format } from 'date-fns';
 import ImageFallback from "../common/ImageFallback";
+import { BlogContent } from "../interfaces";
 
 
-interface Blog {
-    id: string
-    title: string
-    slug: string
-    type: any
-    description: string
-    blog: string
-    author: string
-    image: string
-    alt_keyword: string
-    tags: string
-    category: string
-    featured: string
-    created_at: string
-    published: string
-    meta_description: string
-    meta_title: string
-    robots: string
-    meta_keywords: string
-    published_at: string
-    views: string
-}
 
-export default function BlogDetails({ blog }: { blog: Blog }) {
+
+export default function BlogDetails({ blog }: { blog: BlogContent }) {
 
     return (
         <article className="lg:col-9">

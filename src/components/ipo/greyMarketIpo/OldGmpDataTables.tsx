@@ -1,18 +1,10 @@
 "use client";
 
+import { OldGmpDataTable } from "@/components/interfaces";
 import Link from "next/link";
 import React, { useState } from "react";
 
-interface OldGmpDataTables {
-  id: string;
-  ipo_name: string;
-  price: string;
-  ipo_gmp: string;
-  listed: string;
-  link: string;
-  updated_at: string;
-  slug: string;
-}
+
 
 export default function OldGmpDataTables({ data }: { data: any }) {
   const [itemsToShow, setItemsToShow] = useState(10);
@@ -47,7 +39,7 @@ export default function OldGmpDataTables({ data }: { data: any }) {
                   <tbody>
                     {data.oldGmp
                       .slice(0, itemsToShow)
-                      .map((item: OldGmpDataTables, index: number) => (
+                      .map((item: OldGmpDataTable, index: number) => (
                         <tr key={index}>
                           {keysToDisplay.map((key) => (
                             <td key={key} className="py-3">
@@ -61,10 +53,10 @@ export default function OldGmpDataTables({ data }: { data: any }) {
                                   target={"_blank"}
                                   rel="noopener"
                                 >
-                                  {item[key as keyof OldGmpDataTables]}
+                                  {item[key as keyof OldGmpDataTable]}
                                 </Link>
                               ) : (
-                                item[key as keyof OldGmpDataTables]
+                                item[key as keyof OldGmpDataTable]
                               )}
                             </td>
                           ))}

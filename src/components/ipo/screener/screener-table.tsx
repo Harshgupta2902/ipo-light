@@ -14,6 +14,7 @@ import {
 } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
+import { Fund, Screener } from "@/components/interfaces";
 
 const filters = [
     {
@@ -37,23 +38,9 @@ const filters = [
         ],
     }
 ]
-interface Fund {
-    mfId: string;
-    slug: string;
-    name: string;
-    values: {
-        filter: string;
-        doubleVal?: number;
-        strVal?: string;
-    }[];
-    sector: string;
-}
 
-interface Props {
-    data: Fund[];
-}
 
-const ScreenerTable: React.FC<Props> = ({ data }) => {
+const ScreenerTable: React.FC<Screener> = ({ data }) => {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
     const [searchQuery, setSearchQuery] = useState("");
     const [visibleData, setVisibleData] = useState<Fund[]>([]);

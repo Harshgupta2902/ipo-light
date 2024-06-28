@@ -1,21 +1,10 @@
+import { FormsDataTables } from "@/components/interfaces";
 import Link from "next/link";
 import React from "react";
 
-interface FormsDataTables {
-  id: string;
-  name: string;
-  date: string;
-  date_link: string;
-  bse: string;
-  bse_link: string;
-  nse: string;
-  nse_link: string;
-  link: string;
-  updated_at: string;
-  slug: string;
-}
 
-export default function FormsDataTables({ data }: { data: any }) {
+
+export default function FormsDataTable({ data }: { data: any }) {
   const keysToDisplay = ["company_name", "date", "bse", "nse"];
   const headers = ["Company Name", "IPO Date", "BSE Form", "NSE Form"];
 

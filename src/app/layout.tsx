@@ -5,7 +5,7 @@ import "../style/main.css";
 import "../style/extra.css";
 
 import Header from "../components/common/Header";
-import CheckPan from "@/components/common/CheckPan";
+import { MenuItem } from "@/components/interfaces";
 
 const poppins = Poppins({
   weight: "500",
@@ -17,12 +17,7 @@ export const metadata: Metadata = {
   description: "Next Gen Fintech Platform For Ipo, Mutual-Funds, Stocks, and all othert Tools",
 };
 
-interface MenuItem {
-  label: string;
-  url: string;
-  dropdown?: boolean;
-  dropdownItems?: MenuItem[];
-}
+
 
 const menuData: MenuItem[] = [
   { label: "Home", url: "/" },
