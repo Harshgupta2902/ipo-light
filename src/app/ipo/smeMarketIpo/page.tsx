@@ -4,13 +4,14 @@ import axios from "axios";
 
 import SmeDataTables from "../../../components/ipo/smeMarketIpo/SmeDataTables";
 import SmeFaq from "../../../components/ipo/smeMarketIpo/SmeFaq";
+import { endpoints } from "@/api/endpoints";
 
 const Home = async () => {
   let result = null;
 
   try {
     const response = await axios.get(
-      "https://ipo.onlineinfotech.net/Apis/smeData",
+      endpoints.smeData,
       {
         headers: {
           "Cache-Control": "no-cache",

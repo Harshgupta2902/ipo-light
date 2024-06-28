@@ -3,13 +3,14 @@
 import axios from "axios";
 import UpcomingDataTables from "../../../components/ipo/upcomingIpo/UpcomingDataTables";
 import UpcomingFaq from "../../../components/ipo/upcomingIpo/upcomingFaq";
+import { endpoints } from "@/api/endpoints";
 
 const Home = async () => {
   let result = null;
 
   try {
     const response = await axios.get(
-      "https://ipo.onlineinfotech.net/Apis/upcomingIpo",
+      endpoints.upcomingIpo,
       {
         headers: {
           "Cache-Control": "no-cache",

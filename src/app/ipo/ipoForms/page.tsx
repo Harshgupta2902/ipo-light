@@ -3,13 +3,14 @@
 import axios from "axios";
 import FormsDataTables from "../../../components/ipo/ipoForms/FormsDataTables";
 import FormsFaq from "../../../components/ipo/ipoForms/FormsFaq";
+import { endpoints } from "@/api/endpoints";
 
 const Home = async () => {
   let result = null;
 
   try {
     const response = await axios.get(
-      "https://ipo.onlineinfotech.net/Apis/formsData",
+      endpoints.formsData,
       {
         headers: {
           "Cache-Control": "no-cache",

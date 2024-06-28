@@ -7,13 +7,14 @@ import UpcomingIpo from "@/components/ipo/home/HomeDataTables";
 
 import HomeFaq from "@/components/ipo/home/HomeFaq";
 import ImageFallback from "@/components/common/ImageFallback";
+import { endpoints } from "@/api/endpoints";
 
 const Home = async () => {
   let result = null;
 
   try {
     const response = await axios.get(
-      "https://ipo.onlineinfotech.net/Apis/homePage",
+      endpoints.homePage,
       {
         headers: {
           "Cache-Control": "no-cache",

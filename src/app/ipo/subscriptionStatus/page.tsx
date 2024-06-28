@@ -4,20 +4,20 @@ import axios from "axios";
 
 import SubsCriptionDataTables from "../../../components/ipo/subscriptionStatus/SubsCriptionDataTables";
 import SubsCriptionFaq from "../../../components/ipo/subscriptionStatus/SubsCriptionFaq";
+import { endpoints } from "@/api/endpoints";
 
 const Home = async () => {
   let result = null;
 
   try {
     const response = await axios.get(
-      "https://ipo.onlineinfotech.net/Apis/subscriptionData",
-      {
-        headers: {
-          "Cache-Control": "no-cache",
-          Pragma: "no-cache",
-          Expires: "0",
-        },
+      endpoints.subscriptionData, {
+      headers: {
+        "Cache-Control": "no-cache",
+        Pragma: "no-cache",
+        Expires: "0",
       },
+    },
     );
     result = response.data;
   } catch (error) {
@@ -26,7 +26,7 @@ const Home = async () => {
 
   return (
     <>
-    
+
       <SubsCriptionDataTables data={result} />
       <SubsCriptionFaq />
     </>
