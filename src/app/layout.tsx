@@ -5,6 +5,7 @@ import "../style/main.css";
 import "../style/extra.css";
 
 import Header from "../components/common/Header";
+import CheckPan from "@/components/common/CheckPan";
 
 const poppins = Poppins({
   weight: "500",
@@ -62,7 +63,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-          <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
       </head>
       <body className={poppins.className}>
         <Header menuData={menuData ?? []} />

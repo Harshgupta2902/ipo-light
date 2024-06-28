@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
+import CheckPan from "./CheckPan";
 
 
 interface MenuItem {
@@ -96,9 +97,7 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
             />
           ))}
         </ul>{" "}
-        <div className="order-2 flex items-center md:order-2 lg:ml-0">
-          <div className="theme-switcher mr-3 lg:ml-5"></div>
-        </div>
+        < CheckPan />
       </nav>
     </header>
   );
