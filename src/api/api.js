@@ -1,4 +1,3 @@
-import axios from "axios";
 
 // Function to make a GET request
 export const get = async (url, headers = {}) => {
