@@ -1,5 +1,5 @@
+import axios from "axios";
 
-// Function to make a GET request
 export const get = async (url, headers = {}) => {
   try {
     const response = await axios.get(url);

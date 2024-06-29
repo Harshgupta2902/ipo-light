@@ -10,17 +10,14 @@ import { get } from "@/api/api";
 import { Props } from "@/components/interfaces";
 const Home: React.FC = () => {
   const [result, setResult] = useState<Props["data"]>({ upcomingData: [], smeData: [] });
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await get(endpoints.homePage);
         setResult(response.data);
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching blog posts:", error);
-        setLoading(false);
       }
 
     };
