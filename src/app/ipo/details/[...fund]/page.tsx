@@ -4,8 +4,6 @@ import { endpoints } from "@/api/endpoints";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-// import "../style/main.css";
-// import "../style/extra.css";
 import "@/style/main.css";
 import { BuyBackData, GmpData, IPODetailsData, IPODetailsMain, SmeData, UpcomingData } from "@/components/interfaces";
 
