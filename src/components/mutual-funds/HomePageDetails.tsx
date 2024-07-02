@@ -74,6 +74,7 @@ export default function HomePageDetails({ fundCode }: { fundCode: string }) {
     const gradientFill = 'linear-gradient(to bottom, rgba(75, 192, 192, 0.2), rgba(75, 192, 192, 1))';
 
 
+
     return (
         <div>
             {error ? (
