@@ -3,10 +3,10 @@
 import { get } from "@/api/api";
 import { endpoints } from "@/api/endpoints";
 import { MfHomePageDetails } from "@/components/interfaces";
+import HomePageDetails from "@/components/mutual-funds/HomePageDetails";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaCaretUp, FaCaretDown } from "react-icons/fa";
-import { TbCheckbox } from "react-icons/tb";
 
 
 const MutualFundsDetails: React.FC = () => {
@@ -14,11 +14,10 @@ const MutualFundsDetails: React.FC = () => {
     const fundName = pathname.replace("/mutual-funds/", "");
     const fundCode = fundName.split("-").pop();
 
-    const [mfHomeData, setMfHomePageData] = useState<MfHomePageDetails | null>(
-        null
-    );
+    const [mfHomeData, setMfHomePageData] = useState<MfHomePageDetails | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const [activeTab, setActiveTab] = useState<string>("Home");
 
     useEffect(() => {
         const fetchMfDetails = async () => {
@@ -32,7 +31,6 @@ const MutualFundsDetails: React.FC = () => {
                     setError("Data not found");
                     setIsLoading(false);
                 }
-                console.log(response.info.name);
             } catch (error) {
                 console.error("Error fetching MF details", error);
                 setError("Error fetching data");
@@ -99,7 +97,7 @@ const MutualFundsDetails: React.FC = () => {
 
                                     <div className="divide-y divide-gray-200">
                                         {mfHomeData.inv_checkList.map((item) => (
-                                            <div className="flex items-center justify-between pb-3 pt-3 last:pb-0">
+                                            <div key={item.icid} className="flex items-center justify-between pb-3 pt-3 last:pb-0">
                                                 <div key={item.icid} className="flex items-start gap-x-3">
                                                     <FaCaretUp className="text-green-500 text-2xl inline-block ml-1" />
                                                     <div>
@@ -117,7 +115,69 @@ const MutualFundsDetails: React.FC = () => {
                                     </div>
                                 </div>
                             </form>
-                            <div className="lg:col-span-3">Data</div>
+                            <div className="lg:col-span-3">
+                                <div className="lg:col-span-3">
+                                    <div className="mb-4 border-b border-gray-200">
+                                        <ul className="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" role="tablist">
+                                            <li className="mr-2" role="presentation">
+                                                <button
+                                                    className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "Home" ? "text-blue-600 border-blue-600" : "text-gray-600 border-transparent"}`}
+                                                    onClick={() => setActiveTab("Home")}
+                                                    type="button"
+                                                    role="tab"
+                                                >
+                                                    Home
+                                                </button>
+                                            </li>
+                                            <li className="mr-2" role="presentation">
+                                                <button
+                                                    className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "Peers" ? "text-blue-600 border-blue-600" : "text-gray-600 border-transparent"}`}
+                                                    onClick={() => setActiveTab("Peers")}
+                                                    type="button"
+                                                    role="tab"
+                                                >
+                                                    Peers
+                                                </button>
+                                            </li>
+                                            <li className="mr-2" role="presentation">
+                                                <button
+                                                    className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "Portfolio" ? "text-blue-600 border-blue-600" : "text-gray-600 border-transparent"}`}
+                                                    onClick={() => setActiveTab("Portfolio")}
+                                                    type="button"
+                                                    role="tab"
+                                                >
+                                                    Portfolio
+                                                </button>
+                                            </li>
+                                            <li role="presentation">
+                                                <button
+                                                    className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "Fund Manager" ? "text-blue-600 border-blue-600" : "text-gray-600 border-transparent"}`}
+                                                    onClick={() => setActiveTab("Fund Manager")}
+                                                    type="button"
+                                                    role="tab"
+                                                >
+                                                    Fund Manager
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div id="default-tab-content">
+                                        <div className={`${activeTab === "Home" ? "block" : "hidden"}`} role="tabpanel">
+                                            <HomePageDetails fundCode={fundCode ?? ""}/>
+                                        </div>
+                                        <div className={`${activeTab === "Peers" ? "block" : "hidden"}`} role="tabpanel">
+                                            Peers
+                                        </div>
+                                        <div className={`${activeTab === "Portfolio" ? "block" : "hidden"}`} role="tabpanel">
+                                            Portfolio
+                                        </div>
+                                        <div className={`${activeTab === "Fund Manager" ? "block" : "hidden"}`} role="tabpanel">
+                                            Fund Manager
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </section>
                 </main>
