@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';
 import { get } from '@/api/api';
@@ -23,6 +23,7 @@ export default function HomePageDetails({ fundCode }: { fundCode: string }) {
     const [chartData, setChartData] = useState<any[]>([]);
     const [chartPoints, setChartPoints] = useState<ChartDataPoint[]>([]);
     const [error, setError] = useState<string | null>(null);
+    const chartRef = useRef<any>(null); // Explicitly typing chartRef as any
 
     const options = {
         elements: {
@@ -45,7 +46,24 @@ export default function HomePageDetails({ fundCode }: { fundCode: string }) {
                 display: false,
             },
             tooltip: {
-                enabled: false,
+                enabled: true,
+                intersect: false,
+                mode: 'index',
+                callbacks: {
+                    label: function (tooltipItem: any) {
+                        let label = tooltipItem.dataset.label || '';
+                        if (label) {
+                            label += ': ';
+                        }
+                        label += tooltipItem.formattedValue;
+                        return label;
+                    },
+                    title: function (tooltipItems: any, data: any) {
+                        const timestamp = tooltipItems[0].label;
+                        const date = new Date(timestamp);
+                        return `Date: ${date.toLocaleDateString()}`;
+                    }
+                }
             },
         },
     };
@@ -68,13 +86,10 @@ export default function HomePageDetails({ fundCode }: { fundCode: string }) {
         };
 
         fetchMfDetails();
+
     }, [fundCode]);
 
     console.log(chartPoints);
-    const gradientFill = 'linear-gradient(to bottom, rgba(75, 192, 192, 0.2), rgba(75, 192, 192, 1))';
-
-
-
     return (
         <div>
             {error ? (
@@ -83,19 +98,19 @@ export default function HomePageDetails({ fundCode }: { fundCode: string }) {
                 <div>
                     <h2>Price Chart</h2>
                     <Line
+                        ref={chartRef}
                         data={{
-                            labels: chartPoints.map((point: any) => point.ts),
+                            labels: chartPoints.map((point) => point.ts),
                             datasets: [{
                                 label: 'Price',
-                                data: chartPoints.map((point: any) => point.lp),
-                                fill: false,
-                                borderColor: 'rgb(34, 197, 94 )',
+                                data: chartPoints.map((point) => point.lp),
+                                fill: true,
+                                borderColor: 'rgb(34, 197, 94)',
                                 tension: 0.1,
-                                backgroundColor: gradientFill
+                                backgroundColor: 'rgba(34, 197, 94, 0.2)'
                             }]
                         }}
-                        options={options}
-
+                        // options={options}
                     />
                 </div>
             )}
