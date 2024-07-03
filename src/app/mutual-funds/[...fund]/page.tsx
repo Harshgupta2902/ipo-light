@@ -47,7 +47,7 @@ const MutualFundsDetails: React.FC = () => {
     if (error) return <div>Error: {error}</div>;
     if (!mfHomeData) return null; // or handle initial load state as needed
     return (
-        <section>
+        <section className="pt-0">
             <div className="container">
                 <main className="mx-auto max-w-8xl sm:px-6 lg:px-8 ">
                     <section aria-labelledby="products-heading " className="mt-[4rem]">
@@ -163,7 +163,7 @@ const MutualFundsDetails: React.FC = () => {
                                     </div>
                                     <div id="default-tab-content">
                                         <div className={`${activeTab === "Home" ? "block" : "hidden"}`} role="tabpanel">
-                                            <HomePageDetails fundCode={fundCode ?? ""}/>
+                                            <HomePageDetails fundCode={fundCode ?? ""} mfHomeData={mfHomeData} />
                                         </div>
                                         <div className={`${activeTab === "Peers" ? "block" : "hidden"}`} role="tabpanel">
                                             Peers

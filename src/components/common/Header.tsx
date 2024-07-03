@@ -35,7 +35,7 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
   };
 
   return (
-    <header className="header z-30 sticky top-0">
+    <header className="header z-10 sticky top-0 pb-0">
       <nav className="navbar container">
         <div className="order-0">
           <a className="navbar-brand inline-block" href="/">
