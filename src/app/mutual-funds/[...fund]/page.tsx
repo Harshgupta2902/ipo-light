@@ -7,7 +7,17 @@ import HomePageDetails from "@/components/mutual-funds/HomePageDetails";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaCaretUp, FaCaretDown } from "react-icons/fa";
+// import admin from "firebase-admin";
+// const serviceAccount = require("../../../../serviceAccountKey.json");
 
+
+// if (!admin.apps.length) {
+//     admin.initializeApp({
+//         credential: admin.credential.cert(serviceAccount),
+//     });
+// }
+
+// const db = admin.firestore();
 
 const MutualFundsDetails: React.FC = () => {
     const pathname = usePathname();
@@ -18,30 +28,56 @@ const MutualFundsDetails: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const [activeTab, setActiveTab] = useState<string>("Home");
+    const [navData, setNavData] = useState<any[]>([]); // Adjust the type according to your nav data structure
 
     useEffect(() => {
         const fetchMfDetails = async () => {
             setIsLoading(true);
             try {
+                // Fetch mutual fund homepage data
                 const response = await get(endpoints.getMfHomePage + "?mf=" + fundCode);
                 if (response) {
                     setMfHomePageData(response);
-                    setIsLoading(false);
                 } else {
                     setError("Data not found");
-                    setIsLoading(false);
                 }
             } catch (error) {
                 console.error("Error fetching MF details", error);
                 setError("Error fetching data");
+            } finally {
                 setIsLoading(false);
             }
         };
 
+        // const fetchNavData = async (isin: string) => {
+        //     try {
+        //         const snapshot = await db
+        //             .collection("ISINs")
+        //             .doc(isin)
+        //             .collection("NAVs")
+        //             .get();
+
+        //         const navDataArray = snapshot.docs.map((doc) => ({
+        //             navDate: doc.id,
+        //             navValue: doc.data().navValue,
+        //         }));
+
+        //         setNavData(navDataArray);
+        //         console.log("Nav Data fetched successfully for ISIN:", isin);
+        //     } catch (error) {
+        //         console.error("Error fetching Nav Data:", error);
+        //         setError("Error fetching NAV data");
+        //     }
+        // };
+
         if (fundCode) {
             fetchMfDetails();
+            // fetchNavData("INF579M01AY9");
         }
     }, [fundCode]);
+
+
+
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;

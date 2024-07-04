@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/api/api.js", "src/app/[...scrap]/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/api/api.js", "src/app/[...scrap]/page.tsx", "src/app/mutual-funds/api/[isin].js"],
   "exclude": ["node_modules"]
 }
