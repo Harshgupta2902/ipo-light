@@ -41,20 +41,16 @@ export interface SWPFormInputs {
 }
 
 export interface IpoData {
-    id: string;
-    Type: string;
-    company_name: string;
-    link: string;
-    open: string;
-    close: string;
-    updated_at: string;
-    slug: string;
+    Type: string
+    company_name: string
+    open: string
+    close: string
+    link?: string
+    slug?: string
 }
-export interface Props {
-    data: {
-        upcomingData: IpoData[];
-        smeData: IpoData[];
-    };
+export interface IpoMainHomePageProps {
+    upcomingData: IpoData[];
+    smeData: IpoData[];
 }
 
 
@@ -291,9 +287,9 @@ export interface MfHomePageDetails {
     fundmanager: MfHomePageFundmanager[]
     inv_checkList: InvCheckList[]
 
-  }
-  
-  export interface Info {
+}
+
+export interface Info {
     mfId: string
     type: string
     name: string
@@ -305,9 +301,9 @@ export interface MfHomePageDetails {
     option: string
     sector: string
     subsector: string
-  }
-  
-  export interface Summary {
+}
+
+export interface Summary {
     meta: Meta
     peers: Peer[]
     schemeInfo: SchemeInfo[]
@@ -316,9 +312,9 @@ export interface MfHomePageDetails {
     taxMeta: TaxMeta
     amcDetails: AmcDetails
     labels: Label[]
-  }
-  
-  export interface Meta {
+}
+
+export interface Meta {
     name: string
     isin: string
     amc: string
@@ -343,40 +339,40 @@ export interface MfHomePageDetails {
     amcCode: string
     type: string
     mbId: string
-  }
-  
-  export interface Peer {
+}
+
+export interface Peer {
     mfId: string
     name: string
     option: string
     slug: string
     ratios: Ratio[]
-  }
-  
-  export interface Ratio {
+}
+
+export interface Ratio {
     backL: string
     value?: number
-  }
-  
-  export interface SchemeInfo {
+}
+
+export interface SchemeInfo {
     backL: string
     value: any
     info?: string
-  }
-  
-  export interface KeyRatio {
+}
+
+export interface KeyRatio {
     backL: string
     value: number
     info: any
-  }
-  
-  export interface CagrSery {
+}
+
+export interface CagrSery {
     date: string
     value: number
     yearDiff: number
-  }
-  
-  export interface TaxMeta {
+}
+
+export interface TaxMeta {
     minSipAmount: number
     minLumpInvAmt: number
     minReturn: number
@@ -384,9 +380,9 @@ export interface MfHomePageDetails {
     return: number
     fundType: string
     lockInPeriod: number
-  }
-  
-  export interface AmcDetails {
+}
+
+export interface AmcDetails {
     amc: string
     description: string
     mfCount: string
@@ -394,14 +390,14 @@ export interface MfHomePageDetails {
     amcCode: string
     website: string
     etfCount: number
-  }
-  
-  export interface Label {
+}
+
+export interface Label {
     title: string
     description: string
-  }
-  
-  export interface MfHomePageFundmanager {
+}
+
+export interface MfHomePageFundmanager {
     fmCode: number
     name: string
     imgUrl: string
@@ -410,27 +406,26 @@ export interface MfHomePageDetails {
     pastExp: string
     aumInCr: number
     funds: Fund[]
-  }
-  
-  export interface Fund {
+}
+
+export interface Fund {
     sector: string
     subsector: string
     option: string
     name: string
     mfId: string
     ratios: Ratio2[]
-  }
-  
-  export interface Ratio2 {
+}
+
+export interface Ratio2 {
     backL: string
     value?: number
-  }
-  
-  export interface InvCheckList {
+}
+
+export interface InvCheckList {
     icid: string
     title: string
     description: string
     state: string
     explanation: string
-  }
-  
+}

@@ -1,11 +1,18 @@
 import React from "react";
 import Link from "next/link";
-import { IpoData, Props } from "@/components/interfaces";
+import { IpoData, IpoMainHomePageProps } from "@/components/interfaces";
 
 
-const UpcomingIpo: React.FC<Props> = ({ data }) => {
+const UpcomingIpo: React.FC<IpoMainHomePageProps> = ({ upcomingData, smeData }) => {
   const keystoshow = ["company_name", "open", "close"];
   const headers = ["Company Name", "Open", "Close"];
+
+  const filterData = (data: IpoData[]) =>
+    data.filter(item => item.company_name || item.open || item.close);
+
+  const filteredUpcomingData = filterData(upcomingData);
+  const filteredSmeData = filterData(smeData);
+
   return (
     <section>
       <div className="container">
@@ -27,7 +34,7 @@ const UpcomingIpo: React.FC<Props> = ({ data }) => {
                     </thead>
                   )}
                   <tbody>
-                    {data.upcomingData.map((item, index) => (
+                    {filteredUpcomingData.map((item, index) => (
                       <tr key={index}>
                         {keystoshow.map((key) => (
                           <td key={key} className="py-3">
@@ -59,9 +66,9 @@ const UpcomingIpo: React.FC<Props> = ({ data }) => {
             <div className="lg:col-6 md:col-6 mb-8 text-center">
               <h3 className="mb-4">SME Ipo's</h3>
               <div className="relative overflow-x-auto">
-                <table className="lg:w-full text-sm text-left text-gray-500 ">
+                <table className="lg:w-full text-sm text-left text-gray-500">
                   {headers && headers.length > 0 && (
-                    <thead className="text-md text-gray-700 bg-gray-50  ">
+                    <thead className="text-md text-gray-700 bg-gray-50">
                       <tr>
                         {headers.map((header, index) => (
                           <th key={index} className="py-2">
@@ -72,7 +79,7 @@ const UpcomingIpo: React.FC<Props> = ({ data }) => {
                     </thead>
                   )}
                   <tbody>
-                    {data.smeData.map((item, index) => (
+                    {filteredSmeData.map((item, index) => (
                       <tr key={index}>
                         {keystoshow.map((key) => (
                           <td key={key} className="py-3">

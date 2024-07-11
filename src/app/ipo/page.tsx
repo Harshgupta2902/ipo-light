@@ -7,17 +7,17 @@ import HomeFaq from "@/components/ipo/home/HomeFaq";
 import ImageFallback from "@/components/common/ImageFallback";
 import { endpoints } from "@/api/endpoints";
 import { get } from "@/api/api";
-import { Props } from "@/components/interfaces";
+import { IpoMainHomePageProps } from "@/components/interfaces";
 const Home: React.FC = () => {
-  const [result, setResult] = useState<Props["data"]>({ upcomingData: [], smeData: [] });
+  const [result, setResult] = useState<IpoMainHomePageProps>({ upcomingData: [], smeData: [] });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await get(endpoints.homePage);
-        setResult(response.data);
+        setResult(response);
       } catch (error) {
-        console.error("Error fetching blog posts:", error);
+        console.error("Error fetching home Page:", error);
       }
 
     };
@@ -64,7 +64,7 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
-      <UpcomingIpo data={result} />
+      <UpcomingIpo smeData={result.smeData} upcomingData={result.upcomingData} />
 
       <HomeFaq />
     </>
