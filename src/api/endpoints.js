@@ -8,6 +8,8 @@ export const endpoints = {
   gmpIpo: `${baseURL}gmp`,
   ipoForms: `${baseURL}forms`,
   ipoBuyBack: `${baseURL}buyback`,
+  smeipo: `${baseURL}sme`,
+  iposubs: `${baseURL}subs`,
 
 }
 

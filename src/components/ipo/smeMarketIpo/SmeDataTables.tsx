@@ -33,7 +33,7 @@ export default function SmeDataTable({ data }: { data: any }) {
                     </thead>
                   )}
                   <tbody>
-                    {data.sme.map(
+                    {data.smeData.map(
                       (item: SmeDataTables, index: number) => (
                         <tr key={index}>
                           {keysToDisplay.map((key) => (

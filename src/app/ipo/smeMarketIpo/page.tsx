@@ -1,24 +1,18 @@
-"use server";
+"use client";
 
 import axios from "axios";
 
-import SmeDataTables from "../../../components/ipo/smeMarketIpo/SmeDataTables";
-import SmeFaq from "../../../components/ipo/smeMarketIpo/SmeFaq";
+
 import { endpoints } from "@/api/endpoints";
+import SmeDataTable from "@/components/ipo/smeMarketIpo/SmeDataTables";
+import SmeFaq from "@/components/ipo/smeMarketIpo/SmeFaq";
 
 const Home = async () => {
   let result = null;
 
   try {
     const response = await axios.get(
-      endpoints.smeData,
-      {
-        headers: {
-          "Cache-Control": "no-cache",
-          Pragma: "no-cache",
-          Expires: "0",
-        },
-      },
+      endpoints.smeipo,
     );
     result = response.data;
   } catch (error) {
@@ -27,7 +21,7 @@ const Home = async () => {
 
   return (
     <>
-      <SmeDataTables data={result} />
+      <SmeDataTable data={result} />
       <SmeFaq />
     </>
   );

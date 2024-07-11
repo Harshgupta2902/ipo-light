@@ -1,23 +1,17 @@
-"use server";
+"use client";
 
 import axios from "axios";
 
-import SubsCriptionDataTables from "../../../components/ipo/subscriptionStatus/SubsCriptionDataTables";
-import SubsCriptionFaq from "../../../components/ipo/subscriptionStatus/SubsCriptionFaq";
 import { endpoints } from "@/api/endpoints";
+import SubsCriptionDataTable from "@/components/ipo/subscriptionStatus/SubsCriptionDataTables";
+import SubscriptionFaq from "@/components/ipo/subscriptionStatus/SubsCriptionFaq";
 
 const Home = async () => {
   let result = null;
 
   try {
     const response = await axios.get(
-      endpoints.subscriptionData, {
-      headers: {
-        "Cache-Control": "no-cache",
-        Pragma: "no-cache",
-        Expires: "0",
-      },
-    },
+      endpoints.iposubs,
     );
     result = response.data;
   } catch (error) {
@@ -27,8 +21,8 @@ const Home = async () => {
   return (
     <>
 
-      <SubsCriptionDataTables data={result} />
-      <SubsCriptionFaq />
+      <SubsCriptionDataTable data={result} />
+      <SubscriptionFaq />
     </>
   );
 };
