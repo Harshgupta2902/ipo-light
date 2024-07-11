@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import axios from "axios";
 import GmpDataTables from "../../../components/ipo/greyMarketIpo/GmpDataTables";
@@ -11,14 +11,7 @@ const Home = async () => {
 
   try {
     const response = await axios.get(
-      endpoints.gmpData,
-      {
-        headers: {
-          "Cache-Control": "no-cache",
-          Pragma: "no-cache",
-          Expires: "0",
-        },
-      },
+      endpoints.gmpIpo,
     );
     result = response.data;
   } catch (error) {
