@@ -34,7 +34,7 @@ const upcomingIpo = [
     }
 ];
 
-export default function upcomingFaq() {
+export default function UpcomingFaq() {
 
   return (
     <section className="section">
