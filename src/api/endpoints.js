@@ -1,7 +1,6 @@
 // const baseURL = "https://ipo.onlineinfotech.net/Apis/";
 const baseURL = "https://apis-iota-five.vercel.app/api/";
 
-
 export const endpoints = {
   homePage: `${baseURL}main`,
   upcomingIpo: `${baseURL}ipo`,
@@ -11,9 +10,14 @@ export const endpoints = {
   smeipo: `${baseURL}sme`,
   iposubs: `${baseURL}subs`,
 
-}
-
-
+  indices: `${baseURL}getIndices`,
+  gainers: `${baseURL}getTrend?type=gainers`,
+  losers: `${baseURL}getTrend?type=losers`,
+  mostActive: `${baseURL}getTrend?type=active`,
+  approachingHigh: `${baseURL}getTrend?type=approachingHigh`,
+  approachingLow: `${baseURL}getTrend?type=approachingLow`,
+  
+};
 
 // export const endpoints = {
 //   // Data Tables
