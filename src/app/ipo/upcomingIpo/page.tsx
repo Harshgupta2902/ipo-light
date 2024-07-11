@@ -1,9 +1,10 @@
 "use client";
 
 import axios from "axios";
-import UpcomingDataTables from "../../../components/ipo/upcomingIpo/UpcomingDataTables";
-import UpcomingFaq from "../../../components/ipo/upcomingIpo/upcomingFaq";
+
 import { endpoints } from "@/api/endpoints";
+import UpcomingDataTable from "@/components/ipo/upcomingIpo/UpcomingDataTables";
+import UpcomingFaq from "@/components/ipo/upcomingIpo/upcomingFaq";
 
 const Home = async () => {
   let result = null;
@@ -18,7 +19,7 @@ const Home = async () => {
 
   return (
     <>
-      <UpcomingDataTables data={result} />
+      <UpcomingDataTable data={result} />
       <UpcomingFaq />
     </>
   );

@@ -1,9 +1,10 @@
 "use client";
 
 import axios from "axios";
-import FormsDataTables from "../../../components/ipo/ipoForms/FormsDataTables";
-import FormsFaq from "../../../components/ipo/ipoForms/FormsFaq";
+
 import { endpoints } from "@/api/endpoints";
+import FormsDataTable from "@/components/ipo/ipoForms/FormsDataTables";
+import FormsFaq from "@/components/ipo/ipoForms/FormsFaq";
 
 const Home = async () => {
   let result = null;
@@ -19,7 +20,7 @@ const Home = async () => {
 
   return (
     <>
-      <FormsDataTables data={result} />
+      <FormsDataTable data={result} />
       <FormsFaq />
     </>
   );

@@ -1,10 +1,11 @@
 "use client";
 
 import axios from "axios";
-import GmpDataTables from "../../../components/ipo/greyMarketIpo/GmpDataTables";
-import OldGmpDataTables from "../../../components/ipo/greyMarketIpo/OldGmpDataTables";
-import GmpFaq from "../../../components/ipo/greyMarketIpo/GmpFaq";
+
 import { endpoints } from "@/api/endpoints";
+import GmpDataTables from "@/components/ipo/greyMarketIpo/GmpDataTables";
+import OldGmpDataTables from "@/components/ipo/greyMarketIpo/OldGmpDataTables";
+import GmpFaq from "@/components/ipo/greyMarketIpo/GmpFaq";
 
 const Home = async () => {
   let result = null;
