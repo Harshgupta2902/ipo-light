@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import axios from "axios";
 import UpcomingDataTables from "../../../components/ipo/upcomingIpo/UpcomingDataTables";
@@ -10,15 +10,7 @@ const Home = async () => {
 
   try {
     const response = await axios.get(
-      endpoints.upcomingIpo,
-      {
-        headers: {
-          "Cache-Control": "no-cache",
-          Pragma: "no-cache",
-          Expires: "0",
-        },
-      },
-    );
+      endpoints.upcomingIpo,);
     result = response.data;
   } catch (error) {
     console.error("Error fetching menu data:", error);
