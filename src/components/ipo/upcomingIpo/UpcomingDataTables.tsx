@@ -42,7 +42,7 @@ export default function UpcomingDataTable({ data }: { data: any }) {
                                     textDecoration: "none",
                                     fontSize: "medium",
                                   }}
-                                  href={"/ipo/details/" + item.slug}
+                                  href={"/ipo/details/" + item.link.replaceAll("https://ipowatch.in/", "")}
                                   target={"_blank"}
                                   rel="noopener"
                                 >

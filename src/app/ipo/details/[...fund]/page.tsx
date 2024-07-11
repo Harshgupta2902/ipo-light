@@ -1,16 +1,84 @@
-"use client";
+"use client"
+import Link from "next/link";
+
 import { get } from "@/api/api";
 import { endpoints } from "@/api/endpoints";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import "@/style/main.css";
-import { BuyBackData, GmpData, IPODetailsData, IPODetailsMain, SmeData, UpcomingData } from "@/components/interfaces";
+
+
+export interface Root {
+    ulAfterHeadingsResult: UlAfterHeadingsResult[]
+    tables: Table[]
+    slug: string
+    link: string
+}
+
+export interface UlAfterHeadingsResult {
+    heading: string
+    items: string[]
+}
+
+export interface Table {
+    name: string
+    data: string
+}
+
+
+
+export interface AdditionalIpoData {
+    upcomingData: UpcomingData[]
+    gmp: Gmp[]
+    buyback: Buyback[]
+    sme: Sme[]
+}
+
+export interface UpcomingData {
+    company_name: string
+    date: string
+    size: string
+    price: string
+    status: string
+    link: string
+    slug: string
+}
+
+export interface Gmp {
+    company_name: string
+    link: string
+    type: string
+    ipo_gmp: string
+    price: string
+    gain: string
+    kostak: string
+    subject: string
+    slug: string
+}
+
+export interface Buyback {
+    company_name: string
+    date: string
+    open: string
+    close: string
+    price: string
+    link: string
+    slug: string
+}
+
+export interface Sme {
+    company_name: string
+    date: string
+    price: string
+    Platform: string
+    slug: string
+    link?: string
+}
 
 
 const IpoDetails: React.FC = () => {
-    const [ipoDetails, setIpoDetails] = useState<IPODetailsData | null>(null);
-    const [additionalData, setAdditionalData] = useState<IPODetailsMain | null>(null);
+    const [ipoDetails, setIpoDetails] = useState<Root | null>(null)
+    const [additionalData, setAdditionalData] = useState<AdditionalIpoData | null>(null);
     const [error, setError] = useState<string | null>(null);
 
     const pathname = usePathname();
@@ -20,28 +88,21 @@ const IpoDetails: React.FC = () => {
             try {
                 const response = await get(
                     endpoints.ipoDetails +
-                    "?slug=" +
+                    "?link=" +
                     pathname.replace("/ipo/details/", "")
                 );
-
                 if (response.message === "failed") {
                     setError(response.message);
                     setIpoDetails(null);
                 } else {
-                    const parsedTables = JSON.parse(response.result.tables);
-                    const parsedLists = JSON.parse(response.result.lists);
-                    const updatedResponse = {
-                        ...response.result,
-                        tables: parsedTables,
-                        lists: parsedLists,
-                    };
-                    setIpoDetails(updatedResponse);
-                    console.log(updatedResponse);
+                    setIpoDetails(response);
+                    console.log(response);
                 }
             } catch (error) {
                 console.error("Error fetching IPO details:", error);
             }
         };
+
         const fetchAdditionalIpo = async () => {
             try {
                 const response1 = await get(endpoints.additionalIpo);
@@ -55,53 +116,18 @@ const IpoDetails: React.FC = () => {
 
         fetchIpoDetails();
         fetchAdditionalIpo();
+
     }, [pathname]);
-
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
-
-    if (!ipoDetails) {
-        return <div>Loading...</div>;
-    }
 
     return (
         <section className="lg:pt-20">
             <div className="container">
-                <div className="flex justify-between border-b border-gray-200 items-center max-sm:items-start">
-                    <div className="text-[48px] lg:pl-6 font-clashSemibold text-[#0A0F1E] max-md:text-2xl">
-                        {ipoDetails.company_name}
-                    </div>
-
-                    <button
-                        type="button"
-                        className="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
-                    >
-                        <svg
-                            className="w-6 h-5 me-2 -ms-1 text-gray-500"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                        >
-                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                        </svg>
-                        <p>
-                            {
-                                ipoDetails.date && ipoDetails.date === "TBA"
-                                    ? "Coming Soon"
-                                    : ipoDetails.date
-                            }
-                        </p>
-                    </button>
-                </div>
-
                 <main className="mx-auto max-w-8xl sm:px-6 lg:px-8 ">
                     <section aria-labelledby="products-heading " className="mt-[4rem]">
                         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                             <div className="lg:col-span-3">
-                                {ipoDetails.lists.map((section: any, index: any) => (
-                                    <div key={index} className="mb-[4rem]">
+                                {ipoDetails?.ulAfterHeadingsResult.map((section: any, index: any) => (
+                                    <div key={index} className="mb-[2.5rem]">
                                         <h3 className="mb-5">{section.heading}</h3>
                                         <ul className="space-y-1 text-gray-500 list-inside">
                                             {section.items.map((item: any, i: any) => (
@@ -122,7 +148,7 @@ const IpoDetails: React.FC = () => {
                                     </div>
                                 ))}
                                 <div className="row">
-                                    {[...ipoDetails.tables.slice(1), ipoDetails.tables[0]].map(
+                                    {ipoDetails && ipoDetails.tables && [...ipoDetails.tables.slice(1), ipoDetails.tables[0]].map(
                                         (table, index) => (
                                             <div key={index} className="container content text-center">
                                                 <>
@@ -171,9 +197,9 @@ const IpoDetails: React.FC = () => {
                                                                         {item.company_name}
                                                                     </Link>
                                                                     <p className="text-sm text-gray-500 truncate">
-                                                                        {`${item.open === "TBA"
+                                                                        {`${item.date === "TBA"
                                                                             ? "Coming Soon"
-                                                                            : `${item.open} - ${item.close}`
+                                                                            : `${item.date}`
                                                                             }`}
                                                                     </p>
                                                                 </>
@@ -185,50 +211,15 @@ const IpoDetails: React.FC = () => {
                                         </div>
                                     )}
                                 {additionalData &&
-                                    additionalData.smeData &&
-                                    additionalData.smeData.length > 0 && (
+                                    additionalData.sme &&
+                                    additionalData.sme.length > 0 && (
                                         <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 mb-6">
                                             <h5 className="text-xl font-bold leading-none text-gray-900 mb-4">
                                                 SME IPOs
                                             </h5>
                                             <div className="flow-root">
                                                 <ul role="list" className="divide-y divide-gray-200">
-                                                    {additionalData.smeData.map((item: SmeData) => (
-                                                        <li className="py-3 sm:py-4" key={item.slug}>
-                                                            <>
-                                                                <Link
-                                                                    className="text-sm font-medium text-gray-900 truncate"
-                                                                    href={`/ipo/details/${item.slug}`}
-                                                                    target={"_blank"}
-                                                                    rel="noopener noreferrer"
-                                                                    prefetch={false}
-                                                                >
-                                                                    {item.company_name}
-                                                                </Link>
-                                                                <p className="text-sm text-gray-500 truncate">
-                                                                    {`${item.open === "TBA"
-                                                                        ? "Coming Soon"
-                                                                        : `${item.open} - ${item.close}`
-                                                                        }`}
-                                                                </p>
-                                                            </>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    )}
-
-                                {additionalData &&
-                                    additionalData.gmpData &&
-                                    additionalData.gmpData.length > 0 && (
-                                        <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 mb-6">
-                                            <h5 className="text-xl font-bold leading-none text-gray-900 mb-4">
-                                                GMP IPOs
-                                            </h5>
-                                            <div className="flow-root">
-                                                <ul role="list" className="divide-y divide-gray-200">
-                                                    {additionalData.gmpData.map((item: GmpData) => (
+                                                    {additionalData.sme.map((item: Sme) => (
                                                         <li className="py-3 sm:py-4" key={item.slug}>
                                                             <>
                                                                 <Link
@@ -255,16 +246,51 @@ const IpoDetails: React.FC = () => {
                                     )}
 
                                 {additionalData &&
-                                    additionalData.buyBackData &&
-                                    additionalData.buyBackData.length > 0 && (
+                                    additionalData.gmp &&
+                                    additionalData.gmp.length > 0 && (
+                                        <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 mb-6">
+                                            <h5 className="text-xl font-bold leading-none text-gray-900 mb-4">
+                                                GMP IPOs
+                                            </h5>
+                                            <div className="flow-root">
+                                                <ul role="list" className="divide-y divide-gray-200">
+                                                    {additionalData.gmp.map((item: Gmp) => (
+                                                        <li className="py-3 sm:py-4" key={item.slug}>
+                                                            <>
+                                                                <Link
+                                                                    className="text-sm font-medium text-gray-900 truncate"
+                                                                    href={`/ipo/details/${item.slug}`}
+                                                                    target={"_blank"}
+                                                                    rel="noopener noreferrer"
+                                                                    prefetch={false}
+                                                                >
+                                                                    {item.company_name}
+                                                                </Link>
+                                                                <p className="text-sm text-gray-500 truncate">
+                                                                    {`Gain:${item.gain}`}
+                                                                </p>
+                                                                <p className="text-sm text-gray-500 truncate">
+                                                                    {`Price:${item.price}`}
+                                                                </p>
+                                                            </>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                {additionalData &&
+                                    additionalData.buyback &&
+                                    additionalData.buyback.length > 0 && (
                                         <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 mb-6">
                                             <h5 className="text-xl font-bold leading-none text-gray-900 mb-4">
                                                 BuyBack IPOs
                                             </h5>
                                             <div className="flow-root">
                                                 <ul role="list" className="divide-y divide-gray-200">
-                                                    {additionalData.buyBackData.map(
-                                                        (item: BuyBackData) => (
+                                                    {additionalData.buyback.map(
+                                                        (item: Buyback) => (
                                                             <li className="py-3 sm:py-4" key={item.slug}>
                                                                 <>
                                                                     <Link

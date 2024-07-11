@@ -9,6 +9,8 @@ export const endpoints = {
   ipoBuyBack: `${baseURL}buyback`,
   smeipo: `${baseURL}sme`,
   iposubs: `${baseURL}subs`,
+  ipoDetails: `${baseURL}getDetails`,
+  additionalIpo: `${baseURL}getAdditionalIpo`,
 
   indices: `${baseURL}getIndices`,
   gainers: `${baseURL}getTrend?type=gainers`,
