@@ -6,6 +6,7 @@ export const endpoints = {
   homePage: `${baseURL}main`,
   upcomingIpo: `${baseURL}ipo`,
   gmpIpo: `${baseURL}gmp`,
+  ipoForms: `${baseURL}forms`,
 
 }
 

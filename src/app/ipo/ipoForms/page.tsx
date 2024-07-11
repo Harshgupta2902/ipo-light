@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import axios from "axios";
 import FormsDataTables from "../../../components/ipo/ipoForms/FormsDataTables";
@@ -10,14 +10,7 @@ const Home = async () => {
 
   try {
     const response = await axios.get(
-      endpoints.formsData,
-      {
-        headers: {
-          "Cache-Control": "no-cache",
-          Pragma: "no-cache",
-          Expires: "0",
-        },
-      },
+      endpoints.ipoForms,
     );
     result = response.data;
   } catch (error) {
