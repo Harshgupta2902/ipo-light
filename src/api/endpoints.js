@@ -18,6 +18,10 @@ export const endpoints = {
   mostActive: `${baseURL}getTrend?type=active`,
   approachingHigh: `${baseURL}getTrend?type=approachingHigh`,
   approachingLow: `${baseURL}getTrend?type=approachingLow`,
+
+
+
+  insertBlog: `${baseURL}insertBlog`,
   
 };
 
