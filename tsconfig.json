@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/api/api.js", "src/app/[...scrap]/page.tsx", "src/app/mutual-funds/api/[isin].js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/api/api.js", "src/app/[...scrap]/page.tsx", "src/app/mutual-funds/api/[isin].js", "src/app/insertblog/page.js"],
   "exclude": ["node_modules"]
 }
