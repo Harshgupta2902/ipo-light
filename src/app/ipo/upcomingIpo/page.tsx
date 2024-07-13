@@ -1,33 +1,21 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import axios from "axios";
+
 import { endpoints } from "@/api/endpoints";
 import UpcomingDataTable from "@/components/ipo/upcomingIpo/UpcomingDataTables";
 import UpcomingFaq from "@/components/ipo/upcomingIpo/upcomingFaq";
-import { get } from "@/api/api";
 
-// const Home = async () => {
-const Home: React.FC = () => {
+const Home = async () => {
+  let result = null;
 
-  const [result, setResult] = useState<any>(null);
-
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await get(endpoints.upcomingIpo);
-        setResult(response);
-
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        console.log("APi call ended");
-      }
-    };
-
-    fetchData();
-  }, []);
+  try {
+    const response = await axios.get(
+      endpoints.upcomingIpo,);
+    result = response.data;
+  } catch (error) {
+    console.error("Error fetching menu data:", error);
+  }
 
   return (
     <>
