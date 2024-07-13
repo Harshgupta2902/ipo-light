@@ -122,7 +122,6 @@ export default function HomePageDetails({
                 </>
             )}
 
-
             <br />
 
             <div className="row">
@@ -151,27 +150,6 @@ export default function HomePageDetails({
                 ))}
             </div>
 
-            {/* <h5 className="font-bold">Peers</h5>
-            <div className="flex flex-row overflow-x-auto">
-                {mfHomeData?.summary?.peers.map((label, index) => (
-                    <div key={index} className="flex-shrink-0 mb-4 md:w-1/2 lg:w-1/3 xl:w-1/4 px-2">
-                        <div className="max-w-sm rounded-lg overflow-hidden shadow-lg px-6 py-4 border border-gray-500">
-                            <div className="flex items-center">
-                                <img
-                                    className="w-10 h-10 rounded-full mr-4"
-                                    src="https://assets.tickertape.in/sector-icons/mutualfund_large_size.png"
-                                    alt={index.toString()}
-                                />
-                                <div className="text-sm">
-                                    <p className="text-gray-900 leading-none">{label.mfId}</p>
-                                    <p className="text-xs mt-1.5">{label.name}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div> */}
-
             <h5 className="font-bold">Peers</h5>
             <div className="relative flex flex-row overflow-x-auto">
                 {mfHomeData?.summary?.peers.map((label, index) => (
@@ -198,27 +176,44 @@ export default function HomePageDetails({
                             </span>
                         </p>
                     </div>
-                    // <div
-                    //     key={index}
-                    //     className="flex-shrink-0 mb-4 md:w-1/2 lg:w-1/3 xl:w-1/4 px-2"
-                    // >
-                    //     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg px-6 py-4 border border-gray-500">
-                    //         <div className="flex items-center">
-                    //             <img
-                    //                 className="w-10 h-10 rounded-full mr-4"
-                    //                 src="https://assets.tickertape.in/sector-icons/mutualfund_large_size.png"
-                    //                 alt={index.toString()}
-                    //             />
-                    //             <div className="text-sm">
-                    //                 <p className="text-gray-900 leading-none">{label.mfId}</p>
-                    //                 <p className="text-xs mt-1.5">{label.name}</p>
-                    //             </div>
-                    //         </div>
-                    //     </div>
-                    // </div>
                 ))}
             </div>
             <br />
+            <br />
+            <div className="row">
+                <div className="col-6">
+                    <h5 className="font-bold mb-4">Fund Managers</h5>
+                    <div className="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none">
+                        {mfHomeData.fundmanager.map((fundManager) => (
+                            <div key={fundManager.fmCode}
+                                className="relative flex items-center gap-4 pt-0 pb-0 mx-0 mt-6 overflow-hidden text-gray-700 bg-transparent shadow-none bg-clip-border">
+                                <img
+                                    src={fundManager.imgUrl}
+                                    alt={fundManager.name}
+                                    className="relative inline-block h-[58px] w-[58px] rounded-md object-cover object-center" />
+                                <div className="flex w-full flex-col gap-0.5">
+                                    <div className="flex items-center justify-between">
+                                        <h5
+                                            className="block text-lg font-semibold leading-snug tracking-normal text-blue-gray-900 hover:text-0088EA-900">
+                                            {fundManager.name}
+                                        </h5>
+                                    </div>
+                                    <p className="block text-sm antialiased font-light  text-blue-gray-900">
+                                        {`Exp: ${fundManager.exp} years`}
+                                        <span className="ml-4 text-blue-gray-500">Funds: {fundManager.funds.length}</span>                            </p>
+                                </div>
+                            </div>
+                        ))}
+
+                    </div>
+                </div>
+                <div className="col-6">
+                    <h5 className="font-bold mb-4">AMC Profile</h5>
+                    <p className="text-sm">{mfHomeData.summary.amcDetails.description}</p>
+
+                </div>
+            </div>
+
         </div>
     );
 }
