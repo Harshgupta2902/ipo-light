@@ -37,6 +37,8 @@ const MutualFundsDetails: React.FC = () => {
                 const response = await get(endpoints.getMfHomePage + "?mf=" + fundCode);
                 if (response) {
                     setMfHomePageData(response);
+                    console.log(response);
+
                 } else {
                     setError("Data not found");
                 }
@@ -48,30 +50,9 @@ const MutualFundsDetails: React.FC = () => {
             }
         };
 
-        // const fetchNavData = async (isin: string) => {
-        //     try {
-        //         const snapshot = await db
-        //             .collection("ISINs")
-        //             .doc(isin)
-        //             .collection("NAVs")
-        //             .get();
-
-        //         const navDataArray = snapshot.docs.map((doc) => ({
-        //             navDate: doc.id,
-        //             navValue: doc.data().navValue,
-        //         }));
-
-        //         setNavData(navDataArray);
-        //         console.log("Nav Data fetched successfully for ISIN:", isin);
-        //     } catch (error) {
-        //         console.error("Error fetching Nav Data:", error);
-        //         setError("Error fetching NAV data");
-        //     }
-        // };
-
         if (fundCode) {
             fetchMfDetails();
-            // fetchNavData("INF579M01AY9");
+
         }
     }, [fundCode]);
 
@@ -80,7 +61,7 @@ const MutualFundsDetails: React.FC = () => {
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
-    if (!mfHomeData) return null; // or handle initial load state as needed
+    if (!mfHomeData) return null;
     return (
         <section className="pt-0">
             <div className="container">
@@ -198,7 +179,7 @@ const MutualFundsDetails: React.FC = () => {
                                     </div>
                                     <div id="default-tab-content">
                                         <div className={`${activeTab === "Home" ? "block" : "hidden"}`} role="tabpanel">
-                                            <HomePageDetails fundCode={fundCode ?? ""} mfHomeData={mfHomeData} />
+                                            <HomePageDetails fundCode={fundCode ?? ""} mfHomeData={mfHomeData} isin={mfHomeData.summary.meta.isin} />
                                         </div>
                                         <div className={`${activeTab === "Peers" ? "block" : "hidden"}`} role="tabpanel">
                                             Peers

@@ -20,19 +20,16 @@ export const endpoints = {
   approachingLow: `${baseURL}getTrend?type=approachingLow`,
 
   getMfScreener: `${baseURL}getMfScreener`,
+  getMfHomePage: `${baseURL}getMfHomePage`,
+  getNav: `${baseURL}getNav`,
 
   insertBlog: `${baseURL}insertBlog`,
 
-
-
-
-//   // Check pan
+  //   // Check pan
   checkPan: `${baseURL}checkPan`,
   blogDetails: `${baseURL}getBlogDetails`,
   getBlogs: `${baseURL}getBlogs`,
 
-
-  getMfHomePage: `${baseURL}getMfHomePage`,
   getMfHomeChart: `${baseURL}getMfHomeChart`,
 };
 
