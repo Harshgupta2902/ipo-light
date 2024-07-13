@@ -572,7 +572,7 @@ textarea {
     -moz-appearance: none;
     appearance: none;
     background-color: #fff;
-    border-color: #6b7280;
+    /* border-color: #6b7280; */
     border-width: 1px;
     border-radius: 0;
     padding: .5rem .75rem;
@@ -614,13 +614,13 @@ textarea:focus {
 
 input::-moz-placeholder,
 textarea::-moz-placeholder {
-    color: #6b7280;
+    /* color: #6b7280; */
     opacity: 1
 }
 
 input::placeholder,
 textarea::placeholder {
-    color: #6b7280;
+    /* color: #6b7280; */
     opacity: 1
 }
 
@@ -685,7 +685,7 @@ select {
     width: 1rem;
     color: #2563eb;
     background-color: #fff;
-    border-color: #6b7280;
+    /* border-color: #6b7280; */
     border-width: 1px;
     --tw-shadow: 0 0 #0000
 }

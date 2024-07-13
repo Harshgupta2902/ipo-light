@@ -28,13 +28,12 @@ const MutualFundsDetails: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const [activeTab, setActiveTab] = useState<string>("Home");
-    const [navData, setNavData] = useState<any[]>([]); // Adjust the type according to your nav data structure
+    const [navData, setNavData] = useState<any[]>([]);
 
     useEffect(() => {
         const fetchMfDetails = async () => {
             setIsLoading(true);
             try {
-                // Fetch mutual fund homepage data
                 const response = await get(endpoints.getMfHomePage + "?mf=" + fundCode);
                 if (response) {
                     setMfHomePageData(response);

@@ -128,9 +128,9 @@ const Home: React.FC = () => {
                   style={{ justifyContent: "space-between" }}
                 >
                   <p className="mb-4">Market and Sector</p>
-                  <a href="#">
+                  {/* <a href="#">
                     <p className="mb-4 a-blue">View All</p>
-                  </a>
+                  </a> */}
                 </div>
                 <div className="flex flex-wrap justify-center mt-0">
                   {loadingIndices ? (

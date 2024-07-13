@@ -147,9 +147,12 @@ const LumpsumCalculator = () => {
     }
   };
 
+  
+
+
   const handleDurationChange = (e: any) => {
     const value = parseInt(e.target.value);
-    if (!isNaN(value) && value >= 1 && value <= 50) {
+    if (!isNaN(value) && value >= 0 && value <= 50) {
       setDuration(value);
       calculateLumpsum(amount, value, rate);
     }

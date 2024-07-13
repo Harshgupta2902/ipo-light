@@ -5,7 +5,7 @@ const sectionsData = [
     title: "Mutual Funds - Maximize Your Returns",
     imageSrc: "/mf.png",
     items: [
-      "Get up to 1% Higher Returns with Direct Plans",
+      "Get up to 12% Higher Returns with Direct Plans",
       "No Hidden Charges or Investment Fees",
       "Switch from Regular to Direct Mutual Funds",
     ],

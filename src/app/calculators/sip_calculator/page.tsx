@@ -213,11 +213,12 @@ const SIPCalculator = () => {
 
   const handleDurationChange = (e: any) => {
     const value = parseInt(e.target.value);
-    if (!isNaN(value) && value >= 1 && value <= 50) {
+    if (!isNaN(value) && value >= 0 && value <= 50) {
       setDuration(value);
       calculateSIP(amount, value, rate);
     }
   };
+
 
   const handleRateChange = (e: any) => {
     const value = parseFloat(e.target.value);
@@ -291,10 +292,10 @@ const SIPCalculator = () => {
                   {chartData.labels ? (
                     <Bar
                       data={chartData}
-                      height={200} 
-                      width={800} 
+                      height={200}
+                      width={800}
                       options={{
-                        maintainAspectRatio: false, 
+                        maintainAspectRatio: false,
                         plugins: {
                           tooltip: {
                             callbacks: {
@@ -314,7 +315,7 @@ const SIPCalculator = () => {
                               text: "Year",
                             },
                             grid: {
-                              display: false, 
+                              display: false,
                             },
                           },
                           y: {
