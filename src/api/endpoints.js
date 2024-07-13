@@ -19,10 +19,21 @@ export const endpoints = {
   approachingHigh: `${baseURL}getTrend?type=approachingHigh`,
   approachingLow: `${baseURL}getTrend?type=approachingLow`,
 
-
+  getMfScreener: `${baseURL}getMfScreener`,
 
   insertBlog: `${baseURL}insertBlog`,
-  
+
+
+
+
+//   // Check pan
+  checkPan: `${baseURL}checkPan`,
+  blogDetails: `${baseURL}getBlogDetails`,
+  getBlogs: `${baseURL}getBlogs`,
+
+
+  getMfHomePage: `${baseURL}getMfHomePage`,
+  getMfHomeChart: `${baseURL}getMfHomeChart`,
 };
 
 // export const endpoints = {

@@ -30,38 +30,38 @@ export default function MutualFundsHomePage() {
 
     const mfFaq = [
         {
-          question: "Is investing in mutual funds profitable?",
-          answer: "Mutual funds are a type of investment where investors pool their money to invest in a diversified portfolio of stocks, bonds, and other securities. They can be profitable if you choose the right fund and stay invested for the long term."
+            question: "Is investing in mutual funds profitable?",
+            answer: "Mutual funds are a type of investment where investors pool their money to invest in a diversified portfolio of stocks, bonds, and other securities. They can be profitable if you choose the right fund and stay invested for the long term."
         },
         {
-          question: "How to choose a mutual fund that suits your financial objectives?",
-          answer: "To choose a mutual fund, first decide on your risk tolerance and investment horizon. Once you determine these, you can select the best mutual fund that aligns with your financial goals. Consider factors such as potential returns, risk levels, and fund categories like high return, tax-saving, and top-performing funds."
+            question: "How to choose a mutual fund that suits your financial objectives?",
+            answer: "To choose a mutual fund, first decide on your risk tolerance and investment horizon. Once you determine these, you can select the best mutual fund that aligns with your financial goals. Consider factors such as potential returns, risk levels, and fund categories like high return, tax-saving, and top-performing funds."
         },
         {
-          question: "Can I withdraw from a mutual fund anytime?",
-          answer: "Yes, you can withdraw your investment anytime if you have invested in open-ended mutual funds. However, certain types like ELSS (Equity Linked Savings Schemes) have lock-in periods."
+            question: "Can I withdraw from a mutual fund anytime?",
+            answer: "Yes, you can withdraw your investment anytime if you have invested in open-ended mutual funds. However, certain types like ELSS (Equity Linked Savings Schemes) have lock-in periods."
         },
         {
-          question: "How to invest in mutual funds?",
-          answer: "You can invest in mutual funds through various platforms. It's typically done online via websites or mobile apps offered by investment platforms."
+            question: "How to invest in mutual funds?",
+            answer: "You can invest in mutual funds through various platforms. It's typically done online via websites or mobile apps offered by investment platforms."
         },
         {
-          question: "How long does it take to start investing in mutual funds?",
-          answer: "The account opening process for investing in mutual funds is straightforward and often paperless. With all required details on hand, it can take as little as a few minutes to get started."
+            question: "How long does it take to start investing in mutual funds?",
+            answer: "The account opening process for investing in mutual funds is straightforward and often paperless. With all required details on hand, it can take as little as a few minutes to get started."
         },
         {
-          question: "What are the charges or commissions on mutual fund investments?",
-          answer: "Many platforms offer commission-free mutual fund investments. It's important to choose a platform that offers competitive or zero commission options to maximize your returns."
+            question: "What are the charges or commissions on mutual fund investments?",
+            answer: "Many platforms offer commission-free mutual fund investments. It's important to choose a platform that offers competitive or zero commission options to maximize your returns."
         },
         {
-          question: "Are mutual funds taxable? What are the tax implications on withdrawals?",
-          answer: "Yes, mutual funds are taxable based on the type and duration of investment. For instance, equity-oriented funds held for less than 12 months are subject to short-term capital gains tax. Long-term gains exceeding ₹1 lakh are taxed differently. Debt-oriented funds have different tax implications based on the holding period and the fund's exposure to stocks."
+            question: "Are mutual funds taxable? What are the tax implications on withdrawals?",
+            answer: "Yes, mutual funds are taxable based on the type and duration of investment. For instance, equity-oriented funds held for less than 12 months are subject to short-term capital gains tax. Long-term gains exceeding ₹1 lakh are taxed differently. Debt-oriented funds have different tax implications based on the holding period and the fund's exposure to stocks."
         },
         {
-          question: "How do investors earn returns from mutual funds?",
-          answer: "Returns from mutual funds come in two forms: dividends and capital gains. Dividends are distributions made by funds from their profits, while capital gains arise from selling investments at a higher price than purchased. Both dividends and capital gains are taxable."
+            question: "How do investors earn returns from mutual funds?",
+            answer: "Returns from mutual funds come in two forms: dividends and capital gains. Dividends are distributions made by funds from their profits, while capital gains arise from selling investments at a higher price than purchased. Both dividends and capital gains are taxable."
         }
-    ];    
+    ];
 
     return (
         <main>
@@ -142,21 +142,21 @@ export default function MutualFundsHomePage() {
             <section className="section">
                 <div className="container">
                     <div className="lg:col-5 mx-auto text-center">
-                    <h2>Frequently Asked Questions</h2>
-                    <p className="mt-4">
-                        Vestibulum ante ipsum primis in faucibus orci luctus ultrices
-                        posuere cubilia Curae Donec
-                    </p>
+                        <h2>Frequently Asked Questions</h2>
+                        <p className="mt-4">
+                            Vestibulum ante ipsum primis in faucibus orci luctus ultrices
+                            posuere cubilia Curae Donec
+                        </p>
                     </div>
                     <div className="row justify-center mt-12">
-                    {mfFaq.map((faqItem, index) => (
-                        <Accordion key={index} title={faqItem.question}>
-                        {faqItem.answer}
-                        </Accordion>
-                    ))}
+                        {mfFaq.map((faqItem, index) => (
+                            <Accordion key={index} title={faqItem.question}>
+                                {faqItem.answer}
+                            </Accordion>
+                        ))}
                     </div>
                 </div>
-                </section>
+            </section>
         </main>
     );
 }
