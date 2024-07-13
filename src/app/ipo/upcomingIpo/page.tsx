@@ -6,7 +6,9 @@ import UpcomingDataTable from "@/components/ipo/upcomingIpo/UpcomingDataTables";
 import UpcomingFaq from "@/components/ipo/upcomingIpo/upcomingFaq";
 import { get } from "@/api/api";
 
-const Home = async () => {
+// const Home = async () => {
+const Home: React.FC = () => {
+
   const [result, setResult] = useState<any>(null);
 
 
@@ -15,7 +17,7 @@ const Home = async () => {
     const fetchData = async () => {
       try {
         const response = await get(endpoints.upcomingIpo);
-        setResult(response.data);
+        setResult(response);
 
       } catch (error) {
         console.error('Error fetching data:', error);
