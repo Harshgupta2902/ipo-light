@@ -51,10 +51,10 @@ const menuData: MenuItem[] = [
       { label: "Others", url: "/calculators" },
     ],
   },
-  // {
-  //   label: "Blogs",
-  //   url: "/blogs",
-  // },
+  {
+    label: "Blogs",
+    url: "/blogs",
+  },
 ];
 
 export default function RootLayout({

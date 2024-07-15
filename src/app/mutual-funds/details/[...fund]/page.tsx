@@ -9,7 +9,6 @@ import HomePageDetails from "@/components/mutual-funds/HomePageDetails";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaCaretUp, FaCaretDown } from "react-icons/fa";
-import { Metadata } from 'next';
 import Head from 'next/head'
 
 
@@ -78,16 +77,16 @@ const MutualFundsDetails: React.FC = () => {
     return (
         <section className="pt-0">
             <Head>
-    <title>{'title'}</title>
-    <meta name="og:type" content="website"/>
-    <meta name="description" content={'description'}/>
-    <meta name="og:title" content={'title'}/>
-    <meta name="description" content={'description'}/>
-    <meta name="keywords" content={'keyword'}/>
-    <meta name="og:url" content={'url'}/>
-    <meta name="og:description" content={'description'}/>
-    <meta name="og:image" content={'image'}/>
-</Head>
+                <title>{'title'}</title>
+                <meta name="og:type" content="website" />
+                <meta name="description" content={'description'} />
+                <meta name="og:title" content={'title'} />
+                <meta name="description" content={'description'} />
+                <meta name="keywords" content={'keyword'} />
+                <meta name="og:url" content={'url'} />
+                <meta name="og:description" content={'description'} />
+                <meta name="og:image" content={'image'} />
+            </Head>
             <div className="container">
                 <main className="mx-auto max-w-8xl sm:px-6 lg:px-8 ">
                     <section aria-labelledby="products-heading " className="mt-[4rem]">
@@ -212,7 +211,7 @@ const MutualFundsDetails: React.FC = () => {
                                             Portfolio
                                         </div>
                                         <div className={`${activeTab === "fundManager" ? "block" : "hidden"}`} role="tabpanel">
-                                            <FundManagerDetails fundManagersDetails={mfHomeData.fundmanager}/>
+                                            <FundManagerDetails fundManagersDetails={mfHomeData.fundmanager} />
                                         </div>
                                     </div>
                                 </div>
