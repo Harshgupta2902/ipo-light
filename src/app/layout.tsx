@@ -11,6 +11,8 @@ import Header from "../components/common/Header";
 import { MenuItem } from "@/components/interfaces";
 import { get } from "@/api/api";
 import { endpoints } from "@/api/endpoints";
+import { usePathname } from "next/navigation";
+import path from "path";
 
 const poppins = Poppins({
   weight: "500",
@@ -54,13 +56,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
+  const pathname = usePathname();
   const [metadata, setMetadata] = useState<Metadata | null>(null);
+  console.log(pathname);
 
   useEffect(() => {
     const fetchMetadata = async () => {
       try {
-        const metaData = await get(endpoints.metaData);
+        const metaData = await get(endpoints.metaData + "?url=" + pathname);
         setMetadata(metaData);
         console.log(`metaData ${metaData}`);
       } catch (error) {
