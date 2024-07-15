@@ -7,6 +7,7 @@ import { get } from "@/api/api";
 import { endpoints } from "@/api/endpoints";
 import { MfHomePageDetails } from "../interfaces";
 import { FaCaretUp, FaCaretDown } from "react-icons/fa";
+import Link from "next/link";
 
 
 export interface ChartData {
@@ -53,6 +54,12 @@ export default function HomePageDetails({
         fetchMfDetails();
     }, [fundCode]);
 
+    const formatCurrency = (amount: any) => {
+        return new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'INR'
+        }).format(amount);
+    };
 
     return (
         <div>
@@ -193,10 +200,10 @@ export default function HomePageDetails({
                                     className="relative inline-block h-[58px] w-[58px] rounded-md object-cover object-center" />
                                 <div className="flex w-full flex-col gap-0.5">
                                     <div className="flex items-center justify-between">
-                                        <h5
-                                            className="block text-lg font-semibold leading-snug tracking-normal text-blue-gray-900 hover:text-0088EA-900">
+                                        <Link href={"?tab=fundManager"}> <h5
+                                            className="block text-lg font-semibold leading-snug tracking-normal cursor-pointer text-blue-gray-900 hover:text-hover-blue">
                                             {fundManager.name}
-                                        </h5>
+                                        </h5></Link>
                                     </div>
                                     <p className="block text-sm antialiased font-light  text-blue-gray-900">
                                         {`Exp: ${fundManager.exp} years`}
@@ -210,7 +217,17 @@ export default function HomePageDetails({
                 <div className="col-6">
                     <h5 className="font-bold mb-4">AMC Profile</h5>
                     <p className="text-sm">{mfHomeData.summary.amcDetails.description}</p>
-
+                    <br />
+                    <div className="row">
+                        <div className="col-6">
+                            <h6 className="font-bold ">No. of Schemes</h6>
+                            <p>{mfHomeData.summary.amcDetails.mfCount}</p>
+                        </div>
+                        <div className="col-6">
+                            <h6 className="font-bold ">Total Aum</h6>
+                            <p>{formatCurrency(mfHomeData.summary.amcDetails.aum)}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 

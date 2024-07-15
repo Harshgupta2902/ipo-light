@@ -65,7 +65,6 @@ const Home: React.FC = () => {
         </div>
       </section>
       <UpcomingIpo smeData={result.smeData} upcomingData={result.upcomingData} />
-
       <HomeFaq />
     </>
   );

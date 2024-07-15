@@ -1512,11 +1512,6 @@ code:after {
     border-radius: 5px
 }
 
-:is(.dark .accordion) {
-    --tw-bg-opacity: 1;
-    background-color: rgb(16 20 24/var(--tw-bg-opacity))
-}
-
 .accordion-header {
     display: flex;
     width: 100%;
@@ -1536,14 +1531,7 @@ code:after {
     border-radius: 5px
 }
 
-:is(.dark .accordion-header) {
-    --tw-border-opacity: 1;
-    border-color: rgb(62 62 62/var(--tw-border-opacity));
-    --tw-bg-opacity: 1;
-    background-color: rgb(30 38 44/var(--tw-bg-opacity));
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255/var(--tw-text-opacity))
-}
+
 
 .accordion-header h5 {
     font-size: 1.125rem;

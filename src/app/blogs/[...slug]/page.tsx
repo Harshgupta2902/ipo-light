@@ -7,6 +7,7 @@ import { endpoints } from "@/api/endpoints";
 import { get } from "@/api/api";
 import { usePathname } from 'next/navigation';
 import { Root } from '@/components/interfaces';
+import Loader from '@/app/Loader';
 
 
 const BlogDetails: React.FC = () => {
@@ -39,7 +40,7 @@ const BlogDetails: React.FC = () => {
             <div className="container">
                 <div className="row justify-center">
                     {loading ? (
-                        <p></p>
+                        <Loader />
                     ) : error ? (
                         <p>{error}</p>
                     ) : (

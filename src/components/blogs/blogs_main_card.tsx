@@ -1,10 +1,11 @@
 import React from 'react';
 import { BlogPostMainCardProps } from '../interfaces';
+import Loader from '@/app/Loader';
 
 
 const BlogPostComponent: React.FC<BlogPostMainCardProps> = ({ post }) => {
     if (!post) {
-        return <div>Loading...</div>;
+        return <Loader />;
     }
 
     return (

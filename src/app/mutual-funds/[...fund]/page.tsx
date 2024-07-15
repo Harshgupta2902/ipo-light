@@ -2,33 +2,42 @@
 
 import { get } from "@/api/api";
 import { endpoints } from "@/api/endpoints";
+import Loader from "@/app/Loader";
 import { MfHomePageDetails } from "@/components/interfaces";
+import FundManagerDetails from "@/components/mutual-funds/FundManagerDetails";
 import HomePageDetails from "@/components/mutual-funds/HomePageDetails";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaCaretUp, FaCaretDown } from "react-icons/fa";
-// import admin from "firebase-admin";
-// const serviceAccount = require("../../../../serviceAccountKey.json");
-
-
-// if (!admin.apps.length) {
-//     admin.initializeApp({
-//         credential: admin.credential.cert(serviceAccount),
-//     });
-// }
-
-// const db = admin.firestore();
 
 const MutualFundsDetails: React.FC = () => {
     const pathname = usePathname();
     const fundName = pathname.replace("/mutual-funds/", "");
     const fundCode = fundName.split("-").pop();
 
+
+    const searchParams = useSearchParams();
+    const tab = searchParams.get('tab');
+    console.log(tab);
+
+    useEffect(() => {
+        if (tab) {
+            setActiveTab(tab);
+        }
+    }, [tab]);
+
     const [mfHomeData, setMfHomePageData] = useState<MfHomePageDetails | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const [activeTab, setActiveTab] = useState<string>("Home");
-    const [navData, setNavData] = useState<any[]>([]);
+
+    const handleTabClick = (tabName: string) => {
+        setActiveTab(tabName);
+        const url = new URL(window.location.href);
+        url.searchParams.set('tab', tabName);
+        window.history.pushState({ path: url.href }, '', url.href);
+    };
+
 
     useEffect(() => {
         const fetchMfDetails = async () => {
@@ -59,7 +68,7 @@ const MutualFundsDetails: React.FC = () => {
 
 
 
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading) return <Loader />;
     if (error) return <div>Error: {error}</div>;
     if (!mfHomeData) return null;
     return (
@@ -138,7 +147,7 @@ const MutualFundsDetails: React.FC = () => {
                                             <li className="mr-2" role="presentation">
                                                 <button
                                                     className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "Home" ? "text-blue-600 border-blue-600" : "text-gray-600 border-transparent"}`}
-                                                    onClick={() => setActiveTab("Home")}
+                                                    onClick={() => handleTabClick("Home")}
                                                     type="button"
                                                     role="tab"
                                                 >
@@ -148,7 +157,7 @@ const MutualFundsDetails: React.FC = () => {
                                             <li className="mr-2" role="presentation">
                                                 <button
                                                     className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "Peers" ? "text-blue-600 border-blue-600" : "text-gray-600 border-transparent"}`}
-                                                    onClick={() => setActiveTab("Peers")}
+                                                    onClick={() => handleTabClick("Peers")}
                                                     type="button"
                                                     role="tab"
                                                 >
@@ -158,7 +167,7 @@ const MutualFundsDetails: React.FC = () => {
                                             <li className="mr-2" role="presentation">
                                                 <button
                                                     className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "Portfolio" ? "text-blue-600 border-blue-600" : "text-gray-600 border-transparent"}`}
-                                                    onClick={() => setActiveTab("Portfolio")}
+                                                    onClick={() => handleTabClick("Portfolio")}
                                                     type="button"
                                                     role="tab"
                                                 >
@@ -167,8 +176,8 @@ const MutualFundsDetails: React.FC = () => {
                                             </li>
                                             <li role="presentation">
                                                 <button
-                                                    className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "Fund Manager" ? "text-blue-600 border-blue-600" : "text-gray-600 border-transparent"}`}
-                                                    onClick={() => setActiveTab("Fund Manager")}
+                                                    className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "fundManager" ? "text-blue-600 border-blue-600" : "text-gray-600 border-transparent"}`}
+                                                    onClick={() => handleTabClick("fundManager")}
                                                     type="button"
                                                     role="tab"
                                                 >
@@ -187,8 +196,8 @@ const MutualFundsDetails: React.FC = () => {
                                         <div className={`${activeTab === "Portfolio" ? "block" : "hidden"}`} role="tabpanel">
                                             Portfolio
                                         </div>
-                                        <div className={`${activeTab === "Fund Manager" ? "block" : "hidden"}`} role="tabpanel">
-                                            Fund Manager
+                                        <div className={`${activeTab === "fundManager" ? "block" : "hidden"}`} role="tabpanel">
+                                            <FundManagerDetails fundManagersDetails={mfHomeData.fundmanager}/>
                                         </div>
                                     </div>
                                 </div>

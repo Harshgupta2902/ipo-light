@@ -7,6 +7,7 @@ import { get } from "../api/api";
 import { endpoints } from "../api/endpoints";
 import StocksCard from "@/components/home/stocks-card";
 import MarketSectorShimmer from "@/components/shimmers/market-sector-shimmer";
+import Loader from "./Loader";
 
 const imageUrls: string[] = [
   "/AMC/image_0.png",
@@ -80,6 +81,7 @@ const Home: React.FC = () => {
   }, []);
 
   const topIndices = indicesResult?.slice(0, 9) || [];
+  if (loadingIndices) return <Loader />;
 
   return (
     <main>

@@ -5,6 +5,7 @@ import BlogPostComponent from "@/components/blogs/blogs_main_card";
 import BlogPostGrid from "@/components/blogs/blogs_grid";
 import React, { useEffect, useState } from 'react';
 import { BlogPost } from "@/components/interfaces";
+import Loader from "../Loader";
 
 
 
@@ -35,6 +36,9 @@ const Home: React.FC = () => {
 
     fetchBlogs();
   }, []);
+
+  if (loading) return <Loader />;
+
   return (
     <>
       <section className="section !pb-0">
@@ -48,7 +52,7 @@ const Home: React.FC = () => {
       <section className="section">
         <div className="container">
           {loading ? (
-            <p>Loading...</p>
+            <Loader />
           ) : error ? (
             <p>{error}</p>
           ) : (
