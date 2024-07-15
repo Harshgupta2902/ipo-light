@@ -1,22 +1,21 @@
+"use client"
+
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import "../style/main.css";
 import "../style/extra.css";
+import { useEffect, useState } from "react";
 
 import Header from "../components/common/Header";
 import { MenuItem } from "@/components/interfaces";
+import { get } from "@/api/api";
+import { endpoints } from "@/api/endpoints";
 
 const poppins = Poppins({
   weight: "500",
   subsets: ["latin"],
 });
-
-export const metadata: Metadata = {
-  title: "IpoTech",
-  description: "Next Gen Fintech Platform For Ipo, Mutual-Funds, Stocks, and all othert Tools",
-};
-
 
 
 const menuData: MenuItem[] = [
@@ -55,9 +54,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const [metadata, setMetadata] = useState<Metadata | null>(null);
+
+  useEffect(() => {
+    const fetchMetadata = async () => {
+      try {
+        const metaData = await get(endpoints.metaData);
+        setMetadata(metaData);
+        console.log(`metaData ${metaData}`);
+      } catch (error) {
+        console.error("Failed to fetch metadata", error);
+      }
+    };
+
+    fetchMetadata();
+  }, []);
+
   return (
     <html lang="en">
       <head>
+        <meta name="description" content="" />
+        <meta name="keywords" content="HTML, CSS, JavaScript" />
+        <meta name="author" content="John Doe" />
         <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
       </head>
       <body className={poppins.className}>

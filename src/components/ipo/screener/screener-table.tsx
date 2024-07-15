@@ -372,7 +372,7 @@ const ScreenerTable: React.FC<Screener> = ({ data }) => {
                                                                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                                                     <Link
                                                                         className="hover:text-blue-600 text-dark hover:underline"
-                                                                        href={`/mutual-funds${fund.slug.replace("/mutualfunds", "")}`}
+                                                                        href={`/mutual-funds/details${fund.slug.replace("/mutualfunds", "")}`}
                                                                         target={"_blank"}
                                                                         rel="noopener"
                                                                     >

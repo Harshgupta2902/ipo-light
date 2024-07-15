@@ -2,6 +2,11 @@
 const baseURL = "https://apis-iota-five.vercel.app/api/";
 
 export const endpoints = {
+
+  metaData: `${baseURL}meta-data`,
+
+
+
   homePage: `${baseURL}main`,
   upcomingIpo: `${baseURL}ipo`,
   gmpIpo: `${baseURL}gmp`,
