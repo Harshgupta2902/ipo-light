@@ -140,10 +140,10 @@ export default function HomePageDetails({
                                     className="w-10 h-10 rounded-full mr-4"
                                     src={
                                         index === 1
-                                            ? "https://assets.tickertape.in/sector-icons/mutualfund_large_size.png"
+                                            ? "/mutualfund_large_size.png"
                                             : index === 2
-                                                ? "https://assets.tickertape.in/sector-icons/very_high_risk.png"
-                                                : "https://assets.tickertape.in/sector-icons/mutualfund_hybrid.png"
+                                                ? "/very_high_risk.png"
+                                                : "/mutualfund_hybrid.png"
                                     }
                                     alt={label.title}
                                 />
