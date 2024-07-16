@@ -6,6 +6,7 @@ import { endpoints } from "@/api/endpoints";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import "@/style/main.css";
+import Loader from "@/app/Loader";
 
 
 export interface Root {
@@ -80,11 +81,13 @@ const IpoDetails: React.FC = () => {
     const [ipoDetails, setIpoDetails] = useState<Root | null>(null)
     const [additionalData, setAdditionalData] = useState<AdditionalIpoData | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
 
     const pathname = usePathname();
 
     useEffect(() => {
         const fetchIpoDetails = async () => {
+            
             try {
                 const response = await get(
                     endpoints.ipoDetails +
@@ -100,6 +103,8 @@ const IpoDetails: React.FC = () => {
                 }
             } catch (error) {
                 console.error("Error fetching IPO details:", error);
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -118,6 +123,9 @@ const IpoDetails: React.FC = () => {
         fetchAdditionalIpo();
 
     }, [pathname]);
+
+    if (loading) return <Loader />;
+
 
     return (
         <section className="lg:pt-20">
