@@ -164,6 +164,7 @@ const MutualFundsDetails: React.FC = () => {
                                                     onClick={() => handleTabClick("Home")}
                                                     type="button"
                                                     role="tab"
+                                                    aria-label="Home"
                                                 >
                                                     Home
                                                 </button>
@@ -174,6 +175,8 @@ const MutualFundsDetails: React.FC = () => {
                                                     onClick={() => handleTabClick("Peers")}
                                                     type="button"
                                                     role="tab"
+                                                    aria-label="Peers"
+
                                                 >
                                                     Peers
                                                 </button>
@@ -184,6 +187,8 @@ const MutualFundsDetails: React.FC = () => {
                                                     onClick={() => handleTabClick("Portfolio")}
                                                     type="button"
                                                     role="tab"
+                                                    aria-label="Portfolio"
+
                                                 >
                                                     Portfolio
                                                 </button>
@@ -194,6 +199,8 @@ const MutualFundsDetails: React.FC = () => {
                                                     onClick={() => handleTabClick("fundManager")}
                                                     type="button"
                                                     role="tab"
+                                                    aria-label="fundManager"
+
                                                 >
                                                     Fund Manager
                                                 </button>

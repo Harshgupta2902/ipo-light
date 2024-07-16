@@ -77,6 +77,7 @@ export default function Invest() {
                 <a
                   className="btn btn-outline-primary mt-4"
                   href={section.buttonUrl}
+                  aria-label={section.buttonText}
                 >
                   {section.buttonText}
                 </a>

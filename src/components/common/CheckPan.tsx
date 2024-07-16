@@ -70,6 +70,7 @@ const CheckPan: React.FC = () => {
                 onClick={toggleModal}
                 className="btn btn-outline-primary border-0"
                 type="button"
+                aria-label='Check Pan'
             >
                 Verify Your PAN
             </button>
@@ -85,6 +86,8 @@ const CheckPan: React.FC = () => {
                                     type="button"
                                     className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
                                     onClick={toggleModal}
+                                    aria-label='Close Modal'
+
                                 >
                                     <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
@@ -116,6 +119,7 @@ const CheckPan: React.FC = () => {
                                     onClick={toggleModal}
                                     type="button"
                                     className="btn btn-outline-primary border-0"
+                                    aria-label='Accept'
                                 >
                                     I accept
                                 </button>
@@ -123,6 +127,8 @@ const CheckPan: React.FC = () => {
                                     onClick={toggleModal}
                                     type="button"
                                     className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 "
+                                    aria-label='Decline'
+
                                 >
                                     Decline
                                 </button>
@@ -144,6 +150,8 @@ const CheckPan: React.FC = () => {
                                     type="button"
                                     className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
                                     onClick={() => setShowKycModal(false)}
+                                    aria-label='Close modal'
+
                                 >
                                     <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
