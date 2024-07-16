@@ -35,7 +35,7 @@ const FundManagerListView = ({
   return (
     <div className={`col-lg-8 ${className}`}>
       <div className={`fundManagerList ${show ? "active" : ""}`}>
-        <button className="fundManagerList-header" onClick={toggleAccordion}>
+        <button className="fundManagerList-header" onClick={toggleAccordion} aria-label={name}>
           <div key={key}
             className="relative flex items-center gap-4 overflow-hidden text-gray-700 bg-transparent shadow-none bg-clip-border">
             <img
