@@ -104,7 +104,7 @@ const Home: React.FC = () => {
                 data-nimg="1"
                 className="mx-auto"
                 style={{ color: "transparent" }}
-                src="https://bigspring-nextjs.vercel.app/images/banner.svg"
+                src="/banner.svg"
               />
             </div>
           </div>

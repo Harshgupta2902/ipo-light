@@ -53,7 +53,7 @@ const Home: React.FC = () => {
             </div>
             <div className={`lg:col-4 lg:order-2 order-1`}>
               <ImageFallback
-                src={"/banner.svg"}
+                src={"/ipo_banner.svg"}
                 className="mx-auto"
                 width="800"
                 height="420"

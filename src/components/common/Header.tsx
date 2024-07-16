@@ -40,13 +40,13 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
         <div className="order-0">
           <a className="navbar-brand inline-block" href="/">
             <img
-              alt="Bigspring with nextjs and tailwindcss"
+              alt="IpoTech Logo"
               width="360"
               height="78"
               decoding="async"
               data-nimg="1"
               style={{ color: "transparent", height: "39px", width: "180px" }}
-              src="	https://bigspring-nextjs.vercel.app/_next/image?url=%2Fimages%2Flogo.png&w=384&q=75"
+              src="/logo.png"
             />
           </a>
         </div>
