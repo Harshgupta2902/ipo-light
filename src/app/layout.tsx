@@ -10,7 +10,7 @@ import Header from "../components/common/Header";
 import { MenuItem } from "@/components/interfaces";
 import { get } from "@/api/api";
 import { endpoints } from "@/api/endpoints";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const poppins = Poppins({
   weight: "500",
@@ -18,12 +18,37 @@ const poppins = Poppins({
 });
 
 
-interface Metadata {
-  title: string;
-  description: string;
-  keywords: string[];
-  author: string;
+
+export interface MetaData {
+  title: string
+  description: string
+  keywords: string[]
+  canonical: string
+  og: Og
+  twitter: Twitter
+  additionalMetaTags: AdditionalMetaTag[]
 }
+
+export interface Og {
+  title: string
+  description: string
+  url: string
+  type: string
+  image: string
+}
+
+export interface Twitter {
+  card: string
+  title: string
+  description: string
+  image: string
+}
+
+export interface AdditionalMetaTag {
+  name: string
+  content: string
+}
+
 
 
 const menuData: MenuItem[] = [
@@ -63,7 +88,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  const [metadata, setMetadata] = useState<Metadata | null>(null);
+  const [metadata, setMetadata] = useState<MetaData | null>(null);
   console.log(pathname);
 
   useEffect(() => {
@@ -83,11 +108,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>{metadata ? metadata.title : "IpoTech"}</title>
-        <meta name="description" content={metadata ? metadata.description : "IpoTech"} />
-        <meta name="keywords" content={metadata ? metadata.keywords.join(', ') : "IpoTech"} />
-        <meta name="author" content={metadata ? metadata.author : "John Doe"} />
         <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
+        {metadata && (
+          <>
+            {metadata.title && <title>{metadata.title}</title>}
+            {metadata.description && <meta name="description" content={metadata.description} />}
+            {metadata.keywords && metadata.keywords.length > 0 && <meta name="keywords" content={metadata.keywords.join(", ")} />}
+            {metadata.canonical && <link rel="canonical" href={`https://node.onlineinfotech.net${metadata.canonical}`} />}
+            {metadata.og.title && <meta property="og:title" content={metadata.og.title} />}
+            {metadata.og.description && <meta property="og:description" content={metadata.og.description} />}
+            {metadata.og.url && <meta property="og:url" content={`https://node.onlineinfotech.net${metadata.og.url}`} />}
+            {metadata.og.type && <meta property="og:type" content={metadata.og.type} />}
+            {metadata.og.image && <meta property="og:image" content={metadata.og.image} />}
+            {metadata.twitter.card && <meta name="twitter:card" content={metadata.twitter.card} />}
+            {metadata.twitter.title && <meta name="twitter:title" content={metadata.twitter.title} />}
+            {metadata.twitter.description && <meta name="twitter:description" content={metadata.twitter.description} />}
+            {metadata.twitter.image && <meta name="twitter:image" content={metadata.twitter.image} />}
+            {metadata.additionalMetaTags && metadata.additionalMetaTags.map((tag, index) => (
+              tag.name && tag.content && <meta key={index} name={tag.name} content={tag.content} />
+            ))}
+          </>
+
+        )}
       </head>
       <body className={poppins.className}>
         <Header menuData={menuData ?? []} />
