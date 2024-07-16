@@ -115,15 +115,26 @@ export default function RootLayout({
             {metadata.description && <meta name="description" content={metadata.description} />}
             {metadata.keywords && metadata.keywords.length > 0 && <meta name="keywords" content={metadata.keywords.join(", ")} />}
             {metadata.canonical && <link rel="canonical" href={`https://node.onlineinfotech.net${metadata.canonical}`} />}
-            {metadata.og.title && <meta property="og:title" content={metadata.og.title} />}
-            {metadata.og.description && <meta property="og:description" content={metadata.og.description} />}
-            {metadata.og.url && <meta property="og:url" content={`https://node.onlineinfotech.net${metadata.og.url}`} />}
-            {metadata.og.type && <meta property="og:type" content={metadata.og.type} />}
-            {metadata.og.image && <meta property="og:image" content={metadata.og.image} />}
-            {metadata.twitter.card && <meta name="twitter:card" content={metadata.twitter.card} />}
-            {metadata.twitter.title && <meta name="twitter:title" content={metadata.twitter.title} />}
-            {metadata.twitter.description && <meta name="twitter:description" content={metadata.twitter.description} />}
-            {metadata.twitter.image && <meta name="twitter:image" content={metadata.twitter.image} />}
+
+            {metadata.og && (
+              <>
+                {metadata.og.title && <meta property="og:title" content={metadata.og.title} />}
+                {metadata.og.description && <meta property="og:description" content={metadata.og.description} />}
+                {metadata.og.url && <meta property="og:url" content={`https://node.onlineinfotech.net${metadata.og.url}`} />}
+                {metadata.og.type && <meta property="og:type" content={metadata.og.type} />}
+                {metadata.og.image && <meta property="og:image" content={metadata.og.image} />}
+              </>
+            )}
+
+            {metadata.twitter && (
+              <>
+                {metadata.twitter.card && <meta name="twitter:card" content={metadata.twitter.card} />}
+                {metadata.twitter.title && <meta name="twitter:title" content={metadata.twitter.title} />}
+                {metadata.twitter.description && <meta name="twitter:description" content={metadata.twitter.description} />}
+                {metadata.twitter.image && <meta name="twitter:image" content={metadata.twitter.image} />}
+              </>
+            )}
+
             {metadata.additionalMetaTags && metadata.additionalMetaTags.map((tag, index) => (
               tag.name && tag.content && <meta key={index} name={tag.name} content={tag.content} />
             ))}
