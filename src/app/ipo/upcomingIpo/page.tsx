@@ -4,6 +4,7 @@ import UpcomingDataTable from "@/components/ipo/upcomingIpo/UpcomingDataTables";
 import UpcomingFaq from "@/components/ipo/upcomingIpo/upcomingFaq";
 import { useEffect, useState } from "react";
 import { get } from "@/api/api";
+import Loader from "@/app/Loader";
 
 
 const Home: React.FC = () => {
@@ -27,7 +28,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      {result ? <UpcomingDataTable data={result} /> : <></>}
+      {result ? <UpcomingDataTable data={result} /> : <Loader />}
       <UpcomingFaq />
     </>
   );

@@ -38,10 +38,10 @@ const MarketSectorCard = ({
               {
                 label: "",
                 data: prices,
-                borderColor: "rgba(75, 192, 192, 1)",
+                borderColor: "rgba(2,86,46)",
                 borderWidth: 3,
                 pointRadius: 0,
-                pointBorderColor: "red",
+                
               },
             ],
           },
