@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useRef } from "react";
 import GainersCard from "./gainers";
 import { StocksCardProps } from "../interfaces";

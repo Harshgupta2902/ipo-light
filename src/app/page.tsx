@@ -1,4 +1,5 @@
 "use client"
+
 import SimpleSlider from "@/components/home/Slider";
 // import MarketSector from "../components/home/market-sector";
 // import Invest from "../components/home/invest";
