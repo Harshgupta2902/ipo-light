@@ -73,7 +73,7 @@ const MarketSectorCard = ({
   const lastIndex = data.length - 1;
   const prevPrice = data[lastIndex - 1]?.price || 0;
   const percentageChange = ((prevPrice - lastPrice) / prevPrice) * 100;
-  const changeColor = percentageChange > 0 ? "green" : "red";
+  const changeColor = percentageChange > 0 ? "green" : "#B0060B";
 
   return (
     <div className="px-4 max-w-sm">

@@ -97,7 +97,6 @@ const Home: React.FC = () => {
               </p>
               <img
                 alt="banner-image"
-                loading="lazy"
                 width="750"
                 height="395"
                 decoding="async"
