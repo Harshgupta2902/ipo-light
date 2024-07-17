@@ -28,8 +28,11 @@ const Home: React.FC = () => {
 
   return (
     <>
-      {result ? <UpcomingDataTable data={result} /> : <Loader />}
-      <UpcomingFaq />
+      {result ? <>
+        <UpcomingDataTable data={result} />
+        <UpcomingFaq />
+
+      </> : <Loader />}
     </>
   );
 
