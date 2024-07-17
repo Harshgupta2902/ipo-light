@@ -1213,7 +1213,7 @@ code:after {
 
 .video-thumnail:hover button svg {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 .pagination>:not([hidden])~:not([hidden]) {
@@ -1240,7 +1240,7 @@ code:after {
 
 .pagination span.active {
     --tw-bg-opacity: 1;
-    background-color: rgb(10 168 167/var(--tw-bg-opacity))
+    background-color: rgb(15 81 81 /var(--tw-bg-opacity))
 }
 
 .social-icons>:not([hidden])~:not([hidden]) {
@@ -1255,12 +1255,12 @@ code:after {
     border-radius: 9999px;
     border-width: 1px;
     --tw-border-opacity: 1;
-    border-color: rgb(10 168 167/var(--tw-border-opacity))
+    border-color: rgb(15 81 81 /var(--tw-border-opacity))
 }
 
 .social-icons.author-social li a:hover {
     --tw-bg-opacity: 1;
-    background-color: rgb(10 168 167/var(--tw-bg-opacity));
+    background-color: rgb(15 81 81 /var(--tw-bg-opacity));
     --tw-text-opacity: 1;
     color: rgb(255 255 255/var(--tw-text-opacity))
 }
@@ -1279,7 +1279,7 @@ code:after {
     text-align: center;
     line-height: 2.25rem;
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity));
+    color: rgb(15 81 81 /var(--tw-text-opacity));
     transition-property: all;
     transition-timing-function: cubic-bezier(.4, 0, .2, 1);
     transition-duration: .3s;
@@ -1398,7 +1398,7 @@ code:after {
     height: 1rem;
     width: 1rem;
     --tw-bg-opacity: 1;
-    background-color: rgb(10 168 167/var(--tw-bg-opacity))
+    background-color: rgb(15 81 81 /var(--tw-bg-opacity))
 }
 
 :is(.dark .swiper-pagination-bullet-active) {
@@ -1578,7 +1578,7 @@ code:after {
 
 .accordion.active .accordion-header {
     --tw-bg-opacity: 1;
-    background-color: rgb(10 168 167/var(--tw-bg-opacity));
+    background-color: rgb(15 81 81 /var(--tw-bg-opacity));
     --tw-text-opacity: 1;
     color: rgb(255 255 255/var(--tw-text-opacity))
 }
@@ -2059,12 +2059,12 @@ code:after {
 .content :is(:where(h1):not(:where([class~=not-prose] *))) {
     font-size: 2.44140625rem;
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 :is(.dark .content :is(:where(h1):not(:where([class~=not-prose] *)))) {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 
@@ -2122,7 +2122,7 @@ code:after {
     border-width: 1px 1px 1px 2px;
     border-color: rgb(234 234 234/var(--tw-border-opacity));
     --tw-border-opacity: 1;
-    border-left-color: rgb(10 168 167/var(--tw-border-opacity));
+    border-left-color: rgb(15 81 81 /var(--tw-border-opacity));
     padding: .5rem 2rem;
     font-family: Poppins, sans-serif;
     font-size: 1.5rem;
@@ -2136,7 +2136,7 @@ code:after {
 :is(.dark .content) :is(:where(blockquote):not(:where([class~=not-prose] *))) {
     border-color: rgb(62 62 62/var(--tw-border-opacity));
     --tw-border-opacity: 1;
-    border-left-color: rgb(10 168 167/var(--tw-border-opacity));
+    border-left-color: rgb(15 81 81 /var(--tw-border-opacity));
     --tw-bg-opacity: 1;
     background-color: rgb(27 34 41/var(--tw-bg-opacity));
     --tw-text-opacity: 1;
@@ -2159,12 +2159,12 @@ code:after {
     padding-left: .25rem;
     padding-right: .25rem;
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 :is(.dark .content) :is(:where(code):not(:where([class~=not-prose] *))) {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 .content :is(:where(strong):not(:where([class~=not-prose] *))) {
@@ -2184,7 +2184,7 @@ code:after {
 
 .content :is(:where(a):not(:where([class~=not-prose] *))):hover {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 :is(.dark .content) :is(:where(a):not(:where([class~=not-prose] *))) {
@@ -2194,7 +2194,7 @@ code:after {
 
 :is(.dark .content) :is(:where(a):not(:where([class~=not-prose] *))):hover {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 .content :is(:where(li):not(:where([class~=not-prose] *))) {
@@ -2451,7 +2451,7 @@ input#nav-toggle:checked~label#hide-button {
 
 .nav-link:hover {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 :is(.dark .nav-link) {
@@ -2461,7 +2461,7 @@ input#nav-toggle:checked~label#hide-button {
 
 :is(.dark .nav-link:hover) {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 @media (min-width:1024px) {
@@ -2480,7 +2480,7 @@ input#nav-toggle:checked~label#hide-button {
 
 .nav-link.active {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 .nav-dropdown {
@@ -2677,7 +2677,7 @@ input#nav-toggle:checked~label#hide-button {
 
 .nav-dropdown-link:hover {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 :is(.dark .nav-dropdown-link) {
@@ -2687,7 +2687,7 @@ input#nav-toggle:checked~label#hide-button {
 
 :is(.dark .nav-dropdown-link:hover) {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 .theme-switcher {
@@ -2759,9 +2759,9 @@ input#nav-toggle:checked~label#hide-button {
 .btn-primary {
     border-radius: 9999px;
     --tw-border-opacity: 1;
-    border-color: rgb(10 168 167/var(--tw-border-opacity));
+    border-color: rgb(15 81 81 /var(--tw-border-opacity));
     --tw-bg-opacity: 1;
-    background-color: rgb(10 168 167/var(--tw-bg-opacity));
+    background-color: rgb(15 81 81 /var(--tw-bg-opacity));
     padding: .75rem 1.25rem;
     font-family: Poppins, sans-serif;
     font-weight: 500;
@@ -2782,12 +2782,12 @@ input#nav-toggle:checked~label#hide-button {
     border-radius: 50px;
     border-width: 2px;
     --tw-border-opacity: 1;
-    border-color: rgb(10 168 167/var(--tw-border-opacity));
+    border-color: rgb(15 81 81 /var(--tw-border-opacity));
     padding: .75rem 1.75rem;
     font-family: Poppins, sans-serif;
     font-weight: 500;
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity));
+    color: rgb(15 81 81 /var(--tw-text-opacity));
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
     transition-timing-function: cubic-bezier(.4, 0, .2, 1);
     transition-duration: .3s
@@ -2795,7 +2795,7 @@ input#nav-toggle:checked~label#hide-button {
 
 .btn-outline-primary:hover {
     --tw-bg-opacity: 1;
-    background-color: rgb(10 168 167/var(--tw-bg-opacity));
+    background-color: rgb(15 81 81 /var(--tw-bg-opacity));
     --tw-text-opacity: 1;
     color: rgb(255 255 255/var(--tw-text-opacity))
 }
@@ -3298,7 +3298,7 @@ input#nav-toggle:checked~label#hide-button {
 
 .border-primary {
     --tw-border-opacity: 1;
-    border-color: rgb(10 168 167/var(--tw-border-opacity))
+    border-color: rgb(15 81 81 /var(--tw-border-opacity))
 }
 
 .bg-body {
@@ -3318,7 +3318,7 @@ input#nav-toggle:checked~label#hide-button {
 
 .bg-primary {
     --tw-bg-opacity: 1;
-    background-color: rgb(10 168 167/var(--tw-bg-opacity))
+    background-color: rgb(15 81 81 /var(--tw-bg-opacity))
 }
 
 .bg-primary\/80 {
@@ -3557,7 +3557,7 @@ input#nav-toggle:checked~label#hide-button {
 
 .text-primary {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 .text-red-500 {
@@ -3844,7 +3844,7 @@ input#nav-toggle:checked~label#hide-button {
 .before\:bg-primary:before {
     content: var(--tw-content);
     --tw-bg-opacity: 1;
-    background-color: rgb(10 168 167/var(--tw-bg-opacity))
+    background-color: rgb(15 81 81 /var(--tw-bg-opacity))
 }
 
 .after\:absolute:after {
@@ -3922,7 +3922,7 @@ input#nav-toggle:checked~label#hide-button {
 
 .hover\:bg-primary:hover {
     --tw-bg-opacity: 1;
-    background-color: rgb(10 168 167/var(--tw-bg-opacity))
+    background-color: rgb(15 81 81 /var(--tw-bg-opacity))
 }
 
 .hover\:text-body:hover {
@@ -3932,7 +3932,7 @@ input#nav-toggle:checked~label#hide-button {
 
 .hover\:text-primary:hover {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 .hover\:text-white:hover {
@@ -3988,7 +3988,7 @@ input#nav-toggle:checked~label#hide-button {
 
 .focus\:border-primary:focus {
     --tw-border-opacity: 1;
-    border-color: rgb(10 168 167/var(--tw-border-opacity))
+    border-color: rgb(15 81 81 /var(--tw-border-opacity))
 }
 
 .focus\:shadow-none:focus {
@@ -4075,7 +4075,7 @@ input#nav-toggle:checked~label#hide-button {
 
 :is(.dark .dark\:text-darkmode-primary) {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 :is(.dark .dark\:text-darkmode-text) {
@@ -4085,7 +4085,7 @@ input#nav-toggle:checked~label#hide-button {
 
 :is(.dark .dark\:text-primary) {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 :is(.dark .dark\:text-white) {
@@ -4103,7 +4103,7 @@ input#nav-toggle:checked~label#hide-button {
 
 :is(.dark .dark\:hover\:bg-primary:hover) {
     --tw-bg-opacity: 1;
-    background-color: rgb(10 168 167/var(--tw-bg-opacity))
+    background-color: rgb(15 81 81 /var(--tw-bg-opacity))
 }
 
 :is(.dark .dark\:hover\:text-body:hover) {
@@ -4113,22 +4113,22 @@ input#nav-toggle:checked~label#hide-button {
 
 :is(.dark .dark\:hover\:text-darkmode-primary:hover) {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 :is(.dark .dark\:hover\:text-primary:hover) {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 :is(.dark .hover\:dark\:text-darkmode-primary):hover {
     --tw-text-opacity: 1;
-    color: rgb(10 168 167/var(--tw-text-opacity))
+    color: rgb(15 81 81 /var(--tw-text-opacity))
 }
 
 :is(.dark .dark\:focus\:border-primary:focus) {
     --tw-border-opacity: 1;
-    border-color: rgb(10 168 167/var(--tw-border-opacity))
+    border-color: rgb(15 81 81 /var(--tw-border-opacity))
 }
 
 @media not all and (min-width:1024px) {
