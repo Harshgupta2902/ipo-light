@@ -19,7 +19,7 @@ const UpcomingIpo: React.FC<IpoMainHomePageProps> = ({ upcomingData, smeData }) 
         <div className="content">
           <div className="row justify-center text-left">
             <div className="lg:col-6 md:col-6 mb-8 text-center">
-              <h3 className="mb-4">Upcoming Ipo's</h3>
+              <h2 className="mb-4">Upcoming Ipo's</h2>
               <div className="relative overflow-x-auto">
                 <table className="lg:w-full text-sm text-left text-gray-500 ">
                   {headers && headers.length > 0 && (
@@ -64,7 +64,7 @@ const UpcomingIpo: React.FC<IpoMainHomePageProps> = ({ upcomingData, smeData }) 
             </div>
 
             <div className="lg:col-6 md:col-6 mb-8 text-center">
-              <h3 className="mb-4">SME Ipo's</h3>
+              <h2 className="mb-4">SME Ipo's</h2>
               <div className="relative overflow-x-auto">
                 <table className="lg:w-full text-sm text-left text-gray-500">
                   {headers && headers.length > 0 && (

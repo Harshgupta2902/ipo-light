@@ -2,7 +2,7 @@
 import { SubsCriptionDataTables } from "@/components/interfaces";
 import Link from "next/link";
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 
@@ -67,9 +67,7 @@ export default function SubsCriptionDataTable({ data }: { data: any }) {
   return (
     <section className="pt-20">
       <div className="container text-center">
-        <h3 className="mb-4">Ipo Subscription </h3>
-
-
+        <h1 className="mb-4 text-4xl">Ipo Subscription </h1>
         <div className="mb-4 border-b border-gray-200">
           <ul className="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" role="tablist">
             <li className="mr-2" role="presentation">

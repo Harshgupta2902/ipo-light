@@ -86,7 +86,7 @@ export default function HomeFaq() {
     <section className="section">
       <div className="container">
         <div className="lg:col-5 mx-auto text-center">
-          <h2>Frequently Asked Questions</h2>
+          <h3>Frequently Asked Questions</h3>
           <p className="mt-4">
             Vestibulum ante ipsum primis in faucibus orci luctus ultrices
             posuere cubilia Curae Donec

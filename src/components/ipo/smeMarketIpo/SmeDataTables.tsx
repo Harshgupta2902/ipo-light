@@ -14,7 +14,7 @@ export default function SmeDataTable({ data }: { data: any }) {
   return (
     <section className="pt-20">
       <div className="container text-center">
-        <h3 className="mb-4">SME Ipo's </h3>
+        <h1 className="mb-4 text-4xl">SME Ipo's </h1>
 
         <div className="rounded bg-body py-6 px-6 shadow">
           <div className="flex flex-col">
@@ -37,12 +37,13 @@ export default function SmeDataTable({ data }: { data: any }) {
                       (item: SmeDataTables, index: number) => (
                         <tr key={index}>
                           {keysToDisplay.map((key) => (
-                            <td key={key} className="py-3">
+                            <td key={key} className="p-3">
                               {key === "company_name" ? (
                                 <Link
                                   style={{
                                     textDecoration: "none",
                                     fontSize: "medium",
+                                    margin: "12px"
                                   }}
                                   href={"/ipo/details/" + item.slug}
                                   target={"_blank"}

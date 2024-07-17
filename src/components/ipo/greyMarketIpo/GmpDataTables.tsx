@@ -7,7 +7,6 @@ import React from "react";
 export default function GmpDataTables({ data }: { data: any }) {
   const keysToDisplay = [
     "company_name",
-    "date",
     "type",
     "ipo_gmp",
     "price",
@@ -17,7 +16,6 @@ export default function GmpDataTables({ data }: { data: any }) {
   ];
   const headers = [
     "Company Name",
-    "Date",
     "Type",
     "Grey Market Price",
     "Price",
@@ -28,7 +26,7 @@ export default function GmpDataTables({ data }: { data: any }) {
   return (
     <section className="pt-20">
       <div className="container text-center">
-        <h3 className="mb-4">Ipo Gmp </h3>
+        <h1 className="mb-4 text-4xl">Ipo Gmp </h1>
         <div className="rounded bg-body py-6 px-6 shadow">
           <div className="flex flex-col">
             <div className="-m-1.5 overflow-x-auto">
