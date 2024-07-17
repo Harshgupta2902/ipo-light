@@ -1,13 +1,29 @@
 "use client"
-import SimpleSlider from "../components/home/Slider";
-import MarketSector from "../components/home/market-sector";
-import Invest from "../components/home/invest";
+import SimpleSlider from "@/components/home/Slider";
+// import MarketSector from "../components/home/market-sector";
+// import Invest from "../components/home/invest";
 import React, { useEffect, useState } from 'react';
-import { get } from "../api/api";
-import { endpoints } from "../api/endpoints";
-import StocksCard from "@/components/home/stocks-card";
-import MarketSectorShimmer from "@/components/shimmers/market-sector-shimmer";
+import { get } from "@/api/api";
+import { endpoints } from "@/api/endpoints";
+// import StocksCard from "@/components/home/stocks-card";
+// import MarketSectorShimmer from "@/components/shimmers/market-sector-shimmer";
 import Loader from "./Loader";
+import dynamic from 'next/dynamic';
+
+
+
+const MarketSector = dynamic(() => import("@/components/home/market-sector"), {
+  loading: () => <Loader />,
+});
+const Invest = dynamic(() => import("@/components/home/invest"), {
+  loading: () => <Loader />,
+});
+const StocksCard = dynamic(() => import("@/components/home/stocks-card"), {
+  loading: () => <Loader />,
+});
+const MarketSectorShimmer = dynamic(() => import("@/components/shimmers/market-sector-shimmer"), {
+  loading: () => <Loader />,
+});
 
 const imageUrls: string[] = [
   "/AMC/image_0.png",
@@ -50,6 +66,7 @@ const Home: React.FC = () => {
   const [approachingHighResult, setApproachingHighResult] = useState<any>(null);
   const [approachingLowResult, setApproachingLowResult] = useState<any>(null);
   const [loadingIndices, setLoadingIndices] = useState<boolean>(true);
+
 
 
   useEffect(() => {
