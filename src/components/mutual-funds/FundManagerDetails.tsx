@@ -18,7 +18,7 @@ export default function FundManagerDetails({ fundManagersDetails }: { fundManage
         <div>
             <div className="container mt-12">
                 <div className="row justify-center">
-                    {fundManagersDetails.map((funds) => (
+                    {fundManagersDetails && fundManagersDetails.map((funds) => (
                         <FundManagerListView aum={funds.aumInCr} exp={funds.exp} image={funds.imgUrl} name={funds.name} >
                             <div key={funds.fmCode}>
                                 <h6 className='font-bold'>Qualification</h6>

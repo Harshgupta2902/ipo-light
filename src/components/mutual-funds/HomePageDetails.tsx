@@ -191,7 +191,7 @@ export default function HomePageDetails({
                 <div className="col-6">
                     <h5 className="font-bold mb-4">Fund Managers</h5>
                     <div className="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none">
-                        {mfHomeData.fundmanager.map((fundManager) => (
+                        {mfHomeData.fundmanager && mfHomeData.fundmanager.map((fundManager) => (
                             <div key={fundManager.fmCode}
                                 className="relative flex items-center gap-4 pt-0 pb-0 mx-0 mt-6 overflow-hidden text-gray-700 bg-transparent shadow-none bg-clip-border">
                                 <img
