@@ -69,15 +69,21 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
   const headersList = headers();
   const domain = headersList.get('host') || "";
   const fullUrl = headersList.get('referer') || "";
-  const [, pathname] = fullUrl.match(new RegExp(`https?:\/\/${domain}(.*)`)) || [];
+  let pathname = (fullUrl.match(new RegExp(`https?:\/\/${domain}(.*)`)) || [])[1];
 
+  if (!pathname) {
+    pathname = "/";
+  }
   let metadata = null;
 
   try {
     if (pathname) {
+      console.log(`pathname::::::::::::::::::::${pathname}`);
+      
       metadata = await fetchMetadata(pathname);
       console.log(`meta Data Successfully fetched for ${pathname}`);
     }
+
   } catch (err) {
     console.error(`error ${err}`);
 
