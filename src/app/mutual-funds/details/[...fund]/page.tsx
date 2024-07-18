@@ -31,7 +31,7 @@ const MutualFundsDetails = async ({ params, searchParams }: { params: { fund: st
     }
 
     return (
-        <MutualFundsDetailsClient mfHomeData={mfHomeData} error={error} initialTab={initialTab} fundCode={fundCode}/>
+        <MutualFundsDetailsClient mfHomeData={mfHomeData} error={error} initialTab={initialTab} fundCode={fundCode} />
     );
 }
 
