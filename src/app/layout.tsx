@@ -74,11 +74,10 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
   let metadata = null;
 
   try {
-    await new Promise(resolve => setTimeout(resolve, 3000));
-
-    metadata = await fetchMetadata(pathname);
-    console.log(`meta Data Successfully fetched for ${pathname}`);
-
+    if (pathname) {
+      metadata = await fetchMetadata(pathname);
+      console.log(`meta Data Successfully fetched for ${pathname}`);
+    }
   } catch (err) {
     console.error(`error ${err}`);
 
