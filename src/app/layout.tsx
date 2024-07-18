@@ -16,19 +16,6 @@ const poppins = Poppins({
 });
 
 
-const fetchMetadata = async (pathname: string) => {
-  try {
-    const response = await fetch(`${endpoints.metaData}?url=${pathname}`);
-    if (!response.ok) {
-      throw new Error('Meta not found');
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching MF details", error);
-    throw error;
-  }
-}
-
 
 const menuData: MenuItem[] = [
   { label: "Home", url: "/" },
@@ -60,6 +47,22 @@ const menuData: MenuItem[] = [
     url: "/blogs",
   },
 ];
+
+
+
+const fetchMetadata = async (pathname: string) => {
+  try {
+    const response = await fetch(`${endpoints.metaData}?url=${pathname}`);
+    if (!response.ok) {
+      throw new Error('Meta not found');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching MF details", error);
+    throw error;
+  }
+}
+
 
 const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>) => {
 
@@ -93,3 +96,5 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
 }
 
 export default RootLayout;
+
+
