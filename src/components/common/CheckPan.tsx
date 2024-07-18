@@ -53,7 +53,6 @@ const CheckPan: React.FC = () => {
                 setKycData(data);
                 setIsModalOpen(false);
                 setShowKycModal(true);
-                console.log('PAN validation successful:', data);
             } else {
                 setValidationMessage('PAN validation failed');
                 console.error('PAN validation failed:', data);

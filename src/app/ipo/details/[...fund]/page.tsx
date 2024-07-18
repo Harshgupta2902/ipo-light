@@ -99,7 +99,6 @@ const IpoDetails: React.FC = () => {
                     setIpoDetails(null);
                 } else {
                     setIpoDetails(response);
-                    console.log(response);
                 }
             } catch (error) {
                 console.error("Error fetching IPO details:", error);
@@ -113,7 +112,6 @@ const IpoDetails: React.FC = () => {
                 const response1 = await get(endpoints.additionalIpo);
 
                 setAdditionalData(response1);
-                console.log(additionalData);
             } catch (error) {
                 console.error("Error fetching IPO details:", error);
             }

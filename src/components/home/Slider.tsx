@@ -11,9 +11,41 @@ import "../../style/slider.css";
 import ImageFallback from "../common/ImageFallback";
 import { SliderProps } from "../interfaces";
 
+const imageUrls: string[] = [
+  "/AMC/image_0.png",
+  "/AMC/image_1.png",
+  "/AMC/image_2.png",
+  "/AMC/image_3.png",
+  "/AMC/image_4.png",
+  "/AMC/image_5.png",
+  "/AMC/image_6.png",
+  "/AMC/image_7.png",
+  "/AMC/image_8.png",
+  "/AMC/image_9.png",
+  "/AMC/image_10.png",
+  "/AMC/image_11.png",
+  "/AMC/image_12.png",
+  "/AMC/image_13.png",
+  "/AMC/image_14.png",
+  "/AMC/image_15.png",
+  "/AMC/image_16.png",
+  "/AMC/image_17.png",
+  "/AMC/image_18.png",
+  "/AMC/image_19.png",
+  "/AMC/image_20.png",
+  "/AMC/image_21.png",
+  "/AMC/image_22.png",
+  "/AMC/image_23.png",
+  "/AMC/image_24.png",
+  "/AMC/image_25.png",
+  "/AMC/image_26.png",
+  "/AMC/image_27.png",
+  "/AMC/image_28.png"
+];
 
 
-const Slider: React.FC<SliderProps> = ({ imageUrls }) => {
+
+export default function Slider() {
   return (
     <>
       <Swiper
@@ -48,5 +80,3 @@ const Slider: React.FC<SliderProps> = ({ imageUrls }) => {
     </>
   );
 }
-
-export default Slider;

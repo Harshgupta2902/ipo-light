@@ -89,14 +89,11 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname();
   const [metadata, setMetadata] = useState<MetaData | null>(null);
-  console.log(pathname);
-
   useEffect(() => {
     const fetchMetadata = async () => {
       try {
         const metaData = await get(endpoints.metaData + "?url=" + pathname);
         setMetadata(metaData);
-        console.log(`metaData ${metaData.title}`);
       } catch (error) {
         console.error("Failed to fetch metadata", error);
       }

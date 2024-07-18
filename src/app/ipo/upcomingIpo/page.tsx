@@ -18,7 +18,6 @@ const Home: React.FC = () => {
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
-        console.log('Api fetching data Done:');
 
       }
     };

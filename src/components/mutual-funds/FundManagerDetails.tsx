@@ -7,8 +7,7 @@ import FundManagerListView from '@/components/common/FundManagerListView'
 import { FaCaretDown, FaCaretUp } from 'react-icons/fa'
 export default function FundManagerDetails({ fundManagersDetails }: { fundManagersDetails: MfHomePageFundmanager[] }) {
 
-    const [categoryFilter, setCategoryFilter] = useState('hybrid'); // State to track filter selection
-
+    const [categoryFilter, setCategoryFilter] = useState('hybrid'); 
     const handleFilterChange = (event: any) => {
         setCategoryFilter(event.target.value);
     };

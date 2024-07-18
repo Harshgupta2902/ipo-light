@@ -41,7 +41,6 @@ export default function HomePageDetails({
                 const response = await get(`${endpoints.getNav}/${isin}`);
                 if (response && !response.error) {
                     setChartPoints(response.isin);
-                    console.log(response.isin);
 
                 } else {
                     setError("Failed to fetch mutual fund Chart Details");
