@@ -1,7 +1,7 @@
 import { Poppins } from "next/font/google";
-import "./globals.css";
-import "../style/main.css";
-import "../style/extra.css";
+import "@/style/globals.css";
+import "@/style/main.css";
+import "@/style/extra.css";
 
 import Navbar from "../components/common/Header";
 import { MenuItem } from "@/components/interfaces";
