@@ -27,6 +27,7 @@
     "react-markdown": "^9.0.1",
     "react-shimmer-effects": "^1.0.3",
     "remark-gfm": "^4.0.0",
+    "sharp": "^0.33.4",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.1.4"
   },

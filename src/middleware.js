@@ -1,6 +1,6 @@
-import { NextResponse, userAgent } from "next/server";
+import { NextResponse } from "next/server";
 
-export default middleware = async (request) => {
+export default async function middleware(request) {
   const url = request.nextUrl;
   const pathname = url.pathname;
   const response = NextResponse.next();
@@ -9,7 +9,7 @@ export default middleware = async (request) => {
   }
   return response;
   next();
-};
+}
 
 export const config = {
   runtime: "experimental-edge",
