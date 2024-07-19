@@ -81,6 +81,9 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
   try {
 
     if (pathname) {
+      await new Promise(resolve => setTimeout(resolve, 3500));
+
+
       console.log(`pathname::::::::::::::::::::${pathname}`);
 
       metadata = await fetchMetadata(pathname);
