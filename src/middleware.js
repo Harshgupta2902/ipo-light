@@ -1,5 +1,3 @@
-"use serve";
-
 import { NextResponse, userAgent } from "next/server";
 
 export default middleware = async (request) => {
