@@ -52,14 +52,9 @@ const fetchMetadata = async (pathname: any) => {
   try {
     const url = `${endpoints.metaData}?url=${pathname}`;
     const response = await fetch(url, { cache: "no-store" });
-    if (!response.ok) {
-      throw new Error('Meta not found');
-    }
-
     return await response.json();
   } catch (error) {
     console.error("Error fetching MF details", error);
-    throw error;
   }
 }
 
@@ -74,15 +69,19 @@ export async function generateMetadata() {
 
   const metaData = await fetchMetadata(pathname ?? "/");
 
+  if (metaData.error) {
+    return {
+      title: "Not Found",
+      description: "Error Page Not Found",
+    };
+  }
+
   const metaTitle = metaData.title
-    ? metaData.title
-    : "IpoTech";
+    ?? "IpoTech";
   const metaDescription = metaData.description
-    ? metaData.description
-    : "IpoTech";
+    ?? "IpoTech";
   const keywords = metaData.keywords
-    ? metaData.keywords.join(", ")
-    : "IPO, mutual funds, investment, finance, stock market";
+    ?? "IPO, mutual funds, investment, finance, stock market";
 
 
   return {
@@ -108,21 +107,6 @@ export async function generateMetadata() {
     alternates: {
       canonical: `https://node.onlineinfotech.net${pathname}`,
     },
-    links: [
-      { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
-      { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
-      { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
-      { rel: "manifest", href: "/site.webmanifest" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" }
-    ],
-    meta: [
-      { name: "ahrefs-site-verification", content: "87106f56afba722eeac5b1e22675225b9b8844cff91992e9fd2b281d1e14deb2" },
-      { httpEquiv: "Content-Language", content: "en-us" },
-      { httpEquiv: "X-UA-Compatible", content: "ie=edge" },
-      { name: "Copyright", content: "Copyright 2024 @ IpoTech" },
-      // { name: "keywords", content: keywords }
-
-    ]
   };
 }
 

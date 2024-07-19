@@ -7,6 +7,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import "@/style/main.css";
 import Loader from "@/app/Loader";
+import NotFound from "@/app/not-found";
 
 
 export interface Root {
@@ -80,25 +81,28 @@ export interface Sme {
 const IpoDetails: React.FC = () => {
     const [ipoDetails, setIpoDetails] = useState<Root | null>(null)
     const [additionalData, setAdditionalData] = useState<AdditionalIpoData | null>(null);
-    const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
 
     const pathname = usePathname();
 
     useEffect(() => {
         const fetchIpoDetails = async () => {
-            
+
             try {
                 const response = await get(
                     endpoints.ipoDetails +
                     "?link=" +
                     pathname.replace("/ipo/details/", "")
                 );
-                if (response.message === "failed") {
-                    setError(response.message);
+
+                if (response.error) {
+                    setError(true);
                     setIpoDetails(null);
                 } else {
                     setIpoDetails(response);
+                    fetchAdditionalIpo();
+
                 }
             } catch (error) {
                 console.error("Error fetching IPO details:", error);
@@ -110,21 +114,22 @@ const IpoDetails: React.FC = () => {
         const fetchAdditionalIpo = async () => {
             try {
                 const response1 = await get(endpoints.additionalIpo);
+                if (ipoDetails !== null || error === false) {
+                    setAdditionalData(response1);
 
-                setAdditionalData(response1);
+                }
             } catch (error) {
-                console.error("Error fetching IPO details:", error);
+                console.error("Error fetching  AdditionalIpo details:", error);
             }
         };
 
         fetchIpoDetails();
-        fetchAdditionalIpo();
+
 
     }, [pathname]);
 
+    if (error) return <NotFound />;
     if (loading) return <Loader />;
-
-
     return (
         <section className="lg:pt-20">
             <div className="container">
