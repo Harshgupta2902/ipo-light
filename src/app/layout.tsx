@@ -65,8 +65,6 @@ export async function generateMetadata() {
 
   const headersList = headers();
   const pathname = headersList.get("x-url");
-  console.log(`Extracted pathname: ${pathname}`)
-
   const metaData = await fetchMetadata(pathname ?? "/");
 
   if (metaData.error) {

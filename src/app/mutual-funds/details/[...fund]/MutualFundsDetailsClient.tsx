@@ -1,4 +1,3 @@
-// src/components/mutual-funds/MutualFundsDetailsClient.tsx
 "use client";
 
 import { usePathname, useSearchParams, useRouter } from "next/navigation";

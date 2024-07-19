@@ -8,7 +8,6 @@ export default async function middleware(request) {
     response.headers.append("x-url", pathname);
   }
   return response;
-  next();
 }
 
 export const config = {
