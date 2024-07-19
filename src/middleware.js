@@ -10,4 +10,5 @@ export default middleware = async (request) => {
     response.headers.append("x-url", pathname);
   }
   return response;
+  next();
 };

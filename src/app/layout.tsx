@@ -126,6 +126,39 @@ export async function generateMetadata() {
   };
 }
 
+const schema = {
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  "name": "IpoTech",
+  "url": "https://node.onlineinfotech.net",
+  "description": "IpoTech provides comprehensive information about upcoming IPOs, GMP, buybacks, subscription statuses, and financial tools including calculators for SIP, lumpsum, SWP, and more.",
+  "author": {
+    "@type": "Organization",
+    "name": "IpoTech"
+  },
+  "datePublished": "2024-07-19",
+  "mainEntity": [
+    {
+      "@type": "WebPage",
+      "name": "IPO Details",
+      "url": "https://node.onlineinfotech.net/ipo",
+      "description": "Find detailed information about upcoming IPOs, including GMP, buyback status, and subscription status."
+    },
+    {
+      "@type": "WebPage",
+      "name": "Financial Calculators",
+      "url": "https://node.onlineinfotech.net/calculators",
+      "description": "Access various financial calculators for SIP, lumpsum investments, SWP, and more."
+    },
+    {
+      "@type": "WebPage",
+      "name": "Mutual Fund Screener",
+      "url": "https://node.onlineinfotech.net/mutual-funds/screener",
+      "description": "Screen and filter mutual funds based on various criteria to make informed investment decisions."
+    }
+  ],
+};
+
 const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <html lang="en">
@@ -140,40 +173,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
         <link rel="manifest" href="/site.webmanifest"></link>
         <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
 
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org/",
-            "@type": "WebSite",
-            "name": "IpoTech",
-            "url": "https://node.onlineinfotech.net",
-            "description": "IpoTech provides comprehensive information about upcoming IPOs, GMP, buybacks, subscription statuses, and financial tools including calculators for SIP, lumpsum, SWP, and more.",
-            "author": {
-              "@type": "Organization",
-              "name": "IpoTech"
-            },
-            "datePublished": "2024-07-19",
-            "mainEntity": [
-              {
-                "@type": "WebPage",
-                "name": "IPO Details",
-                "url": "https://node.onlineinfotech.net/ipo",
-                "description": "Find detailed information about upcoming IPOs, including GMP, buyback status, and subscription status."
-              },
-              {
-                "@type": "WebPage",
-                "name": "Financial Calculators",
-                "url": "https://node.onlineinfotech.net/calculators",
-                "description": "Access various financial calculators for SIP, lumpsum investments, SWP, and more."
-              },
-              {
-                "@type": "WebPage",
-                "name": "Mutual Fund Screener",
-                "url": "https://node.onlineinfotech.net/mutual-funds/screener",
-                "description": "Screen and filter mutual funds based on various criteria to make informed investment decisions."
-              }
-            ],
-          })}
-        </script>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
 
       </head>
       <body className={poppins.className}>
