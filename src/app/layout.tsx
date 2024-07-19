@@ -74,14 +74,14 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
   if (!pathname) {
     pathname = "/";
   }
-  
+
   let metadata = null;
 
   try {
 
     if (pathname) {
       console.log(`pathname::::::::::::::::::::${pathname}`);
-      
+
       metadata = await fetchMetadata(pathname);
       console.log(`meta Data Successfully fetched for ${pathname}`);
     }
