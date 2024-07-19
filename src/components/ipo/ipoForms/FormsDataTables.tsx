@@ -11,7 +11,7 @@ export default function FormsDataTable({ data }: { data: any }) {
   return (
     <section className="pt-20">
       <div className="container text-center">
-        <h3 className="mb-4">Ipo Forms </h3>
+        <h1 className="mb-4 text-4xl">Ipo Forms </h1>
 
         <div className="rounded bg-body py-6 px-6 shadow">
           <div className="flex flex-col">
