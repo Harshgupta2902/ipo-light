@@ -21,6 +21,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    middleware: true,
+  },
 };
 
 export default nextConfig;
