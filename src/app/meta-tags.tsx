@@ -29,6 +29,21 @@ interface HeaderProps {
 }
 
 const MetaView: React.FC<HeaderProps> = ({ metaData }) => {
+    const currentDate = new Date().toISOString().split('T')[0]; // Get the current date in YYYY-MM-DD format
+
+
+    const schema = metaData ? {
+        "@context": "https://schema.org/",
+        "@type": "WebSite",
+        "name": "IpoTech",
+        "author": {
+            "@type": "Organization",
+            "name": "IpoTech"
+        },
+        "datePublished": currentDate,
+        "description": metaData.description ?? "IpoTech",
+    } : {};
+
     return (
         <head>
             <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
@@ -65,6 +80,9 @@ const MetaView: React.FC<HeaderProps> = ({ metaData }) => {
                     {metaData.additionalMetaTags && metaData.additionalMetaTags.map((tag, index) => (
                         tag.name && tag.content && <meta key={index} name={tag.name} content={tag.content} />
                     ))}
+
+                    <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+
                 </>
             )}
         </head>
