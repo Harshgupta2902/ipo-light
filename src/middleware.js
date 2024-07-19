@@ -10,3 +10,7 @@ export default middleware = async (request) => {
   return response;
   next();
 };
+
+export const config = {
+  runtime: "experimental-edge",
+};

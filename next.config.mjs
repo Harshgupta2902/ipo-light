@@ -21,10 +21,9 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    middleware: true,
-  },
+  // experimental: {
+  //   middleware: true,
+  // },
 };
 
 export default nextConfig;
-
