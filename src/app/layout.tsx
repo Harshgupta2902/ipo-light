@@ -8,6 +8,7 @@ import { MenuItem } from "@/components/interfaces";
 import { endpoints } from "@/api/endpoints";
 import { headers } from "next/headers";
 import MetaView from "./meta-tags";
+import { Analytics } from "@vercel/analytics/react"
 
 
 const poppins = Poppins({
@@ -97,6 +98,8 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
       <body className={poppins.className}>
         <Navbar menuData={menuData ?? []} />
         {children}
+        <Analytics />
+
       </body>
     </html>
   );
