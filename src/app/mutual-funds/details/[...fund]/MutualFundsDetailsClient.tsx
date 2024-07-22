@@ -31,7 +31,7 @@ const MutualFundsDetailsClient: React.FC<MutualFundsDetailsClientProps> = ({ fun
     if (error) return <div>Error: {error}</div>;
 
     return (
-        <section className="pt-0">
+        <section className="pt-1">
             <div className="container">
                 <main className="mx-auto max-w-8xl sm:px-6 lg:px-8">
                     <section aria-labelledby="products-heading" className="mt-[4rem]">

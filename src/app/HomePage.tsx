@@ -32,7 +32,7 @@ const HomePageDetails: React.FC<HomePageProps> = ({ indicesResult, gainersResult
 
     return (
         <main>
-            <section className="lg:pt-20 sm:pt-0">
+            <section className="lg:pt-1 sm:pt-1">
                 <div className="container">
                     <div className="row text-center">
                         <div className="mx-auto lg:col-8">

@@ -162,7 +162,9 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
       </head>
       <body className={poppins.className}>
         <Navbar menuData={menuData ?? []} />
-        {children}
+        <main>
+          {children}
+        </main>
         <Analytics />
 
       </body>

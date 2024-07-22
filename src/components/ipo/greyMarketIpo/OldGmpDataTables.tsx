@@ -16,10 +16,10 @@ export default function OldGmpDataTables({ data }: { data: any }) {
   };
 
   return (
-    <section className="pt-20">
+    <section className="pt-1">
       <div className="container text-center">
-      <h1 className="mb-4 text-4xl">Old Ipo Gmp </h1>
-      
+        <h1 className="mb-4 text-4xl">Old Ipo Gmp </h1>
+
 
         <div className="rounded bg-body py-6 px-6 shadow">
           <div className="flex flex-col">

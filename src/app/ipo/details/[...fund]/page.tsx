@@ -1,37 +1,9 @@
 
 import Link from "next/link";
 import { endpoints } from "@/api/endpoints";
-import "@/style/main.css";
 import Loader from "@/app/Loader";
 import NotFound from "@/app/not-found";
 import { headers } from "next/headers";
-
-
-export interface Root {
-    ulAfterHeadingsResult: UlAfterHeadingsResult[]
-    tables: Table[]
-    slug: string
-    link: string
-}
-
-export interface UlAfterHeadingsResult {
-    heading: string
-    items: string[]
-}
-
-export interface Table {
-    name: string
-    data: string
-}
-
-
-
-export interface AdditionalIpoData {
-    upcomingData: UpcomingData[]
-    gmp: Gmp[]
-    buyback: Buyback[]
-    sme: Sme[]
-}
 
 export interface UpcomingData {
     company_name: string
@@ -131,7 +103,7 @@ const IpoDetails = async () => {
     if (error) return <NotFound />;
     if (loading) return <Loader />;
     return (
-        <section className="lg:pt-20">
+        <section className="lg:pt-1">
             <div className="container">
                 <main className="mx-auto max-w-8xl sm:px-6 lg:px-8 ">
                     <section aria-labelledby="products-heading " className="mt-[4rem]">

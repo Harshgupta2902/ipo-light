@@ -65,7 +65,7 @@ export default function SubsCriptionDataTable({ data }: { data: any }) {
 
 
   return (
-    <section className="pt-20">
+    <section className="pt-0">
       <div className="container text-center">
         <h1 className="mb-4 text-4xl">Ipo Subscription </h1>
         <div className="mb-4 border-b border-gray-200">
@@ -94,13 +94,13 @@ export default function SubsCriptionDataTable({ data }: { data: any }) {
         </div>
         <div id="default-tab-content">
           <div className={`${activeTab === "MainBoard" ? "block" : "hidden"}`} role="tabpanel">
-            <div className="rounded bg-body py-6 px-6 shadow">
+            <div className="rounded bg-body px-6 shadow">
               <div className="flex flex-col">
-                <div className="-m-1.5 overflow-x-auto">
+                <div className="-m-1.5 overflow-x-auto content">
                   <div className="p-1.5 align-middle">
                     <table className="w-full text-sm text-left  text-gray-500">
                       {mainBoardHeaders && mainBoardHeaders.length > 0 && (
-                        <thead className="text-xs text-gray-700 bg-gray-50 ">
+                        <thead className="text-md text-gray-700 bg-gray-50 ">
                           <tr>
                             {mainBoardHeaders.map((header, index) => (
                               <th key={index} className="py-2">
@@ -144,13 +144,13 @@ export default function SubsCriptionDataTable({ data }: { data: any }) {
             </div>
           </div>
           <div className={`${activeTab === "SME" ? "block" : "hidden"}`} role="tabpanel">
-            <div className="rounded bg-body py-6 px-6 shadow">
+            <div className="rounded bg-body px-6 shadow">
               <div className="flex flex-col">
-                <div className="-m-1.5 overflow-x-auto">
+                <div className="-m-1.5 overflow-x-auto content">
                   <div className="p-1.5 align-middle">
                     <table className="w-full text-sm text-left  text-gray-500">
                       {SmeHeaders && SmeHeaders.length > 0 && (
-                        <thead className="text-xs text-gray-700 bg-gray-50 ">
+                        <thead className="text-md text-gray-700 bg-gray-50 ">
                           <tr>
                             {SmeHeaders.map((header, index) => (
                               <th key={index} className="py-2">

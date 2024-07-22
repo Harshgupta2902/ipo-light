@@ -9,17 +9,17 @@ export default function BuyBackDataTables({ data }: { data: any }) {
   const headers = ["Company Name", "Record Date", "Open", "Close", "Price"];
 
   return (
-    <section className="pt-20">
+    <section className="pt-0">
       <div className="container text-center">
         <h3 className="mb-4">Ipo Buy-back </h3>
 
-        <div className="rounded bg-body py-6 px-6 shadow">
+        <div className="rounded bg-body px-6 shadow">
           <div className="flex flex-col">
-            <div className="-m-1.5 overflow-x-auto">
+            <div className="-m-1.5 overflow-x-auto content">
               <div className="p-1.5 align-middle">
                 <table className="w-full text-sm text-left  text-gray-500 ">
                   {headers && headers.length > 0 && (
-                    <thead className="text-xs text-gray-700 bg-gray-50 ">
+                    <thead className="text-md text-gray-700 bg-gray-50 ">
                       <tr>
                         {headers.map((header, index) => (
                           <th key={index} className="py-2">

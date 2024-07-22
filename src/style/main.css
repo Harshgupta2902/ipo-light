@@ -3448,11 +3448,11 @@ input#nav-toggle:checked~label#hide-button {
     padding-left: 2.25rem
 }
 
-.pt-0 {
+.pt-1 {
     padding-top: 0
 }
 
-.pt-20 {
+.pt-1 {
     padding-top: 5rem
 }
 

@@ -65,7 +65,7 @@ export default function MutualFundsHomePage() {
 
     return (
         <main>
-            <section className="lg:pt-20 sm:pt-0">
+            <section className="lg:pt-1 sm:pt-1">
                 <div className="container">
                     <div className={`row items-center flex-col lg:flex-row`}>
                         <div className="lg:col-8 md:col-8 mb-8 ">
@@ -99,7 +99,7 @@ export default function MutualFundsHomePage() {
                     </div>
                 </div>
             </div>
-            <section className="lg:pt-20 sm:pt-0">
+            <section className="lg:pt-1 sm:pt-1">
                 <div className="container">
                     <div className="flex justify-between items-center max-sm:items-start">
                         <div className="text-[48px] font-clashSemibold text-[#0A0F1E] max-md:text-2xl">

@@ -83,8 +83,10 @@ const UpcomingIpo: React.FC<IpoMainHomePageProps> = ({ upcomingData, smeData }) 
                       <tr key={index}>
                         {keystoshow.map((key) => (
                           <td key={key} className="py-3">
-                            {key === "Company" ? (
+                           
+                            {key === "company_name" ? (
                               <Link
+                                prefetch={false}
                                 style={{
                                   textDecoration: "none",
                                   fontSize: "medium",
