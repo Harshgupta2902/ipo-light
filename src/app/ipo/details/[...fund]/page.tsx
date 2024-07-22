@@ -1,13 +1,10 @@
-"use client"
-import Link from "next/link";
 
-import { get } from "@/api/api";
+import Link from "next/link";
 import { endpoints } from "@/api/endpoints";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import "@/style/main.css";
 import Loader from "@/app/Loader";
 import NotFound from "@/app/not-found";
+import { headers } from "next/headers";
 
 
 export interface Root {
@@ -78,55 +75,58 @@ export interface Sme {
 }
 
 
-const IpoDetailsPage: React.FC = () => {
-    const [ipoDetails, setIpoDetails] = useState<Root | null>(null)
-    const [additionalData, setAdditionalData] = useState<AdditionalIpoData | null>(null);
-    const [error, setError] = useState<boolean>(false);
-    const [loading, setLoading] = useState<boolean>(true);
+const fetchIpoDetails = async (pathname: any) => {
+    try {
+        const response = await fetch(`${endpoints.ipoDetails}?link=${pathname}`);
+        if (!response.ok) {
+            throw new Error('Data not found');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Error fetching MF details", error);
+        throw error;
+    }
+}
 
-    const pathname = usePathname();
-
-    useEffect(() => {
-        const fetchIpoDetails = async () => {
-
-            try {
-                const response = await get(
-                    endpoints.ipoDetails +
-                    "?link=" +
-                    pathname.replace("/ipo/details/", "")
-                );
-
-                if (response.error) {
-                    setError(true);
-                    setIpoDetails(null);
-                } else {
-                    setIpoDetails(response);
-                    fetchAdditionalIpo();
-
-                }
-            } catch (error) {
-                console.error("Error fetching IPO details:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        const fetchAdditionalIpo = async () => {
-            try {
-                const response1 = await get(endpoints.additionalIpo);
-                if (ipoDetails !== null || error === false) {
-                    setAdditionalData(response1);
-
-                }
-            } catch (error) {
-                console.error("Error fetching  AdditionalIpo details:", error);
-            }
-        };
-
-        fetchIpoDetails();
+const fetchAdditionalIpo = async () => {
+    try {
+        const response = await fetch(endpoints.additionalIpo);
+        if (!response.ok) {
+            throw new Error('Data not found');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Error fetching MF details", error);
+        throw error;
+    }
+}
 
 
-    }, [pathname]);
+
+const IpoDetails = async () => {
+    let ipoDetails = null;
+    let additionalData = null;
+    let error = null;
+    let loading = false;
+
+    const headersList = headers();
+    const completePathname = headersList.get("x-url");
+    const pathname = completePathname?.replace("/ipo/details/", "")
+
+
+    try {
+        const response = await fetchIpoDetails(pathname);
+        if (response.error) {
+            error = true;
+        } else {
+            ipoDetails = response;
+            additionalData = await fetchAdditionalIpo();
+
+        }
+    } catch (err) {
+        console.error(`error ${err}`);
+
+    }
 
     if (error) return <NotFound />;
     if (loading) return <Loader />;
@@ -335,4 +335,4 @@ const IpoDetailsPage: React.FC = () => {
         </section>
     );
 };
-export default IpoDetailsPage;
+export default IpoDetails;
