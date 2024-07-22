@@ -2,7 +2,7 @@
 
 import { get } from "@/api/api";
 import { endpoints } from "@/api/endpoints";
-import ScreenerTable from "@/components/ipo/screener/screener-table";
+import ScreenerTable from "@/components/mutual-funds/screener-table";
 import React from "react";
 
 const Screener = async () => {
