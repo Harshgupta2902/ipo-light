@@ -1,29 +1,30 @@
-"use client";
 import { endpoints } from "@/api/endpoints";
 import UpcomingDataTable from "@/components/ipo/upcomingIpo/UpcomingDataTables";
 import UpcomingFaq from "@/components/ipo/upcomingIpo/upcomingFaq";
-import { useEffect, useState } from "react";
-import { get } from "@/api/api";
 import Loader from "@/app/Loader";
 
 
-const Home: React.FC = () => {
-  const [result, setResult] = useState<any>(null);
+const fetchUpComingIpo = async () => {
+  try {
+    const response = await fetch(endpoints.upcomingIpo);
+    if (!response.ok) {
+      throw new Error("Data not found");
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching upcomingIpo", error);
+    throw error;
+  }
+};
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await get(endpoints.upcomingIpo);
-        setResult(response);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
 
-      }
-    };
-
-    fetchData();
-  }, [])
+const UpComingIpo = async () => {
+  let result = null;
+  try {
+    result = await fetchUpComingIpo();
+  } catch (err) {
+    console.error(`error ${err}`);
+  }
 
   return (
     <>
@@ -38,4 +39,4 @@ const Home: React.FC = () => {
 };
 
 
-export default Home;
+export default UpComingIpo;
