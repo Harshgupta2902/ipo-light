@@ -1,11 +1,7 @@
 "use client";
-
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
-import CheckPan from "./CheckPan";
 import { MenuItem, NavItemProps } from "../interfaces";
-
-
 
 
 const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
@@ -99,15 +95,18 @@ const NavItem: React.FC<NavItemProps> = ({ item, isActive, onItemClick }) => {
       className={`nav-item nav-dropdown relative group ${isActive ? "active" : ""}`}
     >
       {item.dropdown ? (
-        <div
-          className={`nav-link inline-flex items-center ${isActive ? "active" : ""}`}
-          onClick={onItemClick}
-        >
-          <span>{item.label}</span>
-          <svg className="ml-1 h-4 w-4 fill-current" viewBox="0 0 20 20">
-            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
-          </svg>
-        </div>
+        <a href={item.url}>
+          <div
+            className={`nav-link inline-flex items-center ${isActive ? "active" : ""}`}
+            onClick={onItemClick}
+          >
+            <span>{item.label}</span>
+            <svg className="ml-1 h-4 w-4 fill-current" viewBox="0 0 20 20">
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
+            </svg>
+          </div>
+
+        </a>
       ) : (
         <div className={`nav-link inline-flex items-center ${isActive ? "active" : ""}`}>
           <a href={item.url}>

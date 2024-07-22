@@ -2,10 +2,7 @@
 const baseURL = "https://apis-iota-five.vercel.app/api/";
 
 export const endpoints = {
-
   metaData: `${baseURL}meta-data`,
-
-
 
   homePage: `${baseURL}main`,
   upcomingIpo: `${baseURL}ipo`,
@@ -30,8 +27,6 @@ export const endpoints = {
 
   insertBlog: `${baseURL}insertBlog`,
 
-  //   // Check pan
-  checkPan: `${baseURL}checkPan`,
   blogDetails: `${baseURL}getBlogDetails`,
   getBlogs: `${baseURL}getBlogs`,
 

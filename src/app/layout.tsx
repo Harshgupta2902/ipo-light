@@ -20,7 +20,7 @@ const menuData: MenuItem[] = [
   { label: "Home", url: "/" },
   {
     label: "Ipo",
-    url: "",
+    url: "/ipo",
     dropdown: true,
     dropdownItems: [
       { label: "Upcoming Ipo", url: "/ipo/upcomingIpo" },
@@ -32,8 +32,13 @@ const menuData: MenuItem[] = [
     ],
   },
   {
+    label: "Mutual Funds",
+    url: "/mutual-funds",
+    dropdown: false,
+  },
+  {
     label: "Calculators",
-    url: "",
+    url: "/calculators",
     dropdown: true,
     dropdownItems: [
       { label: "Sip Calculator", url: "/calculators/sip_calculator" },
