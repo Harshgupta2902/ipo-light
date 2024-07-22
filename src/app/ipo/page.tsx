@@ -1,37 +1,35 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useState } from 'react';
 import UpcomingIpo from "@/components/ipo/home/HomeDataTables";
 import HomeFaq from "@/components/ipo/home/HomeFaq";
 import ImageFallback from "@/components/common/ImageFallback";
 import { endpoints } from "@/api/endpoints";
-import { get } from "@/api/api";
-import { IpoMainHomePageProps } from "@/components/interfaces";
-const Home: React.FC = () => {
-  const [result, setResult] = useState<IpoMainHomePageProps>({ upcomingData: [], smeData: [] });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await get(endpoints.homePage);
-        setResult(response);
-      } catch (error) {
-        console.error("Error fetching home Page:", error);
-      }
+const fetchIpoHomePage = async () => {
+  try {
+    const response = await fetch(endpoints.homePage);
+    if (!response.ok) {
+      throw new Error("Data not found");
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching Ipo HomePage", error);
+    throw error;
+  }
+};
 
-    };
-
-    fetchData();
-  }, []);
+const Home = async () => {
+  let result = null;
+  try {
+    result = await fetchIpoHomePage();
+  } catch (err) {
+    console.error(`error ${err}`);
+  }
 
   return (
     <>
       <section className={`py-24 `}>
         <div className="container">
-          <div
-            className={`row items-centerflex-col lg:flex-row`}
-          >
+          <div className={`row items-centerflex-col lg:flex-row`}>
             <div className="lg:col-8 md:col-8 mb-8 ">
               <h1 className="mb-4 text-h3 lg:text-h1">
                 Invest in the Future
@@ -64,7 +62,10 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
-      <UpcomingIpo smeData={result.smeData} upcomingData={result.upcomingData} />
+      <UpcomingIpo
+        smeData={result.smeData}
+        upcomingData={result.upcomingData}
+      />
       <HomeFaq />
     </>
   );
