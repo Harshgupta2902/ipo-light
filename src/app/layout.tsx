@@ -34,7 +34,10 @@ const menuData: MenuItem[] = [
   {
     label: "Mutual Funds",
     url: "/mutual-funds",
-    dropdown: false,
+    dropdown: true,
+    dropdownItems: [
+      { label: "Screener", url: "/mutual-funds/screener" },
+    ],
   },
   {
     label: "Calculators",
