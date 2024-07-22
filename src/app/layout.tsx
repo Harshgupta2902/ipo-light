@@ -95,6 +95,8 @@ export async function generateMetadata() {
       description: metaDescription,
       site: "https://node.onlineinfotech.net",
       images: "https://node.onlineinfotech.net/logo.png",
+      type: "Fintech",
+      url: `https://node.onlineinfotech.net${pathname}`
     },
     twitter: {
       card: "summary_large_image",
