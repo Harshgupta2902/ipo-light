@@ -73,6 +73,20 @@ const fetchAdditionalIpo = async () => {
     }
 }
 
+function processIpoString(str: string | undefined): string {
+    if (!str) {
+        return '';
+    }
+    let words = str.split('-date')[0];
+    console.log(`words:::::::::::::::::${words}`);
+    let wordArray = words.split('-');
+
+    const processedStr = wordArray
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+    return processedStr;
+}
+
 
 
 const IpoDetails = async () => {
@@ -107,11 +121,13 @@ const IpoDetails = async () => {
             <div className="container">
                 <main className="mx-auto max-w-8xl sm:px-6 lg:px-8 ">
                     <section aria-labelledby="products-heading " className="mt-[4rem]">
+                        <h1 className="text-4xl mb-4 pb-4 border-b-2">{processIpoString(pathname)}</h1>
+                        <br />
                         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                             <div className="lg:col-span-3">
                                 {ipoDetails?.ulAfterHeadingsResult.map((section: any, index: any) => (
                                     <div key={index} className="mb-[2.5rem]">
-                                        <h3 className="mb-5">{section.heading}</h3>
+                                        <h2 className="text-2xl mb-5">{section.heading}</h2>
                                         <ul className="space-y-1 text-gray-500 list-inside">
                                             {section.items.map((item: any, i: any) => (
                                                 <li key={i} className="flex">
@@ -124,7 +140,7 @@ const IpoDetails = async () => {
                                                     >
                                                         <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                                                     </svg>
-                                                    {item}
+                                                    <p>{item}</p>
                                                 </li>
                                             ))}
                                         </ul>
@@ -161,9 +177,9 @@ const IpoDetails = async () => {
                                     additionalData.upcomingData &&
                                     additionalData.upcomingData.length > 0 && (
                                         <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 mb-6">
-                                            <h5 className="text-xl font-bold leading-none text-gray-900 mb-4">
+                                            <h3 className="text-xl font-bold leading-none text-gray-900 mb-4">
                                                 Latest IPOs
-                                            </h5>
+                                            </h3>
                                             <div className="flow-root">
                                                 <ul role="list" className="divide-y divide-gray-200">
                                                     {additionalData.upcomingData.map(
@@ -177,7 +193,7 @@ const IpoDetails = async () => {
                                                                         rel="noopener noreferrer"
                                                                         prefetch={false}
                                                                     >
-                                                                        {item.company_name}
+                                                                        <h4 className="text-base">{item.company_name}</h4>
                                                                     </Link>
                                                                     <p className="text-sm text-gray-500 truncate">
                                                                         {`${item.date === "TBA"
@@ -197,9 +213,9 @@ const IpoDetails = async () => {
                                     additionalData.sme &&
                                     additionalData.sme.length > 0 && (
                                         <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 mb-6">
-                                            <h5 className="text-xl font-bold leading-none text-gray-900 mb-4">
+                                            <h3 className="text-xl font-bold leading-none text-gray-900 mb-4">
                                                 SME IPOs
-                                            </h5>
+                                            </h3>
                                             <div className="flow-root">
                                                 <ul role="list" className="divide-y divide-gray-200">
                                                     {additionalData.sme.map((item: Sme) => (
@@ -212,7 +228,8 @@ const IpoDetails = async () => {
                                                                     rel="noopener noreferrer"
                                                                     prefetch={false}
                                                                 >
-                                                                    {item.company_name}
+                                                                    <h4 className="text-base">{item.company_name}</h4>
+
                                                                 </Link>
                                                                 <p className="text-sm text-gray-500 truncate">
                                                                     {`${item.date === "TBA"
@@ -232,9 +249,9 @@ const IpoDetails = async () => {
                                     additionalData.gmp &&
                                     additionalData.gmp.length > 0 && (
                                         <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 mb-6">
-                                            <h5 className="text-xl font-bold leading-none text-gray-900 mb-4">
+                                            <h3 className="text-xl font-bold leading-none text-gray-900 mb-4">
                                                 GMP IPOs
-                                            </h5>
+                                            </h3>
                                             <div className="flow-root">
                                                 <ul role="list" className="divide-y divide-gray-200">
                                                     {additionalData.gmp.map((item: Gmp) => (
@@ -247,7 +264,8 @@ const IpoDetails = async () => {
                                                                     rel="noopener noreferrer"
                                                                     prefetch={false}
                                                                 >
-                                                                    {item.company_name}
+                                                                    <h4 className="text-base">{item.company_name}</h4>
+
                                                                 </Link>
                                                                 <p className="text-sm text-gray-500 truncate">
                                                                     {`Gain:${item.gain}`}
@@ -267,9 +285,9 @@ const IpoDetails = async () => {
                                     additionalData.buyback &&
                                     additionalData.buyback.length > 0 && (
                                         <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 mb-6">
-                                            <h5 className="text-xl font-bold leading-none text-gray-900 mb-4">
+                                            <h3 className="text-xl font-bold leading-none text-gray-900 mb-4">
                                                 BuyBack IPOs
-                                            </h5>
+                                            </h3>
                                             <div className="flow-root">
                                                 <ul role="list" className="divide-y divide-gray-200">
                                                     {additionalData.buyback.map(
@@ -283,7 +301,8 @@ const IpoDetails = async () => {
                                                                         rel="noopener noreferrer"
                                                                         prefetch={false}
                                                                     >
-                                                                        {item.company_name}
+                                                                        <h4 className="text-base">{item.company_name}</h4>
+
                                                                     </Link>
                                                                     <p className="text-sm text-gray-500 truncate">
                                                                         {`${item.open === "TBA"
