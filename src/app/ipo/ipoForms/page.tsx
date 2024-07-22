@@ -17,7 +17,7 @@ const fetchFormsIpo = async () => {
 
 
 
-const Home = async () => {
+const FormsIpoHomePage = async () => {
   let result = null;
 
   try {
@@ -34,4 +34,4 @@ const Home = async () => {
   );
 };
 
-export default Home;
+export default FormsIpoHomePage;

@@ -22,7 +22,7 @@ const fetchSubscriptionIpo = async () => {
 };
 
 
-const Home = async () => {
+const SubscriptionIpoHomePage = async () => {
   let result = null;
   try {
     result = await fetchSubscriptionIpo();
@@ -39,4 +39,4 @@ const Home = async () => {
   );
 };
 
-export default Home;
+export default SubscriptionIpoHomePage;

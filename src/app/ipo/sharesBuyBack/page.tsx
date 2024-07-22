@@ -16,7 +16,7 @@ const fetchBuybackIpo = async () => {
   }
 };
 
-const Home = async () => {
+const BuyBackIpoHomePage = async () => {
   let result = null;
 
   try {
@@ -33,4 +33,4 @@ const Home = async () => {
   );
 };
 
-export default Home;
+export default BuyBackIpoHomePage;

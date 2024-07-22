@@ -78,7 +78,7 @@ export interface Sme {
 }
 
 
-const IpoDetails: React.FC = () => {
+const IpoDetailsPage: React.FC = () => {
     const [ipoDetails, setIpoDetails] = useState<Root | null>(null)
     const [additionalData, setAdditionalData] = useState<AdditionalIpoData | null>(null);
     const [error, setError] = useState<boolean>(false);
@@ -335,4 +335,4 @@ const IpoDetails: React.FC = () => {
         </section>
     );
 };
-export default IpoDetails;
+export default IpoDetailsPage;

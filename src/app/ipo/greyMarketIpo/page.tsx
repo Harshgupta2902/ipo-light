@@ -18,7 +18,7 @@ const fetchGmpIpo = async () => {
 };
 
 
-const Home = async () => {
+const GmpIpoHomePage = async () => {
   let result = null;
 
   try {
@@ -36,4 +36,4 @@ const Home = async () => {
   );
 };
 
-export default Home;
+export default GmpIpoHomePage;

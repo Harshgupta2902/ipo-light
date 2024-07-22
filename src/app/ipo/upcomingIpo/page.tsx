@@ -18,7 +18,7 @@ const fetchUpComingIpo = async () => {
 };
 
 
-const UpComingIpo = async () => {
+const UpcomingIpoHomePage = async () => {
   let result = null;
   try {
     result = await fetchUpComingIpo();
@@ -39,4 +39,4 @@ const UpComingIpo = async () => {
 };
 
 
-export default UpComingIpo;
+export default UpcomingIpoHomePage;

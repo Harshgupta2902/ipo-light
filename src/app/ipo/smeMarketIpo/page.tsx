@@ -18,7 +18,7 @@ const fetchSmeIpo = async () => {
 
 
 
-const Home = async () => {
+const SmeIpoHomePage = async () => {
   let result = null;
   try {
     result = await fetchSmeIpo();
@@ -34,4 +34,4 @@ const Home = async () => {
   );
 };
 
-export default Home;
+export default SmeIpoHomePage;
