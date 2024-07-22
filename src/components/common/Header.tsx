@@ -85,7 +85,9 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
             />
           ))}
         </ul>{" "}
-        < CheckPan />
+        <div className="order-2 flex items-center md:order-2 lg:ml-0">
+          <div className="theme-switcher mr-3 lg:ml-5"></div>
+        </div>
       </nav>
     </header>
   );
