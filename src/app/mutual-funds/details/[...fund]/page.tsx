@@ -4,7 +4,7 @@ import MutualFundsDetailsClient from "./MutualFundsDetailsClient";
 
 const fetchMfDetails = async (fundCode: any) => {
     try {
-        const response = await fetch(`${endpoints.getMfHomePage}?mf=${fundCode}`);
+        const response = await fetch(`${endpoints.getMfHomePage}?mf=${fundCode}`, { cache: "no-store" });
         if (!response.ok) {
             throw new Error('Data not found');
         }
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: { fund: string[] } 
         console.error(`Error fetching metadata: ${err}`);
     }
 
-    const metaData = mfHomeData.summary.meta.fullName;
+    const metaData = mfHomeData.summary.meta;
 
     const metaTitle = metaData.fullName ? metaData.fullName : pathname;
     const metaDescription = `Explore the ${metaData.fullName} (${metaData.plan} Plan) with comprehensive details on performance, risk classification, benchmark index, and investment strategy. Invest wisely with ${metaData.amc}.`;
