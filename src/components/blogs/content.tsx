@@ -23,24 +23,21 @@ export default function BlogDetails({ blog }: { blog: BlogContent }) {
                 />
             </div>
             <div className="flex space-x-3 items-center my-3">
-                <a href="/authors/awab-husameldin">
-                    <ImageFallback
-                        src={blog.image}
-                        width="30"
-                        height="30"
-                        className="inline-block w-6 h-6 rounded-full"
-                        alt={blog.author}
-                        priority
-                    />
-                </a>
+                <ImageFallback
+                    src={blog.image}
+                    width="30"
+                    height="30"
+                    className="inline-block w-6 h-6 rounded-full"
+                    alt={blog.author}
+                    priority
+                />
                 <p>
                     <span>by </span>
-                    <a
+                    <span
                         className="text-dark hover:text-primary transition"
-                        href="/authors/awab-husameldin"
                     >
                         {blog.author}
-                    </a>
+                    </span>
                 </p>
                 <div>
                     <svg
