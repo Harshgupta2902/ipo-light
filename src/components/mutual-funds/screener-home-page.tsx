@@ -240,22 +240,19 @@ const ScreenerMfHomePage: React.FC<Screener> = ({ data }) => {
                 </Transition>
 
                 <main className="mx-auto max-w-10xl sm:px-6 lg:px-8">
+
                     <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-4">
-                        <div>
-                            <p className="text-gray-600">
-                                Showing {visibleData.length} of {filteredData.length} Funds
-                            </p>
-                        </div>
-                        <div className="relative">
-                            <input
-                                type="text"
-                                id="table-search"
-                                className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50"
-                                placeholder="Search for items"
-                                value={searchQuery}
-                                onChange={handleSearch}
-                            />
-                        </div>
+                        <p className="text-gray-600">
+                            Showing {visibleData.length} of {filteredData.length} Funds
+                        </p>
+                        <input
+                            type="text"
+                            id="table-search"
+                            className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50"
+                            placeholder="Search for items"
+                            value={searchQuery}
+                            onChange={handleSearch}
+                        />
                     </div>
 
                     <section aria-labelledby="products-heading" className="pb-24 pt-6">

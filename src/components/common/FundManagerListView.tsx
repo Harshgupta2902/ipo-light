@@ -1,5 +1,3 @@
-"use client"
-
 import React, { useState } from "react";
 
 const FundManagerListView = ({
@@ -7,6 +5,7 @@ const FundManagerListView = ({
   image,
   aum,
   exp,
+  fmCode,
   children,
   className,
 }: {
@@ -16,6 +15,7 @@ const FundManagerListView = ({
   exp: string;
   children: React.ReactNode;
   className?: string;
+  fmCode:any;
 }) => {
   const [show, setShow] = useState(false);
 
@@ -31,10 +31,10 @@ const FundManagerListView = ({
   };
 
   return (
-    <div className={`col-lg-8 ${className}`}>
+    <div key={fmCode} className={`col-lg-8 ${className}`}>
       <div className={`fundManagerList ${show ? "active" : ""}`}>
         <button className="fundManagerList-header" onClick={toggleAccordion} aria-label={name}>
-          <div 
+          <div
             className="relative flex items-center gap-4 overflow-hidden text-gray-700 bg-transparent shadow-none bg-clip-border">
             <img
               src={image}
@@ -42,10 +42,10 @@ const FundManagerListView = ({
               className="relative inline-block h-[58px] w-[58px] rounded-md object-cover object-center" />
             <div className="flex w-full flex-col gap-0.5">
               <div className="flex items-center justify-between">
-                <h5
+                <h2
                   className="block text-lg font-semibold leading-snug tracking-normal cursor-pointer text-blue-gray-900 hover:text-hover-blue">
                   {name}
-                </h5>
+                </h2>
               </div>
               <p className="block text-sm antialiased font-light text-blue-gray-900">
                 {`AUM: ${formatCurrency(aum)}`}

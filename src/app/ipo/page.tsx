@@ -27,7 +27,7 @@ const Home = async () => {
 
   return (
     <>
-      <section className={`py-24 `}>
+      <section >
         <div className="container">
           <div className={`row items-centerflex-col lg:flex-row`}>
             <div className="lg:col-8 md:col-8 mb-8 ">

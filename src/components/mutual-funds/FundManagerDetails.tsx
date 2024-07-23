@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
-
 import { MfHomePageFundmanager } from '@/components/interfaces'
 import FundManagerListView from '@/components/common/FundManagerListView'
 import { FaCaretDown, FaCaretUp } from 'react-icons/fa'
 export default function FundManagerDetails({ fundManagersDetails }: { fundManagersDetails: MfHomePageFundmanager[] }) {
 
-    const [categoryFilter, setCategoryFilter] = useState('hybrid'); 
+    const [categoryFilter, setCategoryFilter] = useState('hybrid');
+
     const handleFilterChange = (event: any) => {
         setCategoryFilter(event.target.value);
     };
@@ -18,19 +16,19 @@ export default function FundManagerDetails({ fundManagersDetails }: { fundManage
             <div className="container mt-12">
                 <div className="row justify-center">
                     {fundManagersDetails && fundManagersDetails.map((funds) => (
-                        <FundManagerListView aum={funds.aumInCr} exp={funds.exp} image={funds.imgUrl} name={funds.name} >
+                        <FundManagerListView aum={funds.aumInCr} exp={funds.exp} image={funds.imgUrl} name={funds.name} fmCode={funds.fmCode} >
                             <div key={funds.fmCode}>
-                                <h6 className='font-bold'>Qualification</h6>
-                                <p className='text-xs text-gray-900'>{funds.qualification}</p>
+                                <h3 className='font-bold text-base'>Qualification</h3>
+                                <p className='text-sm'>{funds.qualification ? funds.qualification : "No Data Available"}</p>
                                 <br />
-                                <h6 className='font-bold'>Past Experience</h6>
-                                <p className='text-xs text-gray-900'>{funds.pastExp}</p>
+                                <h3 className='font-bold text-base'>Past Experience</h3>
+                                <p className='text-sm'>{funds.pastExp ? funds.pastExp : "No Data Available"}</p>
                                 <br />
                                 <br />
 
                                 <div
                                     className="flex" style={{ justifyContent: "space-between" }}>
-                                    <h6 className='font-bold'>Funds Managed {`(${funds.funds.length})`}</h6>
+                                    <h3 className='font-bold text-base'>Funds Managed {`(${funds.funds.length})`}</h3>
                                     <select value={categoryFilter} onChange={handleFilterChange}
                                         className="block max-w-32 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300  sm:max-w-xs sm:text-sm sm:leading-6 mb-2">
                                         <option value="hybrid">Hybrid</option>

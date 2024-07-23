@@ -1,9 +1,6 @@
-"use client";
-
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
-import { get } from "@/api/api";
 import { endpoints } from "@/api/endpoints";
 import { MfHomePageDetails } from "../interfaces";
 import { FaCaretUp, FaCaretDown } from "react-icons/fa";
@@ -21,7 +18,29 @@ export interface Isin {
 }
 
 
-export default function HomePageDetails({
+const formatCurrency = (amount: any) => {
+    return new Intl.NumberFormat('en-IN', {
+        style: 'currency',
+        currency: 'INR'
+    }).format(amount);
+};
+
+
+const fetchIsin = async (isin: string) => {
+    try {
+        const response = await fetch(`${endpoints.getNav}/${isin}`);
+        if (!response.ok) {
+            throw new Error("Data not found");
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Error fetching GmpIpo", error);
+        throw error;
+    }
+};
+
+
+const HomePageDetails = async ({
     fundCode,
     isin,
     mfHomeData,
@@ -29,36 +48,18 @@ export default function HomePageDetails({
     fundCode: string;
     isin: string;
     mfHomeData: MfHomePageDetails;
-}) {
-    const [chartPoints, setChartPoints] = useState<Isin[]>([]);
-    const [error, setError] = useState<string>();
+}) => {
+    let chartPoints = null;
+    let error = null;
     const chartRef = useRef<any>(null);
+    try {
+        const response = await fetchIsin(isin);
+        chartPoints = response.isin;
 
+    } catch (err) {
 
-    useEffect(() => {
-        const fetchMfDetails = async () => {
-            try {
-                const response = await get(`${endpoints.getNav}/${isin}`);
-                if (response && !response.error) {
-                    setChartPoints(response.isin);
-
-                } else {
-                    setError("Failed to fetch mutual fund Chart Details");
-                }
-            } catch (error) {
-                console.error("Error fetching MF details", error);
-            }
-        };
-
-        fetchMfDetails();
-    }, [fundCode]);
-
-    const formatCurrency = (amount: any) => {
-        return new Intl.NumberFormat('en-IN', {
-            style: 'currency',
-            currency: 'INR'
-        }).format(amount);
-    };
+        console.error(`error ${err}`);
+    }
 
     return (
         <div>
@@ -69,11 +70,11 @@ export default function HomePageDetails({
                     <Line
                         ref={chartRef}
                         data={{
-                            labels: chartPoints.map((point) => point.navDate),
+                            labels: chartPoints.map((point: any) => point.navDate),
                             datasets: [
                                 {
                                     label: "Price",
-                                    data: chartPoints.map((point) => point.navValue),
+                                    data: chartPoints.map((point: any) => point.navValue),
                                     fill: true,
                                     borderColor: "rgb(34, 197, 94)",
                                     tension: 0.1,
@@ -156,13 +157,13 @@ export default function HomePageDetails({
                 ))}
             </div>
 
-            <h5 className="font-bold">Peers</h5>
-            <div className="relative flex flex-row overflow-x-auto">
+            <h2 className="font-bold text-2xl">Peers</h2>
+            <div className="relative flex flex-row overflow-x-auto mt-2">
                 {mfHomeData?.summary?.peers.map((label, index) => (
-                    <div className="p-6 ml-4 bg-white border border-gray-200 rounded-md shadow flex-shrink-0 mb-4 md:w-1/3 lg:w-1/3 xl:w-1/3 px-2">
-                        <h5 className="text-base font-bold leading-none overflow-hidden whitespace-nowrap overflow-ellipsis">
+                    <div key={index} className="p-6 bg-white border border-gray-200 rounded-md shadow flex-shrink-0 mb-4 md:w-1/3 lg:w-1/3 xl:w-1/3 px-2">
+                        <h3 className="text-base font-bold leading-none overflow-hidden whitespace-nowrap overflow-ellipsis">
                             {label.name}
-                        </h5>
+                        </h3>
                         <p className="text-xs mb-2">
                             {label.option.toUpperCase()}
                         </p>
@@ -188,11 +189,11 @@ export default function HomePageDetails({
             <br />
             <div className="row">
                 <div className="col-6">
-                    <h5 className="font-bold mb-4">Fund Managers</h5>
+                    <h2 className="font-bold text-2xl">Fund Managers</h2>
                     <div className="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none">
                         {mfHomeData.fundmanager && mfHomeData.fundmanager.map((fundManager) => (
                             <div key={fundManager.fmCode}
-                                className="relative flex items-center gap-4 pt-1 pb-0 mx-0 mt-6 overflow-hidden text-gray-700 bg-transparent shadow-none bg-clip-border">
+                                className="relative flex items-center gap-4  pb-0 mx-0 mt-6 overflow-hidden text-gray-700 bg-transparent shadow-none bg-clip-border">
                                 <img
                                     src={fundManager.imgUrl}
                                     alt={fundManager.name}
@@ -214,22 +215,25 @@ export default function HomePageDetails({
                     </div>
                 </div>
                 <div className="col-6">
-                    <h5 className="font-bold mb-4">AMC Profile</h5>
+                    <h2 className="font-bold text-2xl mb-4">AMC Profile</h2>
                     <p className="text-sm">{mfHomeData.summary.amcDetails.description}</p>
                     <br />
                     <div className="row">
                         <div className="col-6">
-                            <h6 className="font-bold ">No. of Schemes</h6>
+                            <h3 className="font-bold text-base">No. of Schemes</h3>
                             <p>{mfHomeData.summary.amcDetails.mfCount}</p>
                         </div>
                         <div className="col-6">
-                            <h6 className="font-bold ">Total Aum</h6>
+                            <h3 className="font-bold text-base">Total Aum</h3>
                             <p>{formatCurrency(mfHomeData.summary.amcDetails.aum)}</p>
                         </div>
                     </div>
                 </div>
             </div>
+            <br /><br />
 
         </div>
     );
 }
+
+export default HomePageDetails;
