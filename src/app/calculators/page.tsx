@@ -234,7 +234,7 @@ export default function CalCulators() {
           <h1 className="my-6 pb-6">Calculators</h1>
           <div className="row">
             {calcs.map((calc, index) => (
-              <div key={index} className="mb-14 md:col-6 lg:col-3">
+              calc.route && <div key={index} className="mb-14 md:col-6 lg:col-3">
                 <Link href={`/calculators${calc.route}`}>
                   <div
                     className="rounded shadow p-8 text-center transition-all duration-700 hover:scale-105"
