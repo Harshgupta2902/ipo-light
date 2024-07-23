@@ -9,7 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'hover-blue': '#2563eb',
+        'hover-blue': '#0045DA',
+
         
       },
       backgroundImage: {

@@ -230,6 +230,11 @@ export interface Fund {
 
 export interface Screener {
     data: Fund[];
+    searchQuery?: string;
+    sortColumn?: string;
+    sortOrder?: "asc" | "desc";
+    selectedFilters?: { sector: string[]; option: string[] };
+    itemsPerPage?: number;
 }
 export interface BuyBackDataTable {
     id: string
