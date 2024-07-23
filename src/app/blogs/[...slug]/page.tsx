@@ -1,39 +1,53 @@
-"use client"
-
 import React, { useEffect, useState } from 'react';
 import Content from '@/components/blogs/content'
-
 import { endpoints } from "@/api/endpoints";
 import { get } from "@/api/api";
-import { usePathname } from 'next/navigation';
-import { Root } from '@/components/interfaces';
+
 import Loader from '@/app/Loader';
+import { headers } from 'next/headers';
 
 
-const BlogDetails: React.FC = () => {
-    const [result, setResult] = useState<Root | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
 
-    const pathname = usePathname();
 
-    useEffect(() => {
-        const fetchBlogDetails = () => {
-            get(endpoints.blogDetails + pathname.replace("/blogs", ""))
-                .then((data) => {
-                    setResult(data.data);
-                })
-                .catch((error) => {
-                    console.error("Error fetching blog posts:", error);
-                    setError("Error loading blog details.");
-                })
-                .finally(() => {
-                    setLoading(false);
-                });
-        };
+const fetchBlogDetails = async (slug: string) => {
+    try {
+        const response = await fetch(`${endpoints.blogDetails}/${slug}`, { cache: "no-store" });
+        if (!response.ok) {
+            throw new Error("Data not found");
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Error fetching GmpIpo", error);
+        throw error;
+    }
+};
 
-        fetchBlogDetails();
-    }, [pathname]);
+
+
+const BlogDetails = async () => {
+
+    let result = null;
+    let error = null;
+    let loading = true;
+    const headersList = headers();
+    const completePathname = headersList.get("x-url");
+    if (!completePathname) {
+        return;
+    }
+    const pathname = completePathname.substring(completePathname.lastIndexOf('/') + 1);
+    console.log(pathname);
+
+    try {
+        result = await fetchBlogDetails(pathname ?? "");
+        loading = false;
+    } catch (err) {
+        console.error(`error ${err}`);
+    } finally {
+        loading = false;
+    }
+
+
+    if (loading) return <Loader />;
 
     return (
         <section className="section pt-7">

@@ -5,9 +5,8 @@ import Loader from '@/app/Loader';
 
 const BlogPostComponent: React.FC<BlogPostMainCardProps> = ({ post }) => {
     if (!post) {
-        return <Loader />;
+        return;
     }
-
     return (
         <div className="row gy-4 lg:gy-0">
             <div className="lg:col-6">

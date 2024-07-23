@@ -10,7 +10,6 @@ export default function FundManagerDetails({ fundManagersDetails }: { fundManage
         setCategoryFilter(event.target.value);
     };
 
-
     return (
         <div>
             <div className="container mt-12">

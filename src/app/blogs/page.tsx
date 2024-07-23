@@ -1,74 +1,60 @@
-"use client"
-import { get } from "@/api/api";
+
 import { endpoints } from "@/api/endpoints";
 import BlogPostComponent from "@/components/blogs/blogs_main_card";
 import BlogPostGrid from "@/components/blogs/blogs_grid";
-import React, { useEffect, useState } from 'react';
-import { BlogPost } from "@/components/interfaces";
-import Loader from "../Loader";
+import React from 'react';
+import Loader from "@/app/Loader";
+
+
+const fetchBlogs = async () => {
+  try {
+    const response = await fetch(endpoints.getBlogs, { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error("Data not found");
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching GmpIpo", error);
+    throw error;
+  }
+};
 
 
 
-const Home: React.FC = () => {
-  const [latestBlogs, setLatestBlogs] = useState<BlogPost | null>(null);
-  const [otherBlogs, setOtherBlogs] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+const BlogsHomePage = async () => {
+  let blogs = null;
+  let loading = true;
 
-  useEffect(() => {
-
-    const fetchBlogs = async () => {
-      try {
-        const data = await get(endpoints.getBlogs);
-        if (data.latestblogs) {
-          setLatestBlogs(data.latestblogs);
-        }
-        if (data.otherblogs) {
-          setOtherBlogs(data.otherblogs);
-        }
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching blog posts:", error);
-        setError("Error loading blog details.");
-        setLoading(false);
-      }
-    };
-
-    fetchBlogs();
-  }, []);
+  try {
+    blogs = await fetchBlogs();
+    loading = false;
+  } catch (err) {
+    console.error(`error ${err}`);
+  } finally {
+    loading = false;
+  }
 
   if (loading) return <Loader />;
 
+
   return (
     <>
-      <section className="section !pb-0">
-        <div className="container text-center">
-          <div className="lg:col-6 mx-auto text-center">
+
+      <section >
+        <div className="container">
+          <div className="lg:col-6 mx-auto text-center mb-[4rem]">
             <h1 className="mb-3">Latest News</h1>
             <p>Read all latest blog posts</p>
           </div>
-        </div>
-      </section>
-      <section className="section">
-        <div className="container">
-          {loading ? (
-            <Loader />
-          ) : error ? (
-            <p>{error}</p>
-          ) : (
-            <>
-              {latestBlogs && <BlogPostComponent post={latestBlogs} />}
-              {otherBlogs &&
-                <BlogPostGrid posts={otherBlogs} />
-              }
-            </>
-          )}
 
-
+          <>
+            {<BlogPostComponent post={blogs.latestblogs} />}
+            {<BlogPostGrid posts={blogs.otherblogs} />}
+          </>
         </div>
       </section>
     </>
   );
 }
 
-export default Home;
+export default BlogsHomePage;
