@@ -4,7 +4,9 @@ import { markdownify } from "@/components/common/textConverter";
 import { SWPFormInputs } from "@/components/interfaces";
 
 
-const SwpMarkdownContent = `## Understanding Systematic Withdrawal Plans (SWP)
+const SwpMarkdownContent = `
+
+## Understanding Systematic Withdrawal Plans (SWP)
 
 A Systematic Withdrawal Plan (SWP) allows investors to manage their mutual fund investments efficiently. By investing a lump sum amount, you can set a fixed withdrawal amount at regular intervals.
 
@@ -84,7 +86,7 @@ const SWPCalculator = () => {
 
     useEffect(() => {
         calculateResults();
-    }, [formInputs]); 
+    }, [formInputs]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { id, value } = e.target;
@@ -94,12 +96,11 @@ const SWPCalculator = () => {
         }));
     };
     return (
-        <section className="section">
+        <section >
             <div className="container">
                 <div className="content">
-                    <h1 className="text-center mt-4">SWP Calculator</h1>
-                    <br />
-                    <div className="rounded-xl shadow px-4 py-16 xl:p-20">
+                    <h1 className="text-center text-4xl">SWP Calculator</h1>
+                    <div className="rounded-xl shadow px-4 xl:p-8">
                         <div className="row items-center justify-between px-4">
                             <div className="md:col-4 lg:col-4 md:order-2 text-left">
                                 <p >
@@ -111,16 +112,12 @@ const SWPCalculator = () => {
                                 <p>
                                     Total Withdrawals: ₹ {totalWithdrawals.toLocaleString("en-IN")}
                                 </p>
-                                <p>
-                                    {/* Estimated Returns: ₹{estimatedReturns.toLocaleString("en-IN")} */}
-                                </p>
                             </div>
                             <div className="md:col-6 md:order-1">
                                 <div className="my-4">
                                     <label
                                         htmlFor="lumpsum_amount"
                                         className="form-label"
-                                        style={{ margin: 0 }}
                                     >
                                         Total Investment (₹)
                                     </label>
@@ -132,14 +129,12 @@ const SWPCalculator = () => {
                                         name="totalInvestment"
                                         value={formInputs.totalInvestment}
                                         onChange={handleInputChange}
-                                        style={{ width: "35rem" }}
                                     />
                                 </div>
                                 <div className="my-4">
                                     <label
                                         htmlFor="lumpsum_duration"
                                         className="form-label"
-                                        style={{ margin: 0 }}
                                     >
                                         Withdrawal per month
                                     </label>
@@ -151,14 +146,12 @@ const SWPCalculator = () => {
                                         name="withdrawalPerMonth"
                                         value={formInputs.withdrawalPerMonth}
                                         onChange={handleInputChange}
-                                        style={{ width: "35rem" }}
                                     />
                                 </div>
                                 <div className="my-4">
                                     <label
                                         htmlFor="lumpsum_rate"
                                         className="form-label"
-                                        style={{ margin: 0 }}
                                     >
                                         Expected Rate of Return (%)
                                     </label>
@@ -170,14 +163,12 @@ const SWPCalculator = () => {
                                         name="expectedReturnRate"
                                         value={formInputs.expectedReturnRate}
                                         onChange={handleInputChange}
-                                        style={{ width: "35rem" }}
                                     />
                                 </div>
                                 <div className="my-4">
                                     <label
                                         htmlFor="lumpsum_rate"
                                         className="form-label"
-                                        style={{ margin: 0 }}
                                     >
                                         Time period
                                     </label>
@@ -189,7 +180,6 @@ const SWPCalculator = () => {
                                         name="timePeriod"
                                         value={formInputs.timePeriod}
                                         onChange={handleInputChange}
-                                        style={{ width: "35rem" }}
                                     />
                                 </div>
                             </div>
