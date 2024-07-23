@@ -47,8 +47,10 @@ By inputting these values, the calculator determines the final invested amount a
 
 The advantages of using an SIP return calculator are many. Some of them are discussed below:
 
-- **Estimate required time and rate of return** - Using this tool, you can estimate the rate of return required to reach your desired final amount. Additionally, you can also ascertain the time required for your investment to grow adequately.
-- **Choose the right SIP** – The SIP calculator can swiftly give you multiple variables with which you can assess an SIP scheme. You can use the calculator to compare multiple schemes as per those variables and choose the SIP that is best for you.
+- ### Estimate required time and rate of return 
+  Using this tool, you can estimate the rate of return required to reach your desired final amount. Additionally, you can also ascertain the time required for your investment to grow adequately.
+- ### Choose the right SIP
+  The SIP calculator can swiftly give you multiple variables with which you can assess an SIP scheme. You can use the calculator to compare multiple schemes as per those variables and choose the SIP that is best for you.
 
 ## How to Use Systematic Investment Plan Calculator
 
@@ -280,14 +282,13 @@ const SIPCalculator = () => {
   }, []);
 
   return (
-    <section className="section">
+    <section>
       <div className="container">
         <div className="content">
-          <h1 className="text-center mt-4">SIP Calculator</h1>
-          <br />
-          <div className="rounded-xl shadow px-4 py-16 xl:p-20">
+          <h1 className="text-center text-4xl">SIP Calculator</h1>
+          <div className="rounded-xl shadow px-4 xl:py-8">
             <div className="row items-center justify-between px-4">
-              <div className="mb-10 md:col-6 lg:col-6 md:order-2 md:mb-0">
+              <div className="md:col-6 lg:col-6 md:order-2 md:mb-0">
                 <div>
                   {chartData.labels ? (
                     <Bar
@@ -337,10 +338,9 @@ const SIPCalculator = () => {
                   )}
                 </div>
 
-                <p>
+                <p className="text-center">
                   Invested Amount: ₹{investedAmount.toLocaleString("en-IN")}
-                </p>
-                <p>
+                  <br />
                   Estimated Returns: ₹{estimatedReturns.toLocaleString("en-IN")}
                 </p>
               </div>
@@ -356,13 +356,12 @@ const SIPCalculator = () => {
                   <input
                     id="sip_amount"
                     className="form-input w-full rounded-sm"
-
                     placeholder="Enter Sip Amount"
                     type="number"
                     name="sip_amount"
                     value={amount}
                     onChange={handleAmountChange}
-                    style={{ width: "35rem" }}
+
                   />
                 </div>
                 <div className="my-4">
@@ -381,7 +380,6 @@ const SIPCalculator = () => {
                     name="sip_duration"
                     value={duration}
                     onChange={handleDurationChange}
-                    style={{ width: "35rem" }}
                   />
                 </div>
                 <div className="my-4">
@@ -400,7 +398,6 @@ const SIPCalculator = () => {
                     name="sip_rate"
                     value={rate}
                     onChange={handleRateChange}
-                    style={{ width: "35rem" }}
                   />
                 </div>
               </div>

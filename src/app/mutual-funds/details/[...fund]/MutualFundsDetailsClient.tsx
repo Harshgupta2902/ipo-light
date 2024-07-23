@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaCaretUp, FaCaretDown } from "react-icons/fa";
 import FundManagerDetails from "@/components/mutual-funds/FundManagerDetails";
