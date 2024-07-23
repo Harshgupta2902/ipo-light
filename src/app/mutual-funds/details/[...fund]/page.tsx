@@ -22,23 +22,27 @@ export async function generateMetadata({ params }: { params: { fund: string[] } 
     let mfHomeData = null;
     try {
         mfHomeData = await fetchMfDetails(fundCode);
+
     } catch (err) {
         console.error(`Error fetching metadata: ${err}`);
     }
 
-    const meta = mfHomeData.summary.meta;
-    const metaTitle = meta.fullName ? mfHomeData.summary.meta : pathname;
-    const metaDescription = `Explore the ${meta.fullName} (${meta.plan} Plan) with comprehensive details on performance, risk classification, benchmark index, and investment strategy. Invest wisely with ${meta.amc}.`;
+    const metaData = mfHomeData.summary.meta.fullName;
+
+    const metaTitle = metaData.fullName ? metaData.fullName : pathname;
+    const metaDescription = `Explore the ${metaData.fullName} (${metaData.plan} Plan) with comprehensive details on performance, risk classification, benchmark index, and investment strategy. Invest wisely with ${metaData.amc}.`;
     const keywords = [
-        meta.fullName,
-        meta.sector,
-        meta.subsector,
-        meta.amc,
-        meta.benchmarkIndex,
+        metaData.fullName,
+        metaData.sector,
+        metaData.subsector,
+        metaData.amc,
+        metaData.benchmarkIndex,
         "mutual fund investment",
         "high risk mutual funds",
         "debt and equity funds",
     ];
+    console.log(metaTitle);
+
     return {
         title: metaTitle,
         description: metaDescription,
