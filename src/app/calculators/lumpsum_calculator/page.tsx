@@ -22,7 +22,7 @@ ChartJS.register(
 );
 
 const lumpMarkdownContent = `
-# What Is Lumpsum Investment?
+## What Is Lumpsum Investment?
 
 A lump sum investment is one of the best ways to maximize your potential returns and secure your financial future. It is a one-time investment that gives you an opportunity to put your money to work all at once, allowing it to grow and compound over time.
 
@@ -147,7 +147,7 @@ const LumpsumCalculator = () => {
     }
   };
 
-  
+
 
 
   const handleDurationChange = (e: any) => {
@@ -194,24 +194,23 @@ const LumpsumCalculator = () => {
   }, []);
 
   return (
-    <section className="section">
+    <section >
       <div className="container">
         <div className="content">
-          <h1 className="text-center mt-4">Lumpsum Calculator</h1>
-          <br />
-          <div className="rounded-xl shadow px-4 py-16 xl:p-20">
+          <h1 className="text-center text-4xl">Lumpsum Calculator</h1>
+          <div className="rounded-xl shadow px-4 xl:py-4">
             <div className="row items-center justify-between px-4">
-              <div className="mb-10 md:col-6 lg:col-6 md:order-2 md:mb-0 text-center">
-                <span className="text-white">
+              <div className="md:col-6 lg:col-6 md:order-2 md:mb-0 text-center">
+                <span>
                   The total value of your investment after{" "}
                   <b>{duration} years</b> will be
                 </span>
                 <br />
-                <span className="text-white mt-4 font-bold text-h3">
+                <span className="mt-4 font-bold text-h3">
                   {" "}
                   ₹ {totalAmount.toLocaleString("en-IN")}
                 </span>
-                <div>
+                <div className="mt-4">
                   {chartData.labels ? (
                     <Bar
                       data={chartData}
@@ -248,7 +247,7 @@ const LumpsumCalculator = () => {
                               text: "Amount (₹)",
                             },
                             grid: {
-                              display: false, 
+                              display: false,
                             },
                           },
                         },
@@ -260,8 +259,7 @@ const LumpsumCalculator = () => {
                 </div>
                 <p>
                   Invested Amount: ₹{investedAmount.toLocaleString("en-IN")}
-                </p>
-                <p>
+                  <br />
                   Estimated Returns: ₹{estimatedReturns.toLocaleString("en-IN")}
                 </p>
               </div>
@@ -270,7 +268,6 @@ const LumpsumCalculator = () => {
                   <label
                     htmlFor="lumpsum_amount"
                     className="form-label"
-                    style={{ margin: 0 }}
                   >
                     Enter Lumpsum Amount (₹)
                   </label>
@@ -282,14 +279,12 @@ const LumpsumCalculator = () => {
                     name="lumpsum_amount"
                     value={amount}
                     onChange={handleAmountChange}
-                    style={{ width: "35rem" }}
                   />
                 </div>
                 <div className="my-4">
                   <label
                     htmlFor="lumpsum_duration"
                     className="form-label"
-                    style={{ margin: 0 }}
                   >
                     Enter Duration (in Years)
                   </label>
@@ -301,14 +296,12 @@ const LumpsumCalculator = () => {
                     name="lumpsum_duration"
                     value={duration}
                     onChange={handleDurationChange}
-                    style={{ width: "35rem" }}
                   />
                 </div>
                 <div className="my-4">
                   <label
                     htmlFor="lumpsum_rate"
                     className="form-label"
-                    style={{ margin: 0 }}
                   >
                     Expected Rate of Return (%)
                   </label>
@@ -320,7 +313,6 @@ const LumpsumCalculator = () => {
                     name="lumpsum_rate"
                     value={rate}
                     onChange={handleRateChange}
-                    style={{ width: "35rem" }}
                   />
                 </div>
               </div>
