@@ -1,7 +1,7 @@
 
 import React from "react";
 import { markdownify } from "../common/textConverter";
-import { format } from 'date-fns';
+import { format, startOfMonth } from 'date-fns';
 import ImageFallback from "../common/ImageFallback";
 import { BlogContent } from "../interfaces";
 
@@ -9,8 +9,11 @@ import { BlogContent } from "../interfaces";
 
 
 export default function BlogDetails({ blog }: { blog: BlogContent }) {
-    const publishedDate = new Date(blog.published_at._seconds * 1000 + blog.published_at._nanoseconds / 1000000);
+    const startOfCurrentMonth = startOfMonth(new Date());
 
+    const publishedDate = blog.published_at
+        ? new Date(blog.published_at._seconds * 1000 + blog.published_at._nanoseconds / 1000000)
+        : startOfCurrentMonth;
 
     return (
         <article className="lg:col-9">
