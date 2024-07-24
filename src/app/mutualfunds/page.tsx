@@ -118,7 +118,6 @@ export default function MutualFundsHomePage() {
                     <div className="row gy-4">
                         {categories.map((category, index) => (
                             <div key={index} className="md:col-6 lg:col-4 xl:col-4 sm:col-12">
-                                {/* <a href={category.link} target="" rel="noopener noreferrer"> */}
                                     <div className="rounded-sm relative h-full shadow overflow-hidden">
                                         <ImageFallback
                                             src={category.imageSrc}

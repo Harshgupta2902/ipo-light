@@ -43,7 +43,7 @@ export default function FormsDataTable({ data }: { data: any }) {
                                   }}
                                   href={"/ipo/details/" + item.slug}
                                   target={"_blank"}
-                                  rel="noopener"
+                                   
                                 >
                                   {item[key as keyof FormsDataTables]}
                                 </Link>
@@ -56,7 +56,7 @@ export default function FormsDataTable({ data }: { data: any }) {
                                     }}
                                     href={item.nse_link}
                                     target={"_blank"}
-                                    rel="noopener"
+                                     
                                   >
                                     {item[key as keyof FormsDataTables]}
                                   </Link>
@@ -72,7 +72,7 @@ export default function FormsDataTable({ data }: { data: any }) {
                                     }}
                                     href={item.bse_link}
                                     target={"_blank"}
-                                    rel="noopener"
+                                     
                                   >
                                     {item[key as keyof FormsDataTables]}
                                   </Link>

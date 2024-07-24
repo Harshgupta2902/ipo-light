@@ -47,7 +47,7 @@ export default function SmeDataTable({ data }: { data: any }) {
                                   }}
                                   href={"/ipo/details/" + item.slug}
                                   target={"_blank"}
-                                  rel="noopener"
+                                   
                                 >
                                   {item[key as keyof SmeDataTables]}
                                 </Link>

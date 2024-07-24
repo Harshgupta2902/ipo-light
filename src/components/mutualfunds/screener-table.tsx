@@ -53,7 +53,7 @@ const ScreenerTable = ({ visibleData }: { visibleData: Fund[] }) => {
                                     fontSize: "medium",
                                 }} href={`/mutualfunds/details${fund.slug.replace("/mutualfunds", "")}`}
                                 target={"_blank"}
-                                rel="noopener"
+                                 
                             >
                                 {fund.name}
                             </Link>

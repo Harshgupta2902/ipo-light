@@ -44,7 +44,6 @@ const Home = async () => {
                 className="btn btn-primary"
                 href={"https://rti.kfintech.com/ipostatus/"}
                 target={"_blank"}
-                rel="noopener"
               >
                 {"Check Ipo Allotment Status"}
               </Link>

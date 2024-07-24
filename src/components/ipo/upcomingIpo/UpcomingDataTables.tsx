@@ -44,7 +44,7 @@ export default function UpcomingDataTable({ data }: { data: any }) {
                                     }}
                                     href={"/ipo/details/" + item.slug}
                                     target={"_blank"}
-                                    rel="noopener"
+                                     
                                   >
                                     {item[key as keyof UpcomingDataTables]}
                                   </Link>
@@ -61,7 +61,7 @@ export default function UpcomingDataTable({ data }: { data: any }) {
                                   }}
                                   href={"/ipo/details/" + item.link.replaceAll("https://ipowatch.in/", "")}
                                   target={"_blank"}
-                                  rel="noopener"
+                                   
                                 >
                                   {item[key as keyof UpcomingDataTables]}
                                 </Link>

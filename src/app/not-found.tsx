@@ -21,7 +21,7 @@ export default function NotFound() {
               className="btn btn-primary"
               href={"/"}
               target={"_blank"}
-              rel="noopener"
+               
               prefetch={false}
             >
               {"Back To Home"}

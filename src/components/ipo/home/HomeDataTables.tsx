@@ -47,7 +47,6 @@ const UpcomingIpo: React.FC<IpoMainHomePageProps> = ({ upcomingData, smeData }) 
                                 }}
                                 href={"/ipo/details/" + item.slug}
                                 target={"_blank"}
-                                rel="noopener"
                               >
                                 {item[key as keyof IpoData]}
                               </Link>
@@ -93,7 +92,6 @@ const UpcomingIpo: React.FC<IpoMainHomePageProps> = ({ upcomingData, smeData }) 
                                 }}
                                 href={"/ipo/details/" + item.slug}
                                 target={"_blank"}
-                                rel="noopener"
                               >
                                 {item[key as keyof IpoData]}
                               </Link>

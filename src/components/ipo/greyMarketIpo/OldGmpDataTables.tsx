@@ -52,7 +52,6 @@ export default function OldGmpDataTables({ data }: { data: any }) {
                                   }}
                                   href={"/ipo/details/" + item.slug}
                                   target={"_blank"}
-                                  rel="noopener"
                                 >
                                   {item[key as keyof OldGmpDataTable]}
                                 </Link>
