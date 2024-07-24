@@ -68,28 +68,26 @@ export interface BlogPost {
 }
 
 export interface BlogContent {
-    id: string
-    title: string
-    slug: string
-    type: any
-    description: string
-    blog: string
-    author: string
     image: string
-    alt_keyword: string
-    tags: string
-    category: string
-    featured: string
-    created_at: string
-    published: string
-    meta_description: string
     meta_title: string
-    robots: string
+    author: string
+    description: string
+    title: string
+    blog: string
     meta_keywords: string
-    published_at: string
-    views: string
-}
-
+    meta_description: string
+    alt_keyword: string
+    robots: string
+    category: string
+    published_at: PublishedAt
+    slug: string
+  }
+  
+  export interface PublishedAt {
+    _seconds: number
+    _nanoseconds: number
+  }
+  
 export interface BlogPostProps {
     posts: BlogPost[];
 }

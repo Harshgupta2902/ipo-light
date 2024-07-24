@@ -2,21 +2,17 @@ import { BuyBackDataTable } from "@/components/interfaces";
 import Link from "next/link";
 import React from "react";
 
-
-
 export default function BuyBackDataTables({ data }: { data: any }) {
   const keysToDisplay = ["company_name", "date", "open", "close", "price"];
   const headers = ["Company Name", "Record Date", "Open", "Close", "Price"];
-
   return (
     <section className="pt-0">
       <div className="container text-center">
-        <h3 className="mb-4">Ipo Buy-back </h3>
-
+        <h1 className="mb-4 text-4xl">Ipo Buy-back </h1>
         <div className="rounded bg-body px-6 shadow">
           <div className="flex flex-col">
             <div className="-m-1.5 overflow-x-auto content">
-              <div className="p-1.5 align-middle">
+              <div className="p-1.5 align-middle content">
                 <table className="w-full text-sm text-left  text-gray-500 ">
                   {headers && headers.length > 0 && (
                     <thead className="text-md text-gray-700 bg-gray-50 ">
