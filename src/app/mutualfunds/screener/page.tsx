@@ -1,5 +1,5 @@
 import { endpoints } from "@/api/endpoints";
-import ScreenerMfHomePage from "@/components/mutual-funds/screener-home-page";
+import ScreenerMfHomePage from "@/components/mutualfunds/screener-home-page";
 import React from "react";
 
 

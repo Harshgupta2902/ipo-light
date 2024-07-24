@@ -40,7 +40,7 @@ const extractSectorAndSubsector = (path: string | undefined) => {
 
 export default function CategoryPage() {
     const headersList = headers();
-    const pathname = headersList.get("x-url")?.replace('/mutual-funds/', "");
+    const pathname = headersList.get("x-url")?.replace('/mutualfunds/', "");
     const { sector, subsector } = extractSectorAndSubsector(pathname);
     if (isPathnameValid(pathname)) return <NotFound />
     return (

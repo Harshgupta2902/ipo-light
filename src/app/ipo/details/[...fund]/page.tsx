@@ -68,7 +68,7 @@ const fetchAdditionalIpo = async () => {
         }
         return await response.json();
     } catch (error) {
-        console.error("Error fetching MF details", error);
+        console.error("Error fetching Additinal Ipo details", error);
         throw error;
     }
 }
@@ -78,7 +78,6 @@ function processIpoString(str: string | undefined): string {
         return '';
     }
     let words = str.split('-date')[0];
-    console.log(`words:::::::::::::::::${words}`);
     let wordArray = words.split('-');
 
     const processedStr = wordArray
@@ -111,7 +110,6 @@ const IpoDetails = async () => {
         }
     } catch (err) {
         console.error(`error ${err}`);
-
     }
 
     if (error) return <NotFound />;

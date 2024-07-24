@@ -9,21 +9,21 @@ export default function MutualFundsHomePage() {
             title: "Equity Mutual Funds",
             description: "High-growth potential with long-term capital gains.",
             imageSrc: "/equity.png",
-            link: "/mutual-funds/equity",
+            link: "/mutualfunds/equity",
             imageAlt: "Equity Mutual Funds"
         },
         {
             title: "Debt Mutual Funds",
             description: "Stable returns with lower risk.",
             imageSrc: "/debt.png",
-            link: "/mutual-funds/debt",
+            link: "/mutualfunds/debt",
             imageAlt: "Debt Mutual Funds"
         },
         {
             title: "Hybrid Mutual Funds",
             description: "Balanced risk and reward with mixed investments.",
             imageSrc: "/hybrid.png",
-            link: "/mutual-funds/hybrid",
+            link: "/mutualfunds/hybrid",
             imageAlt: "Hybrid Mutual Funds"
         }
     ];
@@ -107,7 +107,7 @@ export default function MutualFundsHomePage() {
                         </div>
                         <a
                             className="flex items-center py-4 px-8 rounded-[10px] btn btn-primary text-white font-inter text-base font-medium hover:bg-primary cursor-pointer max-sm:px-4 max-sm:py-2 max-sm:text-xs max-sm:rounded"
-                            href={"/mutual-funds/screener"} >
+                            href={"/mutualfunds/screener"} >
                             <span className="shrink-0">Explore More</span>
                         </a>
                     </div>

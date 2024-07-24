@@ -3,8 +3,8 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaCaretUp, FaCaretDown } from "react-icons/fa";
-import FundManagerDetails from "@/components/mutual-funds/FundManagerDetails";
-import HomePageDetails from "@/components/mutual-funds/HomePageDetails";
+import FundManagerDetails from "@/components/mutualfunds/FundManagerDetails";
+import HomePageDetails from "@/components/mutualfunds/HomePageDetails";
 import { MfHomePageDetails } from "@/components/interfaces";
 
 interface MutualFundsDetailsClientProps {

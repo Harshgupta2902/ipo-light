@@ -33,10 +33,10 @@ const menuData: MenuItem[] = [
   },
   {
     label: "Mutual Funds",
-    url: "/mutual-funds",
+    url: "/mutualfunds",
     dropdown: true,
     dropdownItems: [
-      { label: "Screener", url: "/mutual-funds/screener" },
+      { label: "Screener", url: "/mutualfunds/screener" },
     ],
   },
   {
@@ -145,7 +145,7 @@ const schema = {
     {
       "@type": "WebPage",
       "name": "Mutual Fund Screener",
-      "url": "https://node.onlineinfotech.net/mutual-funds/screener",
+      "url": "https://node.onlineinfotech.net/mutualfunds/screener",
       "description": "Screen and filter mutual funds based on various criteria to make informed investment decisions."
     }
   ],

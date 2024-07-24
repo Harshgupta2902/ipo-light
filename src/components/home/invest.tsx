@@ -12,7 +12,7 @@ const sectionsData = [
       "Switch from Regular to Direct Mutual Funds",
     ],
     buttonText: "Start Investing Now",
-    buttonUrl: "/mutual-funds",
+    buttonUrl: "/mutualfunds",
   },
   {
     title: "IPO - Initial Public Offering Insights",
