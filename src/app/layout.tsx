@@ -156,18 +156,16 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
     <html lang="en">
       <head>
         <meta name="ahrefs-site-verification" content="87106f56afba722eeac5b1e22675225b9b8844cff91992e9fd2b281d1e14deb2" />
+        <meta name="google-site-verification" content="etnReEc8vRvkkSLY4HSdYMc18rtE6KwlK7PEuzwjIQ4" />
         <meta httpEquiv="Content-Language" content="en-us" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta name="Copyright" content="Copyright 2024 @ IpoTech" />
-        <meta name="google-site-verification" content="sD6cDFI9NP_Z3Y6u2w4CLyztd9YGpf4qoxaJTXitlTA" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest"></link>
         <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
-
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-
       </head>
       <body className={poppins.className}>
         <Navbar menuData={menuData ?? []} />
@@ -175,7 +173,17 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
           {children}
         </main>
         <Analytics />
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQ6W3W261R"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-SQ6W3W261R');
+            `,
+          }}
+        />
       </body>
     </html>
   );
