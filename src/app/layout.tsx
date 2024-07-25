@@ -102,7 +102,7 @@ export async function generateMetadata() {
       title: metaTitle,
       description: metaDescription,
       site: "https://node.onlineinfotech.net",
-      images: "https://node.onlineinfotech.net/logo.png",
+      images: "https://node.onlineinfotech.net/layout/card.png",
       type: "website",
       url: `https://node.onlineinfotech.net${pathname}`,
     },
@@ -110,7 +110,7 @@ export async function generateMetadata() {
       card: "summary_large_image",
       title: metaTitle,
       description: metaDescription,
-      images: "https://www.gradding.com/logo.png"
+      images: "https://www.gradding.com/layout/card.png"
     },
     alternates: {
       canonical: `https://node.onlineinfotech.net${pathname}`,
@@ -160,10 +160,10 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
         <meta httpEquiv="Content-Language" content="en-us" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta name="Copyright" content="Copyright 2024 @ IpoTech" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16"/>
+        <link rel="apple-touch-icon" sizes="180x180" href="/layout/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/layout/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/layout/favicon-16x16.png" />
+        <link rel="icon" href="/layout/favicon.ico" type="image/x-icon" sizes="16x16"/>
         <link rel="manifest" href="/site.webmanifest"></link>
         <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
