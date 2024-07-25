@@ -2,6 +2,7 @@
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { MenuItem, NavItemProps } from "../interfaces";
+import ImageFallback from "./ImageFallback";
 
 
 const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
@@ -43,14 +44,13 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
         <nav className="navbar container">
           <div className="order-0">
             <a className="navbar-brand inline-block" href="/">
-              <img
-                alt="IpoTech Logo"
-                width="360"
-                height="78"
-                decoding="async"
-                data-nimg="1"
-                style={{ color: "transparent", height: "39px", width: "180px" }}
-                src="/logo.png"
+              <ImageFallback
+                src={"/loo.svg"}
+                className="mx-auto"
+                width="150"
+                height="80"
+                alt="banner image"
+                priority
               />
             </a>
           </div>
@@ -94,16 +94,15 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
         aria-labelledby="drawer-label"
       >
 
-        <div className="order-0 text-center">
+        <div className="order-0 ">
           <a className="navbar-brand inline-block" href="/">
-            <img
-              alt="IpoTech Logo"
-              width="360"
-              height="78"
-              decoding="async"
-              data-nimg="1"
-              style={{ color: "transparent", height: "39px", width: "180px" }}
-              src="/logo.png"
+            <ImageFallback
+              src={"/loo.svg"}
+              className="mx-auto"
+              width="150"
+              height="80"
+              alt="banner image"
+              priority
             />
           </a>
         </div>
