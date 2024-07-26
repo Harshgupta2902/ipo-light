@@ -102,7 +102,7 @@ export async function generateMetadata() {
       title: metaTitle,
       description: metaDescription,
       site: "https://node.onlineinfotech.net",
-      images: "https://node.onlineinfotech.net/layout/card.png",
+      images: "https://node.onlineinfotech.net/layout/og_image.png",
       type: "website",
       url: `https://node.onlineinfotech.net${pathname}`,
     },
@@ -110,7 +110,7 @@ export async function generateMetadata() {
       card: "summary_large_image",
       title: metaTitle,
       description: metaDescription,
-      images: "https://www.gradding.com/layout/card.png"
+      images: "https://www.gradding.com/layout/og_image.png"
     },
     alternates: {
       canonical: `https://node.onlineinfotech.net${pathname}`,
