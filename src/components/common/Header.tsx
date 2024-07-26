@@ -42,17 +42,18 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
     <>
       <header className="header z-30 sticky top-0">
         <nav className="navbar container">
-          <div className="order-0">
+          <div className="order-0 flex items-center	">
             <a className="navbar-brand inline-block" href="/">
               <ImageFallback
-                src={"/loo.svg"}
+                src={"/logo.svg"}
                 className="mx-auto"
-                width="150"
-                height="80"
-                alt="banner image"
+                width="40"
+                height="40"
+                alt="IpoTech Logo"
                 priority
               />
             </a>
+            <span className=" ml-2 text-3xl">IPOTECH</span>
           </div>
 
           <input
@@ -94,17 +95,18 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
         aria-labelledby="drawer-label"
       >
 
-        <div className="order-0 ">
+        <div className="order-0 flex items-center	 ">
           <a className="navbar-brand inline-block" href="/">
             <ImageFallback
-              src={"/loo.svg"}
+              src={"/logo.svg"}
               className="mx-auto"
-              width="150"
-              height="80"
-              alt="banner image"
+              width="40"
+              height="40"
+              alt="IpoTech Logo"
               priority
             />
           </a>
+          <span className=" ml-2 text-3xl">IPOTECH</span>
         </div>
         <br /><br />
         <ul className="navbar-nav text-left order-3 w-full lg:order-1 lg:flex lg:w-auto">
