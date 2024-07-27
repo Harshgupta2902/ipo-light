@@ -155,7 +155,8 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
   return (
     <html lang="en">
       <head>
-        <meta name="ahrefs-site-verification" content="87106f56afba722eeac5b1e22675225b9b8844cff91992e9fd2b281d1e14deb2" />
+        
+        <meta name="ahrefs-site-verification" content="c9bc1dfb881082e1aca65a8f84eb9243001c319904258b4f601717781f2339b3" />
         <meta name="google-site-verification" content="etnReEc8vRvkkSLY4HSdYMc18rtE6KwlK7PEuzwjIQ4" />
         <meta httpEquiv="Content-Language" content="en-us" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
