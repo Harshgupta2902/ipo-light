@@ -63,10 +63,7 @@ const HomePageDetails: React.FC<HomePageProps> = ({ indicesResult, gainersResult
                     </div>
                 </div>
             </div>
-
-
-
-            <section className="section bg-theme-light ">
+            {/* <section className="section bg-theme-light ">
                 <div className="container">
                     <div className="row mt-8 lg:mt-0 gy-5 lg:gy-0">
                         <div className="md:col-12">
@@ -100,7 +97,7 @@ const HomePageDetails: React.FC<HomePageProps> = ({ indicesResult, gainersResult
                 active={mostActiveResult?.active || []}
                 approachingHigh={approachingHighResult?.approachingHigh || []}
                 approachingLow={approachingLowResult?.approachingLow || []}
-            />
+            /> */}
             <Invest />
         </main>
     );
