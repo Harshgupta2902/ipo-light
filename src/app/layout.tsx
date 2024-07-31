@@ -102,7 +102,7 @@ export async function generateMetadata() {
       title: metaTitle,
       description: metaDescription,
       site: "https://ipotec.in/",
-      images: "https://ipotec.in//layout/og_image.png",
+      images: "https://ipotec.in/layout/og_image.png",
       type: "website",
       url: `https://ipotec.in/${pathname}`,
     },
@@ -133,19 +133,19 @@ const schema = {
     {
       "@type": "WebPage",
       "name": "IPO Details",
-      "url": "https://ipotec.in//ipo",
+      "url": "https://ipotec.in/ipo",
       "description": "Find detailed information about upcoming IPOs, including GMP, buyback status, and subscription status."
     },
     {
       "@type": "WebPage",
       "name": "Financial Calculators",
-      "url": "https://ipotec.in//calculators",
+      "url": "https://ipotec.in/calculators",
       "description": "Access various financial calculators for SIP, lumpsum investments, SWP, and more."
     },
     {
       "@type": "WebPage",
       "name": "Mutual Fund Screener",
-      "url": "https://ipotec.in//mutualfunds/screener",
+      "url": "https://ipotec.in/mutualfunds/screener",
       "description": "Screen and filter mutual funds based on various criteria to make informed investment decisions."
     }
   ],

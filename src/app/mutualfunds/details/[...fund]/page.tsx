@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: { params: { fund: string[] } 
             title: metaTitle,
             description: metaDescription,
             site: "https://ipotec.in/",
-            images: "https://ipotec.in//logo.png",
+            images: "https://ipotec.in/logo.png",
             type: "website",
             url: `https://ipotec.in/${pathname}`,
         },
