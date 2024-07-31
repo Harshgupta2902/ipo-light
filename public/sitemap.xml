@@ -5,27 +5,27 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
-  <loc>https://ipotec.in</loc>
+  <loc>https://www.ipotec.in</loc>
   <lastmod>2024-07-19T04:40:58+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://ipotec.in/ipo.xml</loc>
+  <loc>https://www.ipotec.in/ipo.xml</loc>
   <lastmod>2024-07-19T04:40:58+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://ipotec.in/mutualfunds.xml</loc>
+  <loc>https://www.ipotec.in/mutualfunds.xml</loc>
   <lastmod>2024-07-19T04:40:58+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://ipotec.in/blog.xml</loc>
+  <loc>https://www.ipotec.in/blog.xml</loc>
   <lastmod>2024-07-19T04:40:58+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://ipotec.in/calculators.xml</loc>
+  <loc>https://www.ipotec.in/calculators.xml</loc>
   <lastmod>2024-07-19T04:40:58+00:00</lastmod>
   <priority>0.80</priority>
 </url>
