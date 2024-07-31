@@ -1,4 +1,4 @@
 User-agent: *
 allow: / 
 
-Sitemap: http://www.yoursite.com/sitemap.xml
+Sitemap: https://www.ipotec.in/sitemap.xml
