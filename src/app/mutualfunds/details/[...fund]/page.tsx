@@ -50,14 +50,14 @@ export async function generateMetadata({ params }: { params: { fund: string[] } 
         author: "IpoTech",
         keywords: keywords,
         copyright: "Copyright 2024 @ IpoTech",
-        url: "https://node.onlineinfotech.net",
+        url: "https://ipotech.in/",
         openGraph: {
             title: metaTitle,
             description: metaDescription,
-            site: "https://node.onlineinfotech.net",
-            images: "https://node.onlineinfotech.net/logo.png",
+            site: "https://ipotech.in/",
+            images: "https://ipotech.in//logo.png",
             type: "website",
-            url: `https://node.onlineinfotech.net${pathname}`,
+            url: `https://ipotech.in/${pathname}`,
         },
         twitter: {
             card: "summary_large_image",
@@ -66,7 +66,7 @@ export async function generateMetadata({ params }: { params: { fund: string[] } 
             images: "https://www.gradding.com/logo.png"
         },
         alternates: {
-            canonical: `https://node.onlineinfotech.net${pathname}`,
+            canonical: `https://ipotech.in/${pathname}`,
         },
     };
 }

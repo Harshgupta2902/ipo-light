@@ -97,14 +97,14 @@ export async function generateMetadata() {
     author: "IpoTech",
     keywords: keywords,
     copyright: "Copyright 2024 @ IpoTech",
-    url: "https://node.onlineinfotech.net",
+    url: "https://ipotech.in/",
     openGraph: {
       title: metaTitle,
       description: metaDescription,
-      site: "https://node.onlineinfotech.net",
-      images: "https://node.onlineinfotech.net/layout/og_image.png",
+      site: "https://ipotech.in/",
+      images: "https://ipotech.in//layout/og_image.png",
       type: "website",
-      url: `https://node.onlineinfotech.net${pathname}`,
+      url: `https://ipotech.in/${pathname}`,
     },
     twitter: {
       card: "summary_large_image",
@@ -113,7 +113,7 @@ export async function generateMetadata() {
       images: "https://www.gradding.com/layout/og_image.png"
     },
     alternates: {
-      canonical: `https://node.onlineinfotech.net${pathname}`,
+      canonical: `https://ipotech.in/${pathname}`,
     },
   };
 }
@@ -122,7 +122,7 @@ const schema = {
   "@context": "https://schema.org/",
   "@type": "WebSite",
   "name": "IpoTech",
-  "url": "https://node.onlineinfotech.net",
+  "url": "https://ipotech.in/",
   "description": "IpoTech provides comprehensive information about upcoming IPOs, GMP, buybacks, subscription statuses, and financial tools including calculators for SIP, lumpsum, SWP, and more.",
   "author": {
     "@type": "Organization",
@@ -133,19 +133,19 @@ const schema = {
     {
       "@type": "WebPage",
       "name": "IPO Details",
-      "url": "https://node.onlineinfotech.net/ipo",
+      "url": "https://ipotech.in//ipo",
       "description": "Find detailed information about upcoming IPOs, including GMP, buyback status, and subscription status."
     },
     {
       "@type": "WebPage",
       "name": "Financial Calculators",
-      "url": "https://node.onlineinfotech.net/calculators",
+      "url": "https://ipotech.in//calculators",
       "description": "Access various financial calculators for SIP, lumpsum investments, SWP, and more."
     },
     {
       "@type": "WebPage",
       "name": "Mutual Fund Screener",
-      "url": "https://node.onlineinfotech.net/mutualfunds/screener",
+      "url": "https://ipotech.in//mutualfunds/screener",
       "description": "Screen and filter mutual funds based on various criteria to make informed investment decisions."
     }
   ],
@@ -155,16 +155,16 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
   return (
     <html lang="en">
       <head>
-        
+
+        <meta name="google-site-verification" content="qfvtOvETSlOGGfLBvcE6Yk2Fqj0HmCGkmObv5r3MCnc" />
         <meta name="ahrefs-site-verification" content="c9bc1dfb881082e1aca65a8f84eb9243001c319904258b4f601717781f2339b3" />
-        <meta name="google-site-verification" content="etnReEc8vRvkkSLY4HSdYMc18rtE6KwlK7PEuzwjIQ4" />
         <meta httpEquiv="Content-Language" content="en-us" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta name="Copyright" content="Copyright 2024 @ IpoTech" />
         <link rel="apple-touch-icon" sizes="180x180" href="/layout/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/layout/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/layout/favicon-16x16.png" />
-        <link rel="icon" href="/layout/favicon.ico" type="image/x-icon" sizes="16x16"/>
+        <link rel="icon" href="/layout/favicon.ico" type="image/x-icon" sizes="16x16" />
         <link rel="manifest" href="/site.webmanifest"></link>
         <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />

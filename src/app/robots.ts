@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         
       },
     ],
-    sitemap: "https://node.onlineinfotech.net/sitemap.xml",
+    sitemap: "https://ipotech.in//sitemap.xml",
   };
 }
