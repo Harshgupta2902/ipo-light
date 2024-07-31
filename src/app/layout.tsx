@@ -175,14 +175,14 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
           {children}
         </main>
         <Analytics />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQ6W3W261R"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9V7F339R8D"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-SQ6W3W261R');
+              gtag('config', 'G-9V7F339R8D');
             `,
           }}
         />
