@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: { fund: string[] } 
             site: "https://www.ipotec.in/",
             images: "https://www.ipotec.in/logo.png",
             type: "website",
-            url: `https://www.ipotec.in/${pathname}`,
+            url: `https://www.ipotec.in${pathname}`,
         },
         twitter: {
             card: "summary_large_image",
@@ -66,7 +66,7 @@ export async function generateMetadata({ params }: { params: { fund: string[] } 
             images: "https://www.gradding.com/logo.png"
         },
         alternates: {
-            canonical: `https://www.ipotec.in/${pathname}`,
+            canonical: `https://www.ipotec.in${pathname}`,
         },
     };
 }
