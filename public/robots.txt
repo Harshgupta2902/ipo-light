@@ -2,4 +2,3 @@ User-agent: *
 allow: / 
 
 Sitemap: http://www.yoursite.com/sitemap.xml
-Sitemap: http://www.yoursite.com/mutualfunds-details.xml
