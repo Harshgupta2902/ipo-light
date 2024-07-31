@@ -31,4 +31,11 @@ export const endpoints = {
   blogDetails: `${baseURL}getBlogDetails`,
   getBlogs: `${baseURL}getblogs`,
   getMfHomeChart: `${baseURL}getMfHomeChart`,
+  
+  
+  
+  
+  getMfLinks: `${baseURL}getMfLinks`,
+  
+  
 };
