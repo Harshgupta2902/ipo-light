@@ -97,14 +97,14 @@ export async function generateMetadata() {
     author: "IpoTech",
     keywords: keywords,
     copyright: "Copyright 2024 @ IpoTech",
-    url: "https://ipotech.in/",
+    url: "https://ipotec.in/",
     openGraph: {
       title: metaTitle,
       description: metaDescription,
-      site: "https://ipotech.in/",
-      images: "https://ipotech.in//layout/og_image.png",
+      site: "https://ipotec.in/",
+      images: "https://ipotec.in//layout/og_image.png",
       type: "website",
-      url: `https://ipotech.in/${pathname}`,
+      url: `https://ipotec.in/${pathname}`,
     },
     twitter: {
       card: "summary_large_image",
@@ -113,7 +113,7 @@ export async function generateMetadata() {
       images: "https://www.gradding.com/layout/og_image.png"
     },
     alternates: {
-      canonical: `https://ipotech.in/${pathname}`,
+      canonical: `https://ipotec.in/${pathname}`,
     },
   };
 }
@@ -122,7 +122,7 @@ const schema = {
   "@context": "https://schema.org/",
   "@type": "WebSite",
   "name": "IpoTech",
-  "url": "https://ipotech.in/",
+  "url": "https://ipotec.in/",
   "description": "IpoTech provides comprehensive information about upcoming IPOs, GMP, buybacks, subscription statuses, and financial tools including calculators for SIP, lumpsum, SWP, and more.",
   "author": {
     "@type": "Organization",
@@ -133,19 +133,19 @@ const schema = {
     {
       "@type": "WebPage",
       "name": "IPO Details",
-      "url": "https://ipotech.in//ipo",
+      "url": "https://ipotec.in//ipo",
       "description": "Find detailed information about upcoming IPOs, including GMP, buyback status, and subscription status."
     },
     {
       "@type": "WebPage",
       "name": "Financial Calculators",
-      "url": "https://ipotech.in//calculators",
+      "url": "https://ipotec.in//calculators",
       "description": "Access various financial calculators for SIP, lumpsum investments, SWP, and more."
     },
     {
       "@type": "WebPage",
       "name": "Mutual Fund Screener",
-      "url": "https://ipotech.in//mutualfunds/screener",
+      "url": "https://ipotec.in//mutualfunds/screener",
       "description": "Screen and filter mutual funds based on various criteria to make informed investment decisions."
     }
   ],
