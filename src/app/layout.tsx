@@ -158,6 +158,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
 
         <meta name="google-site-verification" content="qfvtOvETSlOGGfLBvcE6Yk2Fqj0HmCGkmObv5r3MCnc" />
         <meta name="ahrefs-site-verification" content="c9bc1dfb881082e1aca65a8f84eb9243001c319904258b4f601717781f2339b3" />
+        <meta name="msvalidate.01" content="E31009FF5E0FF8B37698B8D4B526016D" />
         <meta httpEquiv="Content-Language" content="en-us" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta name="Copyright" content="Copyright 2024 @ IpoTech" />
