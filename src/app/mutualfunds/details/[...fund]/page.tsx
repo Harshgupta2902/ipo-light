@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: { params: { fund: string[] } 
             card: "summary_large_image",
             title: metaTitle,
             description: metaDescription,
-            images: "https://www.gradding.com/logo.png"
+            images: "https://www.ipotec.in/og_image.png"
         },
         alternates: {
             canonical: `https://www.ipotec.in${pathname}`,
