@@ -50,7 +50,7 @@ const Home = async () => {
             </div>
             <div className={`lg:col-4 lg:order-2 order-1`}>
               <ImageFallback
-                src={"/ipo_banner.svg"}
+                src={"/ipo/ipo_banner.svg"}
                 className="mx-auto"
                 width="800"
                 height="420"

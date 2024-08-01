@@ -140,10 +140,10 @@ const HomePageDetails = async ({
                                     className="w-10 h-10 rounded-full mr-4"
                                     src={
                                         index === 1
-                                            ? "/mutualfund_large_size.png"
+                                            ? "/mf/mutualfund_large_size.png"
                                             : index === 2
-                                                ? "/very_high_risk.png"
-                                                : "/mutualfund_hybrid.png"
+                                                ? "/mf/very_high_risk.png"
+                                                : "/mf/mutualfund_hybrid.png"
                                     }
                                     alt={label.title}
                                 />

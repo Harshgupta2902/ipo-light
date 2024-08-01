@@ -5,7 +5,7 @@ import React from "react";
 const sectionsData = [
   {
     title: "Mutual Funds - Maximize Your Returns",
-    imageSrc: "/mf.png",
+    imageSrc: "/home/mf.png",
     items: [
       "Get up to 12% Higher Returns with Direct Plans",
       "No Hidden Charges or Investment Fees",
@@ -16,7 +16,7 @@ const sectionsData = [
   },
   {
     title: "IPO - Initial Public Offering Insights",
-    imageSrc: "/ipo.png",
+    imageSrc: "/home/ipo.png",
     items: [
       "Comprehensive IPO Information",
       "Subscribe to Upcoming IPOs",
@@ -28,7 +28,7 @@ const sectionsData = [
   },
   {
     title: "Investment Calculators - Plan Your Finances",
-    imageSrc: "/calculator.png",
+    imageSrc: "/home/calculator.png",
     items: [
       "SIP Calculator: Plan Your Systematic Investments",
       "Lumpsum Calculator: Estimate Your One-Time Investment Returns",

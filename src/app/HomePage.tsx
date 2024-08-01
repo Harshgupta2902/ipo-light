@@ -50,7 +50,7 @@ const HomePageDetails: React.FC<HomePageProps> = ({ indicesResult, gainersResult
                                 data-nimg="1"
                                 className="mx-auto"
                                 style={{ color: "transparent" }}
-                                src="/banner.svg"
+                                src="/home/banner.svg"
                             />
                         </div>
                     </div>
