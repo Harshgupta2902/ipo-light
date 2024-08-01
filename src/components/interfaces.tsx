@@ -214,26 +214,7 @@ export interface FormsDataTables {
     slug: string;
 }
 
-export interface Fund {
-    mfId: string;
-    slug: string;
-    name: string;
-    values: {
-        filter: string;
-        doubleVal?: number;
-        strVal?: string;
-    }[];
-    sector: string;
-}
 
-export interface Screener {
-    data: Fund[];
-    searchQuery?: string;
-    sortColumn?: string;
-    sortOrder?: "asc" | "desc";
-    selectedFilters?: { sector: string[]; option: string[] };
-    itemsPerPage?: number;
-}
 export interface BuyBackDataTable {
     id: string
     company_name: string

@@ -25,9 +25,10 @@ const Screener = async () => {
     } catch (err) {
         console.error(`error ${err}`);
     }
+
     return (
         <div>
-            <ScreenerMfHomePage data={result.data.result} />
+            <ScreenerMfHomePage content={result.content} total_results={result.total_results} />
         </div>
     );
 };
