@@ -59,7 +59,7 @@ const ScreenerTable = ({ visibleData }: { visibleData: Funds[] }) => {
                                 <Link
                                     href={`details/${fund.search_id}`}
                                     target={"_blank"}
-                                    prefetch={false}
+                                    prefetch={false}    
 
                                 >
                                     <div className="ps-3">
