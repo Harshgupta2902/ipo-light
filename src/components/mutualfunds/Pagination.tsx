@@ -28,6 +28,9 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalItems }) => {
         searchParams.set('page', (page + 1).toString());
         window.history.pushState(null, '', `?${searchParams.toString()}`);
         setCurrent(page);
+
+        window.location.reload(); // This will reload the page
+
     };
 
     const handlePrevious = () => {

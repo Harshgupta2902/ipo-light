@@ -49,19 +49,27 @@ export interface Funds {
 
 const ScreenerTable = ({ visibleData }: { visibleData: Funds[] }) => {
     return (
-        <div className="relative overflow-x-auto sm:rounded-lg ">
+        <div className="relative overflow-x-auto sm:rounded border">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
                 <tbody>
                     {visibleData.map((fund) => (
-                        <tr className="bg-white border-b hover:bg-gray-50  ">
-                            <th scope="row" className=" my-4 flex items-center font-medium text-gray-900 whitespace-nowrap">
+                        <tr key={fund.fund_name} className="bg-white border-b hover:bg-gray-50  ">
+                            <th scope="row" className="m-4 flex items-center font-medium text-gray-900 whitespace-nowrap">
                                 <img src={fund.logo_url} alt={fund.fund_name} className="w-10 h-10 object-contain border rounded p-1" />
-                                <div className="ps-3">
-                                    <div className="text-sm">{fund.fund_name}</div>
-                                    <div className="text-xs text-gray-500">{fund.risk} Risk
-                                        <span className="ml-4">{fund.category}</span>
+                                <Link
+                                    href={`details/${fund.search_id}`}
+                                    target={"_blank"}
+                                    prefetch={false}
+
+                                >
+                                    <div className="ps-3">
+                                        <div className="text-sm">{fund.fund_name}</div>
+                                        <div className="text-xs text-gray-500">{fund.risk} Risk
+                                            <span className="ml-4">{fund.category}</span>
+                                        </div>
                                     </div>
-                                </div>
+
+                                </Link>
                             </th>
                             <td>
                                 <div className="text-sm text-gray-900">{fund.return1y ? fund.return1y : "NA"}%</div>

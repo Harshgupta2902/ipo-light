@@ -1,16 +1,18 @@
-"use client"
+"use server"
 import React from 'react';
 import { endpoints } from '@/api/endpoints';
-import { headers } from 'next/headers';
 import ScreenerTable from '@/components/mutualfunds/screener-table';
 import Pagination from '@/components/mutualfunds/Pagination';
+import MfFilters from '@/components/mutualfunds/Filters';
+import SearchResults from '@/components/mutualfunds/search_results';
+import FilterChips from '@/components/mutualfunds/filter_chips';
 
 const sectionsData = [
     {
         title: "Mutual Funds - Screener",
         imageSrc: "/screener.png",
         items: [
-            "Filter by Fund Type (Equity, Debt, Hybrid, etc.)",
+            "Filter by Fund Type (Equity, Debt, Hybrid, et  c.)",
             "Sort by Performance, Ratings, and Returns",
             "Compare Multiple Funds Side by Side",
         ],
@@ -63,15 +65,29 @@ export interface Funds {
     logo_url: string
 }
 
-const fetchMfScreener = async (page: string) => {
+const fetchMfScreener = async (page: string, category?: string, risk?: string, sort?: string) => {
     try {
-        const response = await fetch(`${endpoints.getMfScreener}?page=${page}`, {
+        let url = `${endpoints.getMfScreener}?page=${page}`;
+
+        if (category) {
+            url += `&category=${category}`;
+        }
+
+        if (risk) {
+            url += `&risk=${risk}`;
+        }
+
+        if (sort) {
+            url += `&sort=${sort}`;
+        }
+
+        const response = await fetch(url, {
             cache: "no-store",
         });
+
         if (!response.ok) {
             throw new Error("Data not found");
         }
-
         return await response.json();
     } catch (error) {
         console.error("Error fetching data", error);
@@ -82,29 +98,29 @@ const fetchMfScreener = async (page: string) => {
 
 
 
-const MfScreenerHomePage = async ({ searchParams }: { searchParams: { page?: string } }) => {
+const MfScreenerHomePage = async ({ searchParams }: { searchParams: { page?: string, category?: string, risk?: string, sort?: string, } }) => {
 
-    // const page = searchParams.page || '0'; // Default to page 0 if no page param
-
-    const headersList = headers();
-    const pathname = headersList.get("mf-search");
-
-    console.log("pathname+++++++++++++++++++++", page);
+    const page = searchParams.page || '0';
+    const category = searchParams.category;
+    const risk = searchParams.risk;
+    const sort = searchParams.sort;
 
     let visibleData = null;
     let totalCount = 0;
 
 
     try {
-        const response = await fetchMfScreener(page);
+        const response = await fetchMfScreener(page, category, risk, sort);
         visibleData = response.content;
+        console.log(response.total_results);
+
         totalCount = response.total_results;
     } catch (error) {
         console.error("Error fetching data", error);
     }
 
     return (
-        <section>
+        <section className='container'>
             {sectionsData.map((section, index) => (
                 <section key={index}>
                     <div className="container">
@@ -145,28 +161,29 @@ const MfScreenerHomePage = async ({ searchParams }: { searchParams: { page?: str
                 </section>
             ))}
 
-            <div className="px-[6rem]">
-                <div className="bg-white">
-                    <main className="mx-auto max-w-10xl">
-                        <section aria-labelledby="products-heading" className="pb-24 pt-6">
-                            <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-                                <div className="lg:col-span-3">
-                                    <section >
-                                        <div className="container">
-                                            <div className="relative overflow-x-auto sm:rounded-lg">
-                                                <ScreenerTable visibleData={visibleData} />
-                                                <Pagination
-                                                    currentPage={0}
-                                                    totalItems={totalCount}
-                                                />
-                                            </div>
+            <div className="bg-white">
+                <main className="mx-auto max-w-10xl">
+                    <section aria-labelledby="products-heading" className="pb-24 pt-6">
+                        <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
+                            <MfFilters />
+                            <div className="lg:col-span-3">
+                                <section >
+                                    <div className="container">
+                                        <div className="relative overflow-x-auto sm:rounded-lg">
+                                            <SearchResults total={totalCount} />
+                                            <FilterChips />
+                                            <ScreenerTable visibleData={visibleData} />
+                                            <Pagination
+                                                currentPage={0}
+                                                totalItems={totalCount}
+                                            />
                                         </div>
-                                    </section>
-                                </div>
+                                    </div>
+                                </section>
                             </div>
-                        </section>
-                    </main>
-                </div>
+                        </div>
+                    </section>
+                </main>
             </div>
 
         </section>
