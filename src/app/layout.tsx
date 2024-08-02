@@ -83,9 +83,9 @@ export async function generateMetadata() {
   }
 
   const metaTitle = metaData.title
-    ?? "IpoTech";
+    ?? "IpoTec";
   const metaDescription = metaData.description
-    ?? "IpoTech";
+    ?? "IpoTec";
   const keywords = metaData.keywords
     ?? "IPO, mutual funds, investment, finance, stock market";
 
@@ -94,9 +94,9 @@ export async function generateMetadata() {
     title: metaTitle,
     description: metaDescription,
     robots: "index, follow",
-    author: "IpoTech",
+    author: "IpoTec",
     keywords: keywords,
-    copyright: "Copyright 2024 @ IpoTech",
+    copyright: "Copyright 2024 @ IpoTec",
     url: "https://www.ipotec.in/",
     openGraph: {
       title: metaTitle,
@@ -121,12 +121,12 @@ export async function generateMetadata() {
 const schema = {
   "@context": "https://schema.org/",
   "@type": "WebSite",
-  "name": "IpoTech",
+  "name": "IpoTec",
   "url": "https://www.ipotec.in/",
-  "description": "IpoTech provides comprehensive information about upcoming IPOs, GMP, buybacks, subscription statuses, and financial tools including calculators for SIP, lumpsum, SWP, and more.",
+  "description": "IpoTec provides comprehensive information about upcoming IPOs, GMP, buybacks, subscription statuses, and financial tools including calculators for SIP, lumpsum, SWP, and more.",
   "author": {
     "@type": "Organization",
-    "name": "IpoTech"
+    "name": "IpoTec"
   },
   "datePublished": "2024-07-19",
   "mainEntity": [
@@ -162,7 +162,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
         <meta name="msvalidate.01" content="E31009FF5E0FF8B37698B8D4B526016D" />
         <meta httpEquiv="Content-Language" content="en-us" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-        <meta name="Copyright" content="Copyright 2024 @ IpoTech" />
+        <meta name="Copyright" content="Copyright 2024 @ IpoTec" />
         <link rel="apple-touch-icon" sizes="180x180" href="/layout/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/layout/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/layout/favicon-16x16.png" />

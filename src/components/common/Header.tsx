@@ -49,11 +49,11 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
                 className="mx-auto"
                 width="40"
                 height="40"
-                alt="IpoTech Logo"
+                alt="IpoTec Logo"
                 priority
               />
             </a>
-            <span className=" ml-2 text-3xl">IPOTECH</span>
+            <span className=" ml-2 text-3xl">IpoTec</span>
           </div>
 
           <input
@@ -102,11 +102,11 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
               className="mx-auto"
               width="40"
               height="40"
-              alt="IpoTech Logo"
+              alt="IpoTec Logo"
               priority
             />
           </a>
-          <span className=" ml-2 text-3xl">IPOTECH</span>
+          <span className=" ml-2 text-3xl">IpoTec</span>
         </div>
         <br /><br />
         <ul className="navbar-nav text-left order-3 w-full lg:order-1 lg:flex lg:w-auto">

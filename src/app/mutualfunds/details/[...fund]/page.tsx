@@ -17,60 +17,80 @@ const fetchMfDetails = async (fund: string) => {
 }
 
 
-// export async function generateMetadata({ params }: { params: { fund: string[] } }) {
-//     const pathname = params.fund.join("-");
-//     const fundCode = pathname.split("-").pop();
-//     let mfHomeData = null;
-//     try {
-//         mfHomeData = await fetchMfDetails(fundCode);
+function getYears(dateStr: string) {
+    const date = new Date(dateStr); // Parse the date string to create a Date object
+    const currentDate = new Date();
 
-//     } catch (err) {
-//         console.error(`Error fetching metadata: ${err}`);
-//     }
+    // Calculate the difference in years
+    const yearsDifference = currentDate.getFullYear() - date.getFullYear();
 
-//     const metaData = mfHomeData.summary.meta;
+    // Adjust for cases where the current date is before the date in the current year
+    const hasNotReachedAnniversary = (currentDate.getMonth() < date.getMonth()) ||
+        (currentDate.getMonth() === date.getMonth() && currentDate.getDate() < date.getDate());
 
-//     const metaTitle = metaData.fullName ? metaData.fullName : pathname;
-//     const metaDescription = `Explore the ${metaData.fullName} (${metaData.plan} Plan) with comprehensive details on performance, risk classification, benchmark index, and investment strategy. Invest wisely with ${metaData.amc}.`;
-//     const keywords = [
-//         metaData.fullName,
-//         metaData.sector,
-//         metaData.subsector,
-//         metaData.amc,
-//         metaData.benchmarkIndex,
-//         "mutual fund investment",
-//         "high risk mutual funds",
-//         "debt and equity funds",
-//     ];
-//     console.log(metaTitle);
+    const finalYearsDifference = yearsDifference - (hasNotReachedAnniversary ? 1 : 0);
 
-//     return {
-//         title: metaTitle,
-//         description: metaDescription,
-//         robots: "index, follow",
-//         author: "IpoTech",
-//         keywords: keywords,
-//         copyright: "Copyright 2024 @ IpoTech",
-//         url: "https://www.ipotec.in/",
-//         openGraph: {
-//             title: metaTitle,
-//             description: metaDescription,
-//             site: "https://www.ipotec.in/",
-//             images: "https://www.ipotec.in/logo.png",
-//             type: "website",
-//             url: `https://www.ipotec.in${pathname}`,
-//         },
-//         twitter: {
-//             card: "summary_large_image",
-//             title: metaTitle,
-//             description: metaDescription,
-//             images: "https://www.ipotec.in/og_image.png"
-//         },
-//         alternates: {
-//             canonical: `https://www.ipotec.in${pathname}`,
-//         },
-//     };
-// }
+    return finalYearsDifference;
+}
+
+
+export async function generateMetadata() {
+    const headersList = headers();
+    const completepathname = headersList.get("x-url");
+    const pathname = completepathname?.replace('/mutualfunds/details/', "");
+
+    let mfHomeData = null;
+    try {
+        mfHomeData = await fetchMfDetails(`${pathname}`);
+
+    } catch (err) {
+        console.error(`Error fetching metadata: ${err}`);
+    }
+
+    const metaTitle = mfHomeData.stpDetails.scheme_name;
+    const metaDescription = `${mfHomeData.scheme_name} is ${mfHomeData.sub_category} ${mfHomeData.scheme_type} mutual fund with track record of ${getYears(mfHomeData.launch_date)} years, with overall return of ${mfHomeData.return_stats[0].return_since_created.toFixed(2)}%. Risk is Very High`;
+    const keywords = [
+        mfHomeData.scheme_code,
+        mfHomeData.super_category,
+        mfHomeData.sub_category,
+        mfHomeData.category,
+        mfHomeData.fund_house,
+        mfHomeData.scheme_type,
+        mfHomeData.isin,
+        mfHomeData.plan_type,
+        mfHomeData.fund_manager,
+        "mutual fund investment",
+        "high risk mutual funds",
+        "debt and equity funds",
+    ];
+
+    return {
+        title: metaTitle,
+        description: metaDescription,
+        robots: "index, follow",
+        author: "IpoTec",
+        keywords: keywords,
+        copyright: "Copyright 2024 @ IpoTec",
+        url: "https://www.ipotec.in/",
+        openGraph: {
+            title: metaTitle,
+            description: metaDescription,
+            site: "https://www.ipotec.in/",
+            images: "https://www.ipotec.in/og_image.png",
+            type: "website",
+            url: `https://www.ipotec.in${pathname}`,
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: metaTitle,
+            description: metaDescription,
+            images: "https://www.ipotec.in/og_image.png"
+        },
+        alternates: {
+            canonical: `https://www.ipotec.in${pathname}`,
+        },
+    };
+}
 
 
 
@@ -79,9 +99,7 @@ const MutualFundsDetails = async () => {
     const headersList = headers();
     const completepathname = headersList.get("x-url");
     const pathname = completepathname?.replace('/mutualfunds/details/', "");
-    console.log(pathname);
 
-    // const metaData = await fetchMetadata(pathname ?? "/");
 
     let mfHomeData = null;
     let error = null;

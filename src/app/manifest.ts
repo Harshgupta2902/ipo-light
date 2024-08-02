@@ -2,9 +2,9 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "IpoTech",
-    short_name: "IpoTech",
-    description: "IpoTech",
+    name: "IpoTec",
+    short_name: "IpoTec",
+    description: "IpoTec",
     start_url: "/",
     theme_color: "#ffffff",
     background_color: "#ffffff",
