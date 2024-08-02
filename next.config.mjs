@@ -11,6 +11,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "assets-netstorage.groww.in",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
         hostname: "assets.tickertape.in",
         pathname: "**",
       },

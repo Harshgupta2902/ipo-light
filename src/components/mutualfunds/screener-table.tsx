@@ -1,9 +1,5 @@
-"use serve"
-
 import Link from "next/link";
 import React from "react";
-
-
 
 export interface Screener {
     content: Funds[]
@@ -52,122 +48,38 @@ export interface Funds {
 }
 
 const ScreenerTable = ({ visibleData }: { visibleData: Funds[] }) => {
-    console.log(visibleData);
-
-
     return (
         <div className="relative overflow-x-auto sm:rounded-lg ">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
                 <tbody>
                     {visibleData.map((fund) => (
-                        <tr className="bg-white border-b  hover:bg-gray-50 ">
-                            <th scope="row" className="flex items-center font-medium text-gray-900 whitespace-nowrap">
-                                <img className="w-10 h-10 rounded-full" src="https://assets-netstorage.groww.in/mf-assets/logos/birla_groww.png" alt="Jese image" />
+                        <tr className="bg-white border-b hover:bg-gray-50  ">
+                            <th scope="row" className=" my-4 flex items-center font-medium text-gray-900 whitespace-nowrap">
+                                <img src={fund.logo_url} alt={fund.fund_name} className="w-10 h-10 object-contain border rounded p-1" />
                                 <div className="ps-3">
-                                    <div className="text-base font-semibold">{fund.fund_name}</div>
-                                    <div className="font-normal text-gray-500">bonnie@flowbite.com</div>
+                                    <div className="text-sm">{fund.fund_name}</div>
+                                    <div className="text-xs text-gray-500">{fund.risk} Risk
+                                        <span className="ml-4">{fund.category}</span>
+                                    </div>
                                 </div>
                             </th>
-                            <td className="">
-                                Designer
+                            <td>
+                                <div className="text-sm text-gray-900">{fund.return1y ? fund.return1y : "NA"}%</div>
+                                <div className="text-xs text-gray-500">1Y </div>
                             </td>
-                            <td className="">
-                                <div className="flex items-center">
-                                    <div className="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div> Online
-                                </div>
+                            <td>
+                                <div className="text-sm text-gray-900">{fund.return3y ? fund.return3y : "NA"}%</div>
+                                <div className="text-xs text-gray-500">3Y </div>
                             </td>
-                            <td className="">
-                                <a href="#" className="font-medium text-blue-600">Edit user</a>
+                            <td>
+                                <div className="text-sm text-gray-900">{fund.return5y ? fund.return5y : "NA"}%</div>
+                                <div className="text-xs text-gray-500">5Y </div>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
         </div>
-    );
-
-
-    return (
-        <table className="w-full text-sm text-left content text-gray-500 ">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-                <tr>
-                    <th scope="col" className="px-6 py-3" >
-                        <div className="flex items-center">
-                            Fund Name{" "}
-
-                        </div>
-                    </th>
-                    <th scope="col" className="px-6 py-3" >
-                        <div className="flex items-center">
-                            AUM
-
-                        </div>
-
-                    </th>
-                    <th scope="col" className="px-6 py-3" >
-                        <div className="flex item-center">
-                            3-Year Return (%)
-
-                        </div>
-                    </th>
-                    <th scope="col" className="px-6 py-3" >
-                        <div className="flex item-center">
-                            Expense Ratio
-
-                        </div>
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                        Subsector
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                        Plan
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                {/* {visibleData.map((fund) => (
-                    <tr key={fund.mfId} className="bg-white border-b ">
-                        <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <Link
-                                style={{
-                                    textDecoration: "none",
-                                    fontSize: "medium",
-                                }} href={`/mutualfunds/details${fund.slug.replace("/mutualfunds", "")}`}
-                                target={"_blank"}
-
-                            >
-                                {fund.name}
-                            </Link>
-                        </td>
-                        <td className="px-6 py-4">
-                            {fund.values
-                                .find((item) => item.filter === "aum")
-                                ?.doubleVal?.toLocaleString()}{" "}
-                        </td>
-                        <td className="px-6 py-4">
-                            {fund.values
-                                .find((item) => item.filter === "ret3y")
-                                ?.doubleVal?.toFixed(2)}{" "}
-                            %{" "}
-                        </td>
-                        <td className="px-6 py-4">
-                            {fund.values
-                                .find((item) => item.filter === "expRatio")
-                                ?.doubleVal?.toFixed(2)}{" "}
-                        </td>
-                        <td className="px-6 py-4">
-                            {
-                                fund.values.find((item) => item.filter === "subsector")
-                                    ?.strVal
-                            }
-                        </td>
-                        <td className="px-6 py-4">
-                            {fund.values.find((item) => item.filter === "option")?.strVal}
-                        </td>
-                    </tr>
-                ))} */}
-            </tbody>
-        </table>
     );
 };
 export default ScreenerTable;
