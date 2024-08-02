@@ -112,8 +112,6 @@ const MfScreenerHomePage = async ({ searchParams }: { searchParams: { page?: str
     try {
         const response = await fetchMfScreener(page, category, risk, sort);
         visibleData = response.content;
-        console.log(response.total_results);
-
         totalCount = response.total_results;
     } catch (error) {
         console.error("Error fetching data", error);
@@ -171,7 +169,7 @@ const MfScreenerHomePage = async ({ searchParams }: { searchParams: { page?: str
                                     <div className="container">
                                         <div className="relative overflow-x-auto sm:rounded-lg">
                                             <SearchResults total={totalCount} />
-                                            <FilterChips />
+                                            {/* <FilterChips /> */}
                                             <ScreenerTable visibleData={visibleData} />
                                             <Pagination
                                                 currentPage={0}

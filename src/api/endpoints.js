@@ -23,7 +23,7 @@ export const endpoints = {
   approachingLow: `${baseURL}getTrend?type=approachingLow`,
 
   getMfScreener: `${baseURL}getMfScreener`,
-  getMfHomePage: `${baseURL}getMfHomePage`,
+  getMfDetails: `${baseURL}getMfDetails`,
   getNav: `${baseURL}getNav`,
 
   insertBlog: `${baseURL}insertBlog`,

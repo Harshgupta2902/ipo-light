@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useRef } from "react";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
@@ -40,15 +42,7 @@ const fetchIsin = async (isin: string) => {
 };
 
 
-const HomePageDetails = async ({
-    fundCode,
-    isin,
-    mfHomeData,
-}: {
-    fundCode: string;
-    isin: string;
-    mfHomeData: MfHomePageDetails;
-}) => {
+const HomePageDetails = async ({ isin }: { isin: string; }) => {
     let chartPoints = null;
     let error = null;
     const chartRef = useRef<any>(null);
@@ -131,7 +125,7 @@ const HomePageDetails = async ({
 
             <br />
 
-            <div className="row">
+            {/* <div className="row">
                 {mfHomeData?.summary?.labels.map((label, index) => (
                     <div key={index} className="mb-14 md:col-6 lg:col-4 pl-2 pr-0">
                         <div className="max-w-sm rounded-sm max-h-60 overflow-hidden shadow px-6 py-4 border border-grey-500">
@@ -230,7 +224,7 @@ const HomePageDetails = async ({
                     </div>
                 </div>
             </div>
-            <br /><br />
+            <br /><br /> */}
 
         </div>
     );
