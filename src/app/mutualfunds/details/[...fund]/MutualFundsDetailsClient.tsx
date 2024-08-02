@@ -20,6 +20,8 @@ const MutualFundsDetailsClient = ({ mfHomeData, error }: { mfHomeData: any, erro
                     <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                         <form className="hidden lg:block">
                             <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow">
+                                <img src={mfHomeData.logo_url} alt={mfHomeData.stpDetails.amc_name} className="w-10 h-10 object-contain border rounded-sm p-1" />
+
                                 <h1 className="text-xl font-bold leading-none text-gray-900">
                                     {mfHomeData.stpDetails.amc_name}
                                 </h1>

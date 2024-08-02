@@ -20,14 +20,6 @@ export interface Isin {
 }
 
 
-const formatCurrency = (amount: any) => {
-    return new Intl.NumberFormat('en-IN', {
-        style: 'currency',
-        currency: 'INR'
-    }).format(amount);
-};
-
-
 const fetchIsin = async (isin: string) => {
     try {
         const response = await fetch(`${endpoints.getNav}/${isin}`);
