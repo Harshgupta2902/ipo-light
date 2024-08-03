@@ -25,6 +25,8 @@ const redirects = {
     "/mutualfunds/screener",
   "/mutualfunds/details/nippon-india-gold-savings-fund-M_NIGU":
     "/mutualfunds/screener",
+  "/mutualfunds/details/icici-pru-banking--fin-serv-fund-M_ICINK":
+    "/mutualfunds/screener",
 };
 
 export default async function middleware(request) {
