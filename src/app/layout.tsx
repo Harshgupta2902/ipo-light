@@ -9,6 +9,7 @@ import { MenuItem } from "@/components/interfaces";
 import { endpoints } from "@/api/endpoints";
 import { headers } from "next/headers";
 import { Analytics } from "@vercel/analytics/react"
+import Footer from "./Footer";
 
 
 const poppins = Poppins({
@@ -188,6 +189,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
             `,
           }}
         />
+        <Footer />
       </body>
     </html>
   );

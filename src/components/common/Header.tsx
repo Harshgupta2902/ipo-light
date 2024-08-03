@@ -42,8 +42,8 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
     <>
       <header className="header z-30 sticky top-0">
         <nav className="navbar container">
-          <div className="order-0 flex items-center	">
-            <a className="navbar-brand inline-block" href="/">
+          <a className="navbar-brand inline-block" href="/">
+            <div className="order-0 flex items-center	">
               <ImageFallback
                 src={"/logo.svg"}
                 className="mx-auto"
@@ -52,9 +52,9 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
                 alt="IpoTec Logo"
                 priority
               />
-            </a>
-            <span className=" ml-2 text-3xl">IpoTec</span>
-          </div>
+              <span className=" ml-2 text-3xl">IpoTec</span>
+            </div>
+          </a>
 
           <input
             id="drawer-toggle"
@@ -95,8 +95,8 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
         aria-labelledby="drawer-label"
       >
 
-        <div className="order-0 flex items-center	 ">
-          <a className="navbar-brand inline-block" href="/">
+        <a className="navbar-brand inline-block" href="/">
+          <div className="order-0 flex items-center	">
             <ImageFallback
               src={"/logo.svg"}
               className="mx-auto"
@@ -105,9 +105,9 @@ const Navbar: React.FC<{ menuData: MenuItem[] }> = ({ menuData }) => {
               alt="IpoTec Logo"
               priority
             />
-          </a>
-          <span className=" ml-2 text-3xl">IpoTec</span>
-        </div>
+            <span className=" ml-2 text-3xl">IpoTec</span>
+          </div>
+        </a>
         <br /><br />
         <ul className="navbar-nav text-left order-3 w-full lg:order-1 lg:flex lg:w-auto">
           {menuData.map((item, index) => (

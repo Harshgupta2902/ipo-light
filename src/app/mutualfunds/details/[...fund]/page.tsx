@@ -126,7 +126,6 @@ const MutualFundsDetails = async () => {
 
         if (mfHomeData) {
             const response = await fetchIsin(mfHomeData.stpDetails ? mfHomeData.stpDetails.isin : mfHomeData.isin);
-            console.log(response);
 
             if (response.isin) {
                 chartPoints = response.isin;
