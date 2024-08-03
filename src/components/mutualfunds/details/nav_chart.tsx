@@ -1,12 +1,8 @@
 "use client"
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
-import { endpoints } from "@/api/endpoints";
-import { MfHomePageDetails } from "../interfaces";
-import { FaCaretUp, FaCaretDown } from "react-icons/fa";
-import Link from "next/link";
 
 
 export interface ChartData {
@@ -19,40 +15,56 @@ export interface Isin {
     navValue: number
 }
 
-
-const fetchIsin = async (isin: string) => {
-    try {
-        const response = await fetch(`${endpoints.getNav}/${isin}`);
-        if (!response.ok) {
-            throw new Error("Data not found");
-        }
-        return await response.json();
-    } catch (error) {
-        console.error("Error fetching GmpIpo", error);
-        throw error;
-    }
-};
-
-
-const HomePageDetails = async ({ isin }: { isin: string; }) => {
-    let chartPoints = null;
-    let error = null;
+const NavChart = ({ response }: { response: any; }) => {
     const chartRef = useRef<any>(null);
-    try {
-        const response = await fetchIsin(isin);
-        chartPoints = response.isin;
+    // const chartPoints = response;
+    const [timeRange, setTimeRange] = useState("All");
 
-    } catch (err) {
+    const filterDataByTimeRange = (data: any[], range: string) => {
+        const now = new Date();
+        let filteredData = data;
 
-        console.error(`error ${err}`);
-    }
+        switch (range) {
+            case "1m":
+                const oneMonthAgo = new Date();
+                oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+                filteredData = data.filter(d => new Date(d.navDate) >= oneMonthAgo);
+                break;
+            case "6m":
+                const sixMonthsAgo = new Date();
+                sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+                filteredData = data.filter(d => new Date(d.navDate) >= sixMonthsAgo);
+                break;
+            case "1y":
+                const oneYearAgo = new Date();
+                oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+                filteredData = data.filter(d => new Date(d.navDate) >= oneYearAgo);
+                break;
+            case "3y":
+                const threeYearsAgo = new Date();
+                threeYearsAgo.setFullYear(threeYearsAgo.getFullYear() - 3);
+                filteredData = data.filter(d => new Date(d.navDate) >= threeYearsAgo);
+                break;
+            case "5y":
+                const fiveYearsAgo = new Date();
+                fiveYearsAgo.setFullYear(fiveYearsAgo.getFullYear() - 5);
+                filteredData = data.filter(d => new Date(d.navDate) >= fiveYearsAgo);
+                break;
+            default:
+                break;
+        }
+
+        return filteredData;
+    };
+
+
+    const chartPoints = filterDataByTimeRange(response, timeRange);
+    console.log(chartPoints.length);
 
     return (
         <div>
-            {error && <p>{error}</p>}
-            {!error && chartPoints.length > 0 && (
+            {chartPoints.length > 0 && (
                 <>
-                    <h2>Price Chart</h2>
                     <Line
                         ref={chartRef}
                         data={{
@@ -62,9 +74,9 @@ const HomePageDetails = async ({ isin }: { isin: string; }) => {
                                     label: "Price",
                                     data: chartPoints.map((point: any) => point.navValue),
                                     fill: true,
-                                    borderColor: "rgb(34, 197, 94)",
+                                    borderColor: "rgb(0, 179, 134)",
                                     tension: 0.1,
-                                    backgroundColor: "rgba(34, 197, 94, 0.2)",
+                                    backgroundColor: "rgba(255,255,255)",
                                 },
                             ],
                         }}
@@ -112,6 +124,23 @@ const HomePageDetails = async ({ isin }: { isin: string; }) => {
                             },
                         }}
                     />
+                    <br />
+                    <div className="filter-buttons text-center">
+                        {["1m", "6m", "1y", "3y", "5y", "All"].map(range => (
+                            <button
+                                key={range}
+                                onClick={() => setTimeRange(range)}
+                                className={`items-center whitespace-nowrap rounded-md border rounded-full mr-2 p-1.5 px-3 font-sans text-xs font-bold uppercase text-gray-900 ${timeRange === range ? "active" : ""}`}
+                                style={{
+                                    border: timeRange === range ? '1px solid black' : '1px solid gray',
+                                    backgroundColor: timeRange === range ? 'lightgray' : 'white',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                {range}
+                            </button>
+                        ))}
+                    </div>
                 </>
             )}
 
@@ -222,4 +251,4 @@ const HomePageDetails = async ({ isin }: { isin: string; }) => {
     );
 }
 
-export default HomePageDetails;
+export default NavChart;

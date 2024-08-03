@@ -1,7 +1,12 @@
 import { endpoints } from "@/api/endpoints";
 import { headers } from "next/headers";
 import Loader from "@/app/Loader";
-import HomePageDetails from "@/components/mutualfunds/HomePageDetails";
+import NavChart from "@/components/mutualfunds/details/nav_chart";
+import Holdings from "@/components/mutualfunds/details/holdings";
+import AnnualizedReturns from "@/components/mutualfunds/details/annualized_returns";
+import ExpenseRatio from "@/components/mutualfunds/details/expense_ratio";
+import FundManagerDetails from "@/components/mutualfunds/details/FundManagerDetails";
+import MfScreenerHomePage from "../../screener/page";
 
 const fetchMfDetails = async (fund: string) => {
     try {
@@ -18,13 +23,11 @@ const fetchMfDetails = async (fund: string) => {
 
 
 function getYears(dateStr: string) {
-    const date = new Date(dateStr); // Parse the date string to create a Date object
+    const date = new Date(dateStr);
     const currentDate = new Date();
 
-    // Calculate the difference in years
     const yearsDifference = currentDate.getFullYear() - date.getFullYear();
 
-    // Adjust for cases where the current date is before the date in the current year
     const hasNotReachedAnniversary = (currentDate.getMonth() < date.getMonth()) ||
         (currentDate.getMonth() === date.getMonth() && currentDate.getDate() < date.getDate());
 
@@ -93,6 +96,19 @@ export async function generateMetadata() {
 }
 
 
+const fetchIsin = async (isin: string) => {
+    try {
+        const response = await fetch(`${endpoints.getNav}/${isin}`);
+        if (!response.ok) {
+            throw new Error("Data not found");
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Error fetching GmpIpo", error);
+        throw error;
+    }
+};
+
 
 const MutualFundsDetails = async () => {
 
@@ -100,12 +116,21 @@ const MutualFundsDetails = async () => {
     const completepathname = headersList.get("x-url");
     const pathname = completepathname?.replace('/mutualfunds/details/', "");
 
+    let chartPoints = null;
 
     let mfHomeData = null;
     let error = null;
 
     try {
         mfHomeData = await fetchMfDetails(`${pathname}`);
+        if (mfHomeData) {
+            const response = await fetchIsin(mfHomeData.stpDetails.isin);
+            if (response.isin) {
+                chartPoints = response.isin;
+            } else {
+                chartPoints = response;
+            }
+        }
     } catch (err) {
         console.error(`error ${err}`);
 
@@ -116,7 +141,7 @@ const MutualFundsDetails = async () => {
     return (
 
         <div className="container">
-            <main className="mx-auto max-w-8xl sm:px-6 lg:px-8">
+            <main className="mx-auto max-w-8xl">
                 <section aria-labelledby="products-heading" className="">
                     <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                         <form className="hidden lg:block">
@@ -132,104 +157,18 @@ const MutualFundsDetails = async () => {
                                 <p className="text-sm text-gray-500 mb-4">
                                     {mfHomeData.nav}
                                 </p>
-                                {/* <p className="text-xl font-bold text-black">
-                                {mfHomeData?.info.navClose.toFixed(2)}{" "}
-                                {mfHomeData?.info.navCh1d > 0 ? (
-                                    <FaCaretUp className="text-green-500 inline-block ml-1" />
-                                ) : (
-                                    <FaCaretDown className="text-red-500 inline-block ml-1" />
-                                )}
-                                <span
-                                    className={`text-sm text-${mfHomeData?.info.navCh1d > 0 ? "green" : "red"
-                                        }-500 inline-block ml-1`}
-                                >
-                                    {`${(
-                                        (mfHomeData?.info.navCh1d * 100) /
-                                        mfHomeData?.info.navClose
-                                    ).toFixed(2)}%`}
-                                    {mfHomeData?.info.navCh1d > 0 ? (
-                                        <span className="text-green-500">
-                                            {" "}
-                                            (+{mfHomeData?.info.navCh1d.toFixed(2)})
-                                        </span>
-                                    ) : (
-                                        <span className="text-red-500">
-                                            {" "}
-                                            ({mfHomeData?.info.navCh1d.toFixed(2)})
-                                        </span>
-                                    )}
-                                </span>
-                            </p> */}
-
+                                <p className="text-sm text-gray-500 mb-4">
+                                    {mfHomeData.aum}
+                                </p>
                                 <br />
-                                {/* <h2 className="block font-sans text-sm">
-                                Investments Checklists
-                            </h2>
-
-                            <div className="divide-y divide-gray-200">
-                                {mfHomeData.inv_checkList.map((item:any) => (
-                                    <div key={item.icid} className="flex items-center justify-between pb-3 pt-3 last:pb-0">
-                                        <div key={item.icid} className="flex items-start gap-x-3">
-                                            <FaCaretUp className="text-green-500 text-2xl inline-block ml-1" />
-                                            <div>
-                                                <h3 className="block font-sans text-base font-semibold leading-relaxed tracking-normal text-blue-gray-900 antialiased">
-                                                    {item.title}
-                                                </h3>
-
-                                                <p className="block font-sans text-sm font-light leading-normal text-gray-700 antialiased">
-                                                    {item.description}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div> */}
                             </div>
                         </form>
                         <div className="lg:col-span-3">
-                            <div className="lg:col-span-3">
-                                {/* <div className="mb-4 border-b border-gray-200">
-                                <ul className="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" role="tablist">
-                                    <li className="mr-2" role="presentation">
-                                        <button
-                                            className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "Home" ? "text-blue-600 border-blue-600" : "text-gray-600 border-transparent"}`}
-                                            onClick={() => handleTabClick("Home")}
-                                            type="button"
-                                            role="tab"
-                                            aria-label="Home"
-                                        >
-                                            Home
-                                        </button>
-                                    </li>
-                                    <li role="presentation">
-                                        <button
-                                            className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "fundManager" ? "text-blue-600 border-blue-600" : "text-gray-600 border-transparent"}`}
-                                            onClick={() => handleTabClick("fundManager")}
-                                            type="button"
-                                            role="tab"
-                                            aria-label="fundManager"
-                                        >
-                                            Fund Manager
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div> */}
-                                <HomePageDetails isin={mfHomeData.stpDetails.isin} />
-                                {/* <div id="default-tab-content">
-                                <div className={`${activeTab === "Home" ? "block" : "hidden"}`} role="tabpanel">
-                                    
-                                </div>
-                                <div className={`${activeTab === "Peers" ? "block" : "hidden"}`} role="tabpanel">
-                                    Peers
-                                </div>
-                                <div className={`${activeTab === "Portfolio" ? "block" : "hidden"}`} role="tabpanel">
-                                    Portfolio
-                                </div>
-                                <div className={`${activeTab === "fundManager" ? "block" : "hidden"}`} role="tabpanel">
-                                    <FundManagerDetails key={"fundManager"} fundManagersDetails={mfHomeData.fundmanager} />
-                                </div>
-                            </div> */}
-                            </div>
+                            <NavChart response={chartPoints} />
+                            <Holdings holdings={mfHomeData.holdings} />
+                            <AnnualizedReturns stats={mfHomeData.stats} />
+                            <ExpenseRatio exitload={mfHomeData.exit_load} expense_ratio={mfHomeData.expense_ratio} stampduty={mfHomeData.stamp_duty} taxImp={mfHomeData.category_info.tax_impact} expratioList={mfHomeData.historic_fund_expense} exitLoadList={mfHomeData.historic_exit_loads} />
+                            <FundManagerDetails fundManagersDetails={mfHomeData.fund_manager_details} />
                         </div>
                     </div>
                 </section>
