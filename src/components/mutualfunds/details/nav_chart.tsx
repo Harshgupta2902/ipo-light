@@ -17,7 +17,6 @@ export interface Isin {
 
 const NavChart = ({ response }: { response: any; }) => {
     const chartRef = useRef<any>(null);
-    // const chartPoints = response;
     const [timeRange, setTimeRange] = useState("All");
 
     const filterDataByTimeRange = (data: any[], range: string) => {
@@ -57,9 +56,12 @@ const NavChart = ({ response }: { response: any; }) => {
         return filteredData;
     };
 
+    let chartPoints = filterDataByTimeRange(response, timeRange);
 
-    const chartPoints = filterDataByTimeRange(response, timeRange);
-    console.log(chartPoints.length);
+    if (chartPoints.length === 0) {
+        chartPoints = response;
+    }
+
 
     return (
         <div>

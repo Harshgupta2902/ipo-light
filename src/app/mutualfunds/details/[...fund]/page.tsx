@@ -50,7 +50,7 @@ export async function generateMetadata() {
         console.error(`Error fetching metadata: ${err}`);
     }
 
-    const metaTitle = mfHomeData.stpDetails.scheme_name;
+    const metaTitle = mfHomeData.stpDetails ? mfHomeData.stpDetails.scheme_name : mfHomeData.fund_name;
     const metaDescription = `${mfHomeData.scheme_name} is ${mfHomeData.sub_category} ${mfHomeData.scheme_type} mutual fund with track record of ${getYears(mfHomeData.launch_date)} years, with overall return of ${mfHomeData.return_stats[0].return_since_created.toFixed(2)}%. Risk is Very High`;
     const keywords = [
         mfHomeData.scheme_code,
@@ -123,8 +123,11 @@ const MutualFundsDetails = async () => {
 
     try {
         mfHomeData = await fetchMfDetails(`${pathname}`);
+
         if (mfHomeData) {
-            const response = await fetchIsin(mfHomeData.stpDetails.isin);
+            const response = await fetchIsin(mfHomeData.stpDetails ? mfHomeData.stpDetails.isin : mfHomeData.isin);
+            console.log(response);
+
             if (response.isin) {
                 chartPoints = response.isin;
             } else {
@@ -146,13 +149,13 @@ const MutualFundsDetails = async () => {
                     <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                         <form className="hidden lg:block">
                             <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow">
-                                <img src={mfHomeData.logo_url} alt={mfHomeData.stpDetails.amc_name} className="w-10 h-10 object-contain border rounded-sm p-1" />
+                                <img src={mfHomeData.logo_url} alt={mfHomeData.stpDetails ? mfHomeData.stpDetails.amc_name : mfHomeData.amc.name} className="w-10 h-10 object-contain border rounded-sm p-1" />
 
                                 <h1 className="text-xl font-bold leading-none text-gray-900">
-                                    {mfHomeData.stpDetails.amc_name}
+                                    {mfHomeData.stpDetails ? mfHomeData.stpDetails.amc_name : mfHomeData.fund_name}
                                 </h1>
                                 <p className="text-sm text-gray-500 mb-4">
-                                    {mfHomeData.stpDetails.scheme_type}
+                                    {mfHomeData.stpDetails && mfHomeData.stpDetails.scheme_type}
                                 </p>
                                 <p className="text-sm text-gray-500 mb-4">
                                     {mfHomeData.nav}
