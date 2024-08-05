@@ -40,8 +40,6 @@ const Home = async () => {
                 Discover the latest IPOs. Get thorough information and insights
                 to help you make wise investment decisions
               </p>
-              <p>{result.time} </p>
-              <p>{result.timestamp} </p>
 
               <Link
                 className="btn btn-primary"
