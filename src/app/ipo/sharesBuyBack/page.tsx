@@ -5,7 +5,8 @@ import BuyBackFaq from "@/components/ipo/sharesBuyBack/BuyBackFaq";
 
 const fetchBuybackIpo = async () => {
   try {
-    const response = await fetch(endpoints.ipoBuyBack);
+    const timestamp = new Date().toISOString();
+    const response = await fetch(`${endpoints.ipoBuyBack}?time=${timestamp}`);
     if (!response.ok) {
       throw new Error("Data not found");
     }

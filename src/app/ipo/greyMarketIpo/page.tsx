@@ -6,7 +6,8 @@ import GmpFaq from "@/components/ipo/greyMarketIpo/GmpFaq";
 
 const fetchGmpIpo = async () => {
   try {
-    const response = await fetch(endpoints.gmpIpo);
+    const timestamp = new Date().toISOString();
+    const response = await fetch(`${endpoints.gmpIpo}?time=${timestamp}`);
     if (!response.ok) {
       throw new Error("Data not found");
     }

@@ -5,7 +5,8 @@ import SmeFaq from "@/components/ipo/smeMarketIpo/SmeFaq";
 
 const fetchSmeIpo = async () => {
   try {
-    const response = await fetch(endpoints.smeipo);
+    const timestamp = new Date().toISOString();
+    const response = await fetch(`${endpoints.smeipo}?time=${timestamp}`);
     if (!response.ok) {
       throw new Error("Data not found");
     }

@@ -10,7 +10,8 @@ import SubscriptionFaq from "@/components/ipo/subscriptionStatus/SubsCriptionFaq
 
 const fetchSubscriptionIpo = async () => {
   try {
-    const response = await fetch(endpoints.iposubs);
+    const timestamp = new Date().toISOString();
+    const response = await fetch(`${endpoints.iposubs}?time=${timestamp}`);
     if (!response.ok) {
       throw new Error("Data not found");
     }

@@ -4,7 +4,8 @@ import FormsFaq from "@/components/ipo/ipoForms/FormsFaq";
 
 const fetchFormsIpo = async () => {
   try {
-    const response = await fetch(endpoints.ipoForms);
+    const timestamp = new Date().toISOString();
+    const response = await fetch(`${endpoints.ipoForms}?time=${timestamp}`);
     if (!response.ok) {
       throw new Error("Data not found");
     }

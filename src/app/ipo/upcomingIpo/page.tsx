@@ -6,7 +6,8 @@ import Loader from "@/app/Loader";
 
 const fetchUpComingIpo = async () => {
   try {
-    const response = await fetch(endpoints.upcomingIpo);
+    const timestamp = new Date().toISOString();
+    const response = await fetch(`${endpoints.upcomingIpo}?time=${timestamp}`);
     if (!response.ok) {
       throw new Error("Data not found");
     }
