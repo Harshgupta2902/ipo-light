@@ -30,7 +30,7 @@ const UpcomingIpo: React.FC<IpoMainHomePageProps> = ({ upcomingData, smeData }) 
                     )}
                     <tbody>
                       {upcomingData.map((item, index) => (
-                        <tr key={index}>
+                        item.company_name !== "" && (<tr key={index}>
                           {keystoshow.map((key) => (
                             <td key={key} className="py-3">
                               {key === "company_name" ? (
@@ -50,7 +50,7 @@ const UpcomingIpo: React.FC<IpoMainHomePageProps> = ({ upcomingData, smeData }) 
                               )}
                             </td>
                           ))}
-                        </tr>
+                        </tr>)
                       ))}
                     </tbody>
                   </table>
@@ -75,7 +75,7 @@ const UpcomingIpo: React.FC<IpoMainHomePageProps> = ({ upcomingData, smeData }) 
                   )}
                   <tbody>
                     {smeData.map((item, index) => (
-                      <tr key={index}>
+                      item.company_name !== "" && (<tr key={index}>
                         {keystoshow.map((key) => (
                           <td key={key} className="py-3">
 
@@ -96,7 +96,7 @@ const UpcomingIpo: React.FC<IpoMainHomePageProps> = ({ upcomingData, smeData }) 
                             )}
                           </td>
                         ))}
-                      </tr>
+                      </tr>)
                     ))}
                   </tbody>
                 </table>
