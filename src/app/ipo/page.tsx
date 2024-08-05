@@ -6,7 +6,8 @@ import { endpoints } from "@/api/endpoints";
 
 const fetchIpoHomePage = async () => {
   try {
-    const response = await fetch(endpoints.homePage);
+    const timestamp = new Date().toISOString();
+    const response = await fetch(`${endpoints.homePage}?time=${timestamp}`);
     if (!response.ok) {
       throw new Error("Data not found");
     }
