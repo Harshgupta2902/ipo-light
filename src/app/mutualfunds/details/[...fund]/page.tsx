@@ -6,7 +6,6 @@ import Holdings from "@/components/mutualfunds/details/holdings";
 import AnnualizedReturns from "@/components/mutualfunds/details/annualized_returns";
 import ExpenseRatio from "@/components/mutualfunds/details/expense_ratio";
 import FundManagerDetails from "@/components/mutualfunds/details/FundManagerDetails";
-import MfScreenerHomePage from "../../screener/page";
 import Image from "next/image";
 
 const fetchMfDetails = async (fund: string) => {
@@ -52,7 +51,7 @@ export async function generateMetadata() {
     }
 
     const metaTitle = mfHomeData.stpDetails ? mfHomeData.stpDetails.scheme_name : mfHomeData.fund_name;
-    const metaDescription = `${mfHomeData.scheme_name} is ${mfHomeData.sub_category} ${mfHomeData.scheme_type} mutual fund with track record of ${getYears(mfHomeData.launch_date)} years, with overall return of ${mfHomeData.return_stats[0].return_since_created.toFixed(2)}%.`;
+    const metaDescription = `${mfHomeData.scheme_name} is ${mfHomeData.sub_category} ${mfHomeData.scheme_type} mutual fund with track record of ${getYears(mfHomeData.launch_date)} years, with overall return of ${mfHomeData.return_stats && mfHomeData.return_stats[0].return_since_created.toFixed(2)}%.`;
     const keywords = [
         mfHomeData.scheme_code,
         mfHomeData.super_category,

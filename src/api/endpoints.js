@@ -1,6 +1,6 @@
 // const baseURL = "https://ipo.onlineinfotech.net/Apis/";
 const baseURL = "https://apis-iota-five.vercel.app/api/";
-// const baseURL = "http://localhost:3001/api/";
+// const baseURL = "http://localhost:4001/api/";
 
 export const endpoints = {
   metaData: `${baseURL}meta-data`,
@@ -31,11 +31,6 @@ export const endpoints = {
   blogDetails: `${baseURL}getBlogDetails`,
   getBlogs: `${baseURL}getblogs`,
   getMfHomeChart: `${baseURL}getMfHomeChart`,
-  
-  
-  
-  
+
   getMfLinks: `${baseURL}getMfLinks`,
-  
-  
 };
