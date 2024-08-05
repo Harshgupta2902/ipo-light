@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  swcMinify: true,
   images: {
-    // domains: ['ipo.onlineinfotech.net'], // Add your domain here
-
     remotePatterns: [
       {
         protocol: "https",
@@ -31,9 +30,11 @@ const nextConfig = {
       },
     ],
   },
-  // experimental: {
-  //   middleware: true,
-  // },
+  compiler: {
+    removeConsole: {
+      exclude: ["error"],
+    },
+  },
 };
 
 export default nextConfig;
