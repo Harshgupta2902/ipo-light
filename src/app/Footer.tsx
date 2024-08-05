@@ -75,7 +75,7 @@ const Footer = async () => {
                 </div>
 
                 <div className="flex flex-wrap gap-2 py-5 border-b-[1px] border-[#9A9EA44D]">
-                    <p className="inline-block text-[#74579] font-medium text-[14px] capitalize mr-2">
+                    <p className="inline-block text-[#000000] font-medium text-[14px] capitalize mr-2">
                         Top Mutual Funds:
                     </p>
                     {funds.map((funds) => (
