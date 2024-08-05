@@ -1,4 +1,5 @@
-"use serve"
+
+
 import { Poppins } from "next/font/google";
 import "@/style/globals.css";
 import "@/style/main.css";
@@ -10,6 +11,7 @@ import { endpoints } from "@/api/endpoints";
 import { headers } from "next/headers";
 import { Analytics } from "@vercel/analytics/react"
 import Footer from "./Footer";
+import path from "path";
 
 
 const poppins = Poppins({
@@ -74,7 +76,11 @@ export async function generateMetadata() {
 
   const headersList = headers();
   const pathname = headersList.get("x-url");
+
   const metaData = await fetchMetadata(pathname ?? "/");
+
+  // console.log("metaDatapathnmae:::::::::;;;", pathname);
+
 
   if (metaData.error) {
     return {
@@ -163,6 +169,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
         <meta name="msvalidate.01" content="E31009FF5E0FF8B37698B8D4B526016D" />
         <meta httpEquiv="Content-Language" content="en-us" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         <meta name="Copyright" content="Copyright 2024 @ IpoTec" />
         <link rel="apple-touch-icon" sizes="180x180" href="/layout/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/layout/favicon-32x32.png" />

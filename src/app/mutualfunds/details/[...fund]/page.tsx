@@ -7,6 +7,7 @@ import AnnualizedReturns from "@/components/mutualfunds/details/annualized_retur
 import ExpenseRatio from "@/components/mutualfunds/details/expense_ratio";
 import FundManagerDetails from "@/components/mutualfunds/details/FundManagerDetails";
 import MfScreenerHomePage from "../../screener/page";
+import Image from "next/image";
 
 const fetchMfDetails = async (fund: string) => {
     try {
@@ -51,7 +52,7 @@ export async function generateMetadata() {
     }
 
     const metaTitle = mfHomeData.stpDetails ? mfHomeData.stpDetails.scheme_name : mfHomeData.fund_name;
-    const metaDescription = `${mfHomeData.scheme_name} is ${mfHomeData.sub_category} ${mfHomeData.scheme_type} mutual fund with track record of ${getYears(mfHomeData.launch_date)} years, with overall return of ${mfHomeData.return_stats[0].return_since_created.toFixed(2)}%. Risk is Very High`;
+    const metaDescription = `${mfHomeData.scheme_name} is ${mfHomeData.sub_category} ${mfHomeData.scheme_type} mutual fund with track record of ${getYears(mfHomeData.launch_date)} years, with overall return of ${mfHomeData.return_stats[0].return_since_created.toFixed(2)}%.`;
     const keywords = [
         mfHomeData.scheme_code,
         mfHomeData.super_category,
@@ -148,8 +149,14 @@ const MutualFundsDetails = async () => {
                     <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                         <form className="hidden lg:block">
                             <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow">
-                                <img src={mfHomeData.logo_url} alt={mfHomeData.stpDetails ? mfHomeData.stpDetails.amc_name : mfHomeData.amc.name} className="w-10 h-10 object-contain border rounded-sm p-1" />
-
+                                <Image
+                                    src={mfHomeData.logo_url}
+                                    className="w-10 h-10 object-contain border rounded-sm p-1"
+                                    width="40"
+                                    height="40"
+                                    alt={mfHomeData.stpDetails ? mfHomeData.stpDetails.amc_name : mfHomeData.fund_name}
+                                    priority
+                                />
                                 <h1 className="text-xl font-bold leading-none text-gray-900">
                                     {mfHomeData.stpDetails ? mfHomeData.stpDetails.amc_name : mfHomeData.fund_name}
                                 </h1>

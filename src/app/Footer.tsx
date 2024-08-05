@@ -202,62 +202,62 @@ const amc = [
 const funds = [
     {
         name: "QUANT SMALL CAP FUND",
-        link: "/mutual-funds/quant-small-cap-fund-direct-plan-growth"
+        link: "quant-small-cap-fund-direct-plan-growth"
     },
     {
         name: "ICICI PRUDENTIAL COMMODITIES FUND",
-        link: "/mutual-funds/icici-prudential-commodities-fund-direct-growth"
+        link: "icici-prudential-commodities-fund-direct-growth"
     },
     {
         name: "NIPPON INDIA SMALL CAP FUND",
-        link: "/mutual-funds/nippon-india-small-cap-fund-direct-growth"
+        link: "nippon-india-small-cap-fund-direct-growth"
     },
     {
         name: "PARAG PARIKH FLEXI CAP FUND",
-        link: "/mutual-funds/parag-parikh-long-term-value-fund-direct-growth"
+        link: "parag-parikh-long-term-value-fund-direct-growth"
     },
     {
         name: "GROWW NIFTY TOTAL MARKET INDEX FUND",
-        link: "/mutual-funds/groww-nifty-total-market-index-fund-direct-growth"
+        link: "groww-nifty-total-market-index-fund-direct-growth"
     },
     {
         name: "SBI SMALL MIDCAP FUND",
-        link: "/mutual-funds/sbi-small-midcap-fund-direct-growth"
+        link: "sbi-small-midcap-fund-direct-growth"
     },
     {
         name: "TATA DIGITAL INDIA FUND",
-        link: "/mutual-funds/tata-digital-india-fund-direct-growth"
+        link: "tata-digital-india-fund-direct-growth"
     },
     {
         name: "AXIS SMALL CAP FUND",
-        link: "/mutual-funds/axis-small-cap-fund-direct-growth"
+        link: "axis-small-cap-fund-direct-growth"
     },
     {
         name: "ICICI PRUDENTIAL TECHNOLOGY FUND",
-        link: "/mutual-funds/icici-prudential-technology-fund-direct-growth"
+        link: "icici-prudential-technology-fund-direct-growth"
     },
     {
         name: "HDFC INDEX FUND SENSEX PLAN",
-        link: "/mutual-funds/hdfc-index-fund-sensex-plan-direct"
+        link: "hdfc-index-fund-sensex-plan-direct"
     },
     {
         name: "HDFC SMALL CAP FUND",
-        link: "/mutual-funds/hdfc-small-cap-fund-direct-growth"
+        link: "hdfc-small-cap-fund-direct-growth"
     },
     {
         name: "AXIS EQUITY FUND",
-        link: "/mutual-funds/axis-equity-fund-direct-growth"
+        link: "axis-equity-fund-direct-growth"
     },
     {
         name: "CANARA ROBECO SMALL CAP FUND",
-        link: "/mutual-funds/canara-robeco-small-cap-fund-direct-growth"
+        link: "canara-robeco-small-cap-fund-direct-growth"
     },
     {
         name: "TATA SMALL CAP FUND",
-        link: "/mutual-funds/tata-small-cap-fund-direct-growth"
+        link: "tata-small-cap-fund-direct-growth"
     },
     {
         name: "UTI NIFTY FUND",
-        link: "/mutual-funds/uti-nifty-fund-direct-growth"
+        link: "uti-nifty-fund-direct-growth"
     }
 ];  
