@@ -174,7 +174,7 @@ const MutualFundsDetails = async () => {
                             </div>
                         </form>
                         <div className="lg:col-span-3">
-                            <NavChart response={chartPoints} />
+                            {chartPoints ? <NavChart response={chartPoints} /> : <Loader />}
                             <Holdings holdings={mfHomeData.holdings} />
                             <AnnualizedReturns stats={mfHomeData.stats} />
                             <ExpenseRatio exitload={mfHomeData.exit_load} expense_ratio={mfHomeData.expense_ratio} stampduty={mfHomeData.stamp_duty} taxImp={mfHomeData.category_info.tax_impact} expratioList={mfHomeData.historic_fund_expense} exitLoadList={mfHomeData.historic_exit_loads} />
