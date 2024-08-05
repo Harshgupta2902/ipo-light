@@ -27,10 +27,10 @@ export default function FundManagerDetails({ fundManagersDetails }: { fundManage
                             onClick={() => handleToggle(index)}
                             className="relative flex items-center w-full py-4 font-semibold text-left transition-all ease-in border-solid cursor-pointer text-slate-700 rounded-t-1 group text-dark-500"
                         >
-                            <a>
+                            <div>
                                 <p>{funds.person_name}</p>
                                 <p className='text-gray-500 pt-2'>{`${formatDateString(funds.date_from)} - Present`}</p>
-                            </a>
+                            </div>
                             <span className='absolute right-0 text-xs'>{openSection === index ? <FaMinus /> : <FaPlus />}</span>
                         </button>
                     </h3>
