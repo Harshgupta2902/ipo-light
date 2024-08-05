@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image";
 import React from "react";
 
 const sectionsData = [
@@ -88,7 +89,7 @@ export default function Invest() {
                 className={`lg:col-6 ${index % 2 === 0 ? "" : "lg:order-2 order-1"
                   }`}
               >
-                <img
+                <Image
                   alt="services-image"
                   loading="lazy"
                   width="450"

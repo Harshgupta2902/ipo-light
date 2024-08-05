@@ -1,5 +1,6 @@
 import React from 'react';
 import { BlogPostProps } from '../interfaces';
+import Image from 'next/image';
 
 
 
@@ -9,7 +10,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ posts }) => {
             {posts.map((post, index) => (
                 <div key={index} className="mb-14 md:col-6 lg:col-4">
                     <div className="bg-body  px-1">
-                        <img
+                        <Image
                             alt={post.alt_keyword}
                             loading="lazy"
                             width="400"

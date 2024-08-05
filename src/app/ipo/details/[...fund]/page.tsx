@@ -188,7 +188,7 @@ const IpoDetails = async () => {
                                                                         className="text-sm font-medium text-gray-900 truncate"
                                                                         href={`/ipo/details/${item.slug}`}
                                                                         target={"_blank"}
-                                                                        
+
                                                                         prefetch={false}
                                                                     >
                                                                         <h4 className="text-base">{item.company_name}</h4>
@@ -223,7 +223,7 @@ const IpoDetails = async () => {
                                                                     className="text-sm font-medium text-gray-900 truncate"
                                                                     href={`/ipo/details/${item.slug}`}
                                                                     target={"_blank"}
-                                                                    
+
                                                                     prefetch={false}
                                                                 >
                                                                     <h4 className="text-base">{item.company_name}</h4>
@@ -259,7 +259,7 @@ const IpoDetails = async () => {
                                                                     className="text-sm font-medium text-gray-900 truncate"
                                                                     href={`/ipo/details/${item.slug}`}
                                                                     target={"_blank"}
-                                                                    
+
                                                                     prefetch={false}
                                                                 >
                                                                     <h4 className="text-base">{item.company_name}</h4>
@@ -296,7 +296,7 @@ const IpoDetails = async () => {
                                                                         className="text-sm font-medium text-gray-900 truncate"
                                                                         href={`/ipo/details/${item.slug}`}
                                                                         target={"_blank"}
-                                                                        
+
                                                                         prefetch={false}
                                                                     >
                                                                         <h4 className="text-base">{item.company_name}</h4>

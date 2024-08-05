@@ -10,9 +10,11 @@ import { MenuItem } from "@/components/interfaces";
 import { endpoints } from "@/api/endpoints";
 import { headers } from "next/headers";
 import { Analytics } from "@vercel/analytics/react"
-import Footer from "./Footer";
-import path from "path";
+import dynamic from 'next/dynamic';
 
+
+
+const Footer = dynamic(() => import("@/app/Footer"));
 
 const poppins = Poppins({
   weight: "500",
@@ -179,7 +181,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
         <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </head>
-      <body className={`${poppins.className} bg-white` }>
+      <body className={`${poppins.className} bg-white`}>
         <Navbar menuData={menuData ?? []} />
         <main>
           {children}

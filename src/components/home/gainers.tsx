@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { GainersCardProps } from "../interfaces";
 
 
@@ -11,7 +12,7 @@ const GainersCard: React.FC<GainersCardProps> = ({ gainers }) => {
             {gainers.map((stock, index) => (
               <tr key={index}>
                 <td>
-                  <img
+                  <Image
                     src={`https://assets.tickertape.in/stock-logos/${stock.sid}.png`}
                     alt={stock.name}
                     style={{ width: "48px", height: "48px" }}

@@ -3,10 +3,12 @@ import { headers } from "next/headers";
 import Loader from "@/app/Loader";
 import NavChart from "@/components/mutualfunds/details/nav_chart";
 import Holdings from "@/components/mutualfunds/details/holdings";
-import AnnualizedReturns from "@/components/mutualfunds/details/annualized_returns";
-import ExpenseRatio from "@/components/mutualfunds/details/expense_ratio";
-import FundManagerDetails from "@/components/mutualfunds/details/FundManagerDetails";
 import Image from "next/image";
+import dynamic from 'next/dynamic';
+
+const FundManagerDetails = dynamic(() => import("@/components/mutualfunds/details/FundManagerDetails"));
+const ExpenseRatio = dynamic(() => import("@/components/mutualfunds/details/expense_ratio"));
+const AnnualizedReturns = dynamic(() => import("@/components/mutualfunds/details/annualized_returns"));
 
 const fetchMfDetails = async (fund: string) => {
     try {

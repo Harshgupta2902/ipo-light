@@ -11,9 +11,6 @@ import { FaYoutube } from "react-icons/fa";
 
 
 const Footer = async () => {
-
-
-
     return (
         <div className="bg-white pt-0 sm:py-10 lg:py-16 h-full">
             <div className="container">

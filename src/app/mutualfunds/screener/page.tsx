@@ -6,6 +6,7 @@ import Pagination from '@/components/mutualfunds/Pagination';
 import MfFilters from '@/components/mutualfunds/Filters';
 import SearchResults from '@/components/mutualfunds/search_results';
 import FilterChips from '@/components/mutualfunds/filter_chips';
+import Image from 'next/image';
 
 const sectionsData = [
     {
@@ -143,16 +144,16 @@ const MfScreenerHomePage = async ({ searchParams }: { searchParams: { page?: str
                                 </ul>
                             </div>
                             <div className={`lg:col-4`}>
-                                <img
-                                    alt="services-image"
-                                    loading="lazy"
-                                    width="450"
-                                    height="450"
-                                    style={{ mixBlendMode: "multiply" }}
-                                    decoding="async"
-                                    data-nimg="1"
-                                    src={section.imageSrc}
-                                />
+                            <Image
+                                 alt="services-image"
+                                 width="450"
+                                 height="450"
+                                 style={{ mixBlendMode: "multiply" }}
+                                 decoding="async"
+                                 src={section.imageSrc}
+                                priority
+                            />
+
                             </div>
                         </div>
                     </div>

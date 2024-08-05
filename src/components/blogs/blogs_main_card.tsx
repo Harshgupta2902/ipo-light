@@ -1,6 +1,7 @@
 import React from 'react';
 import { BlogPostMainCardProps } from '../interfaces';
 import Loader from '@/app/Loader';
+import Image from 'next/image';
 
 
 const BlogPostComponent: React.FC<BlogPostMainCardProps> = ({ post }) => {
@@ -10,7 +11,7 @@ const BlogPostComponent: React.FC<BlogPostMainCardProps> = ({ post }) => {
     return (
         <div className="row gy-4 lg:gy-0">
             <div className="lg:col-6">
-                <img
+                <Image
                     alt={post.alt_keyword ?? ""}
                     loading="lazy"
                     width="500"
@@ -21,7 +22,7 @@ const BlogPostComponent: React.FC<BlogPostMainCardProps> = ({ post }) => {
             </div>
             <div className="lg:col-6">
                 <div className="flex space-x-3 items-center mb-3">
-                    <img
+                    <Image
                         alt="author"
                         loading="lazy"
                         width="30"

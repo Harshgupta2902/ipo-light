@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -55,11 +56,18 @@ const ScreenerTable = ({ visibleData }: { visibleData: Funds[] }) => {
                     {visibleData.map((fund) => (
                         <tr key={fund.fund_name} className="bg-white border-b hover:bg-gray-50  ">
                             <th scope="row" className="m-4 flex items-center font-medium text-gray-900 whitespace-nowrap">
-                                <img src={fund.logo_url} alt={fund.fund_name} className="w-10 h-10 object-contain border rounded p-1" />
+                                <Image
+                                    alt={fund.fund_name}
+                                    width="30"
+                                    height="30"
+                                    decoding="async"
+                                    className="w-10 h-10 object-contain border rounded p-1"
+                                    src={fund.logo_url}
+                                />
                                 <Link
                                     href={`details/${fund.search_id}`}
                                     target={"_blank"}
-                                    prefetch={false}    
+                                    prefetch={false}
 
                                 >
                                     <div className="ps-3">
