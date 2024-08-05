@@ -36,13 +36,13 @@ export default function FundManagerDetails({ fundManagersDetails }: { fundManage
                     </h3>
                     <div className={`h-0 overflow-hidden border-b transition-all duration-300 ease-in-out ${openSection === index ? 'h-auto' : ''}`}>
                         <div className="py-4 text-sm leading-normal text-blue-gray-500/80">
-                            <h5 className='text-gray-700 text-base'>Education</h5>
+                            <h4 className='text-gray-700 text-base'>Education</h4>
                             <p className='text-base text-gray-700'>{funds.education}</p>
                             <br />
-                            <h5 className='text-gray-700 text-base'>Experience</h5>
+                            <h4 className='text-gray-700 text-base'>Experience</h4>
                             <p className='text-base text-gray-700'>{funds.experience}</p>
                             <br />
-                            <h5 className='text-gray-700 text-base mb-2'>Managed Schemes</h5>
+                            <h4 className='text-gray-700 text-base mb-2'>Managed Schemes</h4>
                             <div className="grid grid-cols-2 gap-4">
                                 {funds.funds_managed.map((fundName: any, index: number) => (
                                     <p key={index} className='text-sm text-gray-700'>
