@@ -1,4 +1,4 @@
-
+"use client"
 import { SubsCriptionDataTables } from "@/components/interfaces";
 import Link from "next/link";
 import React from "react";

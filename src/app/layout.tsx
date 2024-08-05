@@ -11,6 +11,7 @@ import { endpoints } from "@/api/endpoints";
 import { headers } from "next/headers";
 import { Analytics } from "@vercel/analytics/react"
 import dynamic from 'next/dynamic';
+import Script from "next/script";
 
 
 
@@ -187,7 +188,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
           {children}
         </main>
         <Analytics />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9V7F339R8D"></script>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-9V7F339R8D" async />
         <script
           dangerouslySetInnerHTML={{
             __html: `

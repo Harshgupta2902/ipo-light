@@ -1,7 +1,3 @@
-"use client";
-
-import axios from "axios";
-
 import { endpoints } from "@/api/endpoints";
 import SubsCriptionDataTable from "@/components/ipo/subscriptionStatus/SubsCriptionDataTables";
 import SubscriptionFaq from "@/components/ipo/subscriptionStatus/SubsCriptionFaq";

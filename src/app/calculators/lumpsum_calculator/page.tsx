@@ -191,7 +191,7 @@ const LumpsumCalculator = () => {
 
   useEffect(() => {
     calculateLumpsum(amount, duration, rate);
-  }, []);
+  }, [amount, duration, rate]);
 
   return (
     <section >

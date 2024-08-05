@@ -279,7 +279,7 @@ const SIPCalculator = () => {
 
   useEffect(() => {
     calculateSIP(amount, duration, rate);
-  }, []);
+  }, [amount, duration, rate]);
 
   return (
     <section>
