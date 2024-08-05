@@ -22,7 +22,7 @@ export default function FundManagerDetails({ fundManagersDetails }: { fundManage
             <h2 className="text-xl font-bold mb-2">Fund management</h2>
             {fundManagersDetails.map((funds: any, index: number) => (
                 <div key={index} className="relative mb-3">
-                    <h6 className="mb-0">
+                    <h3 className="mb-0 text-base">
                         <button
                             onClick={() => handleToggle(index)}
                             className="relative flex items-center w-full py-4 font-semibold text-left transition-all ease-in border-solid cursor-pointer text-slate-700 rounded-t-1 group text-dark-500"
@@ -33,7 +33,7 @@ export default function FundManagerDetails({ fundManagersDetails }: { fundManage
                             </a>
                             <span className='absolute right-0 text-xs'>{openSection === index ? <FaMinus /> : <FaPlus />}</span>
                         </button>
-                    </h6>
+                    </h3>
                     <div className={`h-0 overflow-hidden border-b transition-all duration-300 ease-in-out ${openSection === index ? 'h-auto' : ''}`}>
                         <div className="py-4 text-sm leading-normal text-blue-gray-500/80">
                             <h5 className='text-gray-700 text-base'>Education</h5>

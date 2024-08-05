@@ -15,7 +15,7 @@ const Footer = async () => {
 
 
     return (
-        <div className="bg-[#F4F7FE] sm:bg-[#F5F5F7] pt-0 sm:py-10 lg:py-16 h-full">
+        <div className="bg-white pt-0 sm:py-10 lg:py-16 h-full">
             <div className="container">
                 <div className="flex flex-col lg:flex-row items-start justify-between border-[#9A9EA44D] pb-0 lg:pb-8">
                     <div className="1/3 m-auto lg:m-0">
@@ -62,7 +62,7 @@ const Footer = async () => {
                     </div>
                 </div>
                 <div className="flex flex-wrap gap-2 py-5 border-b-[1px] border-[#9A9EA44D]">
-                    <p className="inline-block text-[#74579] font-medium text-[14px] capitalize mr-2">
+                    <p className="inline-block text-[#000000] font-medium text-[14px] capitalize mr-2">
                         Mutual Funds AMC's :
                     </p>
                     {amc.map((amc_name) => (
@@ -70,7 +70,7 @@ const Footer = async () => {
                             href={""}
                             // href={`/mutualfunds/amc/${amc_name.replaceAll(" ", "-")}`}
                             key={amc_name}
-                            className="capitalize pr-3 text-[#00B386] font-medium text-[14px] rounded-sm hover:underline"
+                            className="capitalize pr-3 text-[#0F5151] font-medium text-[14px] rounded-sm hover:underline"
                         >
                             {amc_name}
                         </Link>
@@ -85,7 +85,7 @@ const Footer = async () => {
                         <Link
                             href={`/mutualfunds/details/${funds.link}`}
                             key={funds.link}
-                            className="capitalize pr-3 text-[#00B386] font-medium text-[14px] rounded-sm hover:underline"
+                            className="capitalize pr-3 text-[#0F5151] font-medium text-[14px] rounded-sm hover:underline"
                         >
                             {funds.name}
                         </Link>

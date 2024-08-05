@@ -169,7 +169,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
         <meta name="msvalidate.01" content="E31009FF5E0FF8B37698B8D4B526016D" />
         <meta httpEquiv="Content-Language" content="en-us" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="Copyright" content="Copyright 2024 @ IpoTec" />
         <link rel="apple-touch-icon" sizes="180x180" href="/layout/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/layout/favicon-32x32.png" />
@@ -179,7 +179,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
         <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </head>
-      <body className={poppins.className}>
+      <body className={`${poppins.className} bg-white` }>
         <Navbar menuData={menuData ?? []} />
         <main>
           {children}
