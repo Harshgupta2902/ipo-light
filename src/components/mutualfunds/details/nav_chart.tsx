@@ -20,7 +20,6 @@ const NavChart = ({ response }: { response: any; }) => {
     const [timeRange, setTimeRange] = useState("All");
 
     const filterDataByTimeRange = (data: any[], range: string) => {
-        const now = new Date();
         let filteredData = data;
 
         switch (range) {
