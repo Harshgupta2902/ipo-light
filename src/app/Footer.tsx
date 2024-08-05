@@ -117,7 +117,7 @@ const footer = [
         page: "Ipo",
         link: "/ipo",
         subPages: [
-            { page: "Upcoming Ipo", link: "ipo/upcomingIpo", },
+            { page: "Upcoming Ipo", link: "/ipo/upcomingIpo", },
             { page: "Grey Market Ipo", link: "/ipo/greyMarketIpo", },
             { page: "SME Ipo", link: "/ipo/smeMarketIpo", },
             { page: "Subscription Status", link: "/ipo/subscriptionStatus", },
@@ -130,6 +130,7 @@ const footer = [
         link: "/mutualfunds",
         subPages: [
             { page: "Screener", link: "/mutualfunds/screener", },
+            { page: "amc", link: "/mutualfunds/amc", },
         ],
     },
     {

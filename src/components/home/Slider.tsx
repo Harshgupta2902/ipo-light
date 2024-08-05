@@ -9,38 +9,51 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "../../style/slider.css";
 import ImageFallback from "../common/ImageFallback";
-import { SliderProps } from "../interfaces";
+
 
 const imageUrls: string[] = [
-  "/AMC/image_0.png",
-  "/AMC/image_1.png",
-  "/AMC/image_2.png",
-  "/AMC/image_3.png",
-  "/AMC/image_4.png",
-  "/AMC/image_5.png",
-  "/AMC/image_6.png",
-  "/AMC/image_7.png",
-  "/AMC/image_8.png",
-  "/AMC/image_9.png",
-  "/AMC/image_10.png",
-  "/AMC/image_11.png",
-  "/AMC/image_12.png",
-  "/AMC/image_13.png",
-  "/AMC/image_14.png",
-  "/AMC/image_15.png",
-  "/AMC/image_16.png",
-  "/AMC/image_17.png",
-  "/AMC/image_18.png",
-  "/AMC/image_19.png",
-  "/AMC/image_20.png",
-  "/AMC/image_21.png",
-  "/AMC/image_22.png",
-  "/AMC/image_23.png",
-  "/AMC/image_24.png",
-  "/AMC/image_25.png",
-  "/AMC/image_26.png",
-  "/AMC/image_27.png",
-  "/AMC/image_28.png"
+  "zerodha_groww.png",
+  "whiteoak_groww.png",
+  "uti_groww.png",
+  "union_groww.png",
+  "trust_groww.png",
+  "taurus_groww.png",
+  "tata_groww.png",
+  "sundaram_groww.png",
+  "shriram_groww.png",
+  "sbi_groww.png",
+  "samco_groww.png",
+  "quantum_groww.png",
+  "quant_groww.png",
+  "ppfas_groww.png",
+  "pgim_groww.png",
+  "nj_groww.png",
+  "nippon_groww.png",
+  "navi_groww.png",
+  "motilal_groww.png",
+  "mirae_groww.png",
+  "mahindra_groww.png",
+  "lic_groww.png",
+  "kotak_groww.png",
+  "jm_groww.png",
+  "iti_groww.png",
+  "invesco_groww.png",
+  "indiabulls_groww.png",
+  "icici_groww.png",
+  "hsbc_groww.png",
+  "helios_groww.png",
+  "hdfc_groww.png",
+  "franklin_groww.png",
+  "edelweiss_groww.png",
+  "dsp_groww.png",
+  "canara_groww.png",
+  "barodabnpparibasmutualfund_groww.png",
+  "bank_groww.png",
+  "bandhan_groww.png",
+  "bajaj_groww.png",
+  "axis_groww.png",
+  "aditya_groww.png",
+  "360_groww.png"
 ];
 
 
@@ -66,12 +79,13 @@ export default function Slider() {
           <div key={index} className="container" style={{ backgroundColor: "black" }}>
             <SwiperSlide key={index} className="mx-[2rem]">
               <ImageFallback
-                src={url}
+                src={`/AMC/${url}`}
                 alt={`Slide ${index + 1}`}
-                className="w-auto max-w-none object-covers max-sm:h-12"
-                width="70"
-                height="70"
+                className="w-full h-20 object-cover p-1"
+                width="60"
+                height="60"
                 loading="lazy"
+
               />
             </SwiperSlide>
           </div>
