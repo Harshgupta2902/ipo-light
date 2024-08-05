@@ -26,7 +26,7 @@ const Footer = async () => {
                                     alt="IpoTec Logo"
                                     priority
                                 />
-                                <span className=" ml-2 text-3xl">IpoTec</span>
+                                <span className=" ml-2 text-3xl text-gray-900">IpoTec</span>
                             </div>
                         </Link>
                         <br />
@@ -43,7 +43,7 @@ const Footer = async () => {
 
                     <div className="hidden mt-4 ml-[14rem] lg:mt-0 w-full lg:w-2/3 lg:flex">
                         {footer.map((item, index) => (
-                            <div className="text-lg font-semibold capitalize w-1/4" key={index}>
+                            <div className="text-lg font-semibold text-gray-700 capitalize w-1/4" key={index}>
                                 <Link href={item.link}>{item.page}</Link>
                                 {item.subPages.map((items, indexs) => (
                                     <div className="text-sm text-[#6E6E73] font-medium my-2 block" key={indexs}>

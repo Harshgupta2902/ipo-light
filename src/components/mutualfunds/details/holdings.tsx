@@ -33,7 +33,7 @@ const Holdings = ({ holdings }: { holdings: any; }) => {
                                     <tr key={index}>
                                         {keysToDisplay.map((key) => (
                                             <td key={key} className="py-3">
-                                                {key === "corpus_per" ? `${item[key]}%` : `${item[key]}`}
+                                                {key === "corpus_per" ? `${item[key]}%` : `${item[key] === null ? "NA" : item[key]}`}
                                             </td>
                                         ))}
                                     </tr>

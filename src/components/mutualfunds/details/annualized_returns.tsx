@@ -15,7 +15,7 @@ const AnnualizedReturns = ({ stats }: { stats: any; }) => {
             <div className="flex flex-col">
                 <div className="-m-1.5 overflow-x-auto">
                     <div className="align-middle content">
-                        <table className="w-full text-sm text-left  text-gray-500">
+                        <table className="w-full text-sm text-left text-gray-700">
                             <thead className="text-md text-gray-700 bg-gray-50">
                                 <tr>
                                     <th className="py-2"> </th>
