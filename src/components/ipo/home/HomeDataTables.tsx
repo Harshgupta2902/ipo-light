@@ -70,7 +70,7 @@ const UpcomingIpo: React.FC<IpoMainHomePageProps> = ({ upcomingData, smeData }) 
                             {header}
                           </th>
                         ))}
-                      </tr>
+                      </tr> 
                     </thead>
                   )}
                   <tbody>
