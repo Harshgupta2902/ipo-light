@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import AMCFilter from "./amc_filter";
 import Image from "next/image";
 import { markdownify } from "@/components/common/textConverter";
+import Link from "next/link";
 
 const fetchAmcData = async (amc: string) => {
     try {
@@ -24,12 +25,10 @@ const AMCDetailPage = async () => {
     const headersList = headers();
     const pathname = headersList.get("x-url")?.replace("/mutualfunds/amc/", "");
     const amcLowercase = amc.map(name => name.link.toLowerCase());
-    console.log("pathname:::::::::::::", pathname);
     const amcName = pathname?.replaceAll("-", " ") ?? "";
     if (!amcLowercase.includes(amcName)) {
         return <NotFound />;
     }
-
 
     let amcData = null;
     try {
@@ -75,59 +74,112 @@ const AMCDetailPage = async () => {
                             <h2 className="text-[22px]">Key Information</h2>
                             <div className="mt-6 border border">
                                 <dl className="divide-y divide">
-                                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                        <dt className="text-sm font-medium leading-6 text-gray-900">Mutual Fund Name</dt>
-                                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.fund_house}</dd>
-                                    </div>
-                                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                        <dt className="text-sm font-medium leading-6 text-gray-900">AMC Setup Date</dt>
-                                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.amc_setup_date}</dd>
-                                    </div>
-                                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                        <dt className="text-sm font-medium leading-6 text-gray-900">AMC</dt>
-                                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.asset_management_company}</dd>
-                                    </div>
-                                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                        <dt className="text-sm font-medium leading-6 text-gray-900">AMC Incorporatin Date</dt>
-                                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.amc_incorporation_date}</dd>
-                                    </div>
-                                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                        <dt className="text-sm font-medium leading-6 text-gray-900">Sponsor Name</dt>
-                                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.sponsor_name}</dd>
-                                    </div>
-                                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                        <dt className="text-sm font-medium leading-6 text-gray-900">Trustee Organization</dt>
-                                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.trustee_organisation}</dd>
-                                    </div>
-                                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                        <dt className="text-sm font-medium leading-6 text-gray-900">Name of Trustees</dt>
-                                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.name_of_trustee}</dd>
-                                    </div>
-                                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                        <dt className="text-sm font-medium leading-6 text-gray-900">Chairman</dt>
-                                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.chairman}</dd>
-                                    </div>
-                                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                        <dt className="text-sm font-medium leading-6 text-gray-900">CIO</dt>
-                                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.cio}</dd>
-                                    </div>
-                                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                        <dt className="text-sm font-medium leading-6 text-gray-900">MD and CEO</dt>
-                                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.md}</dd>
-                                    </div>
+                                    {amcData.key_information.fund_house && (
+                                        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                            <dt className="text-sm font-medium leading-6 text-gray-900">Mutual Fund Name</dt>
+                                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.fund_house}</dd>
+                                        </div>
+                                    )}
 
-                                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                        <dt className="text-sm font-medium leading-6 text-gray-900">Complaince Officer</dt>
-                                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.compliance_officer}</dd>
-                                    </div>
-                                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                        <dt className="text-sm font-medium leading-6 text-gray-900">Investor Service Officer</dt>
-                                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.investor_service_officer}</dd>
-                                    </div>
-                                    <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                        <dt className="text-sm font-medium leading-6 text-gray-900">Total AUM (as of end of last quarter)</dt>
-                                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.total_aum}</dd>
-                                    </div>
+                                    {amcData.key_information.amc_setup_date && (
+                                        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                            <dt className="text-sm font-medium leading-6 text-gray-900">AMC Setup Date</dt>
+                                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.amc_setup_date}</dd>
+                                        </div>
+                                    )}
+
+                                    {amcData.key_information.asset_management_company && (
+                                        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                            <dt className="text-sm font-medium leading-6 text-gray-900">AMC</dt>
+                                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.asset_management_company}</dd>
+                                        </div>
+                                    )}
+
+                                    {amcData.key_information.amc_incorporation_date && (
+                                        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                            <dt className="text-sm font-medium leading-6 text-gray-900">AMC Incorporatin Date</dt>
+                                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.amc_incorporation_date}</dd>
+                                        </div>
+                                    )}
+
+                                    {amcData.key_information.sponsor_name && (
+                                        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                            <dt className="text-sm font-medium leading-6 text-gray-900">Sponsor Name</dt>
+                                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                                <ul role="list" className="">
+                                                    {amcData.key_information.sponsor_name.map((item: any, index: number) => (
+                                                        <li className="flex items-center justify-between py-1 text-sm leading-6">
+                                                            <span className="truncate font-medium">{item}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </dd>
+                                        </div>
+                                    )}
+
+                                    {amcData.key_information.trustee_organisation && (
+                                        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                            <dt className="text-sm font-medium leading-6 text-gray-900">Trustee Organization</dt>
+                                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.trustee_organisation}</dd>
+                                        </div>
+                                    )}
+
+                                    {amcData.key_information.name_of_trustee && (
+                                        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                            <dt className="text-sm font-medium leading-6 text-gray-900">Name of Trustees</dt>
+                                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                                <ul role="list" className="">
+                                                    {amcData.key_information.name_of_trustee.map((item: any, index: number) => (
+                                                        <li className="flex items-center justify-between py-1 text-sm leading-6">
+                                                            <span className="truncate font-medium">{item}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </dd>
+                                        </div>
+                                    )}
+
+                                    {amcData.key_information.chairman && (
+                                        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                            <dt className="text-sm font-medium leading-6 text-gray-900">Chairman</dt>
+                                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.chairman}</dd>
+                                        </div>
+                                    )}
+
+                                    {amcData.key_information.cio && (
+                                        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                            <dt className="text-sm font-medium leading-6 text-gray-900">CIO</dt>
+                                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.cio}</dd>
+                                        </div>
+                                    )}
+
+                                    {amcData.key_information.md && (
+                                        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                            <dt className="text-sm font-medium leading-6 text-gray-900">MD and CEO</dt>
+                                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.md}</dd>
+                                        </div>
+                                    )}
+
+                                    {amcData.key_information.compliance_officer && (
+                                        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                            <dt className="text-sm font-medium leading-6 text-gray-900">Compliance Officer</dt>
+                                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.compliance_officer}</dd>
+                                        </div>
+                                    )}
+
+                                    {amcData.key_information.investor_service_officer && (
+                                        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                            <dt className="text-sm font-medium leading-6 text-gray-900">Investor Service Officer</dt>
+                                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.investor_service_officer}</dd>
+                                        </div>
+                                    )}
+
+                                    {amcData.key_information.total_aum && (
+                                        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                            <dt className="text-sm font-medium leading-6 text-gray-900">Total AUM (as of end of last quarter)</dt>
+                                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{amcData.key_information.total_aum}</dd>
+                                        </div>
+                                    )}
 
                                 </dl>
                             </div>
@@ -136,12 +188,48 @@ const AMCDetailPage = async () => {
                         </div>
                     )}
 
+                    {amcData.fund_rows && amcData.fund_rows.content && (
+                        <div className="flex flex-col">
+                            <h2 className="text-[22px]">List of {amcTitle} in India</h2>
+                            <div className="-m-1.5 overflow-x-auto">
+                                <div className="align-middle content ">
+                                    <table className="w-full text-sm rounded-sm text-left">
+                                        <tbody>
+                                            {amcData.fund_rows.content.map((item: any, index: number) => (
+                                                <tr key={index} className="bg-white border-b hover:bg-gray-50  ">
+                                                    <td scope="row" className=" !py-1 flex items-center font-medium text-gray-900 whitespace-nowrap">
+                                                        <Link href={``} style={{ textDecoration: "none" }}>
+                                                            <div className="text-gray-900 hover:underline hover:text-[#0F5151]">{item.direct_scheme_name}</div>
+                                                        </Link>
+                                                    </td>
+                                                    <td className="">
+                                                        {item.category}
+                                                    </td>
+                                                    <td className="">
+                                                        {item.risk}
+                                                    </td>
+                                                    <td className="">
+                                                        {item.return1y === 0 ? "NA" : `${item.return1y}%`}
+                                                    </td>
+                                                    <td className="">
+                                                        {item.aum}
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <br /><br />
+
+                        </div>
+                    )}
 
                     {amcData.content_list && amcData.content_list.slice(1).map((item: any, index: number) => (
                         !item.title.toLowerCase().includes("invest in") && (
                             <div key={index} className="content-item">
                                 <h2 className="text-[22px]">{item.title}</h2>
-                                <div className="font-thin mt-2 text-gray-700" dangerouslySetInnerHTML={{ __html: `${item.content}` }} />
+                                <div className="font-thin mt-4 text-gray-700" dangerouslySetInnerHTML={{ __html: `${item.content}` }} />
                                 <br />
                                 <br />
                             </div>
