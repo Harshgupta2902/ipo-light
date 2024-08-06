@@ -12,7 +12,7 @@ const AMCHomePage = () => {
                 <div className="row">
                     {amc.map((amc, index) => (
                         <div key={index} className="mb-14 md:col-6 lg:col-3">
-                            <Link href={`${amc.link.replaceAll(" ", "-").toLowerCase()}`}>
+                            <Link href={`amc/${amc.link.replaceAll(" ", "-").toLowerCase()}`}>
                                 <div className="flex flex-col border items-center rounded-sm hover:shadow px-8 py-4 text-center">
                                     <Image
                                         src={amc.image}
