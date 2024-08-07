@@ -142,6 +142,18 @@ const footer = [
             { page: "SWP Calculator", link: "/calculators/swp_calculator", },
         ],
     },
+    {
+        page: "Others",
+        link: "",
+        subPages: [
+            { page: "About Us", link: "/about-us", },
+            { page: "Privacy Policy", link: "/privacy-policy", },
+            { page: "Terms & Conditins", link: "/terms-condition", },
+            { page: "Disclaimer", link: "/disclaimer", },
+            { page: "Contact", link: "/contact", },
+        ],
+    },
+
 ];
 
 
