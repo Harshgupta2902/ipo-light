@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export async function generateMetadata() {
     const metaTitle = "Disclaimer";
     const metaDescription = "Disclaimer";
@@ -38,15 +40,88 @@ const AboutUs = () => {
                     <div className="content lg:col-10 mx-auto">
                         <h1 className="mb-3 text-center">Disclaimer</h1>
                         <br />
-                        <p>Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully</p>
                         <p>
-                            The up to 1% higher returns is based on the average difference between expense ratios of Regular and Direct plans for Equity Category Schemes only. The difference in expense ratios and respective returns will vary for other Scheme Categories
+                            Please read and understand this information carefully. Access to
+                            this website is confirmation that you understand and agree to be
+                            bound by all of these terms and conditions
+                        </p>
+                        <h4>Usage and Access</h4>
+                        <p>
+                            In IpoTec, displays information relating to upcoming Initial
+                            Public Offerings (IPOs), Grey Market Premiums (GMP), subscription
+                            statuses, mutual funds, Asset Management Companies (AMCs), and
+                            detailed fund information. The site also provides links to other
+                            related sites for user convenience. Access should be restricted to
+                            users not prohibited from online transactions in IPOs or mutual
+                            funds.
+                        </p>
+                        <h4>Acceptance of Terms Information</h4>
+                        <p>
+                            Before accessing any service offered by IpoTec, the user must
+                            accept the specific terms and conditions of such service
+                            separately. The user agrees to comply with all applicable laws and
+                            statutory requirements in India. This agreement is governed by the
+                            laws of the Republic of India, and the user consents to the
+                            exclusive jurisdiction of the courts in Mumbai for any disputes
+                            arising from site usage.
+                        </p>
+                        <h4>Content and Intellectual Property</h4>
+                        <p>
+                            IpoTec maintains the website for personal information and use.
+                            Users may download materials for non-commercial, personal use
+                            only. Distribution, modification, transmission, reuse, or use of
+                            site content for public or commercial purposes, including text,
+                            images, audio, and video, without written permission from IpoTec,
+                            is prohibited. Users must not delete or modify any copyright or
+                            intellectual property rights displayed on the site.
+                        </p>
+                        <h4>Disclaimer and Limitation of Liability</h4>
+                        <p>
+                            Reports, data, videos, and information on the site are for
+                            informational purposes only. Some content may be provided by third
+                            parties, and IpoTec makes no representations about the accuracy of
+                            such content. Users are advised to read the terms and conditions
+                            of linked websites. The site may be periodically updated without
+                            notice, but IpoTec does not guarantee the site reflects the latest
+                            updates at all times.
                         </p>
                         <p>
-                            The up to ₹25 lakh more is indicative and is based on a projected value of investment through a monthly SIP of ₹7,200 for 25 years, assuming an annualized return of 14% from the Direct Plan of an Equity Mutual Fund Scheme versus 13% from the same Scheme's Regular Plan. This projection highlights the potential return difference due to expense ratios. Projected future returns are illustrative and may or may not materialize
+                            IpoTec is not liable for any loss or damage resulting from the
+                            alteration or manipulation of data or information accessed from
+                            the site or the transmission of computer viruses or other harmful
+                            code. The company disclaims all liability for the accuracy and
+                            reliability of the data and uninterrupted or error-free service
+                            provision
                         </p>
+                        <h4>User Responsibilities</h4>
                         <p>
-                            Instant redemption is available only for the Scheme used as an underlying Scheme for SmartDeposit. The facility operates per the terms of the Asset Management Company managing the Scheme. Past performance of the Scheme may not sustain in the future
+                            Users must ensure their use of the website and services complies
+                            with applicable laws in their jurisdictions. Unauthorized access
+                            to password-protected areas is prohibited. Personal information
+                            transmission via the site is at the user's own risk, and by using
+                            the site, the user consents to the transmission of such
+                            information to third parties.
+                        </p>
+                        <h4>Modifications</h4>
+                        <p>
+                            IpoTec may discontinue or amend the terms and conditions of the
+                            services offered on the site at any time. Users are responsible
+                            for reviewing the terms periodically
+                        </p>
+                        <h4>General Disclaimer</h4>
+                        <p>
+                            The information provided on the site is for illustration purposes
+                            and should not be construed as financial advice or a
+                            recommendation. IpoTec does not guarantee the accuracy or
+                            reliability of the information and users should seek professional
+                            advice before making investment decisions. Past performance is not
+                            indicative of future results
+                        </p>
+                        <h4>Contact Us</h4>
+                        <p>
+                            If you have any questions or feedback, please <Link href={"/contact"}>contact us</Link>. We
+                            appreciate your support and look forward to serving you on your
+                            financial journey
                         </p>
                     </div>
                 </div>
