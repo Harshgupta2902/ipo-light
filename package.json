@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node generate-sitemap.js",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "find:unused": "next-unused"
@@ -59,3 +59,5 @@
   "main": "index.js",
   "author": ""
 }
+
+
