@@ -5,6 +5,7 @@ import NavChart from "@/components/mutualfunds/details/nav_chart";
 import Holdings from "@/components/mutualfunds/details/holdings";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
+import NotFound from "@/app/not-found";
 
 const FundManagerDetails = dynamic(() => import("@/components/mutualfunds/details/FundManagerDetails"));
 const ExpenseRatio = dynamic(() => import("@/components/mutualfunds/details/expense_ratio"));
@@ -47,7 +48,6 @@ export async function generateMetadata() {
     let mfHomeData = null;
     try {
         mfHomeData = await fetchMfDetails(`${pathname}`);
-
     } catch (err) {
         console.error(`Error fetching metadata: ${err}`);
     }
@@ -125,10 +125,11 @@ const MutualFundsDetails = async () => {
 
     try {
         mfHomeData = await fetchMfDetails(`${pathname}`);
-
-        if (mfHomeData) {
+        if (mfHomeData.error) {
+            error = mfHomeData.error;
+        }
+        if (mfHomeData.isin) {
             const response = await fetchIsin(mfHomeData.stpDetails ? mfHomeData.stpDetails.isin : mfHomeData.isin);
-
             if (response.isin) {
                 chartPoints = response.isin;
             } else {
@@ -139,8 +140,10 @@ const MutualFundsDetails = async () => {
         console.error(`error ${err}`);
 
     }
+    if (error) return <NotFound />;
+    if (mfHomeData.error) return <NotFound />;
+
     if (!mfHomeData) return <div><Loader /></div>;
-    if (error) return <div>Error: {error}</div>;
 
     return (
 
