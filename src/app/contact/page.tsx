@@ -37,7 +37,7 @@ const ContactUs = () => {
                 <h1 className="mb-3 text-center">Contact Us</h1>
                 <div className="section row pb-0">
                     <div className="content col-12 md:col-6 lg:col-5">
-                        <h4>Why you should contact us</h4>
+                        <h2 className="text-[18px]">Why you should contact us</h2 >
                         <p>
                             Reach out to us for any inquiries, feedback, or support to enhance your experience with IpoTec. Our dedicated team is here to assist you with any questions and provide timely responses. Your input helps us improve our services and better meet your financial research needs.
                         </p>

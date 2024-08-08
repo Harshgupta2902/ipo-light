@@ -45,7 +45,7 @@ const AboutUs = () => {
                             this website is confirmation that you understand and agree to be
                             bound by all of these terms and conditions
                         </p>
-                        <h4>Usage and Access</h4>
+                        <h2 className="text-2xl">Usage and Access</h2>
                         <p>
                             In IpoTec, displays information relating to upcoming Initial
                             Public Offerings (IPOs), Grey Market Premiums (GMP), subscription
@@ -55,7 +55,7 @@ const AboutUs = () => {
                             users not prohibited from online transactions in IPOs or mutual
                             funds.
                         </p>
-                        <h4>Acceptance of Terms Information</h4>
+                        <h2 className="text-2xl">Acceptance of Terms Information</h2>
                         <p>
                             Before accessing any service offered by IpoTec, the user must
                             accept the specific terms and conditions of such service
@@ -65,7 +65,7 @@ const AboutUs = () => {
                             exclusive jurisdiction of the courts in Mumbai for any disputes
                             arising from site usage.
                         </p>
-                        <h4>Content and Intellectual Property</h4>
+                        <h2 className="text-2xl">Content and Intellectual Property</h2>
                         <p>
                             IpoTec maintains the website for personal information and use.
                             Users may download materials for non-commercial, personal use
@@ -75,7 +75,7 @@ const AboutUs = () => {
                             is prohibited. Users must not delete or modify any copyright or
                             intellectual property rights displayed on the site.
                         </p>
-                        <h4>Disclaimer and Limitation of Liability</h4>
+                        <h2 className="text-2xl">Disclaimer and Limitation of Liability</h2>
                         <p>
                             Reports, data, videos, and information on the site are for
                             informational purposes only. Some content may be provided by third
@@ -93,7 +93,7 @@ const AboutUs = () => {
                             reliability of the data and uninterrupted or error-free service
                             provision
                         </p>
-                        <h4>User Responsibilities</h4>
+                        <h2 className="text-2xl">User Responsibilities</h2>
                         <p>
                             Users must ensure their use of the website and services complies
                             with applicable laws in their jurisdictions. Unauthorized access
@@ -102,13 +102,13 @@ const AboutUs = () => {
                             the site, the user consents to the transmission of such
                             information to third parties.
                         </p>
-                        <h4>Modifications</h4>
+                        <h2 className="text-2xl">Modifications</h2>
                         <p>
                             IpoTec may discontinue or amend the terms and conditions of the
                             services offered on the site at any time. Users are responsible
                             for reviewing the terms periodically
                         </p>
-                        <h4>General Disclaimer</h4>
+                        <h2 className="text-2xl">General Disclaimer</h2>
                         <p>
                             The information provided on the site is for illustration purposes
                             and should not be construed as financial advice or a
@@ -117,7 +117,7 @@ const AboutUs = () => {
                             advice before making investment decisions. Past performance is not
                             indicative of future results
                         </p>
-                        <h4>Contact Us</h4>
+                        <h2 className="text-2xl">Contact Us</h2>
                         <p>
                             If you have any questions or feedback, please <Link href={"/contact"}>contact us</Link>. We
                             appreciate your support and look forward to serving you on your

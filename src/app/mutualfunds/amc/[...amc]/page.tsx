@@ -253,9 +253,9 @@ const AMCDetailPage = async () => {
                                         <tbody>
                                             {amcData.fund_rows.content.map((item: any, index: number) => (
                                                 <tr key={index} className="bg-white border-b hover:bg-gray-50  ">
-                                                    <td scope="row" className=" !py-1 flex items-center font-medium text-gray-900 whitespace-nowrap">
+                                                    <td scope="row" className="flex items-center font-medium text-gray-900 whitespace-nowrap">
                                                         <Link href={``} style={{ textDecoration: "none" }}>
-                                                            <div className="text-gray-900 hover:underline hover:text-[#0F5151]">{item.direct_scheme_name}</div>
+                                                            <div className="text-gray-900 hover:scale-105 hover:text-[#0045DA]">{item.direct_scheme_name}</div>
                                                         </Link>
                                                     </td>
                                                     <td className="">
