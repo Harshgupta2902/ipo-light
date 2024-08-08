@@ -4,7 +4,6 @@ import NotFound from "@/app/not-found";
 import { headers } from "next/headers";
 import AMCFilter from "./amc_filter";
 import Image from "next/image";
-import { markdownify } from "@/components/common/textConverter";
 import Link from "next/link";
 
 const fetchAmcData = async (amc: string) => {
@@ -19,6 +18,63 @@ const fetchAmcData = async (amc: string) => {
         throw error;
     }
 };
+
+export async function generateMetadata() {
+    const headersList = headers();
+    const pathname = headersList.get("x-url")?.replace("/mutualfunds/amc/", "");
+    const amcLowercase = amc.map(name => name.link.toLowerCase());
+    const amcName = pathname?.replaceAll("-", " ") ?? "";
+    if (!amcLowercase.includes(amcName)) {
+        return <NotFound />;
+    }
+
+    let amcData = null;
+    try {
+        amcData = await fetchAmcData(`${pathname}`);
+    } catch (err) {
+        console.error(`error ${err}`);
+    }
+
+
+    const metaTitle = amcData.key_information.fund_house;
+    const metaDescription = `Explore the details of the ${amcData.key_information && amcData.key_information.fund_house} with IpoTec. Get Latest details of AMC and their fund-managers on IpoTec.`;
+    const keywords = [
+        amcData.key_information.fund_house,
+        amcData.key_information.asset_management_company,
+        amcData.key_information.trustee_organisation,
+        amcData.key_information.ceo,
+        amcData.key_information.cio,
+        amcData.key_information.investor_service_officer,
+        amcData.key_information.compliance_officer,
+    ].filter(Boolean);
+
+    return {
+        title: metaTitle,
+        description: metaDescription,
+        robots: "index, follow",
+        author: "IpoTec",
+        keywords: keywords,
+        copyright: "Copyright 2024 @ IpoTec",
+        url: "https://www.ipotec.in/",
+        openGraph: {
+            title: metaTitle,
+            description: metaDescription,
+            site: "https://www.ipotec.in/",
+            images: "https://www.ipotec.in/og_image.png",
+            type: "website",
+            url: `https://www.ipotec.in${pathname}`,
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: metaTitle,
+            description: metaDescription,
+            images: "https://www.ipotec.in/og_image.png"
+        },
+        alternates: {
+            canonical: `https://www.ipotec.in${pathname}`,
+        },
+    };
+}
 
 
 const AMCDetailPage = async () => {
