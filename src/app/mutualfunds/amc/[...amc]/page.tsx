@@ -285,7 +285,7 @@ const AMCDetailPage = async () => {
                         !item.title.toLowerCase().includes("invest in") && (
                             <div key={index} className="content-item">
                                 <h2 className="text-[22px]">{item.title}</h2>
-                                <div className="font-thin mt-4 text-gray-700" dangerouslySetInnerHTML={{ __html: `${item.content}` }} />
+                                <div className="font-thin mt-4 text-gray-700" dangerouslySetInnerHTML={{ __html: `${item.content.replaceAll("https://groww.in/mutual-funds/", "/mutualfunds/details/")}` }} />
                                 <br />
                                 <br />
                             </div>
