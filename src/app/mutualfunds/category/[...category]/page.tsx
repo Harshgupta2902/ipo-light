@@ -4,6 +4,7 @@ import NotFound from "@/app/not-found";
 import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
+import CategoryFilter from "./category_filter";
 
 const fetchAmcData = async (amc: string) => {
     try {
@@ -52,7 +53,7 @@ const AMCDetailPage = async () => {
         <div className="container">
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4 font-normal">
                 <form className="hidden lg:block">
-                    filters
+                    <CategoryFilter categories={categories} activeTitle={pathname}/>
                 </form>
                 <div className="lg:col-span-3">
                     <br />
@@ -64,7 +65,6 @@ const AMCDetailPage = async () => {
                             <br />
                         </div>
                     )}
-
 
                     {amcData.key_information && (
                         <div>
