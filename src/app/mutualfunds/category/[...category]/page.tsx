@@ -32,6 +32,60 @@ const getSubcategoryUrls = () => {
 
 
 
+export async function generateMetadata() {
+    const headersList = headers();
+    const pathname = headersList.get("x-url")?.replace("/mutualfunds/category/", "");
+
+    let amcData = null;
+    try {
+        amcData = await fetchAmcData(`${pathname}`);
+    } catch (err) {
+        console.error(`error ${err}`);
+    }
+
+
+    const metaTitle = amcData.content_list[0].title;
+    const metaDescription = `Explore the details of the ${amcData.content_list[0].title && amcData.content_list[0].title} with IpoTec. Get Latest details of AMC and their fund-managers on IpoTec.`;
+    const keywords = [
+        // amcData.content_list[0].title,
+        // amcData.key_information.asset_management_company,
+        // amcData.key_information.trustee_organisation,
+        // amcData.key_information.ceo,
+        // amcData.key_information.cio,
+        // amcData.key_information.investor_service_officer,
+        // amcData.key_information.compliance_officer,
+    ].filter(Boolean);
+
+    return {
+        title: metaTitle,
+        description: metaDescription,
+        robots: "index, follow",
+        author: "IpoTec",
+        keywords: keywords,
+        copyright: "Copyright 2024 @ IpoTec",
+        url: "https://www.ipotec.in/",
+        openGraph: {
+            title: metaTitle,
+            description: metaDescription,
+            site: "https://www.ipotec.in/",
+            images: "https://www.ipotec.in/og_image.png",
+            type: "website",
+            url: `https://www.ipotec.in${pathname}`,
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: metaTitle,
+            description: metaDescription,
+            images: "https://www.ipotec.in/og_image.png"
+        },
+        alternates: {
+            canonical: `https://www.ipotec.in${pathname}`,
+        },
+    };
+}
+
+
+
 const AMCDetailPage = async () => {
     const headersList = headers();
     const pathname = headersList.get("x-url")?.replace("/mutualfunds/category/", "");
@@ -53,7 +107,7 @@ const AMCDetailPage = async () => {
         <div className="container">
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4 font-normal">
                 <form className="hidden lg:block">
-                    <CategoryFilter categories={categories} activeTitle={pathname}/>
+                    <CategoryFilter categories={categories} activeTitle={pathname} />
                 </form>
                 <div className="lg:col-span-3">
                     <br />
