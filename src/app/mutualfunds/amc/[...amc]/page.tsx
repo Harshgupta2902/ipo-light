@@ -254,7 +254,7 @@ const AMCDetailPage = async () => {
                                             {amcData.fund_rows.content.map((item: any, index: number) => (
                                                 <tr key={index} className="bg-white border-b hover:bg-gray-50  ">
                                                     <td scope="row" className="flex items-center font-medium text-gray-900 whitespace-nowrap">
-                                                        <Link href={``} style={{ textDecoration: "none" }}>
+                                                        <Link href={`/mutualfunds/details/${item.search_id}`} style={{ textDecoration: "none" }} target="_blank">
                                                             <div className="text-gray-900 hover:scale-105 hover:text-[#0045DA]">{item.direct_scheme_name}</div>
                                                         </Link>
                                                     </td>
