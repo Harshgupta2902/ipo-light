@@ -144,15 +144,15 @@ const MfScreenerHomePage = async ({ searchParams }: { searchParams: { page?: str
                                 </ul>
                             </div>
                             <div className={`lg:col-4`}>
-                            <Image
-                                 alt="services-image"
-                                 width="450"
-                                 height="450"
-                                 style={{ mixBlendMode: "multiply" }}
-                                 decoding="async"
-                                 src={section.imageSrc}
-                                priority
-                            />
+                                <Image
+                                    alt="services-image"
+                                    width="450"
+                                    height="450"
+                                    style={{ mixBlendMode: "multiply" }}
+                                    decoding="async"
+                                    src={section.imageSrc}
+                                    priority
+                                />
 
                             </div>
                         </div>
@@ -170,7 +170,7 @@ const MfScreenerHomePage = async ({ searchParams }: { searchParams: { page?: str
                                     <div className="container">
                                         <div className="relative overflow-x-auto sm:rounded-lg">
                                             <SearchResults total={totalCount} />
-                                            {/* <FilterChips /> */}
+                                            <FilterChips />
                                             <ScreenerTable visibleData={visibleData} />
                                             <Pagination
                                                 currentPage={0}

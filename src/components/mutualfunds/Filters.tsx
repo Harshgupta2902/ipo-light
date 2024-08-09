@@ -33,19 +33,7 @@ const filters = [
             { value: 'High', label: 'High', checked: false },
             { value: 'Very High', label: 'Very High', checked: true },
         ],
-    },
-    {
-        id: 'color',
-        name: 'Color',
-        options: [
-            { value: 'white', label: 'White', checked: false },
-            { value: 'beige', label: 'Beige', checked: false },
-            { value: 'blue', label: 'Blue', checked: true },
-            { value: 'brown', label: 'Brown', checked: false },
-            { value: 'green', label: 'Green', checked: false },
-            { value: 'purple', label: 'Purple', checked: false },
-        ],
-    },
+    }
 ]
 
 const MfFilters = () => {

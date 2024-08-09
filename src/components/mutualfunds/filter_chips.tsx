@@ -1,10 +1,19 @@
 "use client"
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const FilterChips = () => {
-    const searchParams = new URLSearchParams(window.location.search);
-    const category = searchParams.get('category') || ''; // Default to empty string if not present
-    const risk = searchParams.get('risk') || ''; // Default to empty string if not present
+    const [combinedList, setCombinedList] = useState<string[]>([]);
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const category = searchParams.get('category') || '';
+        const risk = searchParams.get('risk') || '';
+
+        const categoryList = category.split(',').filter(Boolean);
+        const riskList = risk.split(',').filter(Boolean);
+        setCombinedList([...categoryList, ...riskList]);
+    }, []);
+
 
     const renderList = (items: string[]) => (
         items &&
@@ -16,19 +25,17 @@ const FilterChips = () => {
                 <span>{item}</span>
             </div>
         ))
-
     );
-    const categoryList = category ? category.split(',') : [];
-    const riskList = risk ? risk.split(',') : [];
-
-    const combinedList = [...categoryList, ...riskList];
-
     return (
-        combinedList.length > 0 ? (
-            <div className="flex gap-2">
-                {renderList(combinedList)}
-            </div>
-        ) : null
+        combinedList.length > 0 && (
+            <>
+                <div className="flex gap-2">
+                    {renderList(combinedList)}
+                </div>
+                <br />
+            </>
+
+        )
     );
 };
 
