@@ -214,7 +214,6 @@ Other Schemes:
 
 Increasing transparency, the new mutual fund categories by SEBI, will now enable investors to compare schemes and select the one that aligns with their investment objective and risk profile.
 
-
 `;
 
 
