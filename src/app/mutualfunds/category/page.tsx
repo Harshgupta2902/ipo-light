@@ -6,6 +6,40 @@ import React from 'react'
 
 
 
+export default function CategoryPage() {
+    return (
+        <section className='section'>
+            <div className="container">
+                <h1 className="text-center text-3xl">Mutual Funds Categories</h1>
+                <br />
+                {categories.map((category, index) => (
+                    <>
+                        <h2 className='text-[20px]'>{category.name}</h2>
+                        <br />
+                        <div className="row">
+                            {category.subcategories.map((subcat, index) => (
+                                <div key={index} className="mb-14 md:col-6 lg:col-3">
+                                    <Link href={`category/${subcat.url}`}>
+                                        <div className="flex flex-col border items-center rounded-sm hover:shadow px-8 py-12 text-center">
+                                            <span className="text-md text-gray-900">{subcat.name}</span>
+                                        </div>
+                                    </Link>
+                                </div>
+                            ))}
+                        </div>
+
+                    </>
+                ))}
+                <br />
+                <div className="content" dangerouslySetInnerHTML={markdownify(categoryContent, true)} />
+            </div>
+        </section>
+    )
+}
+
+
+
+
 const categories = [
     {
         name: "Debt",
@@ -217,36 +251,5 @@ Increasing transparency, the new mutual fund categories by SEBI, will now enable
 `;
 
 
-
-export default function CategoryPage() {
-    return (
-        <section className='section'>
-            <div className="container">
-                <h1 className="text-center text-3xl">Mutual Funds Categories</h1>
-                <br />
-                {categories.map((category, index) => (
-                    <>
-                        <h2 className='text-[20px]'>{category.name}</h2>
-                        <br />
-                        <div className="row">
-                            {category.subcategories.map((subcat, index) => (
-                                <div key={index} className="mb-14 md:col-6 lg:col-3">
-                                    <Link href={`category/${subcat.url}`}>
-                                        <div className="flex flex-col border items-center rounded-sm hover:shadow px-8 py-12 text-center">
-                                            <span className="text-md text-gray-900">{subcat.name}</span>
-                                        </div>
-                                    </Link>
-                                </div>
-                            ))}
-                        </div>
-
-                    </>
-                ))}
-                <br />
-                <div className="content" dangerouslySetInnerHTML={markdownify(categoryContent, true)} />
-            </div>
-        </section>
-    )
-}
 
 
