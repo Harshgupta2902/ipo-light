@@ -38,7 +38,7 @@ const FilterChips = () => {
 
         const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
         window.history.pushState({}, '', newUrl);
-        window.location.reload(); 
+        window.location.reload();
 
         setCombinedList([...category, ...risk]);
     };
