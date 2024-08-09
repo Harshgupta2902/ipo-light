@@ -272,6 +272,13 @@ const AMCDetailPage = async () => {
                                                     </td>
                                                 </tr>
                                             ))}
+                                            <tr className="bg-white border-b hover:bg-gray-50  ">
+                                                <td scope="row" className="flex items-center font-medium">
+                                                    <Link href={`/mutualfunds/screener`} target="_blank">
+                                                        <div className="hover:scale-105 text-[#0045DA]">{"See All"}</div>
+                                                    </Link>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
