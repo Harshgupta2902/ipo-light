@@ -101,7 +101,7 @@ const AMCDetailPage = async () => {
         <div className="container">
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4 font-normal">
                 <form className="hidden lg:block">
-                    <AMCFilter amc={amc} />
+                    <AMCFilter amc={amc} activeTitle={amcTitle} />
                 </form>
                 <div className="lg:col-span-3">
                     <br />

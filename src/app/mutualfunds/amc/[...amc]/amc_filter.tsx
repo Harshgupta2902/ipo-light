@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 
-const AMCFilter = async ({ amc }: { amc: any }) => {
+const AMCFilter = async ({ amc, activeTitle }: { amc: any, activeTitle: string }) => {
     return (
         <div className="flex flex-col">
             <div className="-m-1.5 overflow-x-auto">
@@ -17,7 +17,7 @@ const AMCFilter = async ({ amc }: { amc: any }) => {
                                             style={{
                                                 textDecoration: "none",
                                                 fontSize: "medium",
-                                                color: "#222222"
+                                                color: activeTitle === item.link ? "#0045DA" : "#222222"
                                             }}
                                         >
                                             {item.link}
