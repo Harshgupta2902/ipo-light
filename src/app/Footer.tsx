@@ -98,12 +98,6 @@ const Footer = () => {
                 </p>
                 <div className="flex-wrap gap-2 lg:gap-0 lg:flex-unwrap flex items-center justify-between py-3">
                     <div className="w-auto text-[12px] lg:text-[14px] text-[#6E6E73] font-medium">Copyrights ©{new Date().getFullYear()} IpoTec. All rights reserved.</div>
-                    {/* <div className="w-auto gap-1 lg:gap-2 flex items-center">
-                        {footer?.information && footer?.information.policyInfo && Object.entries(footer?.information.policyInfo).map(([key, value]) => (
-                            <Link prefetch={false} href={value} key={key} className="font-semibold lg:font-medium inline-block text-[11px] lg:text-[14px] text-[#6E6E73] text-center">{key}</Link>
-                        ))}
-                    </div> */}
-
                 </div>
             </div>
         </div >
@@ -131,6 +125,7 @@ const footer = [
         subPages: [
             { page: "Screener", link: "/mutualfunds/screener", },
             { page: "amc", link: "/mutualfunds/amc", },
+            { page: "Categories", link: "/mutualfunds/category", },
         ],
     },
     {

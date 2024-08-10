@@ -44,6 +44,8 @@ const menuData: MenuItem[] = [
     dropdownItems: [
       { label: "Screener", url: "/mutualfunds/screener" },
       { label: "AMC", url: "/mutualfunds/amc" },
+      { label: "Categories", url: "/mutualfunds/category", },
+
     ],
   },
   {
