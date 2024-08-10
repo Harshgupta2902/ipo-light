@@ -53,6 +53,27 @@ async function generateSitemap() {
     "Axis Mutual Fund",
     "UTI Mutual Fund",
   ];
+  const category = [
+    "best-low-duration-mutual-funds",
+    "best-medium-duration-mutual-funds",
+    "best-dynamic-mutual-funds",
+    "best-gilt-mutual-funds",
+    "best-credit-risk-mutual-funds",
+    "best-liquid-mutual-funds",
+    "best-ultra-short-mutual-funds",
+    "best-aggressive-mutual-funds",
+    "best-conservative-mutual-funds",
+    "best-arbitrage-mutual-funds",
+    "best-multi-cap-mutual-funds",
+    "best-large-cap-mutual-funds",
+    "best-mid-cap-mutual-funds",
+    "best-small-cap-mutual-funds",
+    "best-elss-mutual-funds",
+    "best-dividend-yield-mutual-funds",
+    "best-sector-mutual-funds",
+    "best-contra-mutual-funds",
+    "best-value-mutual-funds",
+  ];
 
   const links1 = await fetchLinks(
     "https://apis-iota-five.vercel.app/api/getIpoLinks"
@@ -107,6 +128,21 @@ async function generateSitemap() {
       .join("")}
   </urlset>`;
 
+  const sitemap4 = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${category
+      .map(
+        (link) => `
+      <url>
+        <loc>https://www.ipotec.in/mutualfunds/category/${link}</loc>
+        <lastmod>${currentDate}</lastmod>
+        <priority>0.80</priority>
+      </url>
+    `
+      )
+      .join("")}
+  </urlset>`;
+
   const publicDir = path.join(__dirname, "public");
   if (!fs.existsSync(publicDir)) {
     fs.mkdirSync(publicDir);
@@ -115,8 +151,9 @@ async function generateSitemap() {
   fs.writeFileSync(path.join(publicDir, "ipo-details.xml"), sitemap1);
   // fs.writeFileSync(path.join(publicDir, "mutualfunds-details.xml"), sitemap2);
   fs.writeFileSync(path.join(publicDir, "amc.xml"), sitemap3);
+  fs.writeFileSync(path.join(publicDir, "category.xml"), sitemap4);
   console.log(
-    "Sitemaps generated at public/ipo-details.xml and public/mutualfunds-details.xml and public/amc.xml "
+    "Sitemaps generated at public/ipo-details.xml and public/mutualfunds-details.xml and public/amc.xml and category.xml "
   );
 }
 
