@@ -15,7 +15,27 @@
   <priority>0.64</priority>
 </url>
 <url>
+  <loc>https://www.ipotec.in/mutualfunds/amc</loc>
+  <lastmod>2024-07-19T04:40:58+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.ipotec.in/mutualfunds/category</loc>
+  <lastmod>2024-07-19T04:40:58+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>https://www.ipotec.in/mutualfunds-details.xml</loc>
+  <lastmod>2024-07-19T04:40:58+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.ipotec.in/amc.xml</loc>
+  <lastmod>2024-07-19T04:40:58+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.ipotec.in/category.xml</loc>
   <lastmod>2024-07-19T04:40:58+00:00</lastmod>
   <priority>0.64</priority>
 </url>
