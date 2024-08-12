@@ -119,6 +119,7 @@ export default function InsertBlog() {
                       <div style={{ width: "50%", marginLeft: "20px" }}>
                         <ReactMarkdown
                           remarkPlugins={[gfm]}
+                          className={"content"}
                           children={formData.description}
                         />
                       </div>
