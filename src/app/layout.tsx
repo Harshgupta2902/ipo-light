@@ -1,5 +1,3 @@
-
-
 import { Poppins } from "next/font/google";
 import "@/style/globals.css";
 import "@/style/main.css";
@@ -13,9 +11,8 @@ import { Analytics } from "@vercel/analytics/react"
 import dynamic from 'next/dynamic';
 import Script from "next/script";
 
-
-
 const Footer = dynamic(() => import("@/app/Footer"));
+
 
 const poppins = Poppins({
   weight: "500",
@@ -76,61 +73,6 @@ const fetchMetadata = async (pathname: any) => {
 }
 
 
-
-
-export async function generateMetadata() {
-
-  const headersList = headers();
-  const pathname = headersList.get("x-url");
-
-  const metaData = await fetchMetadata(pathname ?? "/");
-
-  // console.log("metaDatapathnmae:::::::::;;;", pathname);
-
-
-  if (metaData.error) {
-    return {
-      title: "Not Found",
-      description: "Error Page Not Found",
-    };
-  }
-
-  const metaTitle = metaData.title
-    ?? "IpoTec";
-  const metaDescription = metaData.description
-    ?? "IpoTec";
-  const keywords = metaData.keywords
-    ?? "IPO, mutual funds, investment, finance, stock market";
-
-
-  return {
-    title: metaTitle,
-    description: metaDescription,
-    robots: "index, follow",
-    author: "IpoTec",
-    keywords: keywords,
-    copyright: "Copyright 2024 @ IpoTec",
-    url: "https://www.ipotec.in/",
-    openGraph: {
-      title: metaTitle,
-      description: metaDescription,
-      site: "https://www.ipotec.in/",
-      images: "https://www.ipotec.in/og_image.png",
-      type: "website",
-      url: `https://www.ipotec.in${pathname}`,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: metaTitle,
-      description: metaDescription,
-      images: "https://www.ipotec.in/og_image.png"
-    },
-    alternates: {
-      canonical: `https://www.ipotec.in${pathname}`,
-    },
-  };
-}
-
 const schema = {
   "@context": "https://schema.org/",
   "@type": "WebSite",
@@ -164,11 +106,81 @@ const schema = {
   ],
 };
 
+
+// const boldMap: { [key: string]: string } = {
+//   A: '𝗔', B: '𝗕', C: '𝗖', D: '𝗗', E: '𝗘', F: '𝗙', G: '𝗚', H: '𝗛', I: '𝗜', J: '𝗝',
+//   K: '𝗞', L: '𝗟', M: '𝗠', N: '𝗡', O: '𝗢', P: '𝗣', Q: '𝗤', R: '𝗥', S: '𝗦', T: '𝗧',
+//   U: '𝗨', V: '𝗩', W: '𝗪', X: '𝗫', Y: '𝗬', Z: '𝗭', a: '𝗮', b: '𝗯', c: '𝗰', d: '𝗱',
+//   e: '𝗲', f: '𝗳', g: '𝗴', h: '𝗵', i: '𝗶', j: '𝗷', k: '𝗸', l: '𝗹', m: '𝗺', n: '𝗻',
+//   o: '𝗼', p: '𝗽', q: '𝗾', r: '𝗿', s: '𝘀', t: '𝘁', u: '𝘂', v: '𝘃', w: '𝘄', x: '𝘅',
+//   y: '𝘆', z: '𝘇', 0: '𝟬', 1: '𝟭', 2: '𝟮', 3: '𝟯', 4: '𝟰', 5: '𝟱', 6: '𝟲', 7: '𝟳', 8: '𝟴', 9: '𝟵',
+// };
+
+// const toBoldUnicode = (str: string) => {
+//   return str.split('').map(char => boldMap[char] || char).join('');
+// };
+
+
+
+export async function generateMetadata() {
+
+  const headersList = headers();
+  const pathname = headersList.get("x-url");
+
+  const metaData = await fetchMetadata(pathname ?? "/");
+
+  // console.log("metaDatapathnmae:::::::::;;;", pathname);
+
+
+  if (metaData.error) {
+    return {
+      title: "Not Found",
+      description: "Error Page Not Found",
+    };
+  }
+
+  const metaTitle = metaData.title
+    ?? "IpoTec";
+  const metaDescription = metaData.description
+    ?? "IpoTec";
+  const keywords = metaData.keywords
+    ?? "IPO, mutual funds, investment, finance, stock market";
+
+
+  return {
+    title: metaTitle,
+    // title: toBoldUnicode(metaTitle),
+    description: metaDescription,
+    robots: "index, follow",
+    author: "IpoTec",
+    keywords: keywords,
+    copyright: "Copyright 2024 @ IpoTec",
+    url: "https://www.ipotec.in/",
+    openGraph: {
+      title: metaTitle,
+      description: metaDescription,
+      site: "https://www.ipotec.in/",
+      images: "https://www.ipotec.in/og_image.png",
+      type: "website",
+      url: `https://www.ipotec.in${pathname}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: metaTitle,
+      description: metaDescription,
+      images: "https://www.ipotec.in/og_image.png"
+    },
+    alternates: {
+      canonical: `https://www.ipotec.in${pathname}`,
+    },
+  };
+}
+
+
 const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <html lang="en">
       <head>
-
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3578725480736580" crossOrigin="anonymous"></script>
         <meta name="google-site-verification" content="qfvtOvETSlOGGfLBvcE6Yk2Fqj0HmCGkmObv5r3MCnc" />
         <meta name="ahrefs-site-verification" content="c9bc1dfb881082e1aca65a8f84eb9243001c319904258b4f601717781f2339b3" />
