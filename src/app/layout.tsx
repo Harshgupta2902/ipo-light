@@ -10,6 +10,7 @@ import { headers } from "next/headers";
 import { Analytics } from "@vercel/analytics/react"
 import dynamic from 'next/dynamic';
 import Script from "next/script";
+import { getSchema } from "@/components/constants";
 
 const Footer = dynamic(() => import("@/app/Footer"));
 
@@ -105,8 +106,6 @@ const mainSchema = {
     }
   ],
 };
-
-
 // const boldMap: { [key: string]: string } = {
 //   A: '𝗔', B: '𝗕', C: '𝗖', D: '𝗗', E: '𝗘', F: '𝗙', G: '𝗚', H: '𝗛', I: '𝗜', J: '𝗝',
 //   K: '𝗞', L: '𝗟', M: '𝗠', N: '𝗡', O: '𝗢', P: '𝗣', Q: '𝗤', R: '𝗥', S: '𝗦', T: '𝗧',
@@ -178,6 +177,12 @@ export async function generateMetadata() {
 
 
 const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>) => {
+
+  const headersList = headers();
+  const pathname = headersList.get("x-url");
+  console.log(pathname, "layout ");
+
+
   return (
     <html lang="en">
       <head>
