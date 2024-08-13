@@ -73,7 +73,7 @@ const fetchMetadata = async (pathname: any) => {
 }
 
 
-const schema = {
+const mainSchema = {
   "@context": "https://schema.org/",
   "@type": "WebSite",
   "name": "IpoTec",
@@ -195,7 +195,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
         <link rel="icon" href="/layout/favicon.ico" type="image/x-icon" sizes="16x16" />
         <link rel="manifest" href="/site.webmanifest"></link>
         <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(mainSchema) }} />
       </head>
       <body className={`${poppins.className} bg-white`}>
         <Navbar menuData={menuData ?? []} />
