@@ -63,11 +63,9 @@ const Footer = () => {
                     </p>
                     {amc.map((amc_name) => (
                         <Link
-                            href={""}
-                            // href={`/mutualfunds/amc/${amc_name.replaceAll(" ", "-")}`}
+                            href={`/mutualfunds/amc/${amc_name.toLowerCase().replaceAll(" ", "-")}`}
                             key={amc_name}
-                            className="capitalize pr-3 text-[#0F5151] font-medium text-[14px] rounded-sm hover:underline"
-                        >
+                            className="capitalize pr-3 text-[#0F5151] font-medium text-[14px] rounded-sm hover:underline">
                             {amc_name}
                         </Link>
                     ))}
