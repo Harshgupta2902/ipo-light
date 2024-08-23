@@ -20,9 +20,9 @@ export default function BlogDetails({ blog }: { blog: BlogContent }) {
             <div className="mb-6">
                 <ImageFallback
                     src={blog.image}
-                    width="600"
+                    width="1000"
                     height="300"
-                    className="w-full h-[20rem] rounded"
+                    className="rounded"
                     alt={blog.alt_keyword}
                     priority
                 />

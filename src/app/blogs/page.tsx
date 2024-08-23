@@ -1,4 +1,3 @@
-
 import { endpoints } from "@/api/endpoints";
 import BlogPostComponent from "@/components/blogs/blogs_main_card";
 import BlogPostGrid from "@/components/blogs/blogs_grid";
