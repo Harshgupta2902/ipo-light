@@ -1,37 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<url>
-  <loc>https://www.ipotec.in</loc>
-  <lastmod>new Date().toISOString()</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://www.ipotec.in/ipo.xml</loc>
-  <lastmod>new Date().toISOString()</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.ipotec.in/mutualfunds.xml</loc>
-  <lastmod>new Date().toISOString()</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.ipotec.in/blog.xml</loc>
-  <lastmod>new Date().toISOString()</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.ipotec.in/calculators.xml</loc>
-  <lastmod>new Date().toISOString()</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.ipotec.in/others.xml</loc>
-  <lastmod>new Date().toISOString()</lastmod>
-  <priority>0.80</priority>
-</url>
-</urlset>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://www.ipotec.in</loc>
+        <lastmod>2024-08-23T07:00:50.210Z</lastmod>
+        <priority>1.0</priority>
+      </url><url>
+        <loc>https://www.ipotec.in/ipo.xml</loc>
+        <lastmod>2024-08-23T07:00:50.210Z</lastmod>
+        <priority>1.0</priority>
+      </url><url>
+        <loc>https://www.ipotec.in/mutualfunds.xml</loc>
+        <lastmod>2024-08-23T07:00:50.210Z</lastmod>
+        <priority>1.0</priority>
+      </url><url>
+        <loc>https://www.ipotec.in/blog.xml</loc>
+        <lastmod>2024-08-23T07:00:50.210Z</lastmod>
+        <priority>1.0</priority>
+      </url><url>
+        <loc>https://www.ipotec.in/calculators.xml</loc>
+        <lastmod>2024-08-23T07:00:50.210Z</lastmod>
+        <priority>1.0</priority>
+      </url><url>
+        <loc>https://www.ipotec.in/others.xml</loc>
+        <lastmod>2024-08-23T07:00:50.210Z</lastmod>
+        <priority>1.0</priority>
+      </url>
+  </urlset>

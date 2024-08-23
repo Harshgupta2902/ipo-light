@@ -15,7 +15,112 @@ function generateSitemapFile(fileName, sitemapContent) {
   fs.writeFileSync(path.join(publicDir, fileName), sitemapContent);
 }
 
+async function generateMainSitemap() {
+  const currentDate = new Date().toISOString();
+  const links = [
+    "https://www.ipotec.in",
+    "https://www.ipotec.in/ipo.xml",
+    "https://www.ipotec.in/mutualfunds.xml",
+    "https://www.ipotec.in/blog.xml",
+    "https://www.ipotec.in/calculators.xml",
+    "https://www.ipotec.in/others.xml",
+  ];
+  const mainSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${links
+      .map(
+        (link) => `<url>
+        <loc>${link}</loc>
+        <lastmod>${currentDate}</lastmod>
+        <priority>1.0</priority>
+      </url>`
+      )
+      .join("")}
+  </urlset>`;
+  generateSitemapFile("sitemap.xml", mainSitemap);
+}
+
 async function generateIpoSitemap() {
+  const currentDate = new Date().toISOString();
+  const links = [
+    "https://www.ipotec.in/ipo",
+    "https://www.ipotec.in/ipo/upcomingIpo",
+    "https://www.ipotec.in/ipo/greyMarketIpo",
+    "https://www.ipotec.in/ipo/smeMarketIpo",
+    "https://www.ipotec.in/ipo/subscriptionStatus",
+    "https://www.ipotec.in/ipo/ipoForms",
+    "https://www.ipotec.in/ipo/sharesBuyBack",
+    "https://www.ipotec.in/ipo-details.xml",
+  ];
+  const mainSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${links
+      .map(
+        (link) => `<url>
+        <loc>${link}</loc>
+        <lastmod>${currentDate}</lastmod>
+        <priority>1.0</priority>
+      </url>`
+      )
+      .join("")}
+  </urlset>`;
+  generateSitemapFile("sitemap.xml", mainSitemap);
+}
+
+async function generateIpoSitemap() {
+  const currentDate = new Date().toISOString();
+  const links = [
+    "https://www.ipotec.in/ipo",
+    "https://www.ipotec.in/ipo/upcomingIpo",
+    "https://www.ipotec.in/ipo/greyMarketIpo",
+    "https://www.ipotec.in/ipo/smeMarketIpo",
+    "https://www.ipotec.in/ipo/subscriptionStatus",
+    "https://www.ipotec.in/ipo/ipoForms",
+    "https://www.ipotec.in/ipo/sharesBuyBack",
+    "https://www.ipotec.in/ipo-details.xml",
+  ];
+  const mainSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${links
+      .map(
+        (link) => `<url>
+        <loc>${link}</loc>
+        <lastmod>${currentDate}</lastmod>
+        <priority>1.0</priority>
+      </url>`
+      )
+      .join("")}
+  </urlset>`;
+  generateSitemapFile("sitemap.xml", mainSitemap);
+}
+
+async function generateMfSitemap() {
+  const currentDate = new Date().toISOString();
+  const links = [
+    "https://www.ipotec.in/mutualfunds",
+    "https://www.ipotec.in/mutualfunds/screener",
+    "https://www.ipotec.in/mutualfunds/amc",
+    "https://www.ipotec.in/mutualfunds/category",
+    "https://www.ipotec.in/mutualfunds-details.xml",
+    "https://www.ipotec.in/amc.xml",
+    "https://www.ipotec.in/category.xml",
+  ];
+  const mainSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${links
+      .map(
+        (link) => `<url>
+        <loc>${link}</loc>
+        <lastmod>${currentDate}</lastmod>
+        <priority>1.0</priority>
+      </url>`
+      )
+      .join("")}
+  </urlset>`;
+  generateSitemapFile("sitemap.xml", mainSitemap);
+}
+
+async function generateIpoDetailsSitemap() {
   const currentDate = new Date().toISOString();
   const ipoLinks = await fetchLinks(
     "https://apis-iota-five.vercel.app/api/getIpoLinks"
@@ -38,7 +143,7 @@ async function generateIpoSitemap() {
   generateSitemapFile("ipo-details.xml", ipoSitemap);
 }
 
-async function generateMfSitemap() {
+async function generateMfDetailsSitemap() {
   const currentDate = new Date().toISOString();
   const mfLinks = await fetchLinks(
     "https://apis-iota-five.vercel.app/api/getMfLinks"
@@ -165,35 +270,14 @@ async function generateCategorySitemap() {
   generateSitemapFile("category.xml", catsitemap);
 }
 
-async function generateAmcSitemap() {
-  const currentDate = new Date().toISOString();
-  const links = [
-    "https://www.ipotec.in",
-    "https://www.ipotec.in/ipo.xml",
-    "https://www.ipotec.in/mutualfunds.xml",
-    "https://www.ipotec.in/blog.xml",
-    "https://www.ipotec.in/calculators.xml",
-    "https://www.ipotec.in/others.xml",
-  ];
-  const mainSitemap = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${links
-      .map(
-        (link) => `<url>
-        <loc>${link}</loc>
-        <lastmod>${currentDate}</lastmod>
-        <priority>1.0</priority>
-      </url>`
-      )
-      .join("")}
-  </urlset>`;
-  generateSitemapFile("sitemap.xml", mainSitemap);
-}
 
 async function generateAllSitemaps() {
   try {
+    await generateMainSitemap();
     await generateIpoSitemap();
-    // await generateMfSitemap();
+    await generateMfSitemap();
+    await generateIpoDetailsSitemap();
+    // await generateMfDetailsSitemap();
     await generateAmcSitemap();
     await generateCategorySitemap();
     console.log("Sitemaps generated successfully!");
