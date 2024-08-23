@@ -64,7 +64,7 @@ async function generateIpoSitemap() {
       )
       .join("")}
   </urlset>`;
-  generateSitemapFile("sitemap.xml", ipoSitemap);
+  generateSitemapFile("ipo.xml", ipoSitemap);
 }
 
 async function generateMfSitemap() {
@@ -90,7 +90,7 @@ async function generateMfSitemap() {
       )
       .join("")}
   </urlset>`;
-  generateSitemapFile("sitemap.xml", mfSitemap);
+  generateSitemapFile("mutualfunds.xml", mfSitemap);
 }
 
 async function generateOthersSitemap() {
@@ -114,7 +114,7 @@ async function generateOthersSitemap() {
       )
       .join("")}
   </urlset>`;
-  generateSitemapFile("sitemap.xml", othersSitemap);
+  generateSitemapFile("others.xml", othersSitemap);
 }
 
 async function generateCalcSitemap() {
@@ -137,7 +137,7 @@ async function generateCalcSitemap() {
       )
       .join("")}
   </urlset>`;
-  generateSitemapFile("sitemap.xml", othersSitemap);
+  generateSitemapFile("calculators.xml", othersSitemap);
 }
 
 async function generateIpoDetailsSitemap() {

@@ -1,32 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://www.ipotec.in/mutualfunds</loc>
-        <lastmod>2024-08-23T07:04:45.127Z</lastmod>
+        <loc>https://www.ipotec.in/calculators</loc>
+        <lastmod>2024-08-23T07:08:30.854Z</lastmod>
         <priority>1.0</priority>
       </url><url>
-        <loc>https://www.ipotec.in/mutualfunds/screener</loc>
-        <lastmod>2024-08-23T07:04:45.127Z</lastmod>
+        <loc>https://www.ipotec.in/calculators/sip_calculator</loc>
+        <lastmod>2024-08-23T07:08:30.854Z</lastmod>
         <priority>1.0</priority>
       </url><url>
-        <loc>https://www.ipotec.in/mutualfunds/amc</loc>
-        <lastmod>2024-08-23T07:04:45.127Z</lastmod>
+        <loc>https://www.ipotec.in/calculators/lumpsum_calculator</loc>
+        <lastmod>2024-08-23T07:08:30.854Z</lastmod>
         <priority>1.0</priority>
       </url><url>
-        <loc>https://www.ipotec.in/mutualfunds/category</loc>
-        <lastmod>2024-08-23T07:04:45.127Z</lastmod>
-        <priority>1.0</priority>
-      </url><url>
-        <loc>https://www.ipotec.in/mutualfunds-details.xml</loc>
-        <lastmod>2024-08-23T07:04:45.127Z</lastmod>
-        <priority>1.0</priority>
-      </url><url>
-        <loc>https://www.ipotec.in/amc.xml</loc>
-        <lastmod>2024-08-23T07:04:45.127Z</lastmod>
-        <priority>1.0</priority>
-      </url><url>
-        <loc>https://www.ipotec.in/category.xml</loc>
-        <lastmod>2024-08-23T07:04:45.127Z</lastmod>
+        <loc>https://www.ipotec.in/calculators/swp_calculator</loc>
+        <lastmod>2024-08-23T07:08:30.854Z</lastmod>
         <priority>1.0</priority>
       </url>
   </urlset>
