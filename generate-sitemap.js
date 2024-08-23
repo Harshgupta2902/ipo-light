@@ -7,7 +7,58 @@ async function fetchLinks(url) {
   return data;
 }
 
-async function generateSitemap() {
+function createSitemap(links, baseUrl, currentDate) {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ${links
+    .map(
+      (link) => `
+    <url>
+      <loc>${baseUrl}/${link}</loc>
+      <lastmod>${currentDate}</lastmod>
+      <priority>0.80</priority>
+    </url>
+  `
+    )
+    .join("")}
+</urlset>`;
+}
+
+function generateSitemapFile(fileName, sitemapContent) {
+  const publicDir = path.join(__dirname, "public");
+  if (!fs.existsSync(publicDir)) {
+    fs.mkdirSync(publicDir);
+  }
+  fs.writeFileSync(path.join(publicDir, fileName), sitemapContent);
+}
+
+async function generateIpoSitemap() {
+  const currentDate = new Date().toISOString();
+  const ipoLinks = await fetchLinks(
+    "https://apis-iota-five.vercel.app/api/getIpoLinks"
+  );
+  const sitemap = createSitemap(
+    ipoLinks,
+    "https://www.ipotec.in/ipo/details",
+    currentDate
+  );
+  generateSitemapFile("ipo-details.xml", sitemap);
+}
+
+async function generateMfSitemap() {
+  const currentDate = new Date().toISOString();
+  const ipoLinks = await fetchLinks(
+    "https://apis-iota-five.vercel.app/api/getMfLinks"
+  );
+  const sitemap = createSitemap(
+    ipoLinks,
+    "https://www.ipotec.in/mutualfunds/details",
+    currentDate
+  );
+  generateSitemapFile("ipo-details.xml", sitemap);
+}
+
+async function generateAmcSitemap() {
   const currentDate = new Date().toISOString();
   const amc = [
     "Bajaj Finserv Mutual Fund",
@@ -53,6 +104,17 @@ async function generateSitemap() {
     "Axis Mutual Fund",
     "UTI Mutual Fund",
   ];
+  const amcLinks = amc.map((item) => item.toLowerCase().replaceAll(" ", "-"));
+  const sitemap = createSitemap(
+    amcLinks,
+    "https://www.ipotec.in/mutualfunds/amc",
+    currentDate
+  );
+  generateSitemapFile("amc.xml", sitemap);
+}
+
+async function generateCategorySitemap() {
+  const currentDate = new Date().toISOString();
   const category = [
     "best-low-duration-mutual-funds",
     "best-medium-duration-mutual-funds",
@@ -74,87 +136,24 @@ async function generateSitemap() {
     "best-contra-mutual-funds",
     "best-value-mutual-funds",
   ];
-
-  const links1 = await fetchLinks(
-    "https://apis-iota-five.vercel.app/api/getIpoLinks"
+  const sitemap = createSitemap(
+    category,
+    "https://www.ipotec.in/mutualfunds/category",
+    currentDate
   );
-  const sitemap1 = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${links1
-      .map(
-        (link) => `
-      <url>
-        <loc>https://www.ipotec.in/ipo/details/${link}</loc>
-        <lastmod>${currentDate}</lastmod>
-        <priority>0.80</priority>
-      </url>
-    `
-      )
-      .join("")}
-  </urlset>`;
-
-  // const links2 = await fetchLinks(
-  //   "https://apis-iota-five.vercel.app/api/getMfLinks"
-  // );
-  // const sitemap2 = `<?xml version="1.0" encoding="UTF-8"?>
-  // <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  //   ${links2
-  //     .map(
-  //       (link) => `
-  //     <url>
-  //       <loc>https://www.ipotec.in/mutualfunds/details/${link}</loc>
-  //       <lastmod>${currentDate}</lastmod>
-  //       <priority>0.80</priority>
-  //     </url>
-  //   `
-  //     )
-  //     .join("")}
-  // </urlset>`;
-
-  const sitemap3 = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${amc
-      .map(
-        (link) => `
-      <url>
-        <loc>https://www.ipotec.in/mutualfunds/amc/${link
-          .toLowerCase()
-          .replaceAll(" ", "-")}</loc>
-        <lastmod>${currentDate}</lastmod>
-        <priority>0.80</priority>
-      </url>
-    `
-      )
-      .join("")}
-  </urlset>`;
-
-  const sitemap4 = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${category
-      .map(
-        (link) => `
-      <url>
-        <loc>https://www.ipotec.in/mutualfunds/category/${link}</loc>
-        <lastmod>${currentDate}</lastmod>
-        <priority>0.80</priority>
-      </url>
-    `
-      )
-      .join("")}
-  </urlset>`;
-
-  const publicDir = path.join(__dirname, "public");
-  if (!fs.existsSync(publicDir)) {
-    fs.mkdirSync(publicDir);
-  }
-
-  fs.writeFileSync(path.join(publicDir, "ipo-details.xml"), sitemap1);
-  // fs.writeFileSync(path.join(publicDir, "mutualfunds-details.xml"), sitemap2);
-  fs.writeFileSync(path.join(publicDir, "amc.xml"), sitemap3);
-  fs.writeFileSync(path.join(publicDir, "category.xml"), sitemap4);
-  console.log(
-    "Sitemaps generated at public/ipo-details.xml and public/mutualfunds-details.xml and public/amc.xml and category.xml "
-  );
+  generateSitemapFile("category.xml", sitemap);
 }
 
-generateSitemap().catch(console.error);
+async function generateAllSitemaps() {
+  try {
+    await generateIpoSitemap();
+    // await generateMfSitemap();
+    await generateAmcSitemap();
+    await generateCategorySitemap();
+    console.log("Sitemaps generated successfully!");
+  } catch (error) {
+    console.error("Error generating sitemaps:", error);
+  }
+}
+
+generateAllSitemaps();
