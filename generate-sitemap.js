@@ -34,30 +34,47 @@ function generateSitemapFile(fileName, sitemapContent) {
 
 async function generateIpoSitemap() {
   const currentDate = new Date().toISOString();
-  const links = await fetchLinks(
+  const ipoLinks = await fetchLinks(
     "https://apis-iota-five.vercel.app/api/getIpoLinks"
   );
-  const ipoLinks = links.map((item) => item);
 
-  const sitemap = createSitemap(
-    ipoLinks,
-    "https://www.ipotec.in/ipo/details",
-    currentDate
-  );
-  generateSitemapFile("ipo-details.xml", sitemap);
+  const ipoSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${ipoLinks
+      .map(
+        (link) => `
+      <url>
+        <loc>https://www.ipotec.in/ipo/details/${link}</loc>
+        <lastmod>${currentDate}</lastmod>
+        <priority>0.80</priority>
+      </url>
+    `
+      )
+      .join("")}
+  </urlset>`;
+  generateSitemapFile("ipo-details.xml", ipoSitemap);
 }
 
 async function generateMfSitemap() {
   const currentDate = new Date().toISOString();
-  const ipoLinks = await fetchLinks(
+  const mfLinks = await fetchLinks(
     "https://apis-iota-five.vercel.app/api/getMfLinks"
   );
-  const sitemap = createSitemap(
-    ipoLinks,
-    "https://www.ipotec.in/mutualfunds/details",
-    currentDate
-  );
-  generateSitemapFile("ipo-details.xml", sitemap);
+  const mfSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${mfLinks
+      .map(
+        (link) => `
+      <url>
+        <loc>https://www.ipotec.in/mutualfunds/details/${link}</loc>
+        <lastmod>${currentDate}</lastmod>
+        <priority>0.80</priority>
+      </url>
+    `
+      )
+      .join("")}
+  </urlset>`;
+  generateSitemapFile("mutualfunds-details.xml", mfSitemap);
 }
 
 async function generateAmcSitemap() {
@@ -106,13 +123,23 @@ async function generateAmcSitemap() {
     "Axis Mutual Fund",
     "UTI Mutual Fund",
   ];
-  const amcLinks = amc.map((item) => item.toLowerCase().replaceAll(" ", "-"));
-  const sitemap = createSitemap(
-    amcLinks,
-    "https://www.ipotec.in/mutualfunds/amc",
-    currentDate
-  );
-  generateSitemapFile("amc.xml", sitemap);
+  const amcSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${amc
+      .map(
+        (link) => `
+      <url>
+        <loc>https://www.ipotec.in/mutualfunds/amc/${link
+          .toLowerCase()
+          .replaceAll(" ", "-")}</loc>
+        <lastmod>${currentDate}</lastmod>
+        <priority>0.80</priority>
+      </url>
+    `
+      )
+      .join("")}
+  </urlset>`;
+  generateSitemapFile("amc.xml", amcSitemap);
 }
 
 async function generateCategorySitemap() {
@@ -138,12 +165,21 @@ async function generateCategorySitemap() {
     "best-contra-mutual-funds",
     "best-value-mutual-funds",
   ];
-  const sitemap = createSitemap(
-    category,
-    "https://www.ipotec.in/mutualfunds/category",
-    currentDate
-  );
-  generateSitemapFile("category.xml", sitemap);
+  const catsitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${category
+      .map(
+        (link) => `
+      <url>
+        <loc>https://www.ipotec.in/mutualfunds/category/${link}</loc>
+        <lastmod>${currentDate}</lastmod>
+        <priority>0.80</priority>
+      </url>
+    `
+      )
+      .join("")}
+  </urlset>`;
+  generateSitemapFile("category.xml", catsitemap);
 }
 
 async function generateAllSitemaps() {
