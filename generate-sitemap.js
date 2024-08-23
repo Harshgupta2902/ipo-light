@@ -7,23 +7,6 @@ async function fetchLinks(url) {
   return data;
 }
 
-function createSitemap(links, baseUrl, currentDate) {
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${links
-    .map(
-      (link) => `
-    <url>
-      <loc>${baseUrl}/${link}</loc>
-      <lastmod>${currentDate}</lastmod>
-      <priority>0.80</priority>
-    </url>
-  `
-    )
-    .join("")}
-</urlset>`;
-}
-
 function generateSitemapFile(fileName, sitemapContent) {
   const publicDir = path.join(__dirname, "public");
   if (!fs.existsSync(publicDir)) {
@@ -180,6 +163,31 @@ async function generateCategorySitemap() {
       .join("")}
   </urlset>`;
   generateSitemapFile("category.xml", catsitemap);
+}
+
+async function generateAmcSitemap() {
+  const currentDate = new Date().toISOString();
+  const links = [
+    "https://www.ipotec.in",
+    "https://www.ipotec.in/ipo.xml",
+    "https://www.ipotec.in/mutualfunds.xml",
+    "https://www.ipotec.in/blog.xml",
+    "https://www.ipotec.in/calculators.xml",
+    "https://www.ipotec.in/others.xml",
+  ];
+  const mainSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${links
+      .map(
+        (link) => `<url>
+        <loc>${link}</loc>
+        <lastmod>${currentDate}</lastmod>
+        <priority>1.0</priority>
+      </url>`
+      )
+      .join("")}
+  </urlset>`;
+  generateSitemapFile("sitemap.xml", mainSitemap);
 }
 
 async function generateAllSitemaps() {
