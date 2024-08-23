@@ -8,7 +8,9 @@ import Loader from "@/app/Loader";
 
 const fetchBlogs = async () => {
   try {
-    const response = await fetch(endpoints.getBlogs, { cache: "no-store" });
+    const timestamp = new Date().toISOString();
+    const response = await fetch(`${endpoints.getBlogs}?time=${timestamp}`, { cache: "no-store" });
+
     if (!response.ok) {
       throw new Error("Data not found");
     }
