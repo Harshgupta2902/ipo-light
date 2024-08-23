@@ -2,6 +2,7 @@ import React from 'react';
 import { BlogPostMainCardProps } from '../interfaces';
 import Loader from '@/app/Loader';
 import Image from 'next/image';
+import ImageFallback from '../common/ImageFallback';
 
 
 const BlogPostComponent: React.FC<BlogPostMainCardProps> = ({ post }) => {
@@ -15,6 +16,7 @@ const BlogPostComponent: React.FC<BlogPostMainCardProps> = ({ post }) => {
                     alt={post.alt_keyword ?? ""}
                     loading="lazy"
                     width="500"
+                    height="250"
                     decoding="async"
                     className="rounded"
                     src={post.image}
@@ -22,14 +24,12 @@ const BlogPostComponent: React.FC<BlogPostMainCardProps> = ({ post }) => {
             </div>
             <div className="lg:col-6">
                 <div className="flex space-x-3 items-center mb-3">
-                    <Image
-                        alt="author"
-                        loading="lazy"
+                    <ImageFallback
+                        src={"/placeholder.png"}
                         width="30"
                         height="30"
-                        decoding="async"
-                        className="inline-block rounded-full"
-                        src={post.image}
+                        className="inline-block w-6 h-6 rounded-full"
+                        alt={post.author}
                     />
                     <p>
                         <span>by </span>
