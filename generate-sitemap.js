@@ -34,9 +34,11 @@ function generateSitemapFile(fileName, sitemapContent) {
 
 async function generateIpoSitemap() {
   const currentDate = new Date().toISOString();
-  const ipoLinks = await fetchLinks(
+  const links = await fetchLinks(
     "https://apis-iota-five.vercel.app/api/getIpoLinks"
   );
+  const ipoLinks = links.map((item) => item);
+
   const sitemap = createSitemap(
     ipoLinks,
     "https://www.ipotec.in/ipo/details",
