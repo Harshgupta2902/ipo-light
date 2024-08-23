@@ -4,6 +4,8 @@ const path = require("path");
 async function fetchLinks(url) {
   const response = await fetch(url);
   const data = await response.json();
+  console.log(data);
+  
   return data;
 }
 
@@ -290,6 +292,27 @@ async function generateCategorySitemap() {
   generateSitemapFile("category.xml", catsitemap);
 }
 
+async function generateBlogsSitemap() {
+  const blogs = await fetchLinks(
+    "https://apis-iota-five.vercel.app/api/getBlogsLinks"
+  );
+  const catsitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${blogs
+      .map(
+        (blogData) => `
+      <url>
+        <loc>https://www.ipotec.in/blogs/${blogData.category}/${blogData.slug}</loc>
+        <lastmod>${blogData.published}</lastmod>
+        <priority>0.80</priority>
+      </url>
+    `
+      )
+      .join("")}
+  </urlset>`;
+  generateSitemapFile("blog.xml", catsitemap);
+}
+
 async function generateAllSitemaps() {
   try {
     await generateMainSitemap();
@@ -297,6 +320,7 @@ async function generateAllSitemaps() {
     await generateMfSitemap();
     await generateOthersSitemap();
     await generateCalcSitemap();
+    await generateBlogsSitemap();
     await generateIpoDetailsSitemap();
     // await generateMfDetailsSitemap();
     await generateAmcSitemap();
