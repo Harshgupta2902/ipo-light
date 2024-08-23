@@ -51,13 +51,21 @@
       "@/components": "./src/components",
       "@/app": "./src/app"
     },
-    "include": ["src/app", "src/components"],
-    "exclude": ["node_modules", ".next"],
-    "entrypoints": ["src/app/page.tsx", "src/app/_app.js", "src/app/_document.js"]
+    "include": [
+      "src/app",
+      "src/components"
+    ],
+    "exclude": [
+      "node_modules",
+      ".next"
+    ],
+    "entrypoints": [
+      "src/app/page.tsx",
+      "src/app/_app.js",
+      "src/app/_document.js"
+    ]
   },
   "description": "",
   "main": "index.js",
   "author": ""
 }
-
-
