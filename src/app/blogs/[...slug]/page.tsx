@@ -6,9 +6,6 @@ import { get } from "@/api/api";
 import Loader from '@/app/Loader';
 import { headers } from 'next/headers';
 
-
-
-
 const fetchBlogDetails = async (slug: string) => {
     try {
         const response = await fetch(`${endpoints.blogDetails}/${slug}`, { cache: "no-store" });
@@ -24,8 +21,61 @@ const fetchBlogDetails = async (slug: string) => {
 
 
 
-const BlogDetails = async () => {
+export async function generateMetadata() {
 
+    const headersList = headers();
+    const completePathname = headersList.get("x-url");
+    if (!completePathname) {
+        return;
+    }
+    const pathname = completePathname.substring(completePathname.lastIndexOf('/') + 1);
+    console.log(pathname);
+    const metaData = await fetchBlogDetails(pathname ?? "/");
+    if (metaData.error) {
+        return {
+            title: "Not Found",
+            description: "Error Page Not Found",
+        };
+    }
+
+    const metaTitle = metaData.title
+        ?? "IpoTec";
+    const metaDescription = metaData.description
+        ?? "IpoTec";
+    const keywords = metaData.meta_keywords
+        ?? "IPO, mutual funds, investment, finance, stock market";
+    const image = metaData.image;
+
+    return {
+        title: metaTitle,
+        description: metaDescription,
+        robots: "index, follow",
+        author: "IpoTec",
+        keywords: keywords,
+        copyright: "Copyright 2024 @ IpoTec",
+        url: "https://www.ipotec.in/",
+        openGraph: {
+            title: metaTitle,
+            description: metaDescription,
+            site: "https://www.ipotec.in/",
+            images: image,
+            type: "website",
+            url: `https://www.ipotec.in/${completePathname}`,
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: metaTitle,
+            description: metaDescription,
+            images: image,
+        },
+        alternates: {
+            canonical: `https://www.ipotec.in${completePathname}`,
+        },
+    };
+}
+
+
+const BlogDetails = async () => {
     let result = null;
     let error = null;
     let loading = true;
@@ -36,7 +86,6 @@ const BlogDetails = async () => {
     }
     const pathname = completePathname.substring(completePathname.lastIndexOf('/') + 1);
     console.log(pathname);
-
     try {
         result = await fetchBlogDetails(pathname ?? "");
         loading = false;
@@ -45,8 +94,6 @@ const BlogDetails = async () => {
     } finally {
         loading = false;
     }
-
-
     if (loading) return <Loader />;
 
     return (
