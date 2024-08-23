@@ -52,7 +52,7 @@ async function generateIpoSitemap() {
     "https://www.ipotec.in/ipo/sharesBuyBack",
     "https://www.ipotec.in/ipo-details.xml",
   ];
-  const mainSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  const ipoSitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     ${links
       .map(
@@ -64,34 +64,7 @@ async function generateIpoSitemap() {
       )
       .join("")}
   </urlset>`;
-  generateSitemapFile("sitemap.xml", mainSitemap);
-}
-
-async function generateIpoSitemap() {
-  const currentDate = new Date().toISOString();
-  const links = [
-    "https://www.ipotec.in/ipo",
-    "https://www.ipotec.in/ipo/upcomingIpo",
-    "https://www.ipotec.in/ipo/greyMarketIpo",
-    "https://www.ipotec.in/ipo/smeMarketIpo",
-    "https://www.ipotec.in/ipo/subscriptionStatus",
-    "https://www.ipotec.in/ipo/ipoForms",
-    "https://www.ipotec.in/ipo/sharesBuyBack",
-    "https://www.ipotec.in/ipo-details.xml",
-  ];
-  const mainSitemap = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${links
-      .map(
-        (link) => `<url>
-        <loc>${link}</loc>
-        <lastmod>${currentDate}</lastmod>
-        <priority>1.0</priority>
-      </url>`
-      )
-      .join("")}
-  </urlset>`;
-  generateSitemapFile("sitemap.xml", mainSitemap);
+  generateSitemapFile("sitemap.xml", ipoSitemap);
 }
 
 async function generateMfSitemap() {
@@ -105,7 +78,7 @@ async function generateMfSitemap() {
     "https://www.ipotec.in/amc.xml",
     "https://www.ipotec.in/category.xml",
   ];
-  const mainSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  const mfSitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     ${links
       .map(
@@ -117,7 +90,54 @@ async function generateMfSitemap() {
       )
       .join("")}
   </urlset>`;
-  generateSitemapFile("sitemap.xml", mainSitemap);
+  generateSitemapFile("sitemap.xml", mfSitemap);
+}
+
+async function generateOthersSitemap() {
+  const currentDate = new Date().toISOString();
+  const links = [
+    "https://www.ipotec.in/about-us",
+    "https://www.ipotec.in/privacy-policy",
+    "https://www.ipotec.in/terms-condition",
+    "https://www.ipotec.in/disclaimer",
+    "https://www.ipotec.in/contact",
+  ];
+  const othersSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${links
+      .map(
+        (link) => `<url>
+        <loc>${link}</loc>
+        <lastmod>${currentDate}</lastmod>
+        <priority>1.0</priority>
+      </url>`
+      )
+      .join("")}
+  </urlset>`;
+  generateSitemapFile("sitemap.xml", othersSitemap);
+}
+
+async function generateCalcSitemap() {
+  const currentDate = new Date().toISOString();
+  const links = [
+    "https://www.ipotec.in/calculators",
+    "https://www.ipotec.in/calculators/sip_calculator",
+    "https://www.ipotec.in/calculators/lumpsum_calculator",
+    "https://www.ipotec.in/calculators/swp_calculator",
+  ];
+  const othersSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${links
+      .map(
+        (link) => `<url>
+        <loc>${link}</loc>
+        <lastmod>${currentDate}</lastmod>
+        <priority>1.0</priority>
+      </url>`
+      )
+      .join("")}
+  </urlset>`;
+  generateSitemapFile("sitemap.xml", othersSitemap);
 }
 
 async function generateIpoDetailsSitemap() {
@@ -126,7 +146,7 @@ async function generateIpoDetailsSitemap() {
     "https://apis-iota-five.vercel.app/api/getIpoLinks"
   );
 
-  const ipoSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  const ipoDetailsSitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     ${ipoLinks
       .map(
@@ -140,7 +160,7 @@ async function generateIpoDetailsSitemap() {
       )
       .join("")}
   </urlset>`;
-  generateSitemapFile("ipo-details.xml", ipoSitemap);
+  generateSitemapFile("ipo-details.xml", ipoDetailsSitemap);
 }
 
 async function generateMfDetailsSitemap() {
@@ -148,7 +168,7 @@ async function generateMfDetailsSitemap() {
   const mfLinks = await fetchLinks(
     "https://apis-iota-five.vercel.app/api/getMfLinks"
   );
-  const mfSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  const mfDetailsSitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     ${mfLinks
       .map(
@@ -162,7 +182,7 @@ async function generateMfDetailsSitemap() {
       )
       .join("")}
   </urlset>`;
-  generateSitemapFile("mutualfunds-details.xml", mfSitemap);
+  generateSitemapFile("mutualfunds-details.xml", mfDetailsSitemap);
 }
 
 async function generateAmcSitemap() {
@@ -270,12 +290,13 @@ async function generateCategorySitemap() {
   generateSitemapFile("category.xml", catsitemap);
 }
 
-
 async function generateAllSitemaps() {
   try {
     await generateMainSitemap();
     await generateIpoSitemap();
     await generateMfSitemap();
+    await generateOthersSitemap();
+    await generateCalcSitemap();
     await generateIpoDetailsSitemap();
     // await generateMfDetailsSitemap();
     await generateAmcSitemap();
