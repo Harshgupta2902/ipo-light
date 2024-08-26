@@ -101,6 +101,7 @@ async function generateOthersSitemap() {
     "https://www.ipotec.in/terms-condition",
     "https://www.ipotec.in/disclaimer",
     "https://www.ipotec.in/contact",
+    "https://www.ipotec.in/blogs",
   ];
   const othersSitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
