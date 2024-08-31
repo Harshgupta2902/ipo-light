@@ -11,8 +11,8 @@ export default function GmpDataTables({ data }: { data: any }) {
     "ipo_gmp",
     "price",
     "gain",
-    "kostak",
-    "subject",
+    // "kostak",
+    // "subject",
   ];
   const headers = [
     "Company Name",
@@ -20,8 +20,8 @@ export default function GmpDataTables({ data }: { data: any }) {
     "Grey Market Price",
     "Price",
     "Gain",
-    "Kostak",
-    "Subject",
+    // "Kostak",
+    // "Subject",
   ];
   return (
     <section className="pt-0">
@@ -33,7 +33,7 @@ export default function GmpDataTables({ data }: { data: any }) {
               <div className="p-1.5 align-middle content">
                 <table className="w-full contenttext-sm text-left  text-gray-500">
                   {headers && headers.length > 0 && (
-                      <thead className="text-md text-gray-700 bg-gray-50">
+                    <thead className="text-md text-gray-700 bg-gray-50">
                       <tr>
                         {headers.map((header, index) => (
                           <th key={index} className="py-2">
