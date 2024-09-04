@@ -105,7 +105,7 @@ Where:
 
 ## Systematic Investment Plans (SIPs) in India
 
-SIPs have become a popular method for building wealth in India, especially among the salaried middle class. This is especially true for mutual fund SIPs, as here, retail investors can access the benefits of professional management of their investments at a low cost.
+SIPs have become a popular method for building wealth in India, especially among the salaried middle className. This is especially true for mutual fund SIPs, as here, retail investors can access the benefits of professional management of their investments at a low cost.
 
 ## What is SIP?
 
@@ -188,6 +188,7 @@ const SIPCalculator = () => {
   const [duration, setDuration] = useState(5);
   const [rate, setRate] = useState(12);
   const [investedAmount, setInvestedAmount] = useState(0);
+  const [totalReturns, setTotalReturns] = useState(0);
   const [estimatedReturns, setEstimatedReturns] = useState(0);
   const [chartData, setChartData] = useState<ChartData<"bar">>({
     labels: [],
@@ -237,7 +238,9 @@ const SIPCalculator = () => {
     futureValue = Math.round(futureValue);
 
     setInvestedAmount(invested);
-    setEstimatedReturns(futureValue);
+    setTotalReturns(futureValue);
+    setEstimatedReturns(futureValue - invested);
+
 
     const chartLabels = Array.from({ length: duration }, (_, i) =>
       (i + 1).toString(),
@@ -336,6 +339,9 @@ const SIPCalculator = () => {
                   Invested Amount: ₹{investedAmount.toLocaleString("en-IN")}
                   <br />
                   Estimated Returns: ₹{estimatedReturns.toLocaleString("en-IN")}
+
+                  <br />
+                  Total Returns: ₹{totalReturns.toLocaleString("en-IN")}
                 </p>
               </div>
               <div className="md:col-6 md:order-1">
@@ -355,7 +361,6 @@ const SIPCalculator = () => {
                     name="sip_amount"
                     value={amount}
                     onChange={handleAmountChange}
-
                   />
                 </div>
                 <div className="my-4">
