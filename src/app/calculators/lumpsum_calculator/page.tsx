@@ -141,10 +141,8 @@ const LumpsumCalculator = () => {
 
   const handleAmountChange = (e: any) => {
     const value = parseFloat(e.target.value);
-    if (!isNaN(value) && value >= 0) {
-      setAmount(value);
-      calculateLumpsum(value, duration, rate);
-    }
+    setAmount(value);
+    calculateLumpsum(value, duration, rate);
   };
 
 
@@ -152,18 +150,14 @@ const LumpsumCalculator = () => {
 
   const handleDurationChange = (e: any) => {
     const value = parseInt(e.target.value);
-    if (!isNaN(value) && value >= 0 && value <= 50) {
-      setDuration(value);
-      calculateLumpsum(amount, value, rate);
-    }
+    setDuration(value);
+    calculateLumpsum(amount, value, rate);
   };
 
   const handleRateChange = (e: any) => {
     const value = parseFloat(e.target.value);
-    if (!isNaN(value) && value >= 0 && value <= 150) {
-      setRate(value);
-      calculateLumpsum(amount, duration, value);
-    }
+    setRate(value);
+    calculateLumpsum(amount, duration, value);
   };
 
   const calculateLumpsum = (amount: number, duration: number, rate: number) => {

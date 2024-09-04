@@ -207,27 +207,21 @@ const SIPCalculator = () => {
 
   const handleAmountChange = (e: any) => {
     const value = parseFloat(e.target.value);
-    if (!isNaN(value) && value >= 0) {
-      setAmount(value);
-      calculateSIP(value, duration, rate);
-    }
+    setAmount(value);
+    calculateSIP(value, duration, rate);
   };
 
   const handleDurationChange = (e: any) => {
     const value = parseInt(e.target.value);
-    if (!isNaN(value) && value >= 0 && value <= 50) {
-      setDuration(value);
-      calculateSIP(amount, value, rate);
-    }
+    setDuration(value);
+    calculateSIP(amount, value, rate);
   };
 
 
   const handleRateChange = (e: any) => {
     const value = parseFloat(e.target.value);
-    if (!isNaN(value) && value >= 0 && value <= 150) {
-      setRate(value);
-      calculateSIP(amount, duration, value);
-    }
+    setRate(value);
+    calculateSIP(amount, duration, value);
   };
 
   const calculateSIP = (amount: number, duration: number, rate: number) => {

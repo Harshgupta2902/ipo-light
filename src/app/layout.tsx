@@ -10,7 +10,6 @@ import { headers } from "next/headers";
 import { Analytics } from "@vercel/analytics/react"
 import dynamic from 'next/dynamic';
 import Script from "next/script";
-import { getSchema } from "@/components/constants";
 
 const Footer = dynamic(() => import("@/app/Footer"));
 
