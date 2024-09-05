@@ -29,7 +29,7 @@ const Footer = () => {
                             </div>
                         </Link>
                         <br />
-                        <div className="flex gap-2 mt-2">
+                        {/* <div className="flex gap-2 mt-2">
                             {socialMediaLinks.map((link, index) => (
                                 <React.Fragment key={index}>
                                     <Link prefetch={false} href={""} className="w-1/4 bg-white rounded-md hover:shadow-lg p-2" aria-label="Social Icons">
@@ -37,7 +37,7 @@ const Footer = () => {
                                     </Link>
                                 </React.Fragment>
                             ))}
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="hidden mt-4 ml-[14rem] lg:mt-0 w-full lg:w-2/3 lg:flex">
