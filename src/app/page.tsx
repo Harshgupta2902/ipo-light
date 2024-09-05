@@ -36,7 +36,7 @@ const HomePage = () => {
       </section>
       <div className="section">
         <div className="container">
-          <div className="row items-center justify-between">
+          <div className="row items-center justify-between sm:block md:block hidden">
             <SimpleSlider />
           </div>
         </div>
