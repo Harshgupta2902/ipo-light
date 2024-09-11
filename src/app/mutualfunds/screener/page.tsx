@@ -8,16 +8,10 @@ import SearchResults from '@/components/mutualfunds/search_results';
 import FilterChips from '@/components/mutualfunds/filter_chips';
 import Image from 'next/image';
 
-const sectionsData = [
-    {
-        title: "Mutual Funds - Screener",
-        imageSrc: "/screener.png",
-        items: [
-            "Filter by Fund Type (Equity, Debt, Hybrid, et  c.)",
-            "Sort by Performance, Ratings, and Returns",
-            "Compare Multiple Funds Side by Side",
-        ],
-    }
+const items = [
+    "Filter by Fund Type (Equity, Debt, Hybrid, etc.)",
+    "Sort by Performance, Ratings, and Returns",
+    "Compare Multiple Funds Side by Side",
 ];
 
 export interface Screener {
@@ -120,45 +114,42 @@ const MfScreenerHomePage = async ({ searchParams }: { searchParams: { page?: str
 
     return (
         <section className='container'>
-            {sectionsData.map((section, index) => (
-                <section key={index}>
-                    <div className="container">
-                        <div className={`row gy-5 lg:gy-0`}>
-                            <div className={`lg:col-8`}>
-                                <h1 className="my-4 pt-6 text-5xl">{section.title}</h1>
-                                <ul className="max-w-md space-y-1 text-gray-500 list-inside ">
-                                    {section.items.map((item, i) => (
-                                        <li key={i} className="flex items-center">
-                                            <svg
-                                                className="w-3.5 h-3.5 me-2 text-green-500"
-                                                aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="currentColor"
-                                                viewBox="0 0 20 20"
-                                            >
-                                                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                                            </svg>
-                                            <h2 className="text-base font-medium" style={{ color: "#343434" }}>{item}</h2>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className={`lg:col-4`}>
-                                <Image
-                                    alt="services-image"
-                                    width="450"
-                                    height="450"
-                                    style={{ mixBlendMode: "multiply" }}
-                                    decoding="async"
-                                    src={section.imageSrc}
-                                    priority
-                                />
-
+            <section className="w-full pb-16">
+                <div className="container px-4 md:px-6">
+                    <div className="grid gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_550px]">
+                        <div className="flex flex-col justify-center space-y-2">
+                            <div className="space-y-2">
+                                <h1 className="my-4 pt-6 text-5xl">{"Mutual Funds - Screener"}</h1>
+                                {items.map((item, i) => (
+                                    <li key={i} className="flex items-center">
+                                        <svg
+                                            className="w-3.5 h-3.5 me-2 text-green-500"
+                                            aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20"
+                                        >
+                                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                        </svg>
+                                        <h2 className="text-base font-medium" style={{ color: "#343434" }}>{item}</h2>
+                                    </li>
+                                ))}
                             </div>
                         </div>
+                        <Image
+                            alt="mf - screener"
+                            width="450"
+                            height="450"
+                            style={{ mixBlendMode: "multiply" }}
+                            decoding="async"
+                            src="/screener.png"
+                            priority
+                        />
                     </div>
-                </section>
-            ))}
+                </div>
+            </section>
+
+
 
             <div className="bg-white">
                 <main className="mx-auto max-w-10xl">
