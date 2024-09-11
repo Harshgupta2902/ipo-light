@@ -116,7 +116,7 @@ const MfScreenerHomePage = async ({ searchParams }: { searchParams: { page?: str
         <section className='container'>
             <section className="w-full pb-16">
                 <div className="container px-4 md:px-6">
-                    <div className="grid gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_550px]">
+                    <div className="grid gap-6 lg:grid-cols-[1fr_500px] lg:gap-12">
                         <div className="flex flex-col justify-center space-y-2">
                             <div className="space-y-2">
                                 <h1 className="my-4 pt-6 text-5xl">{"Mutual Funds - Screener"}</h1>
@@ -148,8 +148,6 @@ const MfScreenerHomePage = async ({ searchParams }: { searchParams: { page?: str
                     </div>
                 </div>
             </section>
-
-
 
             <div className="bg-white">
                 <main className="mx-auto max-w-10xl">
