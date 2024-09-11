@@ -1,12 +1,8 @@
 import { endpoints } from '@/api/endpoints';
 import Loader from '@/app/Loader';
 import NotFound from '@/app/not-found';
-import AnnualizedReturns from '@/components/mutualfunds/details/annualized_returns';
 import ExpenseRatio from '@/components/mutualfunds/details/expense_ratio';
 import FundManagerDetails from '@/components/mutualfunds/details/FundManagerDetails';
-import Holdings from '@/components/mutualfunds/details/holdings';
-import NavChart from '@/components/mutualfunds/details/nav_chart';
-import dynamic from 'next/dynamic';
 import { headers } from 'next/headers';
 import Image from 'next/image';
 
@@ -37,6 +33,69 @@ const fetchNfoDetails = async (fund: string) => {
         throw error;
     }
 }
+
+
+
+export async function generateMetadata() {
+    const headersList = headers();
+    const completepathname = headersList.get("x-url");
+    const pathname = completepathname?.replace('/mutualfunds/nfo/details', "");
+
+    let mfHomeData = null;
+    try {
+        mfHomeData = await fetchNfoDetails(`${pathname}`);
+    } catch (err) {
+        console.error(`Error fetching metadata: ${err}`);
+    }
+
+    const metaTitle = `${mfHomeData.scheme_name} | NFO | ${mfHomeData.sub_category} Fund | IpoTec `;
+    const metaDescription = `${mfHomeData.scheme_name} is ${mfHomeData.sub_category} ${mfHomeData.scheme_type} mutual fund. Start Investing from ${mfHomeData.min_investment_amount}`;
+    const keywords = [
+        mfHomeData.scheme_code,
+        mfHomeData.super_category,
+        mfHomeData.sub_category,
+        mfHomeData.category,
+        mfHomeData.fund_house,
+        mfHomeData.scheme_type,
+        mfHomeData.isin,
+        mfHomeData.plan_type,
+        mfHomeData.fund_manager,
+        "mutual fund investment",
+        "high risk mutual funds",
+        "debt and equity funds",
+    ];
+
+    return {
+        title: metaTitle,
+        description: metaDescription,
+        robots: "index, follow",
+        author: "IpoTec",
+        keywords: keywords,
+        copyright: "Copyright 2024 @ IpoTec",
+        url: "https://www.ipotec.in/",
+        openGraph: {
+            title: metaTitle,
+            description: metaDescription,
+            site: "https://www.ipotec.in/",
+            images: "https://www.ipotec.in/og_image.png",
+            type: "website",
+            url: `https://www.ipotec.in${pathname}`,
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: metaTitle,
+            description: metaDescription,
+            images: "https://www.ipotec.in/og_image.png"
+        },
+        alternates: {
+            canonical: `https://www.ipotec.in${pathname}`,
+        },
+    };
+}
+
+
+
+
 
 const NfoDetails = async () => {
 
