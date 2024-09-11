@@ -20,6 +20,7 @@ export const endpoints = {
   getNav: `${baseURL}getNav`,
   getMfLinks: `${baseURL}getMfLinks`,
   amc: `${baseURL}amc`,
+  nfo: `${baseURL}nfo`,
 
   insertBlog: `${baseURL}insertBlog`,
   blogDetails: `${baseURL}getBlogDetails`,
