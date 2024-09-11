@@ -6,6 +6,7 @@ import Holdings from "@/components/mutualfunds/details/holdings";
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 import NotFound from "@/app/not-found";
+import { ArrowTrendingUpIcon, CurrencyRupeeIcon, ScaleIcon } from '@heroicons/react/24/solid';
 
 const FundManagerDetails = dynamic(() => import("@/components/mutualfunds/details/FundManagerDetails"));
 const ExpenseRatio = dynamic(() => import("@/components/mutualfunds/details/expense_ratio"));
@@ -118,7 +119,7 @@ const MutualFundsDetails = async () => {
     const completepathname = headersList.get("x-url");
     const pathname = completepathname?.replace('/mutualfunds/details/', "");
 
-        let chartPoints = null;
+    let chartPoints = null;
 
     let mfHomeData = null;
     let error = null;
@@ -152,29 +153,74 @@ const MutualFundsDetails = async () => {
                 <section aria-labelledby="products-heading" className="">
                     <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                         <form className="hidden lg:block">
-                            <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow">
-                                <Image
-                                    src={mfHomeData.logo_url}
-                                    className="w-10 h-10 object-contain border rounded-sm p-1"
-                                    width="40"
-                                    height="40"
-                                    alt={mfHomeData.stpDetails ? mfHomeData.stpDetails.amc_name : mfHomeData.fund_name}
-                                    priority
-                                />
-                                <h1 className="text-xl font-bold leading-none text-gray-900">
-                                    {mfHomeData.stpDetails ? mfHomeData.stpDetails.amc_name : mfHomeData.fund_name}
-                                </h1>
-                                <p className="text-sm text-gray-500 mb-4">
-                                    {mfHomeData.stpDetails && mfHomeData.stpDetails.scheme_type}
-                                </p>
-                                <p className="text-sm text-gray-500 mb-4">
-                                    {mfHomeData.nav}
-                                </p>
-                                <p className="text-sm text-gray-500 mb-4">
-                                    {mfHomeData.aum}
-                                </p>
-                                <br />
-                            </div>
+                            <aside className="w-80">
+                                <div className="rounded-lg border bg-card text-gray-900 text-card-foreground shadow-sm">
+                                    <div className="p-6 space-y-4">
+                                        <div className="flex items-center space-x-4">
+                                            <Image
+                                                src={mfHomeData.logo_url}
+                                                alt={mfHomeData.fund_house}
+                                                width={48}
+                                                height={48}
+                                                className="rounded-full"
+                                            />
+                                            <div>
+                                                <h3 className="text-xl font-semibold leading-none">{mfHomeData.fund_house}</h3>
+                                                <p className="text-sm">{`${mfHomeData.plan_type} ${mfHomeData.scheme_type}`}</p>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <div className="flex justify-between">
+                                                <span className="text-sm font-medium">NAV</span>
+                                                <span className="text-sm font-semibold">₹{mfHomeData.nav.toFixed(2)}</span>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center space-x-2">
+                                                    <ArrowTrendingUpIcon className="h-4 w-4 text-muted-foreground" />
+                                                    <span className="text-sm font-medium">Risk</span>
+                                                </div>
+                                                <span className="text-sm font-semibold text-red-500">{mfHomeData.nfo_risk}</span>
+                                            </div>
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center space-x-2">
+                                                    <CurrencyRupeeIcon className="h-4 w-4 text-muted-foreground" />
+                                                    <span className="text-sm font-medium">Min. Investment</span>
+                                                </div>
+                                                <span className="text-sm">₹{mfHomeData.min_investment_amount}</span>
+                                            </div>
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center space-x-2">
+                                                    <ScaleIcon className="h-4 w-4 text-muted-foreground" />
+                                                    <span className="text-sm font-medium">Expense Ratio</span>
+                                                </div>
+                                                <span className="text-sm">{mfHomeData.expense_ratio}%</span>
+                                            </div>
+                                        </div>
+                                        <div className="pt-2">
+                                            <p className="text-xs text-muted-foreground">
+                                                Exit load: {mfHomeData.exit_load}
+                                            </p>
+                                        </div>
+                                        <div className="pt-2">
+                                            <p className="text-xs text-muted-foreground">
+                                                Benchmark: {mfHomeData.benchmark_name}
+                                            </p>
+                                        </div>
+                                        <div className="pt-2">
+                                            <p className="text-xs text-muted-foreground">
+                                                Fund Manager: {mfHomeData.fund_manager}
+                                            </p>
+                                        </div>
+                                        <div className="pt-2">
+                                            <p className="text-xs text-muted-foreground">
+                                                Launch Date: {new Date(mfHomeData.launch_date).toLocaleDateString()}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </aside>
                         </form>
                         <div className="lg:col-span-3">
                             {chartPoints ? <NavChart response={chartPoints} /> : <Loader />}
