@@ -118,7 +118,7 @@ const MutualFundsDetails = async () => {
     const completepathname = headersList.get("x-url");
     const pathname = completepathname?.replace('/mutualfunds/details/', "");
 
-    let chartPoints = null;
+        let chartPoints = null;
 
     let mfHomeData = null;
     let error = null;

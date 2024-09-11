@@ -21,6 +21,7 @@ export const endpoints = {
   getMfLinks: `${baseURL}getMfLinks`,
   amc: `${baseURL}amc`,
   nfo: `${baseURL}nfo`,
+  getNfoDetails: `${baseURL}getNfoDetails`,
 
   insertBlog: `${baseURL}insertBlog`,
   blogDetails: `${baseURL}getBlogDetails`,

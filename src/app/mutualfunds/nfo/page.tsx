@@ -1,14 +1,8 @@
 "use server"
 import React from 'react';
 import { endpoints } from '@/api/endpoints';
-import ScreenerTable from '@/components/mutualfunds/screener-table';
-import Pagination from '@/components/mutualfunds/Pagination';
-import MfFilters from '@/components/mutualfunds/Filters';
-import SearchResults from '@/components/mutualfunds/search_results';
-import FilterChips from '@/components/mutualfunds/filter_chips';
 import Image from 'next/image';
 import NFOTable from '@/components/mutualfunds/nfo-table';
-import { lightFormat } from 'date-fns';
 
 
 const fetchNfo = async () => {
@@ -30,11 +24,13 @@ const NFOHomePage = async () => {
 
     let openNfo = null;
     let closeNfo = null;
+    let upcoming = null;
 
     try {
         const response = await fetchNfo();
         openNfo = response.live;
         closeNfo = response.closed;
+        upcoming = response.upcoming;
     } catch (error) {
         console.error("Error fetching data", error);
     }
@@ -64,22 +60,13 @@ const NFOHomePage = async () => {
             </section>
 
             <div className="bg-white">
-                <main className="mx-auto max-w-10xl">
-                    <section aria-labelledby="products-heading" className="pb-24 pt-6">
-                        <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-
-                            <div className="lg:col-span-3">
-                                <section >
-                                    <div className="container">
-                                        <div className="relative overflow-x-auto sm:rounded-lg">
-                                            <NFOTable live={openNfo} closed={closeNfo} />
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
+                <section >
+                    <div className="container">
+                        <div className="relative overflow-x-auto sm:rounded-lg">
+                            <NFOTable live={openNfo} closed={closeNfo} upcoming={upcoming} />
                         </div>
-                    </section>
-                </main>
+                    </div>
+                </section>
             </div>
 
         </section>

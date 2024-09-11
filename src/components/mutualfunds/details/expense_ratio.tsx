@@ -127,7 +127,7 @@ const ExpenseRatio = ({ expense_ratio, exitload, stampduty, taxImp, expratioList
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>s
+                                    </div>
                                 </div>
                             )}
                             {activeTab === "2" && (
