@@ -42,6 +42,7 @@ const menuData: MenuItem[] = [
       { label: "Screener", url: "/mutualfunds/screener" },
       { label: "AMC", url: "/mutualfunds/amc" },
       { label: "Categories", url: "/mutualfunds/category", },
+      { label: "NFO", url: "/mutualfunds/nfo", },
 
     ],
   },
