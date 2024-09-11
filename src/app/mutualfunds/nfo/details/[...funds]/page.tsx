@@ -3,6 +3,7 @@ import Loader from '@/app/Loader';
 import NotFound from '@/app/not-found';
 import ExpenseRatio from '@/components/mutualfunds/details/expense_ratio';
 import FundManagerDetails from '@/components/mutualfunds/details/FundManagerDetails';
+import { ArrowTrendingUpIcon, CurrencyRupeeIcon, ScaleIcon } from '@heroicons/react/24/solid';
 import { headers } from 'next/headers';
 import Image from 'next/image';
 
@@ -134,29 +135,74 @@ const NfoDetails = async () => {
                 <section aria-labelledby="products-heading" className="">
                     <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                         <form className="hidden lg:block">
-                            <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow">
-                                <Image
-                                    src={nfoData.logo_url}
-                                    className="w-10 h-10 object-contain border rounded-sm p-1"
-                                    width="40"
-                                    height="40"
-                                    alt={nfoData.stpDetails ? nfoData.stpDetails.amc_name : nfoData.fund_name}
-                                    priority
-                                />
-                                <h1 className="text-xl font-bold leading-none text-gray-900">
-                                    {nfoData.stpDetails ? nfoData.stpDetails.amc_name : nfoData.fund_name}
-                                </h1>
-                                <p className="text-sm text-gray-500 mb-4">
-                                    {nfoData.stpDetails && nfoData.stpDetails.scheme_type}
-                                </p>
-                                <p className="text-sm text-gray-500 mb-4">
-                                    {nfoData.nav}
-                                </p>
-                                <p className="text-sm text-gray-500 mb-4">
-                                    {nfoData.aum}
-                                </p>
-                                <br />
-                            </div>
+                            <aside className="w-80">
+                                <div className="rounded-lg border bg-card text-gray-900 text-card-foreground shadow-sm">
+                                    <div className="p-6 space-y-4">
+                                        <div className="flex items-center space-x-4">
+                                            <Image
+                                                src={nfoData.logo_url}
+                                                alt={nfoData.fund_house}
+                                                width={48}
+                                                height={48}
+                                                className="rounded-full"
+                                            />
+                                            <div>
+                                                <h3 className="text-xl font-semibold leading-none">{nfoData.fund_house}</h3>
+                                                <p className="text-sm">{`${nfoData.plan_type} ${nfoData.scheme_type}`}</p>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <div className="flex justify-between">
+                                                <span className="text-sm font-medium">NAV</span>
+                                                <span className="text-sm font-semibold">₹{nfoData.nav.toFixed(2)}</span>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center space-x-2">
+                                                    <ArrowTrendingUpIcon className="h-4 w-4 text-muted-foreground" />
+                                                    <span className="text-sm font-medium">Risk</span>
+                                                </div>
+                                                <span className="text-sm font-semibold text-red-500">{nfoData.nfo_risk}</span>
+                                            </div>
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center space-x-2">
+                                                    <CurrencyRupeeIcon className="h-4 w-4 text-muted-foreground" />
+                                                    <span className="text-sm font-medium">Min. Investment</span>
+                                                </div>
+                                                <span className="text-sm">₹{nfoData.min_investment_amount}</span>
+                                            </div>
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center space-x-2">
+                                                    <ScaleIcon className="h-4 w-4 text-muted-foreground" />
+                                                    <span className="text-sm font-medium">Expense Ratio</span>
+                                                </div>
+                                                <span className="text-sm">{nfoData.expense_ratio}%</span>
+                                            </div>
+                                        </div>
+                                        <div className="pt-2">
+                                            <p className="text-xs text-muted-foreground">
+                                                Exit load: {nfoData.exit_load}
+                                            </p>
+                                        </div>
+                                        <div className="pt-2">
+                                            <p className="text-xs text-muted-foreground">
+                                                Benchmark: {nfoData.benchmark_name}
+                                            </p>
+                                        </div>
+                                        <div className="pt-2">
+                                            <p className="text-xs text-muted-foreground">
+                                                Fund Manager: {nfoData.fund_manager}
+                                            </p>
+                                        </div>
+                                        <div className="pt-2">
+                                            <p className="text-xs text-muted-foreground">
+                                                Launch Date: {new Date(nfoData.launch_date).toLocaleDateString()}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </aside>
                         </form>
                         <div className="lg:col-span-3">
                             <ExpenseRatio exitload={nfoData.exit_load} expense_ratio={nfoData.expense_ratio} stampduty={nfoData.stamp_duty} taxImp={nfoData.category_info.tax_impact} expratioList={nfoData.historic_fund_expense} exitLoadList={nfoData.historic_exit_loads} />
