@@ -25,7 +25,6 @@ async function generateMainSitemap() {
     "https://www.ipotec.in/calculators.xml",
     "https://www.ipotec.in/others.xml",
     "https://www.ipotec.in/ifsc-details.xml",
-    
   ];
   const mainSitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -169,7 +168,7 @@ async function generateIpoDetailsSitemap() {
 
 async function generateIfscDetailsSitemap() {
   const currentDate = new Date().toISOString();
-  const ifscLinks = await fetchLinks(
+  const ifscLinks = [
     "https://ipotec.in/ifsc-details1.xml",
     "https://ipotec.in/ifsc-details2.xml",
     "https://ipotec.in/ifsc-details3.xml",
@@ -188,8 +187,7 @@ async function generateIfscDetailsSitemap() {
     "https://ipotec.in/ifsc-details16.xml",
     "https://ipotec.in/ifsc-details17.xml",
     "https://ipotec.in/ifsc-details18.xml"
-
-  );
+  ];
 
   const ifscDetailsSitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
