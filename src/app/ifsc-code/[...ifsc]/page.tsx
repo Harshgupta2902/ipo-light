@@ -1,4 +1,5 @@
 import { headers } from "next/headers";
+import Link from "next/link";
 
 
 export async function generateMetadata() {
@@ -66,6 +67,8 @@ const IfscDetails = async () => {
     const pathname = completepathname?.replace('/ifsc-code/', "");
     const ifsc = pathname?.split('/').pop();
 
+    const segments = completepathname?.split('/').filter(segment => segment);
+
     let data = null;
     try {
         data = await fetchIfscData(ifsc ?? "");
@@ -74,7 +77,35 @@ const IfscDetails = async () => {
     }
     return (
         <div className="section">
+
             <div className="container">
+                <nav className="flex" aria-label="Breadcrumb">
+                    <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+                        {segments?.map((segment, index) => {
+                            const isLast = index === segments.length - 1;
+                            return (
+                                <li key={index} className="inline-flex items-center">
+                                    {isLast ? (
+                                        <span className="text-sm font-medium text-gray-700 md:ms-2">
+                                            {segment}
+                                        </span>
+                                    ) : (
+                                        <>
+
+                                            <span className="inline-flex items-center text-sm font-medium text-gray-700">
+                                                {segment}
+                                            </span>
+                                            <svg className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
+                                            </svg>
+                                        </>
+                                    )}
+                                </li>
+                            );
+                        })}
+                    </ol>
+                </nav>
+                <br />
                 <div className="container relative overflow-x-auto sm:rounded content">
                     <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
                         <tbody>
