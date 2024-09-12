@@ -179,7 +179,7 @@ async function generateIfscDetailsSitemap() {
       .map(
         (link) => `
       <url>
-        <loc>https://www.ipotec.in/ifsc-code/${link}</loc>
+        <loc>https://www.ipotec.in/ifsc-code/${link.replaceAll("&", "-")}</loc>
         <lastmod>${currentDate}</lastmod>
         <priority>0.80</priority>
       </url>
