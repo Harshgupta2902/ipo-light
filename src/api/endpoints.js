@@ -26,6 +26,9 @@ export const endpoints = {
   insertBlog: `${baseURL}insertBlog`,
   blogDetails: `${baseURL}getBlogDetails`,
   getBlogs: `${baseURL}getblogs`,
+
+  getIfsc: `${baseURL}getIfsc`,
+
 };
 
 // getMfHomeChart: `${baseURL}getMfHomeChart`,
