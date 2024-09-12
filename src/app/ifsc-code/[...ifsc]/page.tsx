@@ -77,7 +77,6 @@ const IfscDetails = async () => {
     }
     return (
         <div className="section">
-
             <div className="container">
                 <nav className="flex ml-4" aria-label="Breadcrumb">
                     <ol className="inline-flex items-center space-x-1md:space-x-2 rtl:space-x-reverse">
@@ -122,8 +121,6 @@ const IfscDetails = async () => {
                 </div>
             </div>
         </div>
-
-
     );
 };
 

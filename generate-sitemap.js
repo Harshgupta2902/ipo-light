@@ -24,6 +24,8 @@ async function generateMainSitemap() {
     "https://www.ipotec.in/blog.xml",
     "https://www.ipotec.in/calculators.xml",
     "https://www.ipotec.in/others.xml",
+    "https://www.ipotec.in/ifsc-details.xml",
+    
   ];
   const mainSitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -163,6 +165,29 @@ async function generateIpoDetailsSitemap() {
       .join("")}
   </urlset>`;
   generateSitemapFile("ipo-details.xml", ipoDetailsSitemap);
+}
+
+async function generateIfscDetailsSitemap() {
+  const currentDate = new Date().toISOString();
+  const ifscLinks = await fetchLinks(
+    "https://apis-iota-five.vercel.app/api/getIfsc/ICIC0000184?all=all"
+  );
+
+  const ifscDetailsSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${ifscLinks.links
+      .map(
+        (link) => `
+      <url>
+        <loc>https://www.ipotec.in/ifsc-code/${link}</loc>
+        <lastmod>${currentDate}</lastmod>
+        <priority>0.80</priority>
+      </url>
+    `
+      )
+      .join("")}
+  </urlset>`;
+  generateSitemapFile("ifsc-details.xml", ifscDetailsSitemap);
 }
 
 async function generateNfoDetailsSitemap() {
@@ -346,6 +371,7 @@ async function generateAllSitemaps() {
     await generateCalcSitemap();
     await generateBlogsSitemap();
     await generateIpoDetailsSitemap();
+    await generateIfscDetailsSitemap();
     // await generateMfDetailsSitemap();
     await generateAmcSitemap();
     await generateCategorySitemap();
