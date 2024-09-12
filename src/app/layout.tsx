@@ -219,7 +219,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
             `,
           }}
         />
-        <Footer />
+        {pathname?.includes("ifsc-code") === true ? null : <Footer />}
       </body>
     </html>
   );
