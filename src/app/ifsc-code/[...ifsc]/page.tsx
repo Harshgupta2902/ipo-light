@@ -79,8 +79,8 @@ const IfscDetails = async () => {
         <div className="section">
 
             <div className="container">
-                <nav className="flex" aria-label="Breadcrumb">
-                    <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+                <nav className="flex ml-4" aria-label="Breadcrumb">
+                    <ol className="inline-flex items-center space-x-1md:space-x-2 rtl:space-x-reverse">
                         {segments?.map((segment, index) => {
                             const isLast = index === segments.length - 1;
                             return (
