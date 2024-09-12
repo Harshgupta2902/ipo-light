@@ -1,6 +1,51 @@
 import { headers } from "next/headers";
 
 
+export async function generateMetadata() {
+    const headersList = headers();
+    const completepathname = headersList.get("x-url");
+    const pathname = completepathname?.replace('/ifsc-code/', "");
+    const ifsc = pathname?.split('/').pop();
+
+    let data = null;
+    try {
+        data = await fetchIfscData(ifsc ?? "");
+    } catch (err) {
+        console.error(`Error fetching IFSC DATA: ${err}`);
+    }
+
+    const metaTitle = `${data.IFSC} - ${data.BANK} ${data.BRANCH} BRANCH IFSC CODE`;
+    const metaDescription = `Find Bank Details for IFSC:-${data.IFSC} of ${data.BANK} ${data.BRANCH} BRANCH, MICR Code, Branch Code, Address, and Phone Number for NEFT, RTGS, ECS.`;
+    const keywords = `${data.IFSC}, ${data.BANK}, ${data.BRANCH}, ${data.MICR}, ${data.ADDRESS}, ${data.CENTRE}`;
+    return {
+        title: metaTitle,
+        description: metaDescription,
+        robots: "index, follow",
+        author: "IpoTec",
+        keywords: keywords,
+        copyright: "Copyright 2024 @ IpoTec",
+        url: "https://www.ipotec.in/",
+        openGraph: {
+            title: metaTitle,
+            description: metaDescription,
+            site: "https://www.ipotec.in/",
+            images: "https://www.ipotec.in/og_image.png",
+            type: "website",
+            url: `https://www.ipotec.in${completepathname}`,
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: metaTitle,
+            description: metaDescription,
+            images: "https://www.ipotec.in/og_image.png",
+        },
+        alternates: {
+            canonical: `https://www.ipotec.in${completepathname}`,
+        },
+    };
+}
+
+
 const fetchIfscData = async (ifsc: string) => {
     try {
         const response = await fetch(`https://ifsc.razorpay.com/${ifsc}`);
