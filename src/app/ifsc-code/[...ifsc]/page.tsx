@@ -24,8 +24,6 @@ const IfscDetails = async () => {
     let data = null;
     try {
         data = await fetchIfscData(ifsc ?? "");
-        console.log(data);
-
     } catch (err) {
         console.error(`Error fetching IFSC DATA: ${err}`);
     }
