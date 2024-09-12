@@ -170,16 +170,34 @@ async function generateIpoDetailsSitemap() {
 async function generateIfscDetailsSitemap() {
   const currentDate = new Date().toISOString();
   const ifscLinks = await fetchLinks(
-    "https://apis-iota-five.vercel.app/api/getIfsc/ICIC0000184?all=all"
+    "https://ipotec.in/ifsc-details1.xml",
+    "https://ipotec.in/ifsc-details2.xml",
+    "https://ipotec.in/ifsc-details3.xml",
+    "https://ipotec.in/ifsc-details4.xml",
+    "https://ipotec.in/ifsc-details5.xml",
+    "https://ipotec.in/ifsc-details6.xml",
+    "https://ipotec.in/ifsc-details7.xml",
+    "https://ipotec.in/ifsc-details8.xml",
+    "https://ipotec.in/ifsc-details9.xml",
+    "https://ipotec.in/ifsc-details10.xml",
+    "https://ipotec.in/ifsc-details11.xml",
+    "https://ipotec.in/ifsc-details12.xml",
+    "https://ipotec.in/ifsc-details13.xml",
+    "https://ipotec.in/ifsc-details14.xml",
+    "https://ipotec.in/ifsc-details15.xml",
+    "https://ipotec.in/ifsc-details16.xml",
+    "https://ipotec.in/ifsc-details17.xml",
+    "https://ipotec.in/ifsc-details18.xml"
+
   );
 
   const ifscDetailsSitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${ifscLinks.links
+    ${ifscLinks
       .map(
         (link) => `
       <url>
-        <loc>https://www.ipotec.in/ifsc-code/${link.replaceAll("&", "-")}</loc>
+        <loc>${link}</loc>
         <lastmod>${currentDate}</lastmod>
         <priority>0.80</priority>
       </url>
