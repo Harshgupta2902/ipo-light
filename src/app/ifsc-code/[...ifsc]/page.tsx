@@ -55,7 +55,7 @@ function capitalizeWords(str: any) {
         .join(' ');
 }
 
-export const faqList = [
+const faqList = [
     {
         question: "What is RTGS code?",
         answer: "The IFSC code is often referred to as RTGS code or NEFT code, since it is used to transfer money using RTGS."
