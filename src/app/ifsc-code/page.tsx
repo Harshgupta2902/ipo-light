@@ -1,61 +1,87 @@
-"use client"
-import { endpoints } from '@/api/endpoints';
-import Link from 'next/link';
-import React, { useState } from 'react';
-import { useDebouncedCallback } from 'use-debounce'
-const fetchIFSCSuggestions = async (query: string): Promise<string[]> => {
-    await new Promise(resolve => setTimeout(resolve, 300))
-    const response = await fetchIfsc(query);
-    return response;
-}
+"use server"
+import { markdownify } from '@/components/common/textConverter';
+import SearchBoxIfsc from '@/components/mutualfunds/SearchBoxIfsc';
+import React from 'react';
 
 
-const fetchIfsc = async (ifsc: string) => {
-    try {
-        const response = await fetch(`${endpoints.getIfsc}/${ifsc}`);
-        if (!response.ok) {
-            throw new Error("Data not found");
-        }
-        return await response.json();
-    } catch (error) {
-        console.error("Error fetching GmpIpo", error);
-        throw error;
-    }
-};
 
-const IFSCSearch: React.FC = () => {
-    const [query, setQuery] = useState('')
-    const [suggestions, setSuggestions] = useState<any[]>([]);
-    const [isLoading, setIsLoading] = useState(false)
+const ifscContent = `
 
-    const debouncedFetch = useDebouncedCallback(async (value: string) => {
-        if (value.length > 3) {
-            setIsLoading(true)
-            try {
-                const results = await fetchIFSCSuggestions(value)
-                setSuggestions(results)
-            } catch (error) {
-                console.error('Error fetching suggestions:', error)
-                setSuggestions([])
-            } finally {
-                setIsLoading(false)
-            }
-        } else {
-            setSuggestions([])
-        }
-    }, 300)
+### What is an IFSC Code?
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value
-        setQuery(value)
-        debouncedFetch(value)
-    }
+The **Indian Financial System Code (IFSC)** is a unique alphanumeric identifier used to route electronic transactions to the correct bank branch in India. It ensures accurate processing of electronic funds transfers through systems like NEFT, RTGS, and IMPS.
 
-    const handleSuggestionClick = (suggestion: any) => {
-        setQuery(suggestion.Ifsc)
-        setSuggestions([])
-    }
+### Importance of an IFSC Code
 
+1. **Accuracy**: Ensures that your money is transferred to the correct bank branch.
+2. **Speed**: Facilitates quick electronic transactions between different banks.
+3. **Security**: Minimizes the risk of errors and fraud in transactions.
+4. **Versatility**: Supports various electronic payment systems including NEFT, RTGS, and IMPS.
+
+### Format of an IFSC Code
+
+An IFSC code is an 11-character alphanumeric code structured as follows:
+
+| **Component**   | **Characters** | **Description**                        |
+|-----------------|----------------|----------------------------------------|
+| Bank Code       | 4              | Represents the bank's name.            |
+| Branch Identifier| 1             | Always '0' (zero), serves as a placeholder. |
+| Branch Code      | 6             | Identifies the specific branch.        |
+
+Example: SBIN0001234  
+- **SBIN**: State Bank of India  
+- **0**: Placeholder  
+- **001234**: Specific branch code
+
+### How It Works
+
+1. **Initiation**: Enter the IFSC code while making an electronic transfer.
+2. **Routing**: The system uses the IFSC code to route the transaction to the correct branch.
+3. **Processing**: The branch processes the request and credits the recipient’s account.
+4. **Confirmation**: Both parties receive notifications confirming the transaction.
+
+### How to Know the IFSC Code
+
+- **Bank Website**: Visit the official bank website for a list of branch IFSC codes.
+- **Passbook/Statement**: Check your bank passbook or account statement for the IFSC code.
+- **Bank Branch**: Contact your bank branch directly for the IFSC code.
+
+### How to Search for an IFSC Code for a Bank Branch
+
+1. **Visit Our Search Tool**: Use our IFSC code search tool to find the code quickly.
+2. **Enter Bank Details**: Input the bank name and branch location.
+3. **Get Results**: Obtain the IFSC code and other details instantly.
+
+### What is MICR?
+
+**MICR (Magnetic Ink Character Recognition)** is a technology used to verify the authenticity of paper documents, such as cheques. It involves printing characters with magnetic ink to facilitate the automated processing of documents.
+
+### Locate IFSC and MICR on a Cheque
+
+- **IFSC Code**: Typically found at the top right corner of the cheque.
+- **MICR Code**: Printed at the bottom of the cheque, preceding the account number.
+
+### Difference Between IFSC and MICR
+
+| **Feature**          | **IFSC Code**                       | **MICR Code**                  |
+|----------------------|-------------------------------------|--------------------------------|
+| **Purpose**          | Identifies the bank branch for electronic transactions. | Verifies authenticity and facilitates cheque processing. |
+| **Format**           | 11 characters (alphanumeric).       | 9 digits (numeric).            |
+| **Location on Cheque** | Top right corner.                  | Bottom of the cheque, before account number. |
+
+### How IFSC Code Helps to Transfer Money
+
+The IFSC code ensures that electronic funds transfers are directed to the correct bank branch. By providing a unique code for each branch, it:
+- **Prevents Errors**: Reduces the risk of funds being sent to the wrong branch.
+- **Speeds Up Transactions**: Facilitates faster processing of payments.
+- **Enhances Security**: Ensures transactions are routed through secure channels.
+
+Use our IFSC code search tool to find the correct codes and make your transactions with confidence!
+`;
+
+
+
+const IFSCSearch = () => {
     return (
         <>
             <div className="max-w-2xl text-center mx-auto py-24 px-5">
@@ -83,145 +109,21 @@ const IFSCSearch: React.FC = () => {
                     Powered by IpoTec &amp; you can effortlessly locate your bank branch with our IFSC code finder. Enter the IFSC code or bank name to get accurate details quickly and easily.
                 </p>
 
-
-                <div className="max-w-md mx-auto p-4">
-                    <div className="relative ">
-                        <input
-                            type="text"
-                            placeholder="Enter IFSC Code"
-                            value={query}
-                            onChange={handleInputChange}
-                            className="rounded-full border-2 shadow hover:border-transparent active:outline-none"
-                        />
-                        {isLoading && (
-                            <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-gray-900"></div>
-                            </div>
-                        )}
-                    </div>
-                    {suggestions.length > 0 && (
-                        <div className="mt-2 mx-10 rounded-lg text-left border bg-card text-base shadow-sm">
-                            <ul className="">
-                                {suggestions.map((suggestion) => (
-                                    <Link href={`ifsc-code/${suggestion.State.toLowerCase().replaceAll(" ", "-")}/${suggestion.City1.toLowerCase().replaceAll(" ", "-")}/${suggestion.Bank.toLowerCase().replaceAll(" ", "-")}/${suggestion.Ifsc}`}>
-                                        <li className={"my-4 px-4"} key={suggestion.id} onClick={() => handleSuggestionClick(suggestion)}>
-                                            <strong>{suggestion.Bank}</strong> - {suggestion.Ifsc} <br />
-                                            {suggestion.Branch},{" "}{suggestion.State}
-                                        </li>
-                                    </Link>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
-                </div>
-
-
-
-
-                {/* <div className="flex justify-center flex-col md:flex-row mt-5 gap-3">
-                    <div className="search">
-                        <input type="text"
-                            value={query}
-                            onChange={handleSearch}
-                            className="rounded-full border-2 shadow hover:border-transparent active:outline-none"
-                            placeholder="Enter IFSC Code" />
-                    </div>
-                    {isDialogOpen && (
-                        <div className="absolute top-full mt-2 w-full max-w-md mx-auto bg-white shadow-lg rounded-lg p-4 z-10">
-                            <ul>
-                                {results.slice(0, 5).map((item, index) => (
-                                    <li key={index} className="py-2 border-b last:border-b-0">
-                                        <strong>{item.code}</strong>: {item.name} - {item.address}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
-                </div> */}
+                <SearchBoxIfsc />
             </div>
-            <div className="grid md:grid-cols-3 max-w-screen-lg mx-auto gap-10 mt-10 px-5">
-                <div className="flex gap-4 items-start flex-col ">
-                    <span className="text-violet-600 bg-violet-500/10 p-3 rounded-full">
-                        <svg
-                            width="15"
-                            height="15"
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-5 h-5"
-                        >
-                            <path
-                                d="M9.96424 2.68571C10.0668 2.42931 9.94209 2.13833 9.6857 2.03577C9.4293 1.93322 9.13832 2.05792 9.03576 2.31432L5.03576 12.3143C4.9332 12.5707 5.05791 12.8617 5.3143 12.9642C5.5707 13.0668 5.86168 12.9421 5.96424 12.6857L9.96424 2.68571ZM3.85355 5.14646C4.04882 5.34172 4.04882 5.6583 3.85355 5.85356L2.20711 7.50001L3.85355 9.14646C4.04882 9.34172 4.04882 9.6583 3.85355 9.85356C3.65829 10.0488 3.34171 10.0488 3.14645 9.85356L1.14645 7.85356C0.951184 7.6583 0.951184 7.34172 1.14645 7.14646L3.14645 5.14646C3.34171 4.9512 3.65829 4.9512 3.85355 5.14646ZM11.1464 5.14646C11.3417 4.9512 11.6583 4.9512 11.8536 5.14646L13.8536 7.14646C14.0488 7.34172 14.0488 7.6583 13.8536 7.85356L11.8536 9.85356C11.6583 10.0488 11.3417 10.0488 11.1464 9.85356C10.9512 9.6583 10.9512 9.34172 11.1464 9.14646L12.7929 7.50001L11.1464 5.85356C10.9512 5.6583 10.9512 5.34172 11.1464 5.14646Z"
-                                fill="currentColor"
-                                fillRule="evenodd"
-                                clipRule="evenodd"
-                            ></path>
-                        </svg>
-                    </span>
-                    <div>
-                        <h3 className="font-semibold text-xl"> Expressive API</h3>
-                        <p className="mt-1 text-gray-500">
-                            {" "}
-                            You don't need to be an expert to use our plugin. Our expressive
-                            API is readable and well documented.
-                        </p>
+            <section className='section'>
+                <div className="container">
+                    <div className="content lg:col-10 mx-auto">
+                        <div className='content' dangerouslySetInnerHTML={markdownify(ifscContent, true)} />
                     </div>
                 </div>
-                <div className="flex gap-4 items-start flex-col ">
-                    <span className="text-violet-600 bg-violet-500/10 p-3 rounded-full">
-                        <svg
-                            width="15"
-                            height="15"
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-5 h-5"
-                        >
-                            <path
-                                d="M0.849976 1.74998C0.849976 1.25292 1.25292 0.849976 1.74998 0.849976H3.24998C3.74703 0.849976 4.14998 1.25292 4.14998 1.74998V2.04998H10.85V1.74998C10.85 1.25292 11.2529 0.849976 11.75 0.849976H13.25C13.747 0.849976 14.15 1.25292 14.15 1.74998V3.24998C14.15 3.74703 13.747 4.14998 13.25 4.14998H12.95V10.85H13.25C13.747 10.85 14.15 11.2529 14.15 11.75V13.25C14.15 13.747 13.747 14.15 13.25 14.15H11.75C11.2529 14.15 10.85 13.747 10.85 13.25V12.95H4.14998V13.25C4.14998 13.747 3.74703 14.15 3.24998 14.15H1.74998C1.25292 14.15 0.849976 13.747 0.849976 13.25V11.75C0.849976 11.2529 1.25292 10.85 1.74998 10.85H2.04998V4.14998H1.74998C1.25292 4.14998 0.849976 3.74703 0.849976 3.24998V1.74998ZM2.94998 4.14998V10.85H3.24998C3.74703 10.85 4.14998 11.2529 4.14998 11.75V12.05H10.85V11.75C10.85 11.2529 11.2529 10.85 11.75 10.85H12.05V4.14998H11.75C11.2529 4.14998 10.85 3.74703 10.85 3.24998V2.94998H4.14998V3.24998C4.14998 3.74703 3.74703 4.14998 3.24998 4.14998H2.94998ZM2.34998 1.74998H1.74998V2.34998V2.64998V3.24998H2.34998H2.64998H3.24998V2.64998V2.34998V1.74998H2.64998H2.34998ZM5.09998 5.99998C5.09998 5.50292 5.50292 5.09998 5.99998 5.09998H6.99998C7.49703 5.09998 7.89998 5.50292 7.89998 5.99998V6.99998C7.89998 7.03591 7.89787 7.07134 7.89378 7.10618C7.92861 7.10208 7.96405 7.09998 7.99998 7.09998H8.99998C9.49703 7.09998 9.89998 7.50292 9.89998 7.99998V8.99998C9.89998 9.49703 9.49703 9.89998 8.99998 9.89998H7.99998C7.50292 9.89998 7.09998 9.49703 7.09998 8.99998V7.99998C7.09998 7.96405 7.10208 7.92861 7.10618 7.89378C7.07134 7.89787 7.03591 7.89998 6.99998 7.89998H5.99998C5.50292 7.89998 5.09998 7.49703 5.09998 6.99998V5.99998ZM6.09998 5.99998H5.99998V6.09998V6.89998V6.99998H6.09998H6.89998H6.99998V6.89998V6.09998V5.99998H6.89998H6.09998ZM7.99998 7.99998H8.09998H8.89998H8.99998V8.09998V8.89998V8.99998H8.89998H8.09998H7.99998V8.89998V8.09998V7.99998ZM2.64998 11.75H2.34998H1.74998V12.35V12.65V13.25H2.34998H2.64998H3.24998V12.65V12.35V11.75H2.64998ZM11.75 1.74998H12.35H12.65H13.25V2.34998V2.64998V3.24998H12.65H12.35H11.75V2.64998V2.34998V1.74998ZM12.65 11.75H12.35H11.75V12.35V12.65V13.25H12.35H12.65H13.25V12.65V12.35V11.75H12.65Z"
-                                fill="currentColor"
-                                fillRule="evenodd"
-                                clipRule="evenodd"
-                            ></path>
-                        </svg>
-                    </span>
-                    <div>
-                        <h3 className="font-semibold text-xl">Highly performant</h3>
-                        <p className="mt-1 text-gray-500">
-                            {" "}
-                            You can make sure your website or app is highly performant with a
-                            built-in system to help you optimize.
-                        </p>
-                    </div>
-                </div>
-                <div className="flex gap-4 items-start flex-col ">
-                    <span className="text-violet-600 bg-violet-500/10 p-3 rounded-full">
-                        <svg
-                            width="15"
-                            height="15"
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-5 h-5"
-                        >
-                            <path
-                                d="M7.28856 0.796908C7.42258 0.734364 7.57742 0.734364 7.71144 0.796908L13.7114 3.59691C13.8875 3.67906 14 3.85574 14 4.05V10.95C14 11.1443 13.8875 11.3209 13.7114 11.4031L7.71144 14.2031C7.57742 14.2656 7.42258 14.2656 7.28856 14.2031L1.28856 11.4031C1.11252 11.3209 1 11.1443 1 10.95V4.05C1 3.85574 1.11252 3.67906 1.28856 3.59691L7.28856 0.796908ZM2 4.80578L7 6.93078V12.9649L2 10.6316V4.80578ZM8 12.9649L13 10.6316V4.80578L8 6.93078V12.9649ZM7.5 6.05672L12.2719 4.02866L7.5 1.80176L2.72809 4.02866L7.5 6.05672Z"
-                                fill="currentColor"
-                                fillRule="evenodd"
-                                clipRule="evenodd"
-                            ></path>
-                        </svg>
-                    </span>
-                    <div>
-                        <h3 className="font-semibold text-xl">No dependencies </h3>
-                        <p className="mt-1 text-gray-500">
-                            {" "}
-                            Our plugins do not have any external dependencies so our plugin
-                            has the minimal footprint possible.
-                        </p>
-                    </div>
-                </div>
-            </div></>
+            </section>
+
+
+
+
+
+        </>
     );
 };
 
