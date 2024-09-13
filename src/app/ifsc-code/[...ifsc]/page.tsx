@@ -1,7 +1,6 @@
+import Accordion from "@/components/common/Accordion";
+import { markdownify } from "@/components/common/textConverter";
 import { headers } from "next/headers";
-import Link from "next/link";
-
-
 export async function generateMetadata() {
     const headersList = headers();
     const completepathname = headersList.get("x-url");
@@ -46,6 +45,76 @@ export async function generateMetadata() {
     };
 }
 
+export const faqList = [
+    {
+        question: "What is RTGS code?",
+        answer: "The IFSC code is often referred to as RTGS code or NEFT code, since it is used to transfer money using RTGS."
+    },
+    {
+        question: "Is IFSC code and branch code the same?",
+        answer: "IFSC code is not the same as branch code. IFSC (Indian Financial System Code) consists of eleven characters and is used to identify the bank and its branch. While the branch code is a part of the IFSC code, it is not the same."
+    },
+    {
+        question: "What is the meaning of RTGS in banking?",
+        answer: "RTGS stands for Real Time Gross Settlement. RTGS is one of the main payment and settlement systems in India. To make a payment using RTGS, one requires details like name of the account holder, account number and the IFSC code of the bank. Money can be transferred from one bank account to another safely using RTGS. IFSC code is often referred to as RTGS code or NEFT code for the same reason."
+    },
+    {
+        question: "Is IFSC code and RTGS the same?",
+        answer: "IFSC stands for Indian Financial System Code. The IFSC code comprises eleven characters and is used to identify the bank and its branch. RTGS stands for Real Time Gross Settlement. It is one of two main payment and settlement systems in India. To conduct any such EFT, IFSC is required."
+    },
+    {
+        question: "What is the branch code of a bank?",
+        answer: "The branch code of a bank branch helps in distinguishing one branch from another. It is available on the bank’s website, printed on cheque books and pass-books. The last 6 characters of any given IFSC code is the branch code."
+    },
+    {
+        question: "What is the difference between NEFT and RTGS?",
+        answer: `
+  NEFT stands for National Electronic Funds Transfer, whereas RTGS refers to Real Time Gross Settlement. These two are the two main money transferring systems in India. Minimal transfer charges are to be paid for conducting transfers using NEFT or RTGS. The key differences between them are explained below:
+  
+  | Parameters               | RTGS                            | NEFT                           |
+  |--------------------------|---------------------------------|--------------------------------|
+  | Full form                | Real Time Gross Settlement       | National Electronic Funds Transfer |
+  | Transfer type            | One-on-one settlement            | Batches                         |
+  | Transfer speed           | Nearly Instant                   | 0-2 hours, settled in batches   |
+  | Minimum transfer amount  | Rs 2 lakh                        | Re. 1                           |
+  | Maximum transfer amount  | Rs. 10 lakhs                     | No limit                        |
+      `
+    },
+    {
+        question: "Is Cheque required for NEFT?",
+        answer: "No, a cheque is not required for NEFT."
+    },
+    {
+        question: "Is IMPS faster than NEFT?",
+        answer: "Yes, IMPS is faster than NEFT as the money gets transferred immediately using IMPS while NEFT is settled in time-regulated batches."
+    },
+    {
+        question: "How much time will it take to settle a NEFT?",
+        answer: "A NEFT is finished immediately. It can sometimes take up to 30 minutes, but it does not take longer than that."
+    },
+    {
+        question: "Are there any charges for NEFT transfer?",
+        answer: `
+  The charges for NEFT depend upon the slab in which the amount falls. The details of these are given below:
+  
+  | Transaction slab               | Charges |
+  |--------------------------------|---------|
+  | Up to Rs. 10,000              | Rs. 2.5  |
+  | From Rs. 10,000 to Rs. 1 lakh | Rs. 5   |
+  | From Rs. 1 lakh to Rs. 2 lakh | Rs. 15  |
+  | From Rs. 2 lakh to Rs. 5 lakh | Rs. 25  |
+  | From Rs 5 lakh to Rs. 10 lakh | Rs. 50  |
+      `
+    },
+    {
+        question: "Can we stop NEFT payment?",
+        answer: "Once initiated, a NEFT payment cannot be stopped. In case any of the details (account number/ IFSC code) are incorrect, the funds get reversed to the account the payment was initiated from."
+    },
+    {
+        question: "Can NEFT transfer be reversed?",
+        answer: "A NEFT payment cannot be reversed. However, in case any of the details required (account number/ IFSC code) are entered incorrectly, the funds get reversed to the account the payment was initiated from."
+    }
+];
 
 const fetchIfscData = async (ifsc: string) => {
     try {
@@ -119,6 +188,22 @@ const IfscDetails = async () => {
                         </tbody>
                     </table>
                 </div>
+                <br />
+
+                <section className="section">
+                    <div className="container">
+                        <div className="lg:col-5 mx-auto text-center">
+                            <h3>Frequently Asked Questions</h3>
+                        </div>
+                        <div className="row justify-center mt-12 ">
+                            {faqList.map((faqItem, index) => (
+                                <Accordion key={index} title={faqItem.question}>
+                                    <div className={"content"} dangerouslySetInnerHTML={markdownify(faqItem.answer, true)} />
+                                </Accordion>
+                            ))}
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     );
