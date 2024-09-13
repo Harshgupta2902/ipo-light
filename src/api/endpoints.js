@@ -28,7 +28,7 @@ export const endpoints = {
   getBlogs: `${baseURL}getblogs`,
 
   getIfsc: `${baseURL}getIfsc`,
-
+  geBankDetails: `${baseURL}geBankDetails`
 };
 
 // getMfHomeChart: `${baseURL}getMfHomeChart`,

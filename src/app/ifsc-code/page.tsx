@@ -82,9 +82,10 @@ Use our IFSC code search tool to find the correct codes and make your transactio
 
 
 const IFSCSearch = () => {
+   
     return (
         <>
-            <div className="max-w-2xl text-center mx-auto py-24 px-5">
+            <div className="max-w-2xl text-center mx-auto pt-6 px-5">
                 <span className="p-4 bg-violet-500 text-white inline-flex rounded-full ">
                     <svg
                         width="15"
@@ -106,9 +107,9 @@ const IFSCSearch = () => {
                     Locate your Bank using IFSC Finder
                 </h1>
                 <p className="mt-3 text-gray-500 md:text-lg">
-                    Powered by IpoTec &amp; you can effortlessly locate your bank branch with our IFSC code finder. Enter the IFSC code or bank name to get accurate details quickly and easily.
+                    Effortlessly locate your bank branch details with our IFSC code finder <br />Enter the IFSC code or bank name to get accurate details quickly.
                 </p>
-
+                <br />
                 <SearchBoxIfsc />
             </div>
             <section className='section'>
@@ -118,11 +119,6 @@ const IFSCSearch = () => {
                     </div>
                 </div>
             </section>
-
-
-
-
-
         </>
     );
 };
