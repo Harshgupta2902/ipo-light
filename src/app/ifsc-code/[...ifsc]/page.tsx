@@ -1,6 +1,7 @@
 import Accordion from "@/components/common/Accordion";
 import { markdownify } from "@/components/common/textConverter";
 import { headers } from "next/headers";
+import Link from "next/link";
 export async function generateMetadata() {
     const headersList = headers();
     const completepathname = headersList.get("x-url");
@@ -43,6 +44,15 @@ export async function generateMetadata() {
             canonical: `https://www.ipotec.in${completepathname}`,
         },
     };
+}
+
+
+function capitalizeWords(str: any) {
+    return str
+        .toLowerCase()
+        .split('-')
+        .map((word: any) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
 }
 
 export const faqList = [
@@ -145,66 +155,80 @@ const IfscDetails = async () => {
         console.error(`Error fetching IFSC DATA: ${err}`);
     }
     return (
-        <div className="section">
-            <div className="container">
-                <nav className="flex ml-4" aria-label="Breadcrumb">
-                    <ol className="inline-flex items-center space-x-1md:space-x-2 rtl:space-x-reverse">
-                        {segments?.map((segment, index) => {
-                            const isLast = index === segments.length - 1;
-                            return (
-                                <li key={index} className="inline-flex items-center">
-                                    {isLast ? (
-                                        <span className="text-sm font-medium text-gray-700 md:ms-2">
-                                            {segment}
-                                        </span>
-                                    ) : (
-                                        <>
+        <div className="container">
+            <nav className="flex ml-4 mt-4" aria-label="Breadcrumb">
+                <ol className="inline-flex items-center space-x-1md:space-x-2 rtl:space-x-reverse">
+                    {segments?.map((segment, index) => {
+                        const isLast = index === segments.length - 1;
+                        const isFirst = index === 0;
+                        return (
+                            <li key={index} className="inline-flex items-center">
+                                {isLast ? (
+                                    <span className="text-xs font-medium text-gray-700 md:ms-2">
+                                        {segment}
+                                    </span>
+                                ) : isFirst ? (
+                                    <>
 
-                                            <span className="inline-flex items-center text-sm font-medium text-gray-700">
-                                                {segment}
+                                        <Link href={"/ifsc-code"}>
+                                            <span className="text-xs font-bold text-gray-700 md:ms-2">
+                                                {capitalizeWords(segment)}
                                             </span>
-                                            <svg className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
-                                            </svg>
-                                        </>
-                                    )}
-                                </li>
+                                        </Link>
+                                        <svg className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
+                                        </svg>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span className="inline-flex items-center text-xs font-medium text-gray-700">
+                                            {capitalizeWords(segment)}
+                                        </span>
+                                        <svg className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
+                                        </svg>
+                                    </>
+                                )}
+                            </li>
+                        );
+                    })}
+                </ol>
+            </nav>
+            <div className=" container relative overflow-x-auto sm:rounded content">
+                <h1 className="text-2xl" >{data.BANK} IFSC Code {data.BRANCH}, {data.STATE}</h1>
+                <p className="text-md" >IFSC Code of {data.BANK} is {" "}
+                    <strong id="IFSC">{data.IFSC}</strong>
+                </p>
+                <p className="text-md pb-6" >Find More Details of {data.BANK}, {data.BRANCH}, {data.STATE} below:</p>
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
+                    <tbody>
+                        {Object.entries(data).map(([key, value]) => {
+                            return (value === null || value === '' ? null :
+                                <tr key={key}>
+                                    <td><strong>{key}</strong></td>
+                                    <td>{value?.toString()}</td>
+                                </tr>
                             );
                         })}
-                    </ol>
-                </nav>
-                <br />
-                <div className="container relative overflow-x-auto sm:rounded content">
-                    <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
-                        <tbody>
-                            {Object.entries(data).map(([key, value]) => {
-                                return (value === null || value === '' ? null :
-                                    <tr key={key}>
-                                        <td><strong>{key}</strong></td>
-                                        <td>{value?.toString()}</td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
-                </div>
-                <br />
-
-                <section className="section">
-                    <div className="container">
-                        <div className="lg:col-5 mx-auto text-center">
-                            <h3>Frequently Asked Questions</h3>
-                        </div>
-                        <div className="row justify-center mt-12 ">
-                            {faqList.map((faqItem, index) => (
-                                <Accordion key={index} title={faqItem.question}>
-                                    <div className={"content"} dangerouslySetInnerHTML={markdownify(faqItem.answer, true)} />
-                                </Accordion>
-                            ))}
-                        </div>
-                    </div>
-                </section>
+                    </tbody>
+                </table>
             </div>
+            <br />
+
+            <section className="section">
+                <div className="container">
+                    <div className="lg:col-5 mx-auto text-center">
+                        <h3>Frequently Asked Questions</h3>
+                    </div>
+                    <div className="row justify-center mt-12 ">
+                        {faqList.map((faqItem, index) => (
+                            <Accordion key={index} title={faqItem.question}>
+                                <div className={"content"} dangerouslySetInnerHTML={markdownify(faqItem.answer, true)} />
+                            </Accordion>
+                        ))}
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };
