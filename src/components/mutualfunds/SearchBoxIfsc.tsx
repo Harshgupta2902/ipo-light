@@ -78,8 +78,29 @@ const IFSCSearch: React.FC = () => {
                         {suggestions.map((suggestion) => (
                             <Link href={`ifsc-code/${suggestion.State.toLowerCase().replaceAll(" ", "-")}/${suggestion.City1.toLowerCase().replaceAll(" ", "-")}/${suggestion.Bank.toLowerCase().replaceAll(" ", "-")}/${suggestion.Ifsc}`}>
                                 <li className={"my-4 px-4"} key={suggestion.id} onClick={() => handleSuggestionClick(suggestion)}>
+                                    <div className="flex items-center">
+                                        <div className="flex-shrink-0">
+                                            <img src={`/Banks/${suggestion.Bank}.png`}
+                                                alt={`${suggestion.Bank}`}
+                                                className="w-8 h-8 mr-4 rounded-full" />
+                                        </div>
+                                        <div className="flex-1 min-w-0">
+                                            <p className="text-sm font-medium text-gray-900 truncate">
+                                                {suggestion.Ifsc}
+                                            </p>
+                                            <p className="text-sm text-gray-500">
+                                                {suggestion.Branch},{" "}{suggestion.State}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    {/* <img
+                                        src={`/Banks/${suggestion.Bank}.png`}
+                                        alt={`${suggestion.Bank} logo`}
+                                        className="w-8 h-8 mr-4 rounded-full"
+                                    />
                                     <strong>{suggestion.Bank}</strong> - {suggestion.Ifsc} <br />
-                                    {suggestion.Branch},{" "}{suggestion.State}
+                                    {suggestion.Branch},{" "}{suggestion.State} */}
                                 </li>
                             </Link>
                         ))}
