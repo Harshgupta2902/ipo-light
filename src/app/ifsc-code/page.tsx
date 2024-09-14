@@ -9,18 +9,18 @@ const ifscContent = `
 
 ### What is an IFSC Code?
 
-The **Indian Financial System Code (IFSC)** is a unique alphanumeric identifier used to route electronic transactions to the correct bank branch in India. It ensures accurate processing of electronic funds transfers through systems like NEFT, RTGS, and IMPS.
+IFSC Code or **Indian Financial System Code (IFSC)** is an 11-character unique alphanumeric code allotted to each different bank branchs in India. It ensures that fund transfer is processed accurately by systems such as NEFT, RTGS, and IMPS.
 
 ### Importance of an IFSC Code
 
-1. **Accuracy**: Ensures that your money is transferred to the correct bank branch.
+1. **Accuracy**: It Ensures that your money is transferred or not to the correct bank branch.
 2. **Speed**: Facilitates quick electronic transactions between different banks.
-3. **Security**: Minimizes the risk of errors and fraud in transactions.
-4. **Versatility**: Supports various electronic payment systems including NEFT, RTGS, and IMPS.
+3. **Security**: Minimizes frauds and risk of errors in transactions between two persons.
+4. **Versatility**: It Supports more than one electronic payment systems which includes NEFT, RTGS, and IMPS.
 
 ### Format of an IFSC Code
 
-An IFSC code is an 11-character alphanumeric code structured as follows:
+It's an 11-character alphanumeric code and it's breakdown is as follow:
 
 | **Component**   | **Characters** | **Description**                        |
 |-----------------|----------------|----------------------------------------|
@@ -54,7 +54,7 @@ Example: SBIN0001234
 
 ### What is MICR?
 
-**MICR (Magnetic Ink Character Recognition)** is a technology used to verify the authenticity of paper documents, such as cheques. It involves printing characters with magnetic ink to facilitate the automated processing of documents.
+MICR or **Magnetic Ink Character Recognition** is a set of technology which is used to verify the authenticity of paper documents, such as cheques to minimize the frauds. It involves printing characters with magnetic ink to facilitate the automated processing of documents
 
 ### Locate IFSC and MICR on a Cheque
 
