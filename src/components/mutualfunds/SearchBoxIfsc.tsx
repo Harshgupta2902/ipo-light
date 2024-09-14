@@ -270,11 +270,6 @@ const IFSCSearch: React.FC = () => {
                                 onChange={handleInputChange} />
                         </div>
 
-                        <div className="whitespace-nowrap pt-2 sm:pt-0 grid sm:block">
-                            <a className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700" href="#">
-                                Find
-                            </a>
-                        </div>
                     </div>
                     {suggestions.length > 0 && (
                         <div className="mt-2 mx-10 rounded-lg text-left border bg-card text-base shadow-sm">
