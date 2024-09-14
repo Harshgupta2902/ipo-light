@@ -60,6 +60,15 @@ const menuData: MenuItem[] = [
     label: "Blogs",
     url: "/blogs",
   },
+  {
+    label: "Tools",
+    url: "",
+    dropdown: true,
+    dropdownItems: [
+      { label: "IFSC Finder", url: "/ifsc-code" },
+      // { label: "PinCode Finder", url: "/pincode" },
+    ],
+  },
 ];
 
 
