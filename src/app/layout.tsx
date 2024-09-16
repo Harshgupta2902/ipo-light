@@ -131,14 +131,9 @@ const mainSchema = {
 
 
 export async function generateMetadata() {
-
   const headersList = headers();
   const pathname = headersList.get("x-url");
-
   const metaData = await fetchMetadata(pathname ?? "/");
-
-  // console.log("metaDatapathnmae:::::::::;;;", pathname);
-
 
   if (metaData.error || !metaData) {
     return {
