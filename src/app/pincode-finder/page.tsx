@@ -1,12 +1,10 @@
 "use server"
-import { markdownify } from '@/components/common/textConverter';
-import SearchBoxIfsc from '@/components/mutualfunds/SearchBoxIfsc';
+import SearchBoxPincode from '@/components/mutualfunds/SearchBoxPinCode';
 import React from 'react';
 
 
 
-const IFSCSearch = () => {
-
+const PinCodeFinder = () => {
     return (
         <>
             <div className="overflow-hidden">
@@ -21,7 +19,7 @@ const IFSCSearch = () => {
                             </h1>
                         </div>
 
-                        <SearchBoxIfsc />
+                        <SearchBoxPincode />
 
                         <div className="hidden absolute top-2/4 start-0 transform -translate-y-2/4 -translate-x-40 md:block lg:-translate-x-80" aria-hidden="true">
                             <svg className="w-52 h-auto" width="717" height="653" viewBox="0 0 717 653" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,7 +37,7 @@ const IFSCSearch = () => {
                             </svg>
                         </div>
                     </div>
-                        {/* <div className="max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
+                    {/* <div className="max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
                             <div className="max-w-2xl">
                                 <div className="space-y-5 md:space-y-8 content" dangerouslySetInnerHTML={markdownify(ifscContent, true)} />
                             </div>
@@ -63,4 +61,4 @@ const IFSCSearch = () => {
     );
 };
 
-export default IFSCSearch;
+export default PinCodeFinder;
