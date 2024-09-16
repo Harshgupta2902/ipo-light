@@ -3,13 +3,13 @@ import { endpoints } from "@/api/endpoints";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
-const fetchIFSCSuggestions = async (query: string): Promise<string[]> => {
+const fecthPinCodeSuggestions = async (query: string): Promise<string[]> => {
     await new Promise((resolve) => setTimeout(resolve, 300));
-    const response = await fetchIfsc(query);
+    const response = await fetchPinCode(query);
     return response;
 };
 
-const fetchIfsc = async (ifsc: string) => {
+const fetchPinCode = async (ifsc: string) => {
     try {
         const response = await fetch(`${endpoints.getIfsc}/${ifsc}`);
         if (!response.ok) {
@@ -68,7 +68,7 @@ const SearchBoxPincode: React.FC = () => {
     const debouncedFetch = useDebouncedCallback(async (value: string) => {
         if (value.length > 3) {
             try {
-                const results = await fetchIFSCSuggestions(value);
+                const results = await fecthPinCodeSuggestions(value);
                 setSuggestions(results);
             } catch (error) {
                 console.error("Error fetching suggestions:", error);
