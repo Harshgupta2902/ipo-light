@@ -11,7 +11,7 @@ const fecthPinCodeSuggestions = async (query: string): Promise<string[]> => {
 
 const fetchPinCode = async (ifsc: string) => {
     try {
-        const response = await fetch(`${endpoints.getIfsc}/${ifsc}`);
+        const response = await fetch(`${endpoints.getPincode}?pincode=${ifsc}`);
         if (!response.ok) {
             throw new Error("Data not found");
         }
@@ -23,24 +23,24 @@ const fetchPinCode = async (ifsc: string) => {
 };
 
 
-const fetchBankDetails = async (
+const fetchPinCodeDetails = async (
     state?: string,
     city?: string,
     bank?: string
 ) => {
     try {
-        let url = `${endpoints.geBankDetails}`;
+        let url = `${endpoints.getPincode}`;
 
         if (state) {
             url += `?state=${state}`;
         }
 
         if (city) {
-            url += `&city=${city}`;
+            url += `&district=${city}`;
         }
 
         if (bank) {
-            url += `&bank=${bank}`;
+            url += `&office=${bank}`;
         }
 
         const response = await fetch(url);
@@ -66,7 +66,7 @@ const SearchBoxPincode: React.FC = () => {
     const [allData, setAllData] = useState<any[]>([]);
 
     const debouncedFetch = useDebouncedCallback(async (value: string) => {
-        if (value.length > 3) {
+        if (value.length > 5) {
             try {
                 const results = await fecthPinCodeSuggestions(value);
                 setSuggestions(results);
@@ -146,7 +146,7 @@ const SearchBoxPincode: React.FC = () => {
     };
 
     const getData = async (state?: string, city?: string, bank?: string) => {
-        return await fetchBankDetails(state, city, bank);
+        return await fetchPinCodeDetails(state, city, bank);
     };
 
     return (
@@ -199,16 +199,19 @@ const SearchBoxPincode: React.FC = () => {
                             <ul>
                                 {suggestions.map((suggestion) => (
                                     <Link
-                                        href={`ifsc-code/${suggestion.State.toLowerCase().replaceAll(
+                                        href={`pincode-finder/${suggestion.State.toLowerCase().replaceAll(
                                             " ",
                                             "-"
-                                        )}/${suggestion.City1.toLowerCase().replaceAll(
+                                        )}/${suggestion.District.toLowerCase().replaceAll(
                                             " ",
                                             "-"
-                                        )}/${suggestion.Bank.toLowerCase().replaceAll(
+                                        )}/${suggestion.Taluk.toLowerCase().replaceAll(
                                             " ",
                                             "-"
-                                        )}/${suggestion.Ifsc}`}
+                                        )}/${suggestion.PostOffice.toLowerCase().replaceAll(
+                                            " ",
+                                            "-"
+                                        )}`}
                                     >
                                         <li
                                             className={"my-4 px-4"}
@@ -216,19 +219,12 @@ const SearchBoxPincode: React.FC = () => {
                                             onClick={() => handleSuggestionClick(suggestion)}
                                         >
                                             <div className="flex items-center">
-                                                <div className="flex-shrink-0">
-                                                    <img
-                                                        src={`/Banks/${suggestion.Bank}.png`}
-                                                        alt={`${suggestion.Bank}`}
-                                                        className="w-8 h-8 mr-4 rounded-full"
-                                                    />
-                                                </div>
                                                 <div className="flex-1 min-w-0">
                                                     <p className="text-sm font-medium text-gray-900 truncate">
-                                                        {suggestion.Ifsc}
+                                                        {`${suggestion.PostOffice} (${suggestion.PinCode})`}
                                                     </p>
                                                     <p className="text-sm text-gray-500">
-                                                        {suggestion.Branch}, {suggestion.State}
+                                                        {suggestion.Taluk}, {suggestion.District}, {suggestion.State}
                                                     </p>
                                                 </div>
                                             </div>
@@ -250,7 +246,7 @@ const SearchBoxPincode: React.FC = () => {
                             value={selectedState}
                         >
                             <option value="" disabled>
-                                Select a state
+                                Select State
                             </option>
                             {states.map((state, index) => (
                                 <option key={index} value={state}>
@@ -277,7 +273,7 @@ const SearchBoxPincode: React.FC = () => {
                             value={selectedBank}
                         >
                             <option value="" disabled>
-                                Select Bank
+                                Select Taluk
                             </option>
                             {banks.map((state, index) => (
                                 <option key={index} value={state}>
@@ -288,32 +284,30 @@ const SearchBoxPincode: React.FC = () => {
                     </div>
                     <div className="row">
                         {allData.map((data, index) => (
-                            <div key={index} className="mb-4 md:col-4 lg:col-6">
+                            <div key={index} className="mb-4 md:col-4 lg:col-3">
                                 <Link
-                                    href={`ifsc-code/${data.State.toLowerCase().replaceAll(
+                                    href={`pincode-finder/${data.State.toLowerCase().replaceAll(
                                         " ",
                                         "-"
-                                    )}/${data.City1.toLowerCase().replaceAll(
+                                    )}/${data.District.toLowerCase().replaceAll(
                                         " ",
                                         "-"
-                                    )}/${data.Bank.toLowerCase().replaceAll(" ", "-")}/${data.Ifsc
-                                        }`}
+                                    )}/${data.Taluk.toLowerCase().replaceAll(
+                                        " ",
+                                        "-"
+                                    )}/${data.PostOffice.toLowerCase().replaceAll(
+                                        " ",
+                                        "-"
+                                    )}`}
                                 >
                                     <div className="flex flex-col border rounded-sm hover:shadow px-8 py-4 ">
                                         <div className="flex">
-                                            <div className="flex-shrink-0">
-                                                <img
-                                                    src={`/Banks/${data.Bank}.png`}
-                                                    alt={`${data.Bank}`}
-                                                    className="w-8 h-8 mr-4 rounded-full"
-                                                />
-                                            </div>
                                             <div className="flex-1 min-w-0 text-left">
                                                 <p className="text-sm font-medium text-gray-900 truncate">
-                                                    {data.Ifsc}
+                                                    {data.PostOffice}
                                                 </p>
                                                 <p className="text-sm text-gray-500 truncate">
-                                                    {data.Branch}, {data.State}
+                                                    {data.District}, {data.State}
                                                 </p>
                                             </div>
                                         </div>
@@ -331,170 +325,37 @@ const SearchBoxPincode: React.FC = () => {
 export default SearchBoxPincode;
 
 const states = [
-    "ADILABAD",
-    "AHMADABAD",
-    "AJMER",
-    "AMRELI",
-    "ANDAMAN AND NICOBAR",
-    "ANDAMAN AND NICOBAR ISLAND",
-    "ANDAMANANDNICOBAR",
-    "ANDHRA PRADESH",
-    "ANDHRAPRADESH",
-    "AP",
-    "ARUNACHAL PRADESH",
-    "ASSAM",
-    "BADGAM",
-    "BAGALKOTE",
-    "BANAS KANTHA",
-    "BANGALORE RURAL",
-    "BANGALORE URBAN",
-    "BARA BANKI",
-    "BASTAR",
-    "BELLARY",
-    "BHARUCH",
-    "BHAVNAGAR",
-    "BIHAR",
-    "BILASPUR",
-    "BUDAUN",
-    "CG",
-    "CHANDIGARH",
-    "CHANDIGARH UT",
-    "CHATTISGARH",
-    "CHHATISGARH",
-    "CHHATISHGARH",
-    "CHHATTISGARH",
-    "CHIKMAGALUR",
-    "CHINABHOGILA",
-    "CHITRAKOOT",
-    "CHODAVARAM",
-    "COIMBATORE",
-    "DADRA",
-    "Dadra & Nagar Haveli",
-    "DADRA AND NAGAR HAVELI",
-    "DAKSHIN KANNAD",
-    "DAMAN",
-    "DAMAN AND DIU",
-    "DAMANANDDIU",
-    "DANTEWADA",
-    "DEHRA DUN",
-    "DELHI",
-    "EAST GODAVARI",
-    "ERNAKULAM",
-    "ERODE",
-    "FEROZPUR",
-    "GAUTAM BUDDHA NAGAR",
-    "GOA",
-    "GREATER BOMBAY",
-    "GUJARAT",
-    "GUJRAT",
-    "GURDASPUR",
-    "HARKHAND",
-    "HARYANA",
-    "HIMACHAL PRADESH",
-    "HIMACHALPRADESH",
-    "HIMANCHALPRADESH",
-    "HUGLI",
-    "JALPAIGURI",
-    "JAMMU AND KASHMIR",
-    "JAMMUANDKASHMIR",
-    "JANJGIR CHAMPA",
-    "JARAJAPUPETA",
-    "JHAGRAKHAND COLLIERY",
-    "JHARKHAND",
-    "JIND",
-    "JUNAGADH",
-    "KA",
-    "KACHCHH",
-    "KAMRUP",
-    "KAMRUP METROPOLITAN",
-    "KARANATAKA",
-    "KARIMNAGAR",
-    "KARNATAKA",
-    "KEONJHAR",
-    "KERALA",
-    "KHURDA",
-    "KINNAUR",
-    "KOLAR",
-    "KRISHNA",
-    "KRISHNAGIRI",
-    "KULU",
-    "KURUKSHETRA",
-    "LADAKH",
-    "LAKSHADWEEP",
-    "LUDHIANA",
-    "MADHYA PRADESH",
-    "MADHYAPRADESH",
-    "MAHARASHTRA",
-    "MANIPUR",
-    "MANSA",
-    "MEERUT",
-    "MEGHALAYA",
-    "MH",
-    "MIZORAM",
-    "MP",
-    "NADIA",
-    "NAGALAND",
-    "NAGAPATTINAM",
-    "NALGONDA",
-    "NARSIMHAPUR",
-    "NASIK",
-    "NAVSARI",
-    "NCT of Delhi",
-    "NEW DELHI",
-    "ODISHA",
-    "ORISSA",
-    "PANJAB",
-    "PASCHIMI SINGHBHUM",
-    "Pondicherry",
-    "PRAKASAM",
-    "PUDUCHERRY",
-    "PUNE",
-    "PUNJAB",
-    "PURBA MEDINIPUR",
-    "RAJASTHAN",
-    "RAJKOT",
-    "RANCHI",
-    "RANGAREDDY",
-    "RATLAM",
-    "RI BHOI",
-    "RUPNAGAR",
-    "SABAR KANTHA",
-    "SAHARANPUR",
-    "SAHEBGANJ",
-    "SAHIBZADA AJIT SINGH NAGAR",
-    "SANGRUR",
-    "SATARA",
-    "SHRAVASTI",
-    "SIDHI",
-    "SIKKIM",
-    "SIMLA",
-    "SOUTH 24 PARGANAS",
-    "SOUTH GOA",
-    "SURAT",
-    "TAMIL NADU",
-    "TAMILNADU",
-    "TELAGANA",
-    "TELANGANA",
-    "TELENGANA",
-    "THANE",
-    "THIRUVALLUR",
-    "THIRUVANANTHAPURAM",
-    "THRISSUR",
-    "TIRUCHIRAPALLI",
-    "TN",
-    "TOOTHUKUDI",
-    "TRIPURA",
-    "UP",
-    "UT OF DAMAN AND DIU",
-    "UTTAR PRADESH",
-    "UTTARAKHAND",
-    "UTTARANCHAL",
-    "UTTARPRADESH",
-    "UTTRAKHAND",
-    "VADODARA",
-    "VISHAKHAPATNAM",
-    "VPO - KHANDWA PATTA CHURU, DIST CHURU",
-    "WARANGAL",
-    "WEST BENGAL",
-    "WESTBENGAL",
-];
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chandigarh",
+    "Chhattisgarh",
+    "Delhi",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Lakshadweep",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Puducherry",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal"
+]
+    ;
