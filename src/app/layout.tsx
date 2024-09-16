@@ -66,7 +66,7 @@ const menuData: MenuItem[] = [
     dropdown: true,
     dropdownItems: [
       { label: "IFSC Finder", url: "/ifsc-code" },
-      // { label: "PinCode Finder", url: "/pincode" },
+      { label: "PinCode Finder", url: "/pincode-finder" },
     ],
   },
 ];
@@ -140,7 +140,7 @@ export async function generateMetadata() {
   // console.log("metaDatapathnmae:::::::::;;;", pathname);
 
 
-  if (metaData.error) {
+  if (metaData.error || !metaData) {
     return {
       title: "Not Found",
       description: "Error Page Not Found",

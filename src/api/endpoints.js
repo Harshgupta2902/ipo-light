@@ -1,5 +1,5 @@
-// const baseURL = "https://apis-iota-five.vercel.app/api/";
-const baseURL = "http://localhost:4000/api/";
+const baseURL = "https://apis-iota-five.vercel.app/api/";
+// const baseURL = "http://localhost:4000/api/";
 
 export const endpoints = {
   metaData: `${baseURL}meta-data`,
