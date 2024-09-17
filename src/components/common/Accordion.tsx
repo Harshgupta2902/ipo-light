@@ -21,7 +21,7 @@ const Accordion = ({
     <div className={`col-lg-8 ${className}`}>
       <div className={`accordion ${show ? "active" : ""}`}>
         <button className="accordion-header" onClick={toggleAccordion} aria-label={title}>
-          <h3 className="text-lg text-left" >{title}</h3 >
+          <h3 className={`text-lg text-left ${show ? "text-white": ""}`} >{title}</h3 >
           <svg
             stroke="currentColor"
             fill="currentColor"
