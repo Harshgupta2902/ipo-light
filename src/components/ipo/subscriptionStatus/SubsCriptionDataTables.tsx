@@ -94,101 +94,69 @@ export default function SubsCriptionDataTable({ data }: { data: any }) {
         </div>
         <div id="default-tab-content">
           <div className={`${activeTab === "MainBoard" ? "block" : "hidden"}`} role="tabpanel">
-            <div className="rounded bg-body px-6 shadow">
-              <div className="flex flex-col">
-                <div className="-m-1.5 overflow-x-auto content">
-                  <div className="p-1.5 align-middle">
-                    <table className="w-full text-sm text-left  text-gray-500">
-                      {mainBoardHeaders && mainBoardHeaders.length > 0 && (
-                        <thead className="text-md text-gray-700 bg-gray-50 ">
-                          <tr>
-                            {mainBoardHeaders.map((header, index) => (
-                              <th key={index} className="py-2">
-                                {header}
-                              </th>
+            <div className="flex flex-col">
+              <div className=" overflow-x-auto content">
+                <div className=" align-middle">
+                  <table className="w-full text-sm text-left  text-gray-500">
+                    {mainBoardHeaders && mainBoardHeaders.length > 0 && (
+                      <thead className="text-md text-gray-700 bg-gray-50 ">
+                        <tr>
+                          {mainBoardHeaders.map((header, index) => (
+                            <th key={index} className="py-2">
+                              {header}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                    )}
+                    <tbody>
+                      {data.ipo_subscription_data.map(
+                        (item: SubsCriptionDataTables, index: number) => (
+                          <tr key={index}>
+                            {mainBoardkeysToDisplay.map((key) => (
+                              <td key={key} className="py-3 text-gray-900">
+                                {item[key as keyof SubsCriptionDataTables]}
+                              </td>
                             ))}
                           </tr>
-                        </thead>
+                        )
                       )}
-                      <tbody>
-                        {data.ipo_subscription_data.map(
-                          (item: SubsCriptionDataTables, index: number) => (
-                            <tr key={index}>
-                              {mainBoardkeysToDisplay.map((key) => (
-                                <td key={key} className="py-3">
-                                  {key === "company_name" ? (
-                                    <Link
-                                      style={{
-                                        textDecoration: "none",
-                                        fontSize: "medium",
-                                      }}
-                                      href={"/ipo/details/" + item.slug}
-                                      target={"_blank"}
-                                       
-                                    >
-                                      {item[key as keyof SubsCriptionDataTables]}
-                                    </Link>
-                                  ) : (
-                                    item[key as keyof SubsCriptionDataTables]
-                                  )}
-                                </td>
-                              ))}
-                            </tr>
-                          )
-                        )}
-                      </tbody>
-                    </table>
-                  </div>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
           </div>
           <div className={`${activeTab === "SME" ? "block" : "hidden"}`} role="tabpanel">
-            <div className="rounded bg-body px-6 shadow">
-              <div className="flex flex-col">
-                <div className="-m-1.5 overflow-x-auto content">
-                  <div className="p-1.5 align-middle">
-                    <table className="w-full text-sm text-left  text-gray-500">
-                      {SmeHeaders && SmeHeaders.length > 0 && (
-                        <thead className="text-md text-gray-700 bg-gray-50 ">
-                          <tr>
-                            {SmeHeaders.map((header, index) => (
-                              <th key={index} className="py-2">
-                                {header}
-                              </th>
+            <div className="flex flex-col">
+              <div className=" overflow-x-auto content">
+                <div className=" align-middle">
+                  <table className="w-full text-sm text-left  text-gray-500">
+                    {SmeHeaders && SmeHeaders.length > 0 && (
+                      <thead className="text-md text-gray-700 bg-gray-50 ">
+                        <tr>
+                          {SmeHeaders.map((header, index) => (
+                            <th key={index} className="py-2">
+                              {header}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                    )}
+                    <tbody>
+                      {data.sme_subscription_data.map(
+                        (item: SubsCriptionDataTables, index: number) => (
+                          <tr key={index}>
+                            {smekeysToDisplay.map((key) => (
+                              <td key={key} className="py-3 text-gray-900">
+                                {item[key as keyof SubsCriptionDataTables]}
+                              </td>
                             ))}
                           </tr>
-                        </thead>
+                        )
                       )}
-                      <tbody>
-                        {data.sme_subscription_data.map(
-                          (item: SubsCriptionDataTables, index: number) => (
-                            <tr key={index}>
-                              {smekeysToDisplay.map((key) => (
-                                <td key={key} className="py-3">
-                                  {key === "company_name" ? (
-                                    <Link
-                                      style={{
-                                        textDecoration: "none",
-                                        fontSize: "medium",
-                                      }}
-                                      href={"/ipo/details/" + item.slug}
-                                      target={"_blank"}
-                                       
-                                    >
-                                      {item[key as keyof SubsCriptionDataTables]}
-                                    </Link>
-                                  ) : (
-                                    item[key as keyof SubsCriptionDataTables]
-                                  )}
-                                </td>
-                              ))}
-                            </tr>
-                          )
-                        )}
-                      </tbody>
-                    </table>
-                  </div>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
