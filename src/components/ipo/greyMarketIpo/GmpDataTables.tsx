@@ -7,11 +7,11 @@ import React from "react";
 export default function GmpDataTables({ data }: { data: any }) {
   const keysToDisplay = [
     "company_name",
+    "date",
     "type",
     "ipo_gmp",
     "price",
     "gain",
-    "date"
     // "kostak",
     // "subject",
   ];
