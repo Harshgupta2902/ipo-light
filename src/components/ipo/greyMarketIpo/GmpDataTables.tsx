@@ -11,11 +11,13 @@ export default function GmpDataTables({ data }: { data: any }) {
     "ipo_gmp",
     "price",
     "gain",
+    "date"
     // "kostak",
     // "subject",
   ];
   const headers = [
     "Company Name",
+    "Date",
     "Type",
     "Grey Market Price",
     "Price",
