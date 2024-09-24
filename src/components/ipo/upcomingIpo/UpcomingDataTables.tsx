@@ -2,11 +2,64 @@ import { UpcomingDataTables } from "@/components/interfaces";
 import Link from "next/link";
 import React from "react";
 
+const sortEntriesByDate = (entries: any) => {
+  return entries.sort((a: { date: string; }, b: { date: string; }) => {
+    const endDateA = getDateRangeEnd(a.date);
+    const endDateB = getDateRangeEnd(b.date);
 
+    // Handle cases where end dates are null
+    if (!endDateA) return 1; // Move invalid dates to the end
+    if (!endDateB) return -1; // Move invalid dates to the end
+
+
+    console.log(`endDateA:::${endDateA}  endDateB:::::${endDateB}`);
+
+    return endDateB.getTime() - endDateA.getTime(); // Sort in descending order
+  });
+};
+
+
+const getDateRangeEnd = (dateString: string): Date | null => {
+  const [dateRange] = dateString.split(" "); // Get the first part of the date range
+  const dates = dateRange.split('-');
+
+  // If the date range is not valid, return null
+  if (dates.length !== 2) return null;
+
+  const endDateString = dates[1].trim(); // Get the end date part and trim any whitespace
+  const [day, month] = endDateString.split(' ');
+
+  // Map month names to numbers
+  const monthMap: { [key: string]: number } = {
+    Jan: 0,
+    Feb: 1,
+    Mar: 2,
+    Apr: 3,
+    May: 4,
+    Jun: 5,
+    Jul: 6,
+    Aug: 7,
+    Sept: 8, // Adjusted to be "Sept" instead of "September"
+    Oct: 9,
+    Nov: 10,
+    Dec: 11,
+  };
+
+  const monthIndex = monthMap[month];
+  if (monthIndex === undefined) return null; // If month is invalid, return null
+
+  // Create a Date object using the month index, day, and a default year
+  const endDate = new Date(2024, monthIndex, parseInt(day, 10)); // Adjust year as needed
+
+  return endDate;
+};
 
 export default function UpcomingDataTable({ data }: { data: any }) {
-  const keysToDisplay = ["company_name", "date", "size", "price", "status"];
-  const headers = ["Company Name", "Date", "Size", "Price", "Status"];
+  const keysToDisplay = ["company_name", "date", "type", "size", "priceband"];
+  const headers = ["Company Name", "Date", "Type", "Size", "Price Band"];
+
+  const sortedEntries = sortEntriesByDate(data.upcomingIpos);
+
 
   return (
     <section className="pt-0">
@@ -30,7 +83,7 @@ export default function UpcomingDataTable({ data }: { data: any }) {
                       </thead>
                     )}
                     <tbody>
-                      {data.upcomingIpos.map(
+                      {sortedEntries.map(
                         (item: UpcomingDataTables, index: number) => (
                           <tr key={index}>
                             {keysToDisplay.map((key) => (
@@ -44,30 +97,23 @@ export default function UpcomingDataTable({ data }: { data: any }) {
                                     }}
                                     href={"/ipo/details/" + item.slug}
                                     target={"_blank"}
-                                     
+
                                   >
                                     {item[key as keyof UpcomingDataTables]}
                                   </Link>
                                 ) : (
-                                  item[key as keyof UpcomingDataTables]
+                                  key === "type" ? (
+                                    item[key as keyof UpcomingDataTables]?.toLowerCase() === "mainline" ? (
+                                      <span className="text-[#2d75fa] font-bold">{item[key as keyof UpcomingDataTables]}</span>
+                                    ) : (
+                                      item[key as keyof UpcomingDataTables]?.toLowerCase() === "nse sme" ? (
+                                        <span className="text-[#9b51e0] font-bold">{item[key as keyof UpcomingDataTables]}</span>
+                                      ) : <span className="text-[#ff6900] font-bold">{item[key as keyof UpcomingDataTables]}</span>
+                                    )
+                                  ) : (
+                                    item[key as keyof UpcomingDataTables]
+                                  )
                                 )}
-
-                                {/* {key === "company_name" ? (
-                                <Link
-                                  prefetch={false}
-                                  style={{
-                                    textDecoration: "none",
-                                    fontSize: "medium",
-                                  }}
-                                  href={"/ipo/details/" + item.link.replaceAll("https://ipowatch.in/", "")}
-                                  target={"_blank"}
-                                   
-                                >
-                                  {item[key as keyof UpcomingDataTables]}
-                                </Link>
-                              ) : (
-                                item[key as keyof UpcomingDataTables]
-                              )} */}
                               </td>
                             ))}
                           </tr>
