@@ -12,8 +12,6 @@ export default function GmpDataTables({ data }: { data: any }) {
     "ipo_gmp",
     "price",
     "gain",
-    // "kostak",
-    // "subject",
   ];
   const headers = [
     "Company Name",
@@ -22,8 +20,6 @@ export default function GmpDataTables({ data }: { data: any }) {
     "Grey Market Price",
     "Price",
     "Gain",
-    // "Kostak",
-    // "Subject",
   ];
   return (
     <section className="pt-0">

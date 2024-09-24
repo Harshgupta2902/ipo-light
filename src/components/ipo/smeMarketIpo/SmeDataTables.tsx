@@ -47,12 +47,22 @@ export default function SmeDataTable({ data }: { data: any }) {
                                   }}
                                   href={"/ipo/details/" + item.slug}
                                   target={"_blank"}
-                                   
+
                                 >
                                   {item[key as keyof SmeDataTables]}
                                 </Link>
                               ) : (
-                                item[key as keyof SmeDataTables]
+                                key === "Platform" ? (
+                                  item[key as keyof SmeDataTables]?.toLowerCase() === "mainline" ? (
+                                    <span className="text-[#2d75fa] font-bold">{item[key as keyof SmeDataTables]}</span>
+                                  ) : (
+                                    item[key as keyof SmeDataTables]?.toLowerCase() === "nse sme" ? (
+                                      <span className="text-[#9b51e0] font-bold">{item[key as keyof SmeDataTables]}</span>
+                                    ) : <span className="text-[#ff6900] font-bold">{item[key as keyof SmeDataTables]}</span>
+                                  )
+                                ) : (
+                                  item[key as keyof SmeDataTables]
+                                )
                               )}
                             </td>
                           ))}
