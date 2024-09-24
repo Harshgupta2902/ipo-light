@@ -62,7 +62,17 @@ export default function GmpDataTables({ data }: { data: any }) {
                                 {item[key as keyof GmpDataTable]}
                               </Link>
                             ) : (
-                              item[key as keyof GmpDataTable]
+                              key === "type" ? (
+                                item[key as keyof GmpDataTable]?.toLowerCase() === "mainline" ? (
+                                  <span className="text-[#2d75fa] font-bold">{item[key as keyof GmpDataTable]}</span>
+                                ) : (
+                                  item[key as keyof GmpDataTable]?.toLowerCase() === "nse sme" ? (
+                                    <span className="text-[#9b51e0] font-bold">{item[key as keyof GmpDataTable]}</span>
+                                  ) : <span className="text-[#ff6900] font-bold">{item[key as keyof GmpDataTable]}</span>
+                                )
+                              ) : (
+                                item[key as keyof GmpDataTable]
+                              )
                             )}
                           </td>
                         ))}
