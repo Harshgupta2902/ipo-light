@@ -2,64 +2,11 @@ import { UpcomingDataTables } from "@/components/interfaces";
 import Link from "next/link";
 import React from "react";
 
-const sortEntriesByDate = (entries: any) => {
-  return entries.sort((a: { date: string; }, b: { date: string; }) => {
-    const endDateA = getDateRangeEnd(a.date);
-    const endDateB = getDateRangeEnd(b.date);
 
-    // Handle cases where end dates are null
-    if (!endDateA) return 1; // Move invalid dates to the end
-    if (!endDateB) return -1; // Move invalid dates to the end
-
-
-    console.log(`endDateA:::${endDateA}  endDateB:::::${endDateB}`);
-
-    return endDateB.getTime() - endDateA.getTime(); // Sort in descending order
-  });
-};
-
-
-const getDateRangeEnd = (dateString: string): Date | null => {
-  const [dateRange] = dateString.split(" "); // Get the first part of the date range
-  const dates = dateRange.split('-');
-
-  // If the date range is not valid, return null
-  if (dates.length !== 2) return null;
-
-  const endDateString = dates[1].trim(); // Get the end date part and trim any whitespace
-  const [day, month] = endDateString.split(' ');
-
-  // Map month names to numbers
-  const monthMap: { [key: string]: number } = {
-    Jan: 0,
-    Feb: 1,
-    Mar: 2,
-    Apr: 3,
-    May: 4,
-    Jun: 5,
-    Jul: 6,
-    Aug: 7,
-    Sept: 8, // Adjusted to be "Sept" instead of "September"
-    Oct: 9,
-    Nov: 10,
-    Dec: 11,
-  };
-
-  const monthIndex = monthMap[month];
-  if (monthIndex === undefined) return null; // If month is invalid, return null
-
-  // Create a Date object using the month index, day, and a default year
-  const endDate = new Date(2024, monthIndex, parseInt(day, 10)); // Adjust year as needed
-
-  return endDate;
-};
 
 export default function UpcomingDataTable({ data }: { data: any }) {
   const keysToDisplay = ["company_name", "date", "type", "size", "priceband"];
   const headers = ["Company Name", "Date", "Type", "Size", "Price Band"];
-
-  const sortedEntries = sortEntriesByDate(data.upcomingIpos);
-
 
   return (
     <section className="pt-0">
@@ -83,7 +30,7 @@ export default function UpcomingDataTable({ data }: { data: any }) {
                       </thead>
                     )}
                     <tbody>
-                      {sortedEntries.map(
+                      {data.upcomingIpos.map(
                         (item: UpcomingDataTables, index: number) => (
                           <tr key={index}>
                             {keysToDisplay.map((key) => (
