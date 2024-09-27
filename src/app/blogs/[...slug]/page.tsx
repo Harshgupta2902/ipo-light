@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Content from '@/components/blogs/content'
 import { endpoints } from "@/api/endpoints";
-import { get } from "@/api/api";
-
 import Loader from '@/app/Loader';
 import { headers } from 'next/headers';
 
