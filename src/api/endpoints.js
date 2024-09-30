@@ -8,7 +8,7 @@ export const endpoints = {
   homePage: `${baseURL}main`,
   smeipo: `${baseURL}sme`,
   gmpIpo: `${baseURL}gmp`,
-  ipoBuyBack: `${baseURL}buyback`,
+  ipoBuyBack: `${baseURL}buyback1`,
   ipoForms: `${baseURL}forms`,
   iposubs: `${baseURL}subs`,
   ipoDetails: `${baseURL}getDetails`,

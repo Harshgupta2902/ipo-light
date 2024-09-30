@@ -3,8 +3,8 @@ import Link from "next/link";
 import React from "react";
 
 export default function BuyBackDataTables({ data }: { data: any }) {
-  const keysToDisplay = ["company_name", "date", "open", "close", "price"];
-  const headers = ["Company Name", "Record Date", "Open", "Close", "Price"];
+  const keysToDisplay = ["companyName", "recordDate", "issueOpen", "issueClose", "buybackType", "buybackPrice", "currentMarketPrice", "issueSizeShares", "issueSizeAmount"];
+  const headers = ["Company Name", "Record Date", "Open", "Close", "Type", "Buyback Price", "Current Price", "Issued Shares", "Issue Amount"];
   return (
     <section className="pt-0">
       <div className="container text-center">
@@ -31,7 +31,7 @@ export default function BuyBackDataTables({ data }: { data: any }) {
                         <tr key={index}>
                           {keysToDisplay.map((key) => (
                             <td key={key} className="py-3">
-                              {key === "company_name" ? (
+                              {key === "companyName" ? (
                                 <Link
                                   style={{
                                     textDecoration: "none",
@@ -39,7 +39,7 @@ export default function BuyBackDataTables({ data }: { data: any }) {
                                   }}
                                   href={"/ipo/details/" + item.slug}
                                   target={"_blank"}
-                                   
+
                                 >
                                   {item[key as keyof BuyBackDataTable]}
                                 </Link>
