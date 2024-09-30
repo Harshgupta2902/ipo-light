@@ -3,8 +3,8 @@ import Link from "next/link";
 import React from "react";
 
 export default function BuyBackDataTables({ data }: { data: any }) {
-  const keysToDisplay = ["companyName", "recordDate", "issueOpen", "issueClose", "buybackType", "buybackPrice", "currentMarketPrice", "issueSizeShares", "issueSizeAmount"];
-  const headers = ["Company Name", "Record Date", "Open", "Close", "Type", "Buyback Price", "Current Price", "Issued Shares", "Issue Amount"];
+  const keysToDisplay = ["companyName", "recordDate", "issueOpen", "issueClose", "buybackPrice", "currentMarketPrice", "issueSizeShares", "issueSizeAmount"];
+  const headers = ["Company Name", "Record Date", "Open", "Close", "Buyback Price", "Current Price", "Issued Shares", "Issue Amount"];
   return (
     <section className="pt-0">
       <div className="container text-center">
