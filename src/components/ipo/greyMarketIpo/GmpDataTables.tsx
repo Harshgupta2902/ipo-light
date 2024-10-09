@@ -165,30 +165,30 @@ export default function GmpDataTables({ data }: { data: any }) {
             <div className="overflow-x-auto">
               <div className="align-middle content">
                 <table className="w-full text-sm text-left  text-gray-500">
-                  <thead className="text-md text-gray-700 bg-gray-50">
+                  <thead className="text-xs text-gray-700">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 uppercase tracking-wider">
                         Company Name
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 uppercase tracking-wider">
                         <button onClick={() => requestSort("date")} className="flex items-center">
                           Date {getSortIcon("date")}
                         </button>
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 uppercase tracking-wider">
                         Type
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 uppercase tracking-wider">
                         <button onClick={() => requestSort("ipo_gmp")} className="flex items-center">
                           Grey Market Price {getSortIcon("ipo_gmp")}
                         </button>
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 uppercase tracking-wider">
                         <button onClick={() => requestSort("price")} className="flex items-center">
                           Price {getSortIcon("price")}
                         </button>
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 uppercase tracking-wider">
                         <button onClick={() => requestSort("gain")} className="flex items-center">
                           Gain {getSortIcon("gain")}
                         </button>

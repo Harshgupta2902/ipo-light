@@ -19,12 +19,10 @@ export default function OldGmpDataTables({ data }: { data: any }) {
     <section className="pt-1">
       <div className="container text-center">
         <h1 className="mb-4 text-4xl">Old Ipo Gmp </h1>
-
-
-        <div className="rounded bg-body py-6 px-6 shadow">
+        <div className="rounded bg-body">
           <div className="flex flex-col">
-            <div className="-m-1.5 -m-1.5 overflow-x-auto ">
-              <div className="p-1.5 align-middle content">
+            <div className=" overflow-x-auto ">
+              <div className="align-middle content">
                 <table className="w-full text-sm text-left  text-gray-500">
                   {headers && headers.length > 0 && (
                     <thead className="text-xs text-gray-700 bg-gray-50 ">
