@@ -187,6 +187,7 @@ export interface GmpDataTable {
     link: string;
     updated_at: string;
     slug: string;
+    active: boolean;
 }
 
 export interface OldGmpDataTable {
