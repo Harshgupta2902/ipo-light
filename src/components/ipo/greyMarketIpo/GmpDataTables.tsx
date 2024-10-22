@@ -200,7 +200,9 @@ export default function GmpDataTables({ data }: { data: any }) {
                       <tr key={index} className={ipo.active ? "bg-green-50" : ""}>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                           {ipo.company_name}
-                           <span className={`ml-8 ${item.active ? "text-[#D80027]" : ""}`}>{item.active ? "Active" : ""}</span>
+                           <span className={`ml-2 ${ipo.active ? "text-[#D80027]" : ""}`}>
+                            {ipo.active ? "Active" : ""}
+                          </span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {ipo.active ? (
