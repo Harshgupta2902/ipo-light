@@ -175,9 +175,9 @@ export default function GmpDataTables({ data }: { data: any }) {
                           Date {getSortIcon("date")}
                         </button>
                       </th>
-                      <th className="px-6 py-3 uppercase tracking-wider">
+{/*                       <th className="px-6 py-3 uppercase tracking-wider">
                         Type
-                      </th>
+                      </th> */}
                       <th className="px-6 py-3 uppercase tracking-wider">
                         <button onClick={() => requestSort("ipo_gmp")} className="flex items-center">
                           Grey Market Price {getSortIcon("ipo_gmp")}
@@ -200,6 +200,7 @@ export default function GmpDataTables({ data }: { data: any }) {
                       <tr key={index} className={ipo.active ? "bg-green-50" : ""}>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                           {ipo.company_name}
+                           <span className={`ml-8 ${item.active ? "text-[#D80027]" : ""}`}>{item.active ? "Active" : ""}</span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {ipo.active ? (
@@ -210,7 +211,7 @@ export default function GmpDataTables({ data }: { data: any }) {
                             ipo.date
                           )}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{ipo.type}</td>
+{/*                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{ipo.type}</td> */}
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{ipo.ipo_gmp}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{ipo.price}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{ipo.gain}</td>
