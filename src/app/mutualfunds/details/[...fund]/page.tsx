@@ -59,7 +59,7 @@ export async function generateMetadata() {
         console.error(`Error fetching metadata: ${err}`);
     }
 
-    const metaTitle = mfHomeData.fund_name;
+    const metaTitle = mfHomeData.scheme_name;
     const metaDescription = `${mfHomeData.scheme_name} is ${mfHomeData.sub_category} ${mfHomeData.scheme_type} mutual fund with track record of ${getYears(mfHomeData.launch_date)} years, with overall return of ${mfHomeData.return_stats && mfHomeData.return_stats[0].return_since_created.toFixed(2)}%.`;
     const keywords = [
         mfHomeData.scheme_code,
@@ -171,8 +171,7 @@ const MutualFundsDetails = async () => {
                                                 className="rounded-full"
                                             />
                                             <div>
-                                                <h3 className="text-xl font-semibold leading-none">{mfHomeData.fund_house}</h3>
-                                                <p className="text-sm">{`${mfHomeData.plan_type} ${mfHomeData.scheme_type}`}</p>
+                                                <h3 className="text-sm font-semibold leading-none">{mfHomeData.scheme_name}</h3>
                                             </div>
                                         </div>
                                         <div className="space-y-2">
