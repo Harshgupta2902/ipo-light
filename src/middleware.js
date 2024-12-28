@@ -12,7 +12,6 @@ export default async function middleware(request) {
 
   const response = NextResponse.next();
   if (pathname.indexOf(".") === -1) {
-    // console.log("pathname:::::::::;;;", pathname);
     response.headers.append("x-url", pathname);
   }
 
@@ -26,14 +25,10 @@ export default async function middleware(request) {
 }
 
 const redirects = {
-  "/mutualfunds/details/tata-small-cap-fund-M_TASC":
-    "/mutualfunds/details/tata-small-cap-fund-direct-growth",
-  "/mutualfunds/details/tata-small-cap-fundidcw-payout-M_TASS":
-    "/mutualfunds/screener",
-  "/mutualfunds/details/nippon-india-gold-savings-fund-M_NIGU":
-    "/mutualfunds/screener",
-  "/mutualfunds/details/icici-pru-banking--fin-serv-fund-M_ICINK":
-    "/mutualfunds/screener",
+  "/mutualfunds/details/tata-small-cap-fund-M_TASC": "/mutualfunds/details/tata-small-cap-fund-direct-growth",
+  "/mutualfunds/details/tata-small-cap-fundidcw-payout-M_TASS":  "/mutualfunds/screener",
+  "/mutualfunds/details/nippon-india-gold-savings-fund-M_NIGU":  "/mutualfunds/screener",
+  "/mutualfunds/details/icici-pru-banking--fin-serv-fund-M_ICINK": "/mutualfunds/screener",
 };
 
 export const config = {

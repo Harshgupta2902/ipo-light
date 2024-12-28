@@ -34,7 +34,8 @@ const getSubcategoryUrls = () => {
 
 export async function generateMetadata() {
     const headersList = headers();
-    const pathname = headersList.get("x-url")?.replace("/mutualfunds/category/", "");
+    const completepathname = headersList.get("x-url");
+    const pathname = completepathname?.replace("/mutualfunds/category/", "");
 
     let amcData = null;
     try {
@@ -46,22 +47,11 @@ export async function generateMetadata() {
 
     const metaTitle = amcData.content_list[0].title;
     const metaDescription = `Explore the details of the ${amcData.content_list[0].title && amcData.content_list[0].title} with IpoTec. Get Latest details of AMC and their fund-managers on IpoTec.`;
-    const keywords = [
-        // amcData.content_list[0].title,
-        // amcData.key_information.asset_management_company,
-        // amcData.key_information.trustee_organisation,
-        // amcData.key_information.ceo,
-        // amcData.key_information.cio,
-        // amcData.key_information.investor_service_officer,
-        // amcData.key_information.compliance_officer,
-    ].filter(Boolean);
-
     return {
         title: metaTitle,
         description: metaDescription,
         robots: "index, follow",
         author: "IpoTec",
-        keywords: keywords,
         copyright: "Copyright 2024 @ IpoTec",
         url: "https://www.ipotec.in/",
         openGraph: {
@@ -70,7 +60,7 @@ export async function generateMetadata() {
             site: "https://www.ipotec.in/",
             images: "https://www.ipotec.in/og_image.png",
             type: "website",
-            url: `https://www.ipotec.in${pathname}`,
+            url: `https://www.ipotec.in${completepathname}`,
         },
         twitter: {
             card: "summary_large_image",
@@ -79,7 +69,7 @@ export async function generateMetadata() {
             images: "https://www.ipotec.in/og_image.png"
         },
         alternates: {
-            canonical: `https://www.ipotec.in${pathname}`,
+            canonical: `https://www.ipotec.in${completepathname}`,
         },
     };
 }

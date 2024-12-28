@@ -80,7 +80,7 @@ export async function generateMetadata() {
             site: "https://www.ipotec.in/",
             images: "https://www.ipotec.in/og_image.png",
             type: "website",
-            url: `https://www.ipotec.in${pathname}`,
+            url: `https://www.ipotec.in${completepathname}`,
         },
         twitter: {
             card: "summary_large_image",
@@ -89,7 +89,7 @@ export async function generateMetadata() {
             images: "https://www.ipotec.in/og_image.png"
         },
         alternates: {
-            canonical: `https://www.ipotec.in${pathname}`,
+            canonical: `https://www.ipotec.in${completepathname}`,
         },
     };
 }

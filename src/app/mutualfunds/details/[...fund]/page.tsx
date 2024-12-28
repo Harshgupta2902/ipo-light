@@ -14,7 +14,10 @@ const AnnualizedReturns = dynamic(() => import("@/components/mutualfunds/details
 
 const fetchMfDetails = async (fund: string) => {
     try {
+        console.log(fund, "fundssss");
+        
         const response = await fetch(`${endpoints.getMfDetails}/${fund}`, { cache: "no-store" });
+        
         if (!response.ok) {
             throw new Error('Data not found');
         }
@@ -46,6 +49,9 @@ export async function generateMetadata() {
     const completepathname = headersList.get("x-url");
     const pathname = completepathname?.replace('/mutualfunds/details/', "");
 
+    
+
+
     let mfHomeData = null;
     try {
         mfHomeData = await fetchMfDetails(`${pathname}`);
@@ -53,7 +59,7 @@ export async function generateMetadata() {
         console.error(`Error fetching metadata: ${err}`);
     }
 
-    const metaTitle = mfHomeData.stpDetails ? mfHomeData.stpDetails.scheme_name : mfHomeData.fund_name;
+    const metaTitle = mfHomeData.fund_name;
     const metaDescription = `${mfHomeData.scheme_name} is ${mfHomeData.sub_category} ${mfHomeData.scheme_type} mutual fund with track record of ${getYears(mfHomeData.launch_date)} years, with overall return of ${mfHomeData.return_stats && mfHomeData.return_stats[0].return_since_created.toFixed(2)}%.`;
     const keywords = [
         mfHomeData.scheme_code,
@@ -84,7 +90,7 @@ export async function generateMetadata() {
             site: "https://www.ipotec.in/",
             images: "https://www.ipotec.in/og_image.png",
             type: "website",
-            url: `https://www.ipotec.in${pathname}`,
+            url: `https://www.ipotec.in${completepathname}`,
         },
         twitter: {
             card: "summary_large_image",
@@ -93,7 +99,7 @@ export async function generateMetadata() {
             images: "https://www.ipotec.in/og_image.png"
         },
         alternates: {
-            canonical: `https://www.ipotec.in${pathname}`,
+            canonical: `https://www.ipotec.in${completepathname}`,
         },
     };
 }

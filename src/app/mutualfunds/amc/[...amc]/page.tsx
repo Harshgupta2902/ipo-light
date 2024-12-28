@@ -21,13 +21,16 @@ const fetchAmcData = async (amc: string) => {
 
 export async function generateMetadata() {
     const headersList = headers();
-    const pathname = headersList.get("x-url")?.replace("/mutualfunds/amc/", "");
+    const path = headersList.get("x-url");
+    const pathname = path?.replace("/mutualfunds/amc/", "");
     const amcLowercase = amc.map(name => name.link.toLowerCase());
     const amcName = pathname?.replaceAll("-", " ") ?? "";
     if (!amcLowercase.includes(amcName)) {
         return <NotFound />;
     }
 
+    console.log(path, "path");
+    
     let amcData = null;
     try {
         amcData = await fetchAmcData(`${pathname}`);
@@ -62,7 +65,7 @@ export async function generateMetadata() {
             site: "https://www.ipotec.in/",
             images: "https://www.ipotec.in/og_image.png",
             type: "website",
-            url: `https://www.ipotec.in${pathname}`,
+            url: `https://www.ipotec.in${path}`,
         },
         twitter: {
             card: "summary_large_image",
@@ -71,7 +74,7 @@ export async function generateMetadata() {
             images: "https://www.ipotec.in/og_image.png"
         },
         alternates: {
-            canonical: `https://www.ipotec.in${pathname}`,
+            canonical: `https://www.ipotec.in${path}`,
         },
     };
 }
