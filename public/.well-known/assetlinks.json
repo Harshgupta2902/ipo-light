@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.ipotec",
+            "sha256_cert_fingerprints": [
+                "59:5A:AE:7C:D8:ED:2B:0B:D5:92:B1:A0:FC:C7:CC:A6:DE:9B:CD:8A:9E:6B:47:68:B8:C7:9D:43:A4:04:90:FD"
+            ]
+        }
+    }
+]
