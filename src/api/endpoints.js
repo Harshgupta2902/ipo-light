@@ -1,7 +1,5 @@
 const baseURL = "https://apis-iota-five.vercel.app/api/";
 
-// const baseURL = "http://localhost:4000/api/";
-
 export const endpoints = {
   metaData: `${baseURL}meta-data`,
 
@@ -28,10 +26,14 @@ export const endpoints = {
   blogDetails: `${baseURL}getBlogDetails`,
   getBlogs: `${baseURL}getblogs`,
 
-  getIfsc: `${baseURL}getIfsc`,
+  // getIfsc: `https://ifsc-finder-api.vercel.app/app/search`,
   geBankDetails: `${baseURL}geBankDetails`,
 
   getPincode: `${baseURL}getPincode`,
+
+
+
+  
 };
 
 // getMfHomeChart: `${baseURL}getMfHomeChart`,

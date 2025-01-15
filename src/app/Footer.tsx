@@ -137,13 +137,13 @@ const footer = [
             { page: "Contact", link: "/contact", },
         ],
     }, 
-    // {
-    //     page: "Tools",
-    //     link: "",
-    //     subPages: [
-    //         { page: "IFSC Finder", link: "/ifsc-code", },
-    //     ],
-    // },
+    {
+        page: "Tools",
+        link: "",
+        subPages: [
+            { page: "IFSC Finder", link: "/ifsc-code", },
+        ],
+    },
 
 
 ];

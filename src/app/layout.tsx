@@ -7,12 +7,12 @@ import Navbar from "../components/common/Header";
 import { MenuItem } from "@/components/interfaces";
 import { endpoints } from "@/api/endpoints";
 import { headers } from "next/headers";
-import { Analytics } from "@vercel/analytics/react"
-import dynamic from 'next/dynamic';
+import { Analytics } from "@vercel/analytics/react";
+import dynamic from "next/dynamic";
 import Script from "next/script";
+import path from "path";
 
 const Footer = dynamic(() => import("@/app/Footer"));
-
 
 const poppins = Poppins({
   weight: "500",
@@ -41,9 +41,8 @@ const menuData: MenuItem[] = [
     dropdownItems: [
       { label: "Screener", url: "/mutualfunds/screener" },
       { label: "AMC", url: "/mutualfunds/amc" },
-      { label: "Categories", url: "/mutualfunds/category", },
-      { label: "NFO", url: "/mutualfunds/nfo", },
-
+      { label: "Categories", url: "/mutualfunds/category" },
+      { label: "NFO", url: "/mutualfunds/nfo" },
     ],
   },
   {
@@ -56,63 +55,69 @@ const menuData: MenuItem[] = [
       { label: "Others", url: "/calculators" },
     ],
   },
+
+  {
+    label: "Tools",
+    url: "",
+    dropdown: true,
+    dropdownItems: [
+      { label: "IFSC Finder", url: "/ifsc-code" },
+      // { label: "PinCode Finder", url: "/pincode-finder" },
+    ],
+  },
   {
     label: "Blogs",
     url: "/blogs",
   },
-  // {
-  //   label: "Tools",
-  //   url: "",
-  //   dropdown: true,
-  //   dropdownItems: [
-  //     { label: "IFSC Finder", url: "/ifsc-code" },
-  //     { label: "PinCode Finder", url: "/pincode-finder" },
-  //   ],
-  // },
 ];
-
 
 const fetchMetadata = async (pathname: any) => {
   try {
+    if (pathname == "ifsc-code") {
+      return;
+    }
     const url = `${endpoints.metaData}?url=${pathname}`;
     const response = await fetch(url, { cache: "no-store" });
     return await response.json();
   } catch (error) {
     console.error("Error fetching MF details", error);
   }
-}
-
+};
 
 const mainSchema = {
   "@context": "https://schema.org/",
   "@type": "WebSite",
-  "name": "IpoTec",
-  "url": "https://www.ipotec.in/",
-  "description": "IpoTec provides comprehensive information about upcoming IPOs, GMP, buybacks, subscription statuses, and financial tools including calculators for SIP, lumpsum, SWP, and more.",
-  "author": {
+  name: "IpoTec",
+  url: "https://www.ipotec.in/",
+  description:
+    "IpoTec provides comprehensive information about upcoming IPOs, GMP, buybacks, subscription statuses, and financial tools including calculators for SIP, lumpsum, SWP, and more.",
+  author: {
     "@type": "Organization",
-    "name": "IpoTec"
+    name: "IpoTec",
   },
-  "datePublished": "2024-07-19",
-  "mainEntity": [
+  datePublished: "2024-07-19",
+  mainEntity: [
     {
       "@type": "WebPage",
-      "name": "IPO Details",
-      "url": "https://www.ipotec.in/ipo",
-      "description": "Find detailed information about upcoming IPOs, including GMP, buyback status, and subscription status."
+      name: "IPO Details",
+      url: "https://www.ipotec.in/ipo",
+      description:
+        "Find detailed information about upcoming IPOs, including GMP, buyback status, and subscription status.",
     },
     {
       "@type": "WebPage",
-      "name": "Financial Calculators",
-      "url": "https://www.ipotec.in/calculators",
-      "description": "Access various financial calculators for SIP, lumpsum investments, SWP, and more."
+      name: "Financial Calculators",
+      url: "https://www.ipotec.in/calculators",
+      description:
+        "Access various financial calculators for SIP, lumpsum investments, SWP, and more.",
     },
     {
       "@type": "WebPage",
-      "name": "Mutual Fund Screener",
-      "url": "https://www.ipotec.in/mutualfunds/screener",
-      "description": "Screen and filter mutual funds based on various criteria to make informed investment decisions."
-    }
+      name: "Mutual Fund Screener",
+      url: "https://www.ipotec.in/mutualfunds/screener",
+      description:
+        "Screen and filter mutual funds based on various criteria to make informed investment decisions.",
+    },
   ],
 };
 // const boldMap: { [key: string]: string } = {
@@ -128,12 +133,20 @@ const mainSchema = {
 //   return str.split('').map(char => boldMap[char] || char).join('');
 // };
 
-
-
 export async function generateMetadata() {
   const headersList = headers();
   const pathname = headersList.get("x-url");
+  if (pathname == "ifsc-code") {
+    console.log(pathname);
+    return;
+  }
+
   const metaData = await fetchMetadata(pathname ?? "/");
+
+  if (pathname == "ifsc-code") {
+    console.log(pathname);
+    return;
+  }
 
   if (metaData.error || !metaData) {
     return {
@@ -142,13 +155,10 @@ export async function generateMetadata() {
     };
   }
 
-  const metaTitle = metaData.title
-    ?? "IpoTec";
-  const metaDescription = metaData.description
-    ?? "IpoTec";
-  const keywords = metaData.keywords
-    ?? "IPO, mutual funds, investment, finance, stock market";
-
+  const metaTitle = metaData.title ?? "IpoTec";
+  const metaDescription = metaData.description ?? "IpoTec";
+  const keywords =
+    metaData.keywords ?? "IPO, mutual funds, investment, finance, stock market";
 
   return {
     title: metaTitle,
@@ -171,7 +181,7 @@ export async function generateMetadata() {
       card: "summary_large_image",
       title: metaTitle,
       description: metaDescription,
-      images: "https://www.ipotec.in/og_image.png"
+      images: "https://www.ipotec.in/og_image.png",
     },
     alternates: {
       canonical: `https://www.ipotec.in${pathname}`,
@@ -179,40 +189,75 @@ export async function generateMetadata() {
   };
 }
 
-
-const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>) => {
-
+const RootLayout = async ({
+  children,
+}: Readonly<{ children: React.ReactNode }>) => {
   const headersList = headers();
   const pathname = headersList.get("x-url");
   console.log(pathname, "layout ");
 
-
   return (
     <html lang="en">
       <head>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3578725480736580" crossOrigin="anonymous"></script>
-        <meta name="google-site-verification" content="qfvtOvETSlOGGfLBvcE6Yk2Fqj0HmCGkmObv5r3MCnc" />
-        <meta name="ahrefs-site-verification" content="c9bc1dfb881082e1aca65a8f84eb9243001c319904258b4f601717781f2339b3" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3578725480736580"
+          crossOrigin="anonymous"
+        ></script>
+        <meta
+          name="google-site-verification"
+          content="qfvtOvETSlOGGfLBvcE6Yk2Fqj0HmCGkmObv5r3MCnc"
+        />
+        <meta
+          name="ahrefs-site-verification"
+          content="c9bc1dfb881082e1aca65a8f84eb9243001c319904258b4f601717781f2339b3"
+        />
         <meta name="msvalidate.01" content="E31009FF5E0FF8B37698B8D4B526016D" />
         <meta httpEquiv="Content-Language" content="en-us" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="Copyright" content="Copyright 2024 @ IpoTec" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/layout/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/layout/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/layout/favicon-16x16.png" />
-        <link rel="icon" href="/layout/favicon.ico" type="image/x-icon" sizes="16x16" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/layout/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/layout/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/layout/favicon-16x16.png"
+        />
+        <link
+          rel="icon"
+          href="/layout/favicon.ico"
+          type="image/x-icon"
+          sizes="16x16"
+        />
         <link rel="manifest" href="/site.webmanifest"></link>
-        <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet"></link>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(mainSchema) }} />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600;700&amp;family=Poppins:wght@400;500&amp;display=swap"
+          rel="stylesheet"
+        ></link>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(mainSchema) }}
+        />
       </head>
       <body className={`${poppins.className} bg-white`}>
         <Navbar menuData={menuData ?? []} />
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
         <Analytics />
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-9V7F339R8D" async />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-9V7F339R8D"
+          async
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -227,8 +272,6 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
       </body>
     </html>
   );
-}
+};
 
 export default RootLayout;
-
-
