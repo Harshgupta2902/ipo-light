@@ -53,12 +53,12 @@ export async function generateMetadata() {
         robots: "index, follow",
         author: "IpoTec",
         copyright: "Copyright 2024 @ IpoTec",
-        url: "https://www.ipotec.in/",
+        url: "https://ipo-light.vercel.app/",
         openGraph: {
             title: metaTitle,
             description: metaDescription,
-            site: "https://www.ipotec.in/",
-            images: "https://www.ipotec.in/og_image.png",
+            site: "https://ipo-light.vercel.app/",
+            images: "https://ipo-light.vercel.app/og_image.png",
             type: "website",
             url: `https://www.ipotec.in${completepathname}`,
         },
@@ -66,7 +66,7 @@ export async function generateMetadata() {
             card: "summary_large_image",
             title: metaTitle,
             description: metaDescription,
-            images: "https://www.ipotec.in/og_image.png"
+            images: "https://ipo-light.vercel.app/og_image.png"
         },
         alternates: {
             canonical: `https://www.ipotec.in${completepathname}`,

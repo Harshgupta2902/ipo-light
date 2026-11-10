@@ -51,14 +51,14 @@ export async function generateMetadata() {
         author: "IpoTec",
         keywords: keywords,
         copyright: "Copyright 2024 @ IpoTec",
-        url: "https://www.ipotec.in/",
+        url: "https://ipo-light.vercel.app/",
         openGraph: {
             title: metaTitle,
             description: metaDescription,
-            site: "https://www.ipotec.in/",
+            site: "https://ipo-light.vercel.app/",
             images: image,
             type: "website",
-            url: `https://www.ipotec.in/${completePathname}`,
+            url: `https://ipo-light.vercel.app/${completePathname}`,
         },
         twitter: {
             card: "summary_large_image",

@@ -19,12 +19,12 @@ async function generateMainSitemap() {
   const currentDate = new Date().toISOString();
   const links = [
     "https://www.ipotec.in",
-    "https://www.ipotec.in/ipo.xml",
-    "https://www.ipotec.in/mutualfunds.xml",
-    "https://www.ipotec.in/blog.xml",
-    "https://www.ipotec.in/calculators.xml",
-    "https://www.ipotec.in/others.xml",
-    "https://www.ipotec.in/ifsc-details.xml",
+    "https://ipo-light.vercel.app/ipo.xml",
+    "https://ipo-light.vercel.app/mutualfunds.xml",
+    "https://ipo-light.vercel.app/blog.xml",
+    "https://ipo-light.vercel.app/calculators.xml",
+    "https://ipo-light.vercel.app/others.xml",
+    "https://ipo-light.vercel.app/ifsc-details.xml",
   ];
   const mainSitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -44,14 +44,14 @@ async function generateMainSitemap() {
 async function generateIpoSitemap() {
   const currentDate = new Date().toISOString();
   const links = [
-    "https://www.ipotec.in/ipo",
-    "https://www.ipotec.in/ipo/upcomingIpo",
-    "https://www.ipotec.in/ipo/greyMarketIpo",
-    "https://www.ipotec.in/ipo/smeMarketIpo",
-    "https://www.ipotec.in/ipo/subscriptionStatus",
-    "https://www.ipotec.in/ipo/ipoForms",
-    "https://www.ipotec.in/ipo/sharesBuyBack",
-    "https://www.ipotec.in/ipo-details.xml",
+    "https://ipo-light.vercel.app/ipo",
+    "https://ipo-light.vercel.app/ipo/upcomingIpo",
+    "https://ipo-light.vercel.app/ipo/greyMarketIpo",
+    "https://ipo-light.vercel.app/ipo/smeMarketIpo",
+    "https://ipo-light.vercel.app/ipo/subscriptionStatus",
+    "https://ipo-light.vercel.app/ipo/ipoForms",
+    "https://ipo-light.vercel.app/ipo/sharesBuyBack",
+    "https://ipo-light.vercel.app/ipo-details.xml",
   ];
   const ipoSitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -71,14 +71,14 @@ async function generateIpoSitemap() {
 async function generateMfSitemap() {
   const currentDate = new Date().toISOString();
   const links = [
-    "https://www.ipotec.in/mutualfunds",
-    "https://www.ipotec.in/mutualfunds/screener",
-    "https://www.ipotec.in/mutualfunds/amc",
-    "https://www.ipotec.in/mutualfunds/category",
-    "https://www.ipotec.in/mutualfunds-details.xml",
-    "https://www.ipotec.in/amc.xml",
-    "https://www.ipotec.in/category.xml",
-    "https://www.ipotec.in/nfo.xml",
+    "https://ipo-light.vercel.app/mutualfunds",
+    "https://ipo-light.vercel.app/mutualfunds/screener",
+    "https://ipo-light.vercel.app/mutualfunds/amc",
+    "https://ipo-light.vercel.app/mutualfunds/category",
+    "https://ipo-light.vercel.app/mutualfunds-details.xml",
+    "https://ipo-light.vercel.app/amc.xml",
+    "https://ipo-light.vercel.app/category.xml",
+    "https://ipo-light.vercel.app/nfo.xml",
   ];
   const mfSitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -98,12 +98,12 @@ async function generateMfSitemap() {
 async function generateOthersSitemap() {
   const currentDate = new Date().toISOString();
   const links = [
-    "https://www.ipotec.in/about-us",
-    "https://www.ipotec.in/privacy-policy",
-    "https://www.ipotec.in/terms-condition",
-    "https://www.ipotec.in/disclaimer",
-    "https://www.ipotec.in/contact",
-    "https://www.ipotec.in/blogs",
+    "https://ipo-light.vercel.app/about-us",
+    "https://ipo-light.vercel.app/privacy-policy",
+    "https://ipo-light.vercel.app/terms-condition",
+    "https://ipo-light.vercel.app/disclaimer",
+    "https://ipo-light.vercel.app/contact",
+    "https://ipo-light.vercel.app/blogs",
   ];
   const othersSitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -123,10 +123,10 @@ async function generateOthersSitemap() {
 async function generateCalcSitemap() {
   const currentDate = new Date().toISOString();
   const links = [
-    "https://www.ipotec.in/calculators",
-    "https://www.ipotec.in/calculators/sip_calculator",
-    "https://www.ipotec.in/calculators/lumpsum_calculator",
-    "https://www.ipotec.in/calculators/swp_calculator",
+    "https://ipo-light.vercel.app/calculators",
+    "https://ipo-light.vercel.app/calculators/sip_calculator",
+    "https://ipo-light.vercel.app/calculators/lumpsum_calculator",
+    "https://ipo-light.vercel.app/calculators/swp_calculator",
   ];
   const othersSitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -155,7 +155,7 @@ async function generateIpoDetailsSitemap() {
       .map(
         (link) => `
       <url>
-        <loc>https://www.ipotec.in/ipo/details/${link}</loc>
+        <loc>https://ipo-light.vercel.app/ipo/details/${link}</loc>
         <lastmod>${currentDate}</lastmod>
         <priority>0.80</priority>
       </url>
@@ -218,7 +218,7 @@ async function generateNfoDetailsSitemap() {
       .map(
         (link) => `
       <url>
-        <loc>https://www.ipotec.in/mutualfunds/nfo/details/${link}</loc>
+        <loc>https://ipo-light.vercel.app/mutualfunds/nfo/details/${link}</loc>
         <lastmod>${currentDate}</lastmod>
         <priority>0.80</priority>
       </url>
@@ -240,7 +240,7 @@ async function generateMfDetailsSitemap() {
       .map(
         (link) => `
       <url>
-        <loc>https://www.ipotec.in/mutualfunds/details/${link}</loc>
+        <loc>https://ipo-light.vercel.app/mutualfunds/details/${link}</loc>
         <lastmod>${currentDate}</lastmod>
         <priority>0.80</priority>
       </url>
@@ -303,7 +303,7 @@ async function generateAmcSitemap() {
       .map(
         (link) => `
       <url>
-        <loc>https://www.ipotec.in/mutualfunds/amc/${link
+        <loc>https://ipo-light.vercel.app/mutualfunds/amc/${link
           .toLowerCase()
           .replaceAll(" ", "-")}</loc>
         <lastmod>${currentDate}</lastmod>
@@ -345,7 +345,7 @@ async function generateCategorySitemap() {
       .map(
         (link) => `
       <url>
-        <loc>https://www.ipotec.in/mutualfunds/category/${link}</loc>
+        <loc>https://ipo-light.vercel.app/mutualfunds/category/${link}</loc>
         <lastmod>${currentDate}</lastmod>
         <priority>0.80</priority>
       </url>
@@ -366,7 +366,7 @@ async function generateBlogsSitemap() {
       .map(
         (blogData) => `
       <url>
-        <loc>https://www.ipotec.in/blogs/${blogData.category}/${blogData.slug}</loc>
+        <loc>https://ipo-light.vercel.app/blogs/${blogData.category}/${blogData.slug}</loc>
         <lastmod>${blogData.published}</lastmod>
         <priority>0.80</priority>
       </url>

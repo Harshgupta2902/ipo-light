@@ -3,7 +3,7 @@ const mainSchema = {
     "@type": "Corporation",
     "name": "IpoTec",
     "url": "https://www.ipotec.in",
-    "logo": "https://www.ipotec.in/logo.svg",
+    "logo": "https://ipo-light.vercel.app/logo.svg",
 };
 
 const ipoSchema = {
@@ -14,43 +14,43 @@ const ipoSchema = {
             "@type": "ListItem",
             "position": 1,
             "name": "Ipo",
-            "item": "https://www.ipotec.in/ipo",
+            "item": "https://ipo-light.vercel.app/ipo",
         },
         {
             "@type": "ListItem",
             "position": 2,
             "name": "Upcoming Ipo",
-            "item": "https://www.ipotec.in/ipo/upcomingIpo",
+            "item": "https://ipo-light.vercel.app/ipo/upcomingIpo",
         },
         {
             "@type": "ListItem",
             "position": 3,
             "name": "Grey Market Ipo",
-            "item": "https://www.ipotec.in/ipo/greyMarketIpo",
+            "item": "https://ipo-light.vercel.app/ipo/greyMarketIpo",
         },
         {
             "@type": "ListItem",
             "position": 4,
             "name": "SME Ipo",
-            "item": "https://www.ipotec.in/ipo/smeMarketIpo",
+            "item": "https://ipo-light.vercel.app/ipo/smeMarketIpo",
         },
         {
             "@type": "ListItem",
             "position": 5,
             "name": "Ipo Subscription Status",
-            "item": "https://www.ipotec.in/ipo/subscriptionStatus",
+            "item": "https://ipo-light.vercel.app/ipo/subscriptionStatus",
         },
         {
             "@type": "ListItem",
             "position": 6,
             "name": "Ipo Forms",
-            "item": "https://www.ipotec.in/ipo/ipoForms",
+            "item": "https://ipo-light.vercel.app/ipo/ipoForms",
         },
         {
             "@type": "ListItem",
             "position": 7,
             "name": "Ipo Buyback",
-            "item": "https://www.ipotec.in/ipo/sharesBuyBack",
+            "item": "https://ipo-light.vercel.app/ipo/sharesBuyBack",
         },
     ],
 };

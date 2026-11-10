@@ -88,7 +88,7 @@ const mainSchema = {
   "@context": "https://schema.org/",
   "@type": "WebSite",
   name: "IpoTec",
-  url: "https://www.ipotec.in/",
+  url: "https://ipo-light.vercel.app/",
   description:
     "IpoTec provides comprehensive information about upcoming IPOs, GMP, buybacks, subscription statuses, and financial tools including calculators for SIP, lumpsum, SWP, and more.",
   author: {
@@ -100,21 +100,21 @@ const mainSchema = {
     {
       "@type": "WebPage",
       name: "IPO Details",
-      url: "https://www.ipotec.in/ipo",
+      url: "https://ipo-light.vercel.app/ipo",
       description:
         "Find detailed information about upcoming IPOs, including GMP, buyback status, and subscription status.",
     },
     {
       "@type": "WebPage",
       name: "Financial Calculators",
-      url: "https://www.ipotec.in/calculators",
+      url: "https://ipo-light.vercel.app/calculators",
       description:
         "Access various financial calculators for SIP, lumpsum investments, SWP, and more.",
     },
     {
       "@type": "WebPage",
       name: "Mutual Fund Screener",
-      url: "https://www.ipotec.in/mutualfunds/screener",
+      url: "https://ipo-light.vercel.app/mutualfunds/screener",
       description:
         "Screen and filter mutual funds based on various criteria to make informed investment decisions.",
     },
@@ -168,12 +168,12 @@ export async function generateMetadata() {
     author: "IpoTec",
     keywords: keywords,
     copyright: "Copyright 2024 @ IpoTec",
-    url: "https://www.ipotec.in/",
+    url: "https://ipo-light.vercel.app/",
     openGraph: {
       title: metaTitle,
       description: metaDescription,
-      site: "https://www.ipotec.in/",
-      images: "https://www.ipotec.in/og_image.png",
+      site: "https://ipo-light.vercel.app/",
+      images: "https://ipo-light.vercel.app/og_image.png",
       type: "website",
       url: `https://www.ipotec.in${pathname}`,
     },
@@ -181,7 +181,7 @@ export async function generateMetadata() {
       card: "summary_large_image",
       title: metaTitle,
       description: metaDescription,
-      images: "https://www.ipotec.in/og_image.png",
+      images: "https://ipo-light.vercel.app/og_image.png",
     },
     alternates: {
       canonical: `https://www.ipotec.in${pathname}`,
